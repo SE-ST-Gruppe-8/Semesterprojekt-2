@@ -18,6 +18,7 @@ public class Semesterprojekt2 {
         System.out.println("Nikolaj was here bitches!");
 
         System.out.println("Test FTT");
+        System.out.println("sorens etest");
 
     }
     
