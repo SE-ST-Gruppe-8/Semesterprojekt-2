@@ -13,6 +13,7 @@ public class Semesterprojekt2 {
         // TODO code application logic here
         //test
         System.out.println("testing");
+        System.out.println("soren tester også");
     }
     
 }
