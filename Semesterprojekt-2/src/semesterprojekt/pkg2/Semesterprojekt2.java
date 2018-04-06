@@ -20,6 +20,7 @@ public class Semesterprojekt2 {
         System.out.println("Test FTT");
         System.out.println("R Test");
         System.out.println("sorens etest");
+        System.out.println("robin's test");
         System.out.println("tests");
 
     }
