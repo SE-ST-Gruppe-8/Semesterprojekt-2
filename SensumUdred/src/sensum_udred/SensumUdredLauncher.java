@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sensum.udred;
+package sensum_udred;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  *
  * @author Robin
  */
-public class SensumUdred extends Application {
+public class SensumUdredLauncher extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
