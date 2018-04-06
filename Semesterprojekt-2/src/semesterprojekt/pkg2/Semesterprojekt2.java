@@ -14,7 +14,11 @@ public class Semesterprojekt2 {
         //test
         System.out.println("testing");
         System.out.println("soren tester også");
+
         System.out.println("Nikolaj was here bitches!");
+
+        System.out.println("Test FTT");
+
     }
     
 }
