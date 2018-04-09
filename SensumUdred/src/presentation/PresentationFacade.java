@@ -6,6 +6,7 @@
 package presentation;
 
 import acq.*;
+import static javafx.application.Application.launch;
 
 /**
  *
@@ -13,6 +14,28 @@ import acq.*;
  */
 public class PresentationFacade implements IPresentation {
 
+    private IBusiness ib;
+    private static PresentationFacade ui;
+
     public PresentationFacade() {
+    }
+
+    /**
+     * Override; inject business interface to presentation.
+     *
+     * @param businessFacade IBusiness, business access point.
+     */
+    @Override
+    public void injectBusiness(IBusiness businessFacade) {
+        this.ib = businessFacade;
+    }
+
+    /**
+     * Override; launch GUI.
+     */
+    @Override
+    public void openUI() {
+        ui = this;
+        launch();
     }
 }
