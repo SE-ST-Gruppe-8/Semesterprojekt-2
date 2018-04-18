@@ -28,4 +28,8 @@ public class BusinessFacade implements IBusiness {
 //        DataFacade.save(u.getName()+u.getPassword(),"users");
 //        SecurityHandler.logData("Created: "+u.getName());
     }
+    
+    public void deleteUser(String username, Arraylist<User> users) {
+        
+    }
 }
