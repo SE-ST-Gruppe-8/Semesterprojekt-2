@@ -19,6 +19,9 @@ public class DataFacade implements IData {
         fm = new FileManager();
     }
     public void writeData(ArrayList<String> data, String filePath) {
-        fm.writeToFile(data, "test");
+        fm.writeToFile(data, filePath);
+    }
+    public ArrayList<String> readData(String filePath) {
+        return fm.readFile(filePath);
     }
 }
