@@ -26,7 +26,7 @@ public class BusinessFacade implements IBusiness {
     }
     
     public void createCase(){
-       // data.writeData((SocialWorker)security.getActiveUser().createCase(), "LogFile.txt");
+       data.writeData(security.logData((SocialWorker)security.getActiveUser().createCase(), "LogFile.txt"));
     }
 
     public void createUser(String name, String id, String userName, String password, String email){
