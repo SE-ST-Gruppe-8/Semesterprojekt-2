@@ -25,7 +25,7 @@ public class PresentationFacade extends Application implements IPresentation {
         return ui;
     }
 
-    public IBusiness getIusiness() {
+    public IBusiness getIBusiness() {
         return ib;
     }
     private static PresentationFacade ui;
