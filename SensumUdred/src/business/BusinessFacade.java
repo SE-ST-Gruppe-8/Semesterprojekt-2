@@ -22,5 +22,10 @@ public class BusinessFacade implements IBusiness {
     public void injectData(IData dataLayer) {
         data = dataLayer;
     }
-
+    
+    public void createUser(String name, String id, String userName, String password, String email){
+//        User u = SecurityHandler.activeUser.createUser(name,id,userName,password,email);
+//        DataFacade.save(u.getName()+u.getPassword(),"users");
+//        SecurityHandler.logData("Created: "+u.getName());
+    }
 }
