@@ -6,6 +6,7 @@
 package business;
 
 import acq.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -28,12 +29,11 @@ public class BusinessFacade implements IBusiness {
 //        DataFacade.save(u.getName()+u.getPassword(),"users");
 //        SecurityHandler.logData("Created: "+u.getName());
     }
-    
-//    public void deleteUser(String username, Arraylist<User> users) {
+        public void deleteUser(String username, ArrayList<User> users) {
 //        if(SecurityHandler.activeUser.deleteUser(username, users)) {
 //            SecurityHandler.logData("Deleted user "+ username);
 //        } else {
 //            System.out.println("User did not exist");
 //        }
-//    }
+    }
 }
