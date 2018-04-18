@@ -14,5 +14,4 @@ public interface IPresentation {
     public void injectBusiness(IBusiness businessFacade);
 
     public void openUI();
-
 }
