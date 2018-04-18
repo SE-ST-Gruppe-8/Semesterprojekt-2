@@ -6,13 +6,19 @@
 package data;
 
 import acq.*;
+import java.util.ArrayList;
 
 /**
  *
  * @author Bruger
  */
 public class DataFacade implements IData {
+    FileManager fm;
 
     public DataFacade() {
+        fm = new FileManager();
+    }
+    public void writeData(ArrayList<String> data, String filePath) {
+        fm.writeToFile(data, "test");
     }
 }
