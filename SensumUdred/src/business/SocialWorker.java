@@ -2,6 +2,7 @@ package business;
 
 import java.util.HashSet;
 import java.util.Set;
+import javafx.util.Pair;
 
 /**
  *
@@ -75,26 +76,28 @@ public class SocialWorker extends User {
         }
     }
 
-    public boolean removeCase(Case c) {
+    public Pair<Boolean, String> removeCase(Case c) {
+        String trueMessage;
+        String falseMessage;
         try {
-            if (!this.cases.isEmpty()) {
-                if (this.cases.contains(c)) {
-                    this.cases.remove(c);
-                    return true;
-                }
+            if (this.cases.contains(c)) {
+                this.cases.remove(c);
+                trueMessage = "The case was removed";
+                return new Pair<>(true, trueMessage);
+            } else {
+                falseMessage = "The case was not found";
             }
         } catch (NullPointerException ex) {
+            falseMessage = "An error occured";
         }
-        return false;
+        return new Pair<>(false, falseMessage);
     }
 
     public boolean removeInquiry(Inquiry inq) {
         try {
-            if (!this.inquiries.isEmpty()) {
-                if (this.inquiries.contains(inq)) {
-                    this.inquiries.remove(inq);
-                    return true;
-                }
+            if (this.inquiries.contains(inq)) {
+                this.inquiries.remove(inq);
+                return true;
             }
         } catch (NullPointerException ex) {
         }
@@ -103,11 +106,9 @@ public class SocialWorker extends User {
 
     public boolean removeReference(Reference ref) {
         try {
-            if (!this.references.isEmpty()) {
-                if (this.references.contains(ref)) {
-                    this.references.remove(ref);
-                    return true;
-                }
+            if (this.references.contains(ref)) {
+                this.references.remove(ref);
+                return true;
             }
         } catch (NullPointerException ex) {
         }
