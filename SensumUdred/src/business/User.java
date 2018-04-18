@@ -6,12 +6,12 @@ package business;
  */
 public abstract class User {
 
-    String name, ID, userName, password, email;
+    String name, ID, username, password, email;
 
-    public User(String name, String id, String userName, String password, String email) {
+    public User(String name, String id, String username, String password, String email) {
         this.name = name;
         this.ID = id;
-        this.userName = userName;
+        this.username = username;
         this.password = password;
         this.email = email;
     }
@@ -28,12 +28,12 @@ public abstract class User {
         return ID;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String userName) {
+        this.username = userName;
     }
 
     public String getPassword() {
