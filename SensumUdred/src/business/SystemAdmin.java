@@ -11,9 +11,9 @@ public class SystemAdmin extends User {
         super(name, id, userName, password, email);
     }
 
-    public void createUser() {
-
-        //Do stuff
+    public User createUser(String name, String id, String userName, String password, String email) {
+        User user = new User(name,id,userName,password,email) {};
+        return user;
     }
 
     public void deleteUser() {
