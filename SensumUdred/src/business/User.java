@@ -6,11 +6,11 @@ package business;
  */
 public abstract class User {
 
-    String name,ID,userName,password,email;
+    String name, ID, userName, password, email;
 
-    public User(String name, String ID, String userName, String password, String email) {
+    public User(String name, String id, String userName, String password, String email) {
         this.name = name;
-        this.ID = ID;
+        this.ID = id;
         this.userName = userName;
         this.password = password;
         this.email = email;
@@ -51,8 +51,5 @@ public abstract class User {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
-    
-    
+
 }
