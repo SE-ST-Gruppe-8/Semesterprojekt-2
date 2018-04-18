@@ -4,6 +4,6 @@ package business;
  *
  * @author Søren Bendtsen
  */
-public class User {
+public abstract class User {
     
 }

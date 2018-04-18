@@ -4,6 +4,6 @@ package business;
  *
  * @author Søren Bendtsen
  */
-public class SystemAdmin {
+public class SystemAdmin extends User{
     
 }

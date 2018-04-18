@@ -4,6 +4,6 @@ package business;
  *
  * @author Søren Bendtsen
  */
-public class SocialWorker {
+public class SocialWorker extends User {
     
 }
