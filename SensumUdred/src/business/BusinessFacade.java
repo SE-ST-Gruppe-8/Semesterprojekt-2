@@ -14,13 +14,19 @@ import acq.*;
 public class BusinessFacade implements IBusiness {
 
     private IData data;
+    private SecurityHandler security;
 
     public BusinessFacade() {
+        security = new SecurityHandler();
     }
 
     @Override
     public void injectData(IData dataLayer) {
         data = dataLayer;
+    }
+    
+    public void createCase(){
+       // data.writeData((SocialWorker)security.getActiveUser().createCase(), "LogFile.txt");
     }
 
 }

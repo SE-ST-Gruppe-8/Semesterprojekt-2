@@ -12,5 +12,5 @@ package acq;
 public interface IBusiness {
 
     void injectData(IData dataLayer);
-
+    
 }
