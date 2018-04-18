@@ -7,8 +7,8 @@ package business;
 public class SystemAdmin extends User {
 
 
-    public SystemAdmin(String name, String ID, String userName, String password, String email) {
-        super(name, ID, userName, password, email);
+    public SystemAdmin(String name, String id, String userName, String password, String email) {
+        super(name, id, userName, password, email);
     }
 
     public void createUser() {
