@@ -29,7 +29,11 @@ public class BusinessFacade implements IBusiness {
 //        SecurityHandler.logData("Created: "+u.getName());
     }
     
-    public void deleteUser(String username, Arraylist<User> users) {
-        
-    }
+//    public void deleteUser(String username, Arraylist<User> users) {
+//        if(SecurityHandler.activeUser.deleteUser(username, users)) {
+//            SecurityHandler.logData("Deleted user "+ username);
+//        } else {
+//            System.out.println("User did not exist");
+//        }
+//    }
 }
