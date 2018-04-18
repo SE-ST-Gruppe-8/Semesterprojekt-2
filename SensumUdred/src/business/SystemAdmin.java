@@ -18,13 +18,14 @@ public class SystemAdmin extends User {
         return user;
     }
 
-    public ArrayList<User> deleteUser(String username, ArrayList<User> users) {
-        for(User user : users) {
-            if(user.getUsername() == username) {
-              users.remove(user);
-            }
-        }
-        return users;
+    public boolean deleteUser(String username, ArrayList<User> users) {
+//        boolean userIsRemoved = false;
+//        for(User user : users) {
+//            if(user.getUsername() == username) {
+//              userIsRemoved = users.remove(user);
+//            }
+//        }
+//        return userIsRemoved;
     }
 
 }
