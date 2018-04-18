@@ -21,10 +21,10 @@ public class SocialWorker extends User {
         this.references = new HashSet<>();
     }
 
-    public boolean createCase(String id, String description, String process,
-            SocialWorker socialWorker, Citizen citizen, Order order) {
+    public String createCase(/*String id, String description, String process,
+            SocialWorker socialWorker, Citizen citizen, Order order*/) {
         // TODO
-        return false;
+        return "testing";
     }
 
     public boolean createReference(String id, String socialInstance, String description) {

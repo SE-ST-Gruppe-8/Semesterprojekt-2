@@ -5,12 +5,14 @@
  */
 package acq;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Bruger
  */
 public interface IData {
     
-    
+    void writeData(ArrayList<String> data, String filePath);
     
 }

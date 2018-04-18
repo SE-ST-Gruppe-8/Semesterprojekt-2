@@ -6,6 +6,7 @@
 package business;
 
 import acq.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -25,8 +26,14 @@ public class BusinessFacade implements IBusiness {
         data = dataLayer;
     }
     
+    /**
+     * This method is only a test method and should not be used in this state
+     */
     public void createCase(){
-       data.writeData(security.logData((SocialWorker)security.getActiveUser().createCase(), "LogFile.txt"));
+        ArrayList<String> testArray = new ArrayList<>();
+        testArray.add(security.logData(((SocialWorker)security.getActiveUser()).createCase()));
+        data.writeData(testArray, "LogFile.txt");
+       
     }
 
     public void createUser(String name, String id, String userName, String password, String email){
