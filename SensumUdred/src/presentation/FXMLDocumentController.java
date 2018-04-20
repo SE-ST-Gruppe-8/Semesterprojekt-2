@@ -45,7 +45,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
-        ib.createUser("soren","42", "polse123", "numse123", "jumbojoe@joe.joe",0);
+        ib.createUser("soren","42", "polse123", "numse123", "jumbojoe@joe.joe");
         
     }
 

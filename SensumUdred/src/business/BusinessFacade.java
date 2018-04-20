@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class BusinessFacade implements IBusiness {
 
-    public IData data;
+    private IData data;
     private SecurityHandler security;
 
     public BusinessFacade() {
@@ -29,17 +29,14 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void createUser(String name, String id, String userName, String password, String email, int type) {
         IUser user;
-        if (true) {
-//            user = ((SystemAdmin) security.getActiveUser()).createUser(name, id, userName, password, email, type);
-            SystemAdmin brrt = new SystemAdmin("somthing", "is", "written", "here", "password");
-            IUser u = brrt.createUser(name, id, userName, password, email, type);
+        if (security.getActiveUser() instanceof SystemAdmin) {
+            user = ((SystemAdmin) security.getActiveUser()).createUser(name, id, userName, password, email, type);
             ArrayList<IUser> users = data.readData();
-            users.add(u);
+            users.add(user);
             data.writeData(users);
         } else {
             System.out.println("Pwoblem OwO");
         }
-        System.out.println(data.readData());
     }
 
     @Override
@@ -51,13 +48,4 @@ public class BusinessFacade implements IBusiness {
 //        }
     }
 
-    public static void main(String[] args) {
-        User user = new SystemAdmin("somthing", "is", "written", "here", "password");
-        SecurityHandler s = new SecurityHandler();
-        s.setActiveUser(user);
-        BusinessFacade bf = new BusinessFacade();
-        
-        bf.createUser("somthing", "is", "written", "here", "password", 2);
-        System.out.println(bf.data.readData());
-    }
 }
