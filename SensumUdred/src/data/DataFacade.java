@@ -14,7 +14,8 @@ import java.util.ArrayList;
  */
 public class DataFacade implements IData {
 
-    FileManager fm;
+    private FileManager fm;
+    private DataLogger dl;
 
     public DataFacade() {
         fm = new FileManager();
@@ -32,6 +33,6 @@ public class DataFacade implements IData {
 
     @Override
     public void logData(String logData) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        dl.saveLog(logData);
     }
 }
