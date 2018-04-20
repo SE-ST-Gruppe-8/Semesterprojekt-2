@@ -29,17 +29,26 @@ public class BusinessFacade implements IBusiness {
     /**
      * This method is only a test method and should not be used in this state
      */
-    public void createCase(){
-        ArrayList<String> testArray = new ArrayList<>();
-        testArray.add(security.logData(((SocialWorker)security.getActiveUser()).createCase()));
-        data.writeData(testArray, "LogFile.txt");
-       
-    }
+//    public void createCase(){
+//        ArrayList<String> testArray = new ArrayList<>();
+//        testArray.add(security.logData(((SocialWorker)security.getActiveUser()).createCase()));
+//        data.writeData(testArray, "LogFile.txt");
+//       
+//    }
 
-    public void createUser(String name, String id, String userName, String password, String email){
+    @Override
+    public void createUser(String name, String id, String userName, String password, String email) {
 //        User u = SecurityHandler.activeUser.createUser(name,id,userName,password,email);
 //        DataFacade.save(u.getName()+u.getPassword(),"users");
 //        SecurityHandler.logData("Created: "+u.getName());
     }
 
+    @Override
+    public void deleteUser(String username, ArrayList<User> users) {
+//        if(SecurityHandler.activeUser.deleteUser(username, users)) {
+//            SecurityHandler.logData("Deleted user "+ username);
+//        } else {
+//            System.out.println("User did not exist");
+//        }
+    }
 }

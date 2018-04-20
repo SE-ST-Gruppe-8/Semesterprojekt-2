@@ -21,20 +21,21 @@ public class SocialWorker extends User {
         this.references = new HashSet<>();
     }
 
-    public String createCase(/*String id, String description, String process,
-            SocialWorker socialWorker, Citizen citizen, Order order*/) {
+
+    public Pair<Boolean, String> createCase(String id, String description, String process,
+            SocialWorker sw, Citizen c, Order o) {
         // TODO
-        return "testing";
+        return new Pair<>(false, "Missing code");
     }
 
-    public boolean createReference(String id, String socialInstance, String description) {
+    public Pair<Boolean, String> createReference(String id, String socialInstance, String description) {
         // TODO
-        return false;
+        return new Pair<>(false, "Missing code");
     }
 
-    public boolean informCitizen(Case c) {
+    public Pair<Boolean, String> informCitizen(Case c) {
         // TODO
-        return false;
+        return new Pair<>(false, "Missing code");
     }
 
     public Set<Case> getCases() {
@@ -49,30 +50,42 @@ public class SocialWorker extends User {
         return this.references;
     }
 
-    public boolean addCase(Case c) {
+    public Pair<Boolean, String> addCase(Case c) {
+        String trueMessage;
+        String falseMessage;
         try {
             this.cases.add(c);
-            return true;
+            trueMessage = "The case was added";
+            return new Pair<>(true, trueMessage);
         } catch (NullPointerException ex) {
-            return false;
+            falseMessage = "An error occured";
+            return new Pair<>(false, falseMessage);
         }
     }
 
-    public boolean addInquiry(Inquiry inq) {
+    public Pair<Boolean, String> addInquiry(Inquiry inq) {
+        String trueMessage;
+        String falseMessage;
         try {
             this.inquiries.add(inq);
-            return true;
+            trueMessage = "The inquiry was added";
+            return new Pair<>(true, trueMessage);
         } catch (NullPointerException ex) {
-            return false;
+            falseMessage = "An error occured";
+            return new Pair<>(false, falseMessage);
         }
     }
 
-    public boolean addReference(Reference ref) {
+    public Pair<Boolean, String> addReference(Reference ref) {
+        String trueMessage;
+        String falseMessage;
         try {
             this.references.add(ref);
-            return true;
+            trueMessage = "The reference was added";
+            return new Pair<>(true, trueMessage);
         } catch (NullPointerException ex) {
-            return false;
+            falseMessage = "An error occured";
+            return new Pair<>(false, falseMessage);
         }
     }
 
@@ -93,26 +106,38 @@ public class SocialWorker extends User {
         return new Pair<>(false, falseMessage);
     }
 
-    public boolean removeInquiry(Inquiry inq) {
+    public Pair<Boolean, String> removeInquiry(Inquiry inq) {
+        String trueMessage;
+        String falseMessage;
         try {
             if (this.inquiries.contains(inq)) {
                 this.inquiries.remove(inq);
-                return true;
+                trueMessage = "The inquiry was removed";
+                return new Pair<>(true, trueMessage);
+            } else {
+                falseMessage = "The inquiry was not found";
             }
         } catch (NullPointerException ex) {
+            falseMessage = "An error occured";
         }
-        return false;
+        return new Pair<>(false, falseMessage);
     }
 
-    public boolean removeReference(Reference ref) {
+    public Pair<Boolean, String> removeReference(Reference ref) {
+        String trueMessage;
+        String falseMessage;
         try {
             if (this.references.contains(ref)) {
                 this.references.remove(ref);
-                return true;
+                trueMessage = "The reference was removed";
+                return new Pair<>(true, trueMessage);
+            } else {
+                falseMessage = "The reference was not found";
             }
         } catch (NullPointerException ex) {
+            falseMessage = "An error occured";
         }
-        return false;
+        return new Pair<>(false, falseMessage);
     }
 
 }

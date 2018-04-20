@@ -1,5 +1,7 @@
 package business;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Søren Bendtsen
@@ -16,8 +18,14 @@ public class SystemAdmin extends User {
         return user;
     }
 
-    public void deleteUser() {
-        //Do stuff
+    public boolean deleteUser(String username, ArrayList<User> users) {
+        boolean userIsRemoved = false;
+//        for(User user : users) {
+//            if(user.getUsername() == username) {
+//              userIsRemoved = users.remove(user);
+//            }
+//        }
+        return userIsRemoved;
     }
 
 }
