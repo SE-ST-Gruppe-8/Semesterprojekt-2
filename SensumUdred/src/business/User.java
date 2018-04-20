@@ -66,6 +66,6 @@ public abstract class User implements IUser, Serializable {
     }
     
     public String toString(){
-        return role + name + ID + username + email;
+        return role + "\t" + name + "\t" + ID + "\t" + username + "\t" + email;
     }
 }
