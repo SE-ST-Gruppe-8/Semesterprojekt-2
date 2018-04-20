@@ -50,6 +50,7 @@ public class SecurityHandler {
             if(u.getUsername().equals(username)) {
                 if(u.getPassword().equals(password)) {
                     setActiveUser(u);
+                    return true;
                 }
             }
         }
