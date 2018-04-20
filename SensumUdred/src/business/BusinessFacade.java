@@ -53,7 +53,7 @@ public class BusinessFacade implements IBusiness {
                 data.saveUsers(users);
             }
         } else {
-            System.out.println("Pwoblem OwO");
+            System.out.println("error, could not create user");
         }
     }
     /**
