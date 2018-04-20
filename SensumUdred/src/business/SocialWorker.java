@@ -19,6 +19,7 @@ public class SocialWorker extends User {
         this.cases = new HashSet<>();
         this.inquiries = new HashSet<>();
         this.references = new HashSet<>();
+        super.setRole(1);//this will set the role to be a SocialWorker
     }
 
 

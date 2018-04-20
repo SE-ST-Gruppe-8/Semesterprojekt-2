@@ -8,8 +8,9 @@ import java.io.Serializable;
  * @author Søren Bendtsen
  */
 public abstract class User implements IUser, Serializable {
-
-    String name, ID, username, password, email;
+    
+    private int role;
+    private String name, ID, username, password, email;
 
     public User(String name, String id, String username, String password, String email) {
         this.name = name;
@@ -18,7 +19,7 @@ public abstract class User implements IUser, Serializable {
         this.password = password;
         this.email = email;
     }
-    @Override
+
     public String getName() {
         return name;
     }
@@ -55,4 +56,15 @@ public abstract class User implements IUser, Serializable {
         this.email = email;
     }
 
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
+    
+    public String toString(){
+        return role + name + ID + username + email;
+    }
 }

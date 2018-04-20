@@ -24,7 +24,22 @@ public class SecurityHandler {
     }
     
     public void setActiveUser(User user){
-        this.activeUser = user;
+        switch (user.getRole()) {
+            case 1:
+                this.activeUser = (SocialWorker)user;
+                break;
+            case 0:
+                this.activeUser = (SystemAdmin)user;
+                break;
+            default:
+                System.out.println("error in user role");
+                break;
+        }
+        
+    }
+    
+    public void logOutActiveUser(){
+        this.activeUser = null;
     }
 
     public boolean validateUserLogin(String username, String password) {

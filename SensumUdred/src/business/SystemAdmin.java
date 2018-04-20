@@ -10,6 +10,7 @@ public class SystemAdmin extends User {
 
     public SystemAdmin(String name, String id, String userName, String password, String email) {
         super(name, id, userName, password, email);
+        super.setRole(0);//this will set the role to be a systemAdmin
     }
 
     public User createUser(String name, String id, String userName, String password, String email) {
