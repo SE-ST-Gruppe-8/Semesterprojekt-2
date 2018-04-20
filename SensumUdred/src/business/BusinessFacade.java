@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package business;
 
 import acq.*;
@@ -20,7 +15,10 @@ public class BusinessFacade implements IBusiness {
     public BusinessFacade() {
         security = new SecurityHandler();
     }
-
+    /**
+     * A method to inject the data layer into the business layer
+     * @param dataLayer 
+     */
     @Override
     public void injectData(IData dataLayer) {
         data = dataLayer;
@@ -35,14 +33,25 @@ public class BusinessFacade implements IBusiness {
 //        data.writeData(testArray, "LogFile.txt");
 //       
 //    }
-
+    /**
+     * a method to create a user in the system
+     * @param name name of the user
+     * @param id id of the user
+     * @param userName the username of the user
+     * @param password the password for the user
+     * @param email the email for the user
+     */
     @Override
     public void createUser(String name, String id, String userName, String password, String email) {
 //        User u = SecurityHandler.activeUser.createUser(name,id,userName,password,email);
 //        DataFacade.save(u.getName()+u.getPassword(),"users");
 //        SecurityHandler.logData("Created: "+u.getName());
     }
-
+    /**
+     * a method to delete a user from the system
+     * @param username
+     * @param users 
+     */
     @Override
     public void deleteUser(String username, ArrayList<User> users) {
 //        if(SecurityHandler.activeUser.deleteUser(username, users)) {
@@ -51,4 +60,17 @@ public class BusinessFacade implements IBusiness {
 //            System.out.println("User did not exist");
 //        }
     }
+    /**
+     * a method to validate the username and password of a user
+     * @param username
+     * @param password
+     * @return 
+     */
+    @Override
+    public boolean validateUser(String username, String password) {
+        return security.validateUserLogin(data.getUsers(), username, password);
+    }
+    
+    
+    
 }
