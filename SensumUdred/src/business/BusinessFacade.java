@@ -33,16 +33,7 @@ public class BusinessFacade implements IBusiness {
         data = dataLayer;
         security = new SecurityHandler(data);
     }
-
-    /**
-     * This method is only a test method and should not be used in this state
-     */
-//    public void createCase(){
-//        ArrayList<String> testArray = new ArrayList<>();
-//        testArray.add(security.logData(((SocialWorker)security.getActiveUser()).createCase()));
-//        data.writeData(testArray, "LogFile.txt");
-//       
-//    }
+    
     /**
      * a method to create a user in the system
      *
