@@ -19,6 +19,7 @@ public class DataFacade implements IData {
 
     public DataFacade() {
         fm = new FileManager();
+        dl = new DataLogger();
     }
 
     @Override
