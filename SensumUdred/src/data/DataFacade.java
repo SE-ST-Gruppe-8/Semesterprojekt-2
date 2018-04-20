@@ -18,10 +18,15 @@ public class DataFacade implements IData {
     public DataFacade() {
         fm = new FileManager();
     }
-    public void writeData(ArrayList<String> data, String filePath) {
-        fm.writeToFile(data, filePath);
+    public void saveUsers(ArrayList<IUser> data) {
+        fm.writeToFile(data);
     }
-    public ArrayList<String> readData(String filePath) {
-        return fm.readFile(filePath);
+    public ArrayList<IUser> readData() {
+        return fm.readFile();
+    }
+
+    @Override
+    public void writeData(ArrayList<String> data, String filePath) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
