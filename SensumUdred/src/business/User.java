@@ -1,10 +1,13 @@
 package business;
 
+import acq.IUser;
+import java.io.Serializable;
+
 /**
  *
  * @author Søren Bendtsen
  */
-public abstract class User {
+public abstract class User implements IUser, Serializable {
 
     String name, ID, username, password, email;
 
@@ -15,7 +18,7 @@ public abstract class User {
         this.password = password;
         this.email = email;
     }
-
+    @Override
     public String getName() {
         return name;
     }

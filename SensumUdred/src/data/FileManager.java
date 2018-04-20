@@ -1,5 +1,7 @@
 package data;
 
+import acq.IUser;
+import business.SystemAdmin;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -19,33 +21,35 @@ import java.util.logging.Logger;
  */
 public class FileManager {
 
-    ObjectOutputStream fileReader;
+    ObjectInputStream fileReader;
     ObjectOutputStream fileWriter;
     File file;
 
-    public ArrayList<String> readFile(String filePath) {
+    public IUser readFile(String filePath) {
         file = new File(filePath);
-        ArrayList<IUser> data = new ArrayList<>();
-        try {
-            fileReader = new FileInputStream(file);
-            while (fileReader.hasNext()) {
-                data.add(fileReader.next());
+        IUser data = new IUser() {
+            @Override
+            public String getName() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
-        } catch (FileNotFoundException ex) {
-            System.out.println("File not found :( owo *starts twerking*");
-        } finally {
-            fileReader.close();
+        };
+        try {
+            fileReader = new ObjectInputStream(new FileInputStream(file));
+            data = (IUser) fileReader.readObject();
+            } catch (IOException ex) {
+            Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         return data;
     }
 
-    public void writeToFile(ArrayList<IUser> data, String filePath) {
+    public void writeToFile(IUser data, String filePath) {
         file = new File(filePath);
         try {
             fileWriter = new ObjectOutputStream(new FileOutputStream(file));
-            for (IUser u : data) {
-                fileWriter.writeObject(IUser);
-            }
+                System.out.println("øf");
+                fileWriter.writeObject(data);
             fileWriter.close();
         } catch (FileNotFoundException ex) {
             System.out.println("file NOT foOUDN =oh= my GOD ITS NOT HERE owo");
@@ -55,15 +59,13 @@ public class FileManager {
         
     }
     public static void main(String[] args) {
-        ArrayList<String> test = new ArrayList<>();
-        test.add("shit");
-        test.add("boop");
-        test.add("3");
+        ArrayList<IUser> test = new ArrayList<>();
         FileManager fm = new FileManager();
-        fm.writeToFile(test, "ooba.txt");
-        for(String s : fm.readFile("ooba.txt")) {
-            System.out.println(s);
-        }
+        IUser u = new SystemAdmin("ASS","b","c","d","e");
+        fm.writeToFile(u, "awoo.dat");
+        System.out.println(fm.readFile("awoo.dat").getName());
+        
+        
     }
 
 }
