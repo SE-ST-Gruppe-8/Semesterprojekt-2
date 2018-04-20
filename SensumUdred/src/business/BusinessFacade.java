@@ -42,10 +42,16 @@ public class BusinessFacade implements IBusiness {
      * @param email the email for the user
      */
     @Override
-    public void createUser(String name, String id, String userName, String password, String email) {
-//        User u = SecurityHandler.activeUser.createUser(name,id,userName,password,email);
-//        DataFacade.save(u.getName()+u.getPassword(),"users");
-//        SecurityHandler.logData("Created: "+u.getName());
+    public void createUser(String name, String id, String userName, String password, String email, int type) {
+        IUser user;
+        if (security.getActiveUser() instanceof SystemAdmin) {
+            user = ((SystemAdmin) security.getActiveUser()).createUser(name, id, userName, password, email, type);
+            ArrayList<IUser> users = data.readData();
+            users.add(user);
+            data.writeData(users);
+        } else {
+            System.out.println("Pwoblem OwO");
+        }
     }
     /**
      * a method to delete a user from the system
@@ -70,7 +76,4 @@ public class BusinessFacade implements IBusiness {
     public boolean validateUser(String username, String password) {
         return security.validateUserLogin(data.getUsers(), username, password);
     }
-    
-    
-    
 }

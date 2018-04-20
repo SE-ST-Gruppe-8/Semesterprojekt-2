@@ -16,7 +16,7 @@ public interface IBusiness {
 
     void injectData(IData dataLayer);
 
-    public void createUser(String name, String id, String userName, String password, String email);
+    public void createUser(String name, String id, String userName, String password, String email, int type);
     
     public void deleteUser(String username, ArrayList<User> users);
     
