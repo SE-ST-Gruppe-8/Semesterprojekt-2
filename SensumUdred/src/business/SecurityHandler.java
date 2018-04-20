@@ -44,6 +44,7 @@ public class SecurityHandler {
 
     public boolean validateUserLogin(String username, String password) {
         //if the login is true - find the user that matches the login info and set that user to activeUser
+        
         return true;
     }
 
