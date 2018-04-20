@@ -31,21 +31,26 @@ public class BusinessFacade implements IBusiness {
         IUser user;
         if (security.getActiveUser() instanceof SystemAdmin) {
             user = ((SystemAdmin) security.getActiveUser()).createUser(name, id, userName, password, email, type);
-            ArrayList<IUser> users = data.readData();
-            users.add(user);
-            data.writeData(users);
+            if (user != null) {
+                ArrayList<IUser> users = data.readData();
+                users.add(user);
+                data.writeData(users);
+            }
         } else {
             System.out.println("Pwoblem OwO");
         }
     }
 
     @Override
-    public void deleteUser(String username, ArrayList<User> users) {
-//        if(SecurityHandler.activeUser.deleteUser(username, users)) {
-//            SecurityHandler.logData("Deleted user "+ username);
-//        } else {
-//            System.out.println("User did not exist");
-//        }
-    }
+    public void deleteUser(IUser user, ArrayList<IUser> users) {
 
+        if (security.getActiveUser() instanceof SystemAdmin) {
+            if (((SystemAdmin) security.getActiveUser()).deleteUser(user, users)) {
+                security.logData("Deleted user " + user.toString());
+            } else {
+                System.out.println("User did not exist");
+            }
+        }
+
+    }
 }

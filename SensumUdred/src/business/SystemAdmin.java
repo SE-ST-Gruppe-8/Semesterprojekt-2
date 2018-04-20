@@ -14,14 +14,18 @@ public class SystemAdmin extends User {
     }
 
     public IUser createUser(String name, String id, String userName, String password, String email, int type) {
-       User user;
-        if (type == 1) {
-            user = new SystemAdmin(name, id, userName, password, email);
-        } else {
-            user = new SocialWorker(name, id, userName, password, email);
+        User user = null;
+        switch (type) {
+            case 0:
+                user = new SystemAdmin(name, id, userName, password, email);
+
+            case 1:
+                user = new SocialWorker(name, id, userName, password, email);
+
+            default:
+                System.out.println("Ingen bruger har en sådan type");
         }
-        IUser use = ((IUser) user);
-        return use;
+        return user;
     }
 
     public boolean deleteUser(IUser user, ArrayList<IUser> users) {
@@ -32,23 +36,5 @@ public class SystemAdmin extends User {
 
         return userIsRemoved;
     }
-    
-    
-    
-    
-//    public User createUser(String name, String id, String userName, String password, String email) {
-//        //User user = new User(name, id, userName, password, email);
-//        return user;
-//    }
-
-//    public boolean deleteUser(String username, ArrayList<User> users) {
-//        boolean userIsRemoved = false;
-////        for(User user : users) {
-////            if(user.getUsername() == username) {
-////              userIsRemoved = users.remove(user);
-////            }
-////        }
-//        return userIsRemoved;
-//    }
 
 }
