@@ -2,6 +2,8 @@ package business;
 
 import acq.*;
 import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -11,19 +13,31 @@ public class BusinessFacade implements IBusiness {
 
     private IData data;
     private SecurityHandler security;
+    private ObservableList<IUser> users;
+
+    @Override
+    public ObservableList<IUser> getUsers() {
+        System.out.println("meow");
+        return users = FXCollections.observableArrayList(data.readUsers());
+    }
 
     public BusinessFacade() {
         security = new SecurityHandler();
+        
+        System.out.println(users);
+        System.out.println("brrt");
     }
+
     /**
      * A method to inject the data layer into the business layer
-     * @param dataLayer 
+     *
+     * @param dataLayer
      */
     @Override
     public void injectData(IData dataLayer) {
         data = dataLayer;
     }
-    
+
     /**
      * This method is only a test method and should not be used in this state
      */
@@ -35,6 +49,7 @@ public class BusinessFacade implements IBusiness {
 //    }
     /**
      * a method to create a user in the system
+     *
      * @param name name of the user
      * @param id id of the user
      * @param userName the username of the user
@@ -56,10 +71,12 @@ public class BusinessFacade implements IBusiness {
             System.out.println("Pwoblem OwO");
         }
     }
+
     /**
      * a method to delete a user from the system
+     *
      * @param username
-     * @param users 
+     * @param users
      */
     @Override
     public void deleteUser(IUser user, ArrayList<IUser> users) {
@@ -75,9 +92,10 @@ public class BusinessFacade implements IBusiness {
 
     /**
      * a method to validate the username and password of a user
+     *
      * @param username
      * @param password
-     * @return 
+     * @return
      */
     @Override
     public boolean validateUser(String username, String password) {

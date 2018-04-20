@@ -12,7 +12,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-
 /**
  *
  * @author J
@@ -29,8 +28,9 @@ public class FileManager {
         boolean read = true;
         try {
             fileReader = new ObjectInputStream(new FileInputStream(file));
-            while (read) { 
+            while (read) {
                 try {
+                    System.out.println("poo");
                     IUser u = (IUser) fileReader.readObject();
                     data.add(u);
                 } catch (EOFException eof) {
@@ -64,13 +64,22 @@ public class FileManager {
     }
 
     public static void main(String[] args) {
-//        ArrayList<IUser> test = new ArrayList<>();
-//        FileManager fm = new FileManager();
-//        test.add(new SystemAdmin("ASS", "b", "c", "d", "e"));
-//        test.add(new SystemAdmin("AssSS", "b", "c", "d", "e"));
-//        fm.writeToFile(test);
-//        System.out.print(fm.readFile());
-        
+        ArrayList<IUser> test = new ArrayList<>();
+        FileManager fm = new FileManager();
+        test.add(new SystemAdmin("ASS", "b", "c", "d", "e"));
+        test.add(new SystemAdmin("AssSS", "b", "c", "d", "e"));
+        test.add(new SystemAdmin("AssSS", "b", "c", "d", "e"));
+        test.add(new SystemAdmin("AssSS", "b", "c", "d", "e"));
+        test.add(new SystemAdmin("AssSS", "b", "c", "d", "e"));
+        test.add(new SystemAdmin("AssSS", "b", "c", "d", "e"));
+        test.add(new SystemAdmin("AssSS", "b", "c", "d", "e"));
+        test.add(new SystemAdmin("AssSS", "b", "c", "d", "e"));
+        test.add(new SystemAdmin("AssSS", "b", "c", "d", "e"));
+        test.add(new SystemAdmin("AssSS", "b", "c", "d", "e"));
+        test.add(new SystemAdmin("AssSS", "b", "c", "d", "e"));
+
+        fm.writeToFile(test);
+        System.out.print(fm.readFile());
 
     }
 

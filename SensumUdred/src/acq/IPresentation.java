@@ -5,6 +5,7 @@
  */
 package acq;
 
+
 /**
  *
  * @author Bruger
@@ -12,6 +13,7 @@ package acq;
 public interface IPresentation {
 
     public void injectBusiness(IBusiness businessFacade);
+
 
     public void openUI();
 }

@@ -18,8 +18,10 @@ public class Starter {
      */
     public static void main(String[] args) {
         // TODO code applicastiteston logic here
+        System.out.println("oof");
         IData data = new DataFacade();
         IBusiness business = new BusinessFacade();
+        System.out.println(business.getUsers());
         IPresentation ui = new PresentationFacade();
         // Data is injected into business layer.
         business.injectData(data);

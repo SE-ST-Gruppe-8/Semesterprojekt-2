@@ -53,7 +53,7 @@ public class PresentationFacade extends Application implements IPresentation {
         launch();
     }
 
-    public PresentationFacade getUI() {
+    public static PresentationFacade getIData() {
         return ui;
     }
 

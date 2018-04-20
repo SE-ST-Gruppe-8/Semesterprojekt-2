@@ -7,6 +7,7 @@ package acq;
 
 import business.User;
 import java.util.ArrayList;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -22,5 +23,7 @@ public interface IBusiness {
     public void deleteUser(IUser user, ArrayList<IUser> users);
     
     public boolean validateUser(String username, String password);
+    
+    public ObservableList<IUser> getUsers();
 
 }

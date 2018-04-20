@@ -6,9 +6,11 @@
 package presentation;
 
 import acq.IBusiness;
+import acq.IPresentation;
 import acq.IUser;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -62,10 +64,16 @@ public class FXMLDocumentController implements Initializable {
     private Label adminInfoLabel;
     @FXML
     private ListView<IUser> adminUserListView;
+    @FXML
+    private Button UpdateList;
+    
+    private PresentationFacade pf;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+
+        ib = PresentationFacade.getIData().getIBusiness();
     }
 
     @FXML
@@ -86,6 +94,16 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void deleteUserButtonAction(ActionEvent event) {
         // TODO
+    }
+
+    @FXML
+    private void UpdateListAction(ActionEvent event) {
+        System.out.println(ib);
+        if (ib.getUsers() == null) {
+            adminInfoLabel.setText("no Users installed");
+        } else {
+            adminUserListView.setItems(ib.getUsers());
+        }
     }
 
 }
