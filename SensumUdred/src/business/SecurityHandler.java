@@ -44,9 +44,10 @@ public class SecurityHandler {
 
     public boolean validateUserLogin(String username, String password) {
         //if the login is true - find the user that matches the login info and set that user to activeUser
+        return true;
     }
 
     public User getUserData(String username, String password) {
-        
+        return new SocialWorker("1","2","3","4","5");
     }
 }
