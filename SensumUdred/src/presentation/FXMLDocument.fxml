@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<TabPane prefHeight="300.0" prefWidth="720.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.FXMLDocumentController">
+<TabPane prefHeight="300.0" prefWidth="720.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.FXMLDocumentController">
    <tabs>
       <Tab fx:id="loginUsernameTextField" text="Login">
          <content>
@@ -133,6 +133,7 @@
                      <children>
                         <ListView fx:id="adminUserListView" maxWidth="-Infinity" prefHeight="200.0" prefWidth="125.0" />
                         <Button fx:id="deleteUserButton" mnemonicParsing="false" onAction="#deleteUserButtonAction" text="Delete user" />
+                        <Button fx:id="UpdateList" mnemonicParsing="false" onAction="#UpdateListAction" text="Update List" />
                      </children>
                      <padding>
                         <Insets right="10.0" />

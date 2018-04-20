@@ -6,6 +6,7 @@
 package acq;
 
 import java.util.ArrayList;
+import presentation.PresentationFacade;
 
 /**
  *
@@ -15,5 +16,6 @@ public interface IData {
     
     void saveUsers(ArrayList<IUser> data);
     ArrayList<IUser> readUsers();
+
     
 }
