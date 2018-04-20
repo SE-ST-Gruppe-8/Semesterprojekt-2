@@ -1,14 +1,19 @@
 package business;
 
+import acq.IUser;
+import java.io.Serializable;
+
 /**
  *
  * @author Søren Bendtsen
  */
-public abstract class User {
+public abstract class User implements IUser, Serializable {
+    
+    private int role;
+    private String name, ID, username, password, email;
 
-    String name, ID, username, password, email;
-
-    public User(String name, String id, String username, String password, String email) {
+    public User(int role, String name, String id, String username, String password, String email) {
+        this.role = role;
         this.name = name;
         this.ID = id;
         this.username = username;
@@ -52,4 +57,15 @@ public abstract class User {
         this.email = email;
     }
 
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
+    
+    public String toString(){
+        return role + name + ID + username + email;
+    }
 }

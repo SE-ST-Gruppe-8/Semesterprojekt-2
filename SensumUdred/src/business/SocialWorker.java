@@ -15,11 +15,12 @@ public class SocialWorker extends User {
     private Set<Reference> references;
 
     public SocialWorker(String name, String id, String username, String password, String email) {
-        super(name, id, username, password, email);
+        super(1, name, id, username, password, email);
         this.cases = new HashSet<>();
         this.inquiries = new HashSet<>();
         this.references = new HashSet<>();
     }
+
 
     public Pair<Boolean, String> createCase(String id, String description, String process,
             SocialWorker sw, Citizen c, Order o) {

@@ -15,14 +15,26 @@ import java.util.ArrayList;
 public class BusinessFacade implements IBusiness {
 
     private IData data;
+    private SecurityHandler security;
 
     public BusinessFacade() {
+        security = new SecurityHandler();
     }
 
     @Override
     public void injectData(IData dataLayer) {
         data = dataLayer;
     }
+    
+    /**
+     * This method is only a test method and should not be used in this state
+     */
+//    public void createCase(){
+//        ArrayList<String> testArray = new ArrayList<>();
+//        testArray.add(security.logData(((SocialWorker)security.getActiveUser()).createCase()));
+//        data.writeData(testArray, "LogFile.txt");
+//       
+//    }
 
     @Override
     public void createUser(String name, String id, String userName, String password, String email) {
@@ -30,6 +42,7 @@ public class BusinessFacade implements IBusiness {
 //        DataFacade.save(u.getName()+u.getPassword(),"users");
 //        SecurityHandler.logData("Created: "+u.getName());
     }
+
     @Override
     public void deleteUser(String username, ArrayList<User> users) {
 //        if(SecurityHandler.activeUser.deleteUser(username, users)) {
