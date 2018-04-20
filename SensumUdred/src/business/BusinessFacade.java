@@ -2,6 +2,8 @@ package business;
 
 import acq.*;
 import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -11,6 +13,12 @@ public class BusinessFacade implements IBusiness {
 
     private IData data;
     private SecurityHandler security;
+    private ObservableList<IUser> users;
+
+    @Override
+    public ObservableList<IUser> getUsers() {
+        return users = FXCollections.observableArrayList(data.readUsers());
+    }
 
     public BusinessFacade() {
         security = new SecurityHandler(data);
