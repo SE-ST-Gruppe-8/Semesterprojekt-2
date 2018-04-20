@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 public class PresentationFacade extends Application implements IPresentation {
 
     private IBusiness ib;
+    private static PresentationFacade ui;
 
     public static PresentationFacade getUi() {
         return ui;
@@ -28,7 +29,6 @@ public class PresentationFacade extends Application implements IPresentation {
     public IBusiness getIBusiness() {
         return ib;
     }
-    private static PresentationFacade ui;
 
     public PresentationFacade() {
 
