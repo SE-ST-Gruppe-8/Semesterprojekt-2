@@ -40,15 +40,16 @@ public class BusinessFacade implements IBusiness {
      * @param userName the username of the user
      * @param password the password for the user
      * @param email the email for the user
+     * @param type the type of user: 0 for SystemAdmin, 1 for SocialWorker
      */
     @Override
     public void createUser(String name, String id, String userName, String password, String email, int type) {
         IUser user;
         if (security.getActiveUser() instanceof SystemAdmin) {
             user = ((SystemAdmin) security.getActiveUser()).createUser(name, id, userName, password, email, type);
-            ArrayList<IUser> users = data.readData();
+            ArrayList<IUser> users = data.readUsers();
             users.add(user);
-            data.writeData(users);
+            data.saveUsers(users);
         } else {
             System.out.println("Pwoblem OwO");
         }
@@ -74,6 +75,6 @@ public class BusinessFacade implements IBusiness {
      */
     @Override
     public boolean validateUser(String username, String password) {
-        return security.validateUserLogin(data.getUsers(), username, password);
+        return security.validateUserLogin(data.readUsers(), username, password);
     }
 }
