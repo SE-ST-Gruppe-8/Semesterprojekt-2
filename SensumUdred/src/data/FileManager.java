@@ -30,7 +30,6 @@ public class FileManager {
             fileReader = new ObjectInputStream(new FileInputStream(file));
             while (read) {
                 try {
-                    System.out.println("poo");
                     IUser u = (IUser) fileReader.readObject();
                     data.add(u);
                 } catch (EOFException eof) {
@@ -68,18 +67,8 @@ public class FileManager {
         FileManager fm = new FileManager();
         test.add(new SystemAdmin("ASS", "b", "c", "d", "e"));
         test.add(new SystemAdmin("AssSS", "b", "c", "d", "e"));
-        test.add(new SystemAdmin("AssSS", "b", "c", "d", "e"));
-        test.add(new SystemAdmin("AssSS", "b", "c", "d", "e"));
-        test.add(new SystemAdmin("AssSS", "b", "c", "d", "e"));
-        test.add(new SystemAdmin("AssSS", "b", "c", "d", "e"));
-        test.add(new SystemAdmin("AssSS", "b", "c", "d", "e"));
-        test.add(new SystemAdmin("AssSS", "b", "c", "d", "e"));
-        test.add(new SystemAdmin("AssSS", "b", "c", "d", "e"));
-        test.add(new SystemAdmin("AssSS", "b", "c", "d", "e"));
-        test.add(new SystemAdmin("AssSS", "b", "c", "d", "e"));
 
         fm.writeToFile(test);
-        System.out.print(fm.readFile());
 
     }
 

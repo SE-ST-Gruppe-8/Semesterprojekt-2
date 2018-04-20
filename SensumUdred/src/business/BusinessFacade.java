@@ -17,15 +17,11 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public ObservableList<IUser> getUsers() {
-        System.out.println("meow");
         return users = FXCollections.observableArrayList(data.readUsers());
     }
 
     public BusinessFacade() {
         security = new SecurityHandler();
-        
-        System.out.println(users);
-        System.out.println("brrt");
     }
 
     /**

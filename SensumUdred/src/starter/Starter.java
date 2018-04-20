@@ -23,7 +23,6 @@ public class Starter extends Application {
      */
     public static void main(String[] args) {
         // TODO code applicastiteston logic here
-        System.out.println("oof");
         IData data = new DataFacade();
         IBusiness business = new BusinessFacade();
         // Data is injected into business layer.
