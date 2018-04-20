@@ -24,8 +24,11 @@ public class SecurityHandler {
 //        String log = activeUser.toString() + new Date().toString() + dataToBeLogged;
 //        data.logData(log);
 //        System.out.println("Logging: " + log);
-        data.logData(dataToBeLogged);
-    }
+
+
+
+        data.logData(dataToBeLogged);//this is a test line
+        }
 
     public User getActiveUser() {
         return activeUser;
