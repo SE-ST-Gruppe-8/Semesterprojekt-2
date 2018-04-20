@@ -1,5 +1,7 @@
 package business;
 
+import acq.IUser;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -23,7 +25,7 @@ public class SecurityHandler {
         return activeUser;
     }
     
-    public void setActiveUser(User user){
+    public void setActiveUser(IUser user){
         switch (user.getRole()) {
             case 1:
                 this.activeUser = (SocialWorker)user;
@@ -42,12 +44,17 @@ public class SecurityHandler {
         this.activeUser = null;
     }
 
-    public boolean validateUserLogin(String username, String password) {
+    public boolean validateUserLogin(ArrayList<IUser> users, String username, String password) {
         //if the login is true - find the user that matches the login info and set that user to activeUser
-        return true;
+        for(IUser u : users) {
+            if(u.getUsername().equals(username)) {
+                if(u.getPassword().equals(password)) {
+                    setActiveUser(u);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
-    public User getUserData(String username, String password) {
-        return new SocialWorker("1","2","3","4","5");
-    }
 }

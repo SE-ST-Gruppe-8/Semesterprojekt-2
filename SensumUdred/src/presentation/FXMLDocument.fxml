@@ -2,19 +2,132 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="438.0" prefWidth="458.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.FXMLDocumentController">
-    <children>
-        <Button fx:id="button" layoutX="14.0" layoutY="399.0" onAction="#handleButtonAction" text="Click Me!" />
-        <Label fx:id="label1" layoutX="244.0" layoutY="14.0" minHeight="16" minWidth="69" prefHeight="17.0" prefWidth="102.0" />
-      <ListView fx:id="list1" layoutX="244.0" layoutY="31.0" prefHeight="73.0" prefWidth="200.0" />
-      <ListView fx:id="list2" layoutX="244.0" layoutY="126.0" prefHeight="73.0" prefWidth="200.0" />
-      <Label fx:id="label2" layoutX="244.0" layoutY="109.0" minHeight="16" minWidth="69" prefHeight="17.0" prefWidth="102.0" />
-      <ListView fx:id="list3" layoutX="244.0" layoutY="223.0" prefHeight="73.0" prefWidth="200.0" />
-      <Label fx:id="label3" layoutX="244.0" layoutY="206.0" minHeight="16" minWidth="69" prefHeight="17.0" prefWidth="102.0" />
-      <ListView fx:id="list4" layoutX="244.0" layoutY="319.0" prefHeight="73.0" prefWidth="200.0" />
-      <Label fx:id="label4" layoutX="244.0" layoutY="302.0" minHeight="16" minWidth="69" prefHeight="17.0" prefWidth="102.0" />
-    </children>
-</AnchorPane>
+<TabPane prefHeight="300.0" prefWidth="720.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.FXMLDocumentController">
+   <tabs>
+      <Tab fx:id="loginUsernameTextField" text="Login">
+         <content>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <GridPane alignment="CENTER">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="200.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="150.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Username" GridPane.columnIndex="1" />
+                        <TextField GridPane.columnIndex="2" />
+                        <Label text="Password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="loginPasswordTextField" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginButtonAction" text="Login" />
+                        <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logoutButtonAction" text="Logout" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </Tab>
+      <Tab text="Social Worker" />
+      <Tab text="Admin">
+         <content>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+                     <children>
+                        <RadioButton fx:id="createSocialWorkerRadioButton" focusTraversable="false" mnemonicParsing="false" selected="true" text="Social worker">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="createUserToggleGroup" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="createAdminRadioButton" focusTraversable="false" mnemonicParsing="false" text="Admin" toggleGroup="$createUserToggleGroup" />
+                        <Label text="*Only needed when creating user" />
+                     </children>
+                  </HBox>
+                  <GridPane>
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1">
+                           <children>
+                              <Label text="Username" />
+                              <TextField fx:id="adminUsernameTextField" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2">
+                           <children>
+                              <Label text="First Name*" />
+                              <TextField fx:id="adminFirstNameTextField" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <Label text="Password" />
+                              <TextField fx:id="adminPasswordTextField" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <children>
+                              <Label text="Repeat Password" />
+                              <TextField fx:id="adminRepeatPasswordTextField" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <children>
+                              <Label text="Last Name*" />
+                              <TextField fx:id="adminLastNameTextField" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <children>
+                              <Label text="Email*" />
+                              <TextField fx:id="adminEmailTextField" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+                     <children>
+                        <Button fx:id="createUserButton" mnemonicParsing="false" onAction="#createUserButtonAction" text="Create user" />
+                        <Button fx:id="deleteUserButton" mnemonicParsing="false" onAction="#deleteUserButtonAction" text="Delete user" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <Label fx:id="adminInfoLabel" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>

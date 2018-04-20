@@ -14,6 +14,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 
 /**
  *
@@ -24,33 +28,60 @@ public class FXMLDocumentController implements Initializable {
     private IBusiness ib;
 
     @FXML
-    private Button button;
+    private Tab loginUsernameTextField;
     @FXML
-    private ListView<?> list1;
+    private TextField loginPasswordTextField;
     @FXML
-    private ListView<?> list2;
+    private Button loginButton;
     @FXML
-    private ListView<?> list3;
+    private Button logoutButton;
     @FXML
-    private ListView<?> list4;
+    private RadioButton createSocialWorkerRadioButton;
     @FXML
-    private Label label1;
+    private RadioButton createAdminRadioButton;
     @FXML
-    private Label label2;
+    private ToggleGroup createUserToggleGroup;
     @FXML
-    private Label label3;
+    private TextField adminUsernameTextField;
     @FXML
-    private Label label4;
-
+    private TextField adminPasswordTextField;
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        ib.createUser("soren","42", "polse123", "numse123", "jumbojoe@joe.joe");
-        
-    }
+    private TextField adminRepeatPasswordTextField;
+    @FXML
+    private TextField adminFirstNameTextField;
+    @FXML
+    private TextField adminLastNameTextField;
+    @FXML
+    private TextField adminEmailTextField;
+    @FXML
+    private Button createUserButton;
+    @FXML
+    private Button deleteUserButton;
+    @FXML
+    private Label adminInfoLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }
+
+    @FXML
+    private void loginButtonAction(ActionEvent event) {
+        // TODO
+    }
+
+    @FXML
+    private void logoutButtonAction(ActionEvent event) {
+        // TODO
+    }
+
+    @FXML
+    private void createUserButtonAction(ActionEvent event) {
+        // TODO
+    }
+
+    @FXML
+    private void deleteUserButtonAction(ActionEvent event) {
         // TODO
     }
 

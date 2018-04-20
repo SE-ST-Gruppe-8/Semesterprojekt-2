@@ -65,7 +65,7 @@ public class PresentationFacade extends Application implements IPresentation {
 
         stage.setScene(scene);
         stage.show();
-        stage.setTitle("owo *starts twerking*");
+        stage.setTitle("UwU *starts twerking*");
     }
 
 }
