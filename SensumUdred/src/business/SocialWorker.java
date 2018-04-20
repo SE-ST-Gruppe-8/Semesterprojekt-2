@@ -15,11 +15,10 @@ public class SocialWorker extends User {
     private Set<Reference> references;
 
     public SocialWorker(String name, String id, String username, String password, String email) {
-        super(name, id, username, password, email);
+        super(1, name, id, username, password, email);
         this.cases = new HashSet<>();
         this.inquiries = new HashSet<>();
         this.references = new HashSet<>();
-        super.setRole(1);//this will set the role to be a SocialWorker
     }
 
 
