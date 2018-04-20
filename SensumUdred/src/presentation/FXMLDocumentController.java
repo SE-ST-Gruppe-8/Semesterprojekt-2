@@ -98,7 +98,6 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void UpdateListAction(ActionEvent event) {
-        System.out.println(ib);
         if (ib.getUsers() == null) {
             adminInfoLabel.setText("no Users installed");
         } else {
