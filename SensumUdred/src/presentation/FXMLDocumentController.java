@@ -6,6 +6,7 @@
 package presentation;
 
 import acq.IBusiness;
+import acq.IUser;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -59,6 +60,8 @@ public class FXMLDocumentController implements Initializable {
     private Button deleteUserButton;
     @FXML
     private Label adminInfoLabel;
+    @FXML
+    private ListView<IUser> adminUserListView;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
