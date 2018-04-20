@@ -19,7 +19,9 @@ public class SocialWorker extends User {
         this.cases = new HashSet<>();
         this.inquiries = new HashSet<>();
         this.references = new HashSet<>();
+        super.setRole(1);//this will set the role to be a SocialWorker
     }
+
 
     public Pair<Boolean, String> createCase(String id, String description, String process,
             SocialWorker sw, Citizen c, Order o) {
