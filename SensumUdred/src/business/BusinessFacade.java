@@ -71,6 +71,7 @@ public class BusinessFacade implements IBusiness {
                 System.out.println("User did not exist");
             }
         }
+    }
 
     /**
      * a method to validate the username and password of a user
