@@ -9,21 +9,21 @@ import java.util.ArrayList;
  */
 public class SystemAdmin extends User {
 
-    public SystemAdmin(String name, String id, String userName, String password, String email) {
-        super(0, name, id, userName, password, email);
+    public SystemAdmin(String name, String id, String username, String password, String email) {
+        super(0, name, id, username, password, email);
     }
 
-    public IUser createUser(String name, String id, String userName, String password, String email, int type) {
+    public IUser createUser(String name, String id, String username, String password, String email, int type) {
         User user = null;
         switch (type) {
             case 0:
-                user = new SystemAdmin(name, id, userName, password, email);
+                user = new SystemAdmin(name, id, username, password, email);
 
             case 1:
-                user = new SocialWorker(name, id, userName, password, email);
+                user = new SocialWorker(name, id, username, password, email);
 
             default:
-                System.out.println("Ingen bruger har en sådan type");
+                System.out.println("User tipe does not exist");
         }
         return user;
     }

@@ -21,7 +21,6 @@ public class SocialWorker extends User {
         this.references = new HashSet<>();
     }
 
-
     public Pair<Boolean, String> createCase(String id, String description, String process,
             SocialWorker sw, Citizen c, Order o) {
         // TODO
