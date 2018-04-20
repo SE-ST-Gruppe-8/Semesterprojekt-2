@@ -12,8 +12,11 @@ import java.util.ArrayList;
  * @author Bruger
  */
 public interface IData {
-    
-    void saveUsers(ArrayList<IUser> data);
-    ArrayList<IUser> readUsers();
-    
+
+    public void saveUsers(ArrayList<IUser> data);
+
+    public ArrayList<IUser> readUsers();
+
+    public void logData(String logData);
+
 }

@@ -1,5 +1,6 @@
 package business;
 
+import acq.IData;
 import acq.IUser;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,13 +13,15 @@ import java.util.Date;
 public class SecurityHandler {
 
     private User activeUser;
+    private IData data;
 
-    public SecurityHandler() {
+    public SecurityHandler(IData data) {
+        this.data = data;
         activeUser = null;
     }
 
-    public String logData(String data) {
-        return activeUser.toString() + new Date().toString() + data;
+    public void logData(String dataToBeLogged) {
+        data.logData(activeUser.toString() + new Date().toString() + dataToBeLogged);
     }
     
     public User getActiveUser(){

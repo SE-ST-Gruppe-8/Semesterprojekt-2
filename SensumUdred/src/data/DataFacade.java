@@ -29,4 +29,9 @@ public class DataFacade implements IData {
     public void saveUsers(ArrayList<IUser> data) {
         fm.writeToFile(data);
     }
+
+    @Override
+    public void logData(String logData) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
