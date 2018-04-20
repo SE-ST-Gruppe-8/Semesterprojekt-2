@@ -20,5 +20,5 @@ public interface IBusiness {
     public void deleteUser(IUser user, ArrayList<IUser> users);
 
     public boolean validateUser(String username, String password);
-
+    
 }
