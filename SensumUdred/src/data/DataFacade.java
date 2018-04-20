@@ -13,20 +13,20 @@ import java.util.ArrayList;
  * @author Bruger
  */
 public class DataFacade implements IData {
+
     FileManager fm;
 
     public DataFacade() {
         fm = new FileManager();
     }
-    public void saveUsers(ArrayList<IUser> data) {
-        fm.writeToFile(data);
-    }
+
+    @Override
     public ArrayList<IUser> readData() {
         return fm.readFile();
     }
 
     @Override
-    public void writeData(ArrayList<String> data, String filePath) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void writeData(ArrayList<IUser> data) {
+        fm.writeToFile(data);
     }
 }

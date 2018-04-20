@@ -25,22 +25,18 @@ public class BusinessFacade implements IBusiness {
     public void injectData(IData dataLayer) {
         data = dataLayer;
     }
-    
-    /**
-     * This method is only a test method and should not be used in this state
-     */
-//    public void createCase(){
-//        ArrayList<String> testArray = new ArrayList<>();
-//        testArray.add(security.logData(((SocialWorker)security.getActiveUser()).createCase()));
-//        data.writeData(testArray, "LogFile.txt");
-//       
-//    }
 
     @Override
-    public void createUser(String name, String id, String userName, String password, String email) {
-//        User u = SecurityHandler.activeUser.createUser(name,id,userName,password,email);
-//        DataFacade.save(u.getName()+u.getPassword(),"users");
-//        SecurityHandler.logData("Created: "+u.getName());
+    public void createUser(String name, String id, String userName, String password, String email, int type) {
+        IUser user;
+        if (security.getActiveUser() instanceof SystemAdmin) {
+            user = ((SystemAdmin) security.getActiveUser()).createUser(name, id, userName, password, email, type);
+            ArrayList<IUser> users = data.readData();
+            users.add(user);
+            data.writeData(users);
+        } else {
+            System.out.println("Pwoblem OwO");
+        }
     }
 
     @Override
@@ -51,4 +47,5 @@ public class BusinessFacade implements IBusiness {
 //            System.out.println("User did not exist");
 //        }
     }
+
 }

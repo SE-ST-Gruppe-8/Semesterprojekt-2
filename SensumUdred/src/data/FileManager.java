@@ -64,12 +64,13 @@ public class FileManager {
     }
 
     public static void main(String[] args) {
-        ArrayList<IUser> test = new ArrayList<>();
-        FileManager fm = new FileManager();
-        test.add(new SystemAdmin("ASS", "b", "c", "d", "e"));
-        test.add(new SystemAdmin("AssSS", "b", "c", "d", "e"));
-        fm.writeToFile(test);
-        System.out.print(fm.readFile());
+//        ArrayList<IUser> test = new ArrayList<>();
+//        FileManager fm = new FileManager();
+//        test.add(new SystemAdmin("ASS", "b", "c", "d", "e"));
+//        test.add(new SystemAdmin("AssSS", "b", "c", "d", "e"));
+//        fm.writeToFile(test);
+//        System.out.print(fm.readFile());
+        
 
     }
 
