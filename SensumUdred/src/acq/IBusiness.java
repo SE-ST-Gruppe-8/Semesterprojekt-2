@@ -5,7 +5,6 @@
  */
 package acq;
 
-import business.User;
 import java.util.ArrayList;
 import javafx.collections.ObservableList;
 
@@ -18,12 +17,10 @@ public interface IBusiness {
     void injectData(IData dataLayer);
 
     public void createUser(String name, String id, String userName, String password, String email, int type);
-    
 
     public void deleteUser(IUser user, ArrayList<IUser> users);
     
     public boolean validateUser(String username, String password);
     
     public ObservableList<IUser> getUsers();
-
 }

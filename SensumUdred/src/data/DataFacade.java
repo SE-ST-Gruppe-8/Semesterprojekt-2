@@ -14,10 +14,12 @@ import java.util.ArrayList;
  */
 public class DataFacade implements IData {
 
-    FileManager fm;
+    private FileManager fm;
+    private DataLogger dl;
 
     public DataFacade() {
         fm = new FileManager();
+        dl = new DataLogger();
     }
 
     @Override
@@ -28,5 +30,10 @@ public class DataFacade implements IData {
     @Override
     public void saveUsers(ArrayList<IUser> data) {
         fm.writeToFile(data);
+    }
+
+    @Override
+    public void logData(String logData) {
+        dl.saveLog(logData);
     }
 }

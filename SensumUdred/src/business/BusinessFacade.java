@@ -21,7 +21,6 @@ public class BusinessFacade implements IBusiness {
     }
 
     public BusinessFacade() {
-        security = new SecurityHandler();
     }
 
     /**
@@ -32,6 +31,7 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void injectData(IData dataLayer) {
         data = dataLayer;
+        security = new SecurityHandler(data);
     }
 
     /**
@@ -71,7 +71,7 @@ public class BusinessFacade implements IBusiness {
     /**
      * a method to delete a user from the system
      *
-     * @param username
+     * @param user
      * @param users
      */
     @Override
