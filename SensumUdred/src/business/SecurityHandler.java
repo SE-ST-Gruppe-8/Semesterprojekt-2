@@ -21,13 +21,9 @@ public class SecurityHandler {
     }
 
     public void logData(String dataToBeLogged) {
-//        String log = activeUser.toString() + new Date().toString() + dataToBeLogged;
-//        data.logData(log);
-//        System.out.println("Logging: " + log);
-
-
-
-        data.logData(dataToBeLogged);//this is a test line
+        String log = activeUser.toString()+ "\t" + new Date().toString()+ "\t" + dataToBeLogged;
+        System.out.println("Logging: " + log);
+        data.logData(log);
         }
 
     public User getActiveUser() {

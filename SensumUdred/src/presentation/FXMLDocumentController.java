@@ -79,7 +79,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void loginButtonAction(ActionEvent event) {
         // TODO
-        ib.test();
     }
 
     @FXML

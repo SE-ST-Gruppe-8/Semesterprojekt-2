@@ -97,9 +97,4 @@ public class BusinessFacade implements IBusiness {
     public boolean validateUser(String username, String password) {
         return security.validateUserLogin(data.readUsers(), username, password);
     }
-
-    @Override
-    public void test() {
-        security.logData("test fra business");
-    }
 }

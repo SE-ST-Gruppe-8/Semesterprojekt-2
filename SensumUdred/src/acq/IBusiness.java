@@ -23,6 +23,4 @@ public interface IBusiness {
     public boolean validateUser(String username, String password);
     
     public ObservableList<IUser> getUsers();
-    
-    public void test();
 }
