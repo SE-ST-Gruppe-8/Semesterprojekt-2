@@ -9,15 +9,13 @@ import java.util.ArrayList;
 public class SystemAdmin extends User {
 
     public SystemAdmin(String name, String id, String userName, String password, String email) {
-        super(name, id, userName, password, email);
-        super.setRole(0);//this will set the role to be a systemAdmin
+        super(0, name, id, userName, password, email);
     }
 
-    public User createUser(String name, String id, String userName, String password, String email) {
-        User user = new User(name, id, userName, password, email) {
-        };
-        return user;
-    }
+//    public User createUser(String name, String id, String userName, String password, String email) {
+//        //User user = new User(name, id, userName, password, email);
+//        return user;
+//    }
 
     public boolean deleteUser(String username, ArrayList<User> users) {
         boolean userIsRemoved = false;
