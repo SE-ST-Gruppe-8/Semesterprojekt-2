@@ -21,12 +21,12 @@ public class DataFacade implements IData {
     }
 
     @Override
-    public ArrayList<IUser> readData() {
+    public ArrayList<IUser> readUsers() {
         return fm.readFile();
     }
 
     @Override
-    public void writeData(ArrayList<IUser> data) {
+    public void saveUsers(ArrayList<IUser> data) {
         fm.writeToFile(data);
     }
 }
