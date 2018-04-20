@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 public interface IData {
     
-    void writeData(ArrayList<String> data, String filePath);
+    void writeData(ArrayList<IUser> data);
+    ArrayList<IUser> readData();
     
 }

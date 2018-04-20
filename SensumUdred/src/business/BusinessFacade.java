@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class BusinessFacade implements IBusiness {
 
-    private IData data;
+    public IData data;
     private SecurityHandler security;
 
     public BusinessFacade() {
@@ -25,22 +25,21 @@ public class BusinessFacade implements IBusiness {
     public void injectData(IData dataLayer) {
         data = dataLayer;
     }
-    
-    /**
-     * This method is only a test method and should not be used in this state
-     */
-//    public void createCase(){
-//        ArrayList<String> testArray = new ArrayList<>();
-//        testArray.add(security.logData(((SocialWorker)security.getActiveUser()).createCase()));
-//        data.writeData(testArray, "LogFile.txt");
-//       
-//    }
 
     @Override
-    public void createUser(String name, String id, String userName, String password, String email) {
-//        User u = SecurityHandler.activeUser.createUser(name,id,userName,password,email);
-//        DataFacade.save(u.getName()+u.getPassword(),"users");
-//        SecurityHandler.logData("Created: "+u.getName());
+    public void createUser(String name, String id, String userName, String password, String email, int type) {
+        IUser user;
+        if (true) {
+//            user = ((SystemAdmin) security.getActiveUser()).createUser(name, id, userName, password, email, type);
+            SystemAdmin brrt = new SystemAdmin("somthing", "is", "written", "here", "password");
+            IUser u = brrt.createUser(name, id, userName, password, email, type);
+            ArrayList<IUser> users = data.readData();
+            users.add(u);
+            data.writeData(users);
+        } else {
+            System.out.println("Pwoblem OwO");
+        }
+        System.out.println(data.readData());
     }
 
     @Override
@@ -50,5 +49,15 @@ public class BusinessFacade implements IBusiness {
 //        } else {
 //            System.out.println("User did not exist");
 //        }
+    }
+
+    public static void main(String[] args) {
+        User user = new SystemAdmin("somthing", "is", "written", "here", "password");
+        SecurityHandler s = new SecurityHandler();
+        s.setActiveUser(user);
+        BusinessFacade bf = new BusinessFacade();
+        
+        bf.createUser("somthing", "is", "written", "here", "password", 2);
+        System.out.println(bf.data.readData());
     }
 }
