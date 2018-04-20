@@ -47,9 +47,11 @@ public class BusinessFacade implements IBusiness {
         IUser user;
         if (security.getActiveUser() instanceof SystemAdmin) {
             user = ((SystemAdmin) security.getActiveUser()).createUser(name, id, userName, password, email, type);
-            ArrayList<IUser> users = data.readUsers();
-            users.add(user);
-            data.saveUsers(users);
+            if (user != null) {
+                ArrayList<IUser> users = data.readUsers();
+                users.add(user);
+                data.saveUsers(users);
+            }
         } else {
             System.out.println("Pwoblem OwO");
         }
@@ -60,13 +62,17 @@ public class BusinessFacade implements IBusiness {
      * @param users 
      */
     @Override
-    public void deleteUser(String username, ArrayList<User> users) {
-//        if(SecurityHandler.activeUser.deleteUser(username, users)) {
-//            SecurityHandler.logData("Deleted user "+ username);
-//        } else {
-//            System.out.println("User did not exist");
-//        }
+    public void deleteUser(IUser user, ArrayList<IUser> users) {
+
+        if (security.getActiveUser() instanceof SystemAdmin) {
+            if (((SystemAdmin) security.getActiveUser()).deleteUser(user, users)) {
+                security.logData("Deleted user " + user.toString());
+            } else {
+                System.out.println("User did not exist");
+            }
+        }
     }
+
     /**
      * a method to validate the username and password of a user
      * @param username
