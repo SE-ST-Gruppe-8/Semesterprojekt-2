@@ -25,7 +25,7 @@ public class SystemAdmin extends User {
                 break;
 
             default:
-                System.out.println("User tipe does not exist");
+                System.out.println("User type does not exist");
         }
         return user;
     }
