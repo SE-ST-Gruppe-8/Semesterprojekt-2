@@ -18,9 +18,11 @@ public class SystemAdmin extends User {
         switch (type) {
             case 0:
                 user = new SystemAdmin(name, id, username, password, email);
+                break;
 
             case 1:
                 user = new SocialWorker(name, id, username, password, email);
+                break;
 
             default:
                 System.out.println("User tipe does not exist");
