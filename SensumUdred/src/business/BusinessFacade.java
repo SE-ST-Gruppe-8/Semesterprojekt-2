@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package business;
 
 import acq.*;
@@ -20,27 +15,52 @@ public class BusinessFacade implements IBusiness {
     public BusinessFacade() {
         security = new SecurityHandler();
     }
-
+    /**
+     * A method to inject the data layer into the business layer
+     * @param dataLayer 
+     */
     @Override
     public void injectData(IData dataLayer) {
         data = dataLayer;
     }
-
+    
+    /**
+     * This method is only a test method and should not be used in this state
+     */
+//    public void createCase(){
+//        ArrayList<String> testArray = new ArrayList<>();
+//        testArray.add(security.logData(((SocialWorker)security.getActiveUser()).createCase()));
+//        data.writeData(testArray, "LogFile.txt");
+//       
+//    }
+    /**
+     * a method to create a user in the system
+     * @param name name of the user
+     * @param id id of the user
+     * @param userName the username of the user
+     * @param password the password for the user
+     * @param email the email for the user
+     * @param type the type of user: 0 for SystemAdmin, 1 for SocialWorker
+     */
     @Override
     public void createUser(String name, String id, String userName, String password, String email, int type) {
         IUser user;
         if (security.getActiveUser() instanceof SystemAdmin) {
             user = ((SystemAdmin) security.getActiveUser()).createUser(name, id, userName, password, email, type);
             if (user != null) {
-                ArrayList<IUser> users = data.readData();
+                ArrayList<IUser> users = data.readUsers();
                 users.add(user);
-                data.writeData(users);
+                data.saveUsers(users);
             }
         } else {
             System.out.println("Pwoblem OwO");
         }
     }
-
+    /**
+     * a method to delete a user from the system
+     * @param username
+     * @param users 
+     */
     @Override
     public void deleteUser(IUser user, ArrayList<IUser> users) {
 
@@ -52,5 +72,14 @@ public class BusinessFacade implements IBusiness {
             }
         }
 
+    /**
+     * a method to validate the username and password of a user
+     * @param username
+     * @param password
+     * @return 
+     */
+    @Override
+    public boolean validateUser(String username, String password) {
+        return security.validateUserLogin(data.readUsers(), username, password);
     }
 }

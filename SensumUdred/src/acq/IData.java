@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public interface IData {
     
-    void writeData(ArrayList<IUser> data);
-    ArrayList<IUser> readData();
+    void saveUsers(ArrayList<IUser> data);
+    ArrayList<IUser> readUsers();
     
 }

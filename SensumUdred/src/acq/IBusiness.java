@@ -18,5 +18,9 @@ public interface IBusiness {
 
     public void createUser(String name, String id, String userName, String password, String email, int type);
     
+
     public void deleteUser(IUser user, ArrayList<IUser> users);
+    
+    public boolean validateUser(String username, String password);
+
 }
