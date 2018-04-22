@@ -79,6 +79,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void loginButtonAction(ActionEvent event) {
         // TODO
+        ib.validateUser("butt", loginPasswordTextField.getText());
     }
 
     @FXML
@@ -94,6 +95,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void deleteUserButtonAction(ActionEvent event) {
         // TODO
+        ib.deleteUser(adminUserListView.getSelectionModel().getSelectedItem());
+        
     }
 
     @FXML

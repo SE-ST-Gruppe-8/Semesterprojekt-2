@@ -2,6 +2,7 @@ package business;
 
 import acq.*;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -53,6 +54,7 @@ public class BusinessFacade implements IBusiness {
                 ArrayList<IUser> users = data.readUsers();
                 users.add(user);
                 data.saveUsers(users);
+                security.logData("Created user: " + userName);
             }
         } else {
             System.out.println("error, could not create user");
@@ -66,11 +68,11 @@ public class BusinessFacade implements IBusiness {
      * @param users
      */
     @Override
-    public void deleteUser(IUser user, ArrayList<IUser> users) {
-
+    public void deleteUser(IUser user) {
         if (security.getActiveUser() instanceof SystemAdmin) {
             if (((SystemAdmin) security.getActiveUser()).deleteUser(user, users)) {
                 security.logData("Deleted user " + user.toString());
+                data.saveUsers((ArrayList<IUser>)users.stream().collect(Collectors.toList()));
             } else {
                 System.out.println("User did not exist");
             }
@@ -86,6 +88,12 @@ public class BusinessFacade implements IBusiness {
      */
     @Override
     public boolean validateUser(String username, String password) {
-        return security.validateUserLogin(data.readUsers(), username, password);
+        if(security.validateUserLogin(data.readUsers(), username, password)) {
+            data.logData(username + " logged in.");
+            return true;
+        } else {
+            data.logData("Login attempt with username: " + username);
+            return false;
+        }
     }
 }

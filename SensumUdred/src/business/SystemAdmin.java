@@ -2,6 +2,8 @@ package business;
 
 import acq.IUser;
 import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -30,9 +32,10 @@ public class SystemAdmin extends User {
         return user;
     }
 
-    public boolean deleteUser(IUser user, ArrayList<IUser> users) {
+    public boolean deleteUser(IUser user, ObservableList<IUser> users) {
         boolean userIsRemoved = false;
         if (users.contains(user)) {
+            System.out.println("brrt");
             userIsRemoved = users.remove(user);
         }
 
