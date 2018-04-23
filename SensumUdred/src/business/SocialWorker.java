@@ -13,6 +13,7 @@ public class SocialWorker extends User {
     private Set<Case> cases;
     private Set<Inquiry> inquiries;
     private Set<Reference> references;
+    private static final long serialVersionUID = 1L;
 
     public SocialWorker(String name, String id, String username, String password, String email) {
         super(1, name, id, username, password, email);

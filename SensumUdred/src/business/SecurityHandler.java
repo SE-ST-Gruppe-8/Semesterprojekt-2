@@ -17,7 +17,7 @@ public class SecurityHandler {
 
     public SecurityHandler(IData data) {
         this.data = data;
-        activeUser = new SystemAdmin("brrt","brrt","brrt","brrt","brrt");
+//        activeUser = new SystemAdmin("brrt","brrt","brrt","brrt","brrt");
     }
 
     public void logData(String dataToBeLogged) {

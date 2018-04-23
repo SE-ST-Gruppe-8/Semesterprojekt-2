@@ -34,7 +34,7 @@ public class BusinessFacade implements IBusiness {
         data = dataLayer;
         security = new SecurityHandler(data);
     }
-    
+
     /**
      * a method to create a user in the system
      *
@@ -51,9 +51,12 @@ public class BusinessFacade implements IBusiness {
         if (security.getActiveUser() instanceof SystemAdmin) {
             user = ((SystemAdmin) security.getActiveUser()).createUser(name, id, userName, password, email, type);
             if (user != null) {
-                ArrayList<IUser> users = data.readUsers();
+//                ArrayList<IUser> users = data.readUsers();
+//                users.add(user);
+//                data.saveUsers(users);
+                System.out.println("meow");
                 users.add(user);
-                data.saveUsers(users);
+                data.saveUsers((ArrayList<IUser>) users.stream().collect(Collectors.toList()));
                 security.logData("Created user: " + userName);
             }
         } else {
@@ -72,7 +75,7 @@ public class BusinessFacade implements IBusiness {
         if (security.getActiveUser() instanceof SystemAdmin) {
             if (((SystemAdmin) security.getActiveUser()).deleteUser(user, users)) {
                 security.logData("Deleted user " + user.toString());
-                data.saveUsers((ArrayList<IUser>)users.stream().collect(Collectors.toList()));
+                data.saveUsers((ArrayList<IUser>) users.stream().collect(Collectors.toList()));
             } else {
                 System.out.println("User did not exist");
             }
@@ -88,7 +91,7 @@ public class BusinessFacade implements IBusiness {
      */
     @Override
     public boolean validateUser(String username, String password) {
-        if(security.validateUserLogin(data.readUsers(), username, password)) {
+        if (security.validateUserLogin(data.readUsers(), username, password)) {
             data.logData(username + " logged in.");
             return true;
         } else {

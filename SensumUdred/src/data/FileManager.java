@@ -39,7 +39,7 @@ public class FileManager {
             }
 
         } catch (IOException ex) {
-            System.out.println("IOException encountered.");
+            System.out.println(ex.getMessage());
         } catch (ClassNotFoundException ex) {
             System.out.println("Class not found.");
         }
@@ -47,6 +47,7 @@ public class FileManager {
     }
 
     public void writeToFile(ArrayList<IUser> data) {
+        System.out.println(data);
         file = new File("users.dat");
         try {
             fileWriter = new ObjectOutputStream(new FileOutputStream(file));
@@ -58,17 +59,18 @@ public class FileManager {
             System.out.println("File not found.");
         } catch (IOException ex) {
             System.out.println("IOException encountered.");
-        }
+        }   
 
     }
 
     public static void main(String[] args) {
         ArrayList<IUser> test = new ArrayList<>();
         FileManager fm = new FileManager();
-        test.add(new SystemAdmin("ASS", "b", "c", "d", "e"));
-        test.add(new SystemAdmin("AssSS", "b", "c", "d", "e"));
+        test.add(new SystemAdmin("ASS", "b", "starts", "twerking", "e"));
+
 
         fm.writeToFile(test);
+        System.out.println(fm.readFile());
 
     }
 
