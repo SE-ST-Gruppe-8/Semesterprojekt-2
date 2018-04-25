@@ -99,4 +99,17 @@ public class BusinessFacade implements IBusiness {
             return false;
         }
     }
+
+    @Override
+    public ObservableList<IInquiry> getInquiries() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public static void main(String[] args) {
+        ArrayList<Inquiry> inquiries = new ArrayList<>();
+        for(int i = 1; i <= 10; i++){
+            inquiries.add(new Inquiry(String.valueOf(i), "origin"+i, true, new Citizen("Citizen"+(i), String.valueOf(i), "needs"+i)));
+        }
+        
+    }
 }
