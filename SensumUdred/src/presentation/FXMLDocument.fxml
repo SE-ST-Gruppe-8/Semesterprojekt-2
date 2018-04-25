@@ -69,7 +69,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="135.0" spacing="10.0">
                      <children>
-                        <ListView fx:id="swCasesList" maxWidth="-Infinity" prefHeight="200.0" prefWidth="125.0" />
+                        <ListView fx:id="caseListView" maxWidth="-Infinity" prefHeight="200.0" prefWidth="125.0" />
                         <Button fx:id="swDeleteCaseListButton" mnemonicParsing="false" onAction="#DeleteCaseAction" text="Delete case" />
                         <Button fx:id="swUpdateCaseListButton" mnemonicParsing="false" onAction="#UpdateCaseListAction" text="Update List" />
                      </children>

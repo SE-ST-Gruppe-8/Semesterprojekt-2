@@ -6,11 +6,10 @@
 package presentation;
 
 import acq.IBusiness;
-import acq.IPresentation;
+import acq.ICase;
 import acq.IUser;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -66,6 +65,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ListView<IUser> adminUserListView;
     @FXML
+    private ListView<ICase> caseListView;
+    @FXML
     private Button UpdateList;
     @FXML
     private Tab loginTab;
@@ -80,8 +81,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button swCasesCreateCaseButton;
     @FXML
-    private ListView<?> swCasesList;
-    @FXML
     private Button swDeleteCaseListButton;
     @FXML
     private Button swUpdateCaseListButton;
@@ -93,7 +92,8 @@ public class FXMLDocumentController implements Initializable {
         ib = PresentationFacade.getIData().getIBusiness();
         socialTab.setDisable(true);
         adminTab.setDisable(true);
-        UpdateList();
+        updateUserList();
+        updateCaseList();
     }
 
     @FXML
@@ -135,26 +135,33 @@ public class FXMLDocumentController implements Initializable {
         ib.createUser(adminFirstNameTextField.getText() + " " + adminLastNameTextField.getText(), "test ID",
                 adminUsernameTextField.getText(), adminPasswordTextField.getText(),
                 adminEmailTextField.getText(), value);
-        UpdateList();
+        updateUserList();
     }
 
     @FXML
     private void deleteUserButtonAction(ActionEvent event) {
         // TODO
         ib.deleteUser(adminUserListView.getSelectionModel().getSelectedItem());
-        UpdateList();
+        updateUserList();
     }
 
     @FXML
     private void UpdateListAction(ActionEvent event) {
-        UpdateList();
+        updateUserList();
     }
 
-    public void UpdateList() {
+    public void updateUserList() {
         if (ib.getUsers() == null) {
             adminInfoLabel.setText("no Users installed");
         } else {
             adminUserListView.setItems(ib.getUsers());
+        }
+    }
+    public void updateCaseList() {
+        if (ib.getCases()== null) {
+//            sw.setText("no Users installed");
+        } else {
+            caseListView.setItems(ib.getCases());
         }
     }
 
@@ -166,8 +173,12 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void createCaseAction(ActionEvent event) {
         ab = new AlertBox();
-        ab.display("Create case");
+        updateCaseList();
+        ab.display("Create case", ib);
+        updateCaseList();
+        
     }
+    
 
     @FXML
     private void DeleteCaseAction(ActionEvent event) {
