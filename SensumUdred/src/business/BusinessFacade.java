@@ -168,8 +168,8 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public SocialWorker getActiveUser() {
-        return (SocialWorker) security.getActiveUser();
+    public User getActiveUser() {
+        return  security.getActiveUser();
     }
 
     @Override

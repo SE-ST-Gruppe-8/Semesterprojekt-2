@@ -2,6 +2,7 @@ package presentation;
 
 import acq.IBusiness;
 import business.Citizen;
+import business.SocialWorker;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -48,7 +49,7 @@ public class AlertBox {
         closeButton.setOnAction(e -> window.close());
 
         Button createButton = new Button("Create");
-        createButton.setOnAction(e -> ib.createCase(swCaseIdTextField.getText(), swCaseDesTextArea.getText(), swCaseProcessTextArea.getText(), ib.getActiveUser(), new Citizen("name", "id", "needs")));
+        createButton.setOnAction(e -> ib.createCase(swCaseIdTextField.getText(), swCaseDesTextArea.getText(), swCaseProcessTextArea.getText(), (SocialWorker)ib.getActiveUser(), new Citizen("name", "id", "needs")));
 //        createButton.setOnAction( e-> window.close());
 
 

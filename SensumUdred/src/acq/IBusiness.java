@@ -34,7 +34,7 @@ public interface IBusiness {
 
     public int getRole();
 
-    public SocialWorker getActiveUser();
+    public User getActiveUser();
 
     public ObservableList<ICase> getCases();
 
