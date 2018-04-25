@@ -34,6 +34,7 @@ public class BusinessFacade implements IBusiness {
     public void injectData(IData dataLayer) {
         data = dataLayer;
         security = new SecurityHandler(data);
+        //tester(); //creates citizens with inquires
     }
 
     /**
@@ -110,10 +111,14 @@ public class BusinessFacade implements IBusiness {
         return inquiries;
     }
     
-    public static void main(String[] args) {
-        ArrayList<Inquiry> inquiries = new ArrayList<>();
+    public void tester() {
+        ArrayList<ICitizen> citizens = new ArrayList<>();
         for(int i = 1; i <= 10; i++){
-            inquiries.add(new Inquiry(String.valueOf(i), "origin"+i, true, new Citizen("Citizen"+(i), String.valueOf(i), "needs"+i)));
+            citizens.add(new Citizen("Citizen"+(i), String.valueOf(i), "needs"+i));
         }
+        for(ICitizen c : citizens){
+            c.createInquiry(String.valueOf(c.getId()), "origin"+c.getId(), true);
+        }
+        data.saveCitizens(citizens);
     }
 }

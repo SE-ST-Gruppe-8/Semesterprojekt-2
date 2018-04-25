@@ -19,5 +19,6 @@ public interface IData {
 
     public void logData(String logData);
     ArrayList<ICitizen> getCitizens();
+    public void saveCitizens(ArrayList<ICitizen> list);
 
 }

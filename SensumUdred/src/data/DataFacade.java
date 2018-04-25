@@ -41,4 +41,9 @@ public class DataFacade implements IData {
     public ArrayList<ICitizen> getCitizens() {
         return fm.readCitizens();
     }
+
+    @Override
+    public void saveCitizens(ArrayList<ICitizen> list) {
+        fm.saveCitizens(list);
+    }
 }

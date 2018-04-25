@@ -48,7 +48,7 @@ public class FileManager {
     }
 
     public ArrayList<ICitizen> readCitizens() {
-        file = new File("users.dat");
+        file = new File("citizens.dat");
         ArrayList<ICitizen> data = new ArrayList<>();
         boolean read = true;
         try {
@@ -90,7 +90,7 @@ public class FileManager {
 
     public void saveCitizens(ArrayList<ICitizen> data) {
         System.out.println(data);
-        file = new File("users.dat");
+        file = new File("citizens.dat");
         try {
             fileWriter = new ObjectOutputStream(new FileOutputStream(file));
             for (ICitizen c : data) {
