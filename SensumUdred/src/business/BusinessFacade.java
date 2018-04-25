@@ -136,4 +136,9 @@ public class BusinessFacade implements IBusiness {
 
     }
 
+    @Override
+    public User getActiveUser() {
+        return security.getActiveUser();
+    }
+
 }
