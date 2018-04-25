@@ -13,15 +13,17 @@ public class Citizen {
     private String name;
     private String id;
     private String needs;
-    private Case CitizenCase;
+    private Case citizenCase;
     private Reference reference;
+    private Inquiry inquiry;
 
     public Citizen(String name, String id, String needs) {
         this.name = name;
         this.id = id;
         this.needs = needs;
-        this.CitizenCase = null;
+        this.citizenCase = null;
         this.reference = null;
+        this.inquiry = null;
     }
 
     public String getName() {
@@ -35,7 +37,34 @@ public class Citizen {
     public String getNeeds() {
         return needs;
     }
+
+    public Case getCase() {
+        return citizenCase;
+    }
+
+    public void setCase(Case citizenCase) {
+        this.citizenCase = citizenCase;
+    }
+
+    public Reference getReference() {
+        return reference;
+    }
+
+    public void setReference(Reference reference) {
+        this.reference = reference;
+    }
+
+    public Inquiry getInquiry() {
+        return inquiry;
+    }
     
+    public void createInquiry(String id, String origin, boolean informed){
+        this.inquiry = new Inquiry(id, origin, informed, this);
+    }
+    
+    public void setInquiry(Inquiry inquiry){
+        this.inquiry = inquiry;
+    }
     
     
 }
