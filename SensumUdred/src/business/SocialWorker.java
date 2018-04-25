@@ -2,7 +2,6 @@ package business;
 
 import java.util.HashSet;
 import java.util.Set;
-import javafx.util.Pair;
 
 /**
  *
@@ -22,8 +21,8 @@ public class SocialWorker extends User {
         this.references = new HashSet<>();
     }
 
-    public boolean createCase(String id, String description, String process,
-            SocialWorker sw, Citizen c, Order o) {
+    public boolean createCase(String id, String des, String process, SocialWorker sw, Citizen c) {
+        Case newCase = new Case(id, des, process, sw, c);
         // TODO
         return false;
     }
