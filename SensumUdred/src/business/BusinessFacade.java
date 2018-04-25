@@ -104,16 +104,25 @@ public class BusinessFacade implements IBusiness {
     @Override
     public ObservableList<IInquiry> getInquiries() {
         ArrayList<ICitizen> citizens = data.getCitizens();
-        for(ICitizen c : citizens) {
+        for (ICitizen c : citizens) {
             inquiries.add(c.getInquiry());
         }
         return inquiries;
     }
-    
+
+    public void saveInquiry(IInquiry inquiry) {
+        ArrayList<ICitizen> temp = data.getCitizens();
+        Citizen c = inquiry.getCitizen();
+        temp.remove(c);
+        c.setInquiry((Inquiry) inquiry);
+        temp.add(c);
+        
+    }
+
     public static void main(String[] args) {
         ArrayList<Inquiry> inquiries = new ArrayList<>();
-        for(int i = 1; i <= 10; i++){
-            inquiries.add(new Inquiry(String.valueOf(i), "origin"+i, true, new Citizen("Citizen"+(i), String.valueOf(i), "needs"+i)));
+        for (int i = 1; i <= 10; i++) {
+            inquiries.add(new Inquiry(String.valueOf(i), "origin" + i, true, new Citizen("Citizen" + (i), String.valueOf(i), "needs" + i)));
         }
     }
 }
