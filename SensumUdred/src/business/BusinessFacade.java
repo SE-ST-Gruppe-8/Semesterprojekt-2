@@ -123,10 +123,10 @@ public class BusinessFacade implements IBusiness {
     }
 
     public void saveInquiry(IInquiry inquiry) {
-        ArrayList<ICitizen> temp = data.getCitizens();
+        ArrayList<ICitizen> citizens = data.getCitizens();
         Citizen c = inquiry.getCitizen();
-        temp.remove(c);
+        citizens.remove(c);
         c.setInquiry((Inquiry) inquiry);
-        temp.add(c);
+        citizens.add(c);
     }
 }
