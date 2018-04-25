@@ -1,8 +1,9 @@
 package business;
 
+import acq.ICase;
 import java.util.HashSet;
 import java.util.Set;
-import javafx.util.Pair;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -11,21 +12,32 @@ import javafx.util.Pair;
 public class SocialWorker extends User {
 
     private Set<Case> cases;
+
     private Set<Inquiry> inquiries;
+
     private Set<Reference> references;
+
     private static final long serialVersionUID = 1L;
 
     public SocialWorker(String name, String id, String username, String password, String email) {
-        super(1, name, id, username, password, email);
+        super(name, id, username, password, email);
         this.cases = new HashSet<>();
         this.inquiries = new HashSet<>();
         this.references = new HashSet<>();
     }
 
-    public boolean createCase(String id, String description, String process,
-            SocialWorker sw, Citizen c, Order o) {
-        // TODO
-        return false;
+    public ICase createCase(String id, String des, String process, SocialWorker sw, Citizen c) {
+        ICase newCase = null;
+        newCase = (ICase) new Case(id, des, process, sw, c);
+        return newCase;
+    }
+
+    public boolean deleteCase(ICase newCase, ObservableList<ICase> cases) {
+        boolean deleted = false;
+        if (cases.contains(newCase)) {
+            deleted = cases.remove(newCase);
+        }
+        return deleted;
     }
 
     public boolean createReference(String id, String socialInstance, String description) {
@@ -109,6 +121,11 @@ public class SocialWorker extends User {
         } catch (NullPointerException ex) {
         }
         return false;
+    }
+
+    @Override
+    public int getRole() {
+        return 1;
     }
 
 }

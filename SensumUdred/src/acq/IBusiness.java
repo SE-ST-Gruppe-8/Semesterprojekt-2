@@ -5,6 +5,9 @@
  */
 package acq;
 
+import business.Citizen;
+import business.SocialWorker;
+import business.User;
 import javafx.collections.ObservableList;
 
 /**
@@ -17,11 +20,23 @@ public interface IBusiness {
 
     public void createUser(String name, String id, String userName, String password, String email, int type);
 
+    public void createCase(String id, String des, String process, SocialWorker sw, Citizen c);
+
     public void deleteUser(IUser user);
-    
+
     public boolean validateUser(String username, String password);
-    
+
     public ObservableList<IUser> getUsers();
-    
+
     public ObservableList<IInquiry> getInquiries();
+
+    public void logOutActiveUser();
+
+    public int getRole();
+
+    public SocialWorker getActiveUser();
+
+    public ObservableList<ICase> getCases();
+
+     public void deleteCase(ICase newCase);
 }

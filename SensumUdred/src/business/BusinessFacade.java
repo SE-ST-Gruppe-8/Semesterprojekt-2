@@ -13,9 +13,18 @@ import javafx.collections.ObservableList;
 public class BusinessFacade implements IBusiness {
 
     private IData data;
+
     private SecurityHandler security;
+
     private ObservableList<IUser> users;
     private ObservableList<IInquiry> inquiries = FXCollections.observableArrayList();
+
+    private ObservableList<ICase> cases;
+
+    @Override
+    public ObservableList<ICase> getCases() {
+        return cases = FXCollections.observableArrayList(data.readCases());
+    }
 
     @Override
     public ObservableList<IUser> getUsers() {
@@ -23,6 +32,11 @@ public class BusinessFacade implements IBusiness {
     }
 
     public BusinessFacade() {
+    }
+
+    @Override
+    public void logOutActiveUser() {
+        security.logOutActiveUser();
     }
 
     /**
@@ -131,5 +145,42 @@ public class BusinessFacade implements IBusiness {
 //        data.saveCitizens(citizens);
 //    }
 
-    
+    public int getRole() {
+        return security.getActiveUser().getRole();
+    }
+
+    @Override
+    public void createCase(String id, String des, String process, SocialWorker sw, Citizen c) {
+        String s = "error, could not create case";
+        ICase newCase;
+        if (security.getActiveUser() instanceof SocialWorker) {
+            newCase = ((SocialWorker) security.getActiveUser()).createCase(id, des, process, sw, c);
+            if (newCase != null) {
+                cases.add(newCase);
+                data.saveCases((ArrayList<ICase>) cases.stream().collect(Collectors.toList()));
+                security.logData("Created case with id: " + id);
+            } else {
+                System.out.println(s);
+            }
+
+        }
+        System.out.println("joe" + id);
+    }
+
+    @Override
+    public SocialWorker getActiveUser() {
+        return (SocialWorker) security.getActiveUser();
+    }
+
+    @Override
+    public void deleteCase(ICase newCase) {
+        if (security.getActiveUser() instanceof SocialWorker) {
+            if (((SocialWorker) security.getActiveUser()).deleteCase(newCase, cases)) {
+                security.logData("Deleted case " + newCase.toString());
+                data.saveCases((ArrayList<ICase>) cases.stream().collect(Collectors.toList()));
+            } else {
+                System.out.println("Case did not exist");
+            }
+        }
+    }
 }

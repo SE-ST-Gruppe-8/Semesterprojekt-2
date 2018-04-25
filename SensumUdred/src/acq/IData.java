@@ -14,11 +14,16 @@ import java.util.ArrayList;
 public interface IData {
 
     public void saveUsers(ArrayList<IUser> data);
+    
+    public void saveCases(ArrayList<ICase> data);
 
     public ArrayList<IUser> readUsers();
 
     public void logData(String logData);
-    ArrayList<ICitizen> getCitizens();
-    public void saveCitizens(ArrayList<ICitizen> list);
 
+    ArrayList<ICitizen> getCitizens();
+    
+    public void saveCitizens(ArrayList<ICitizen> list);
+    
+    public ArrayList<ICase> readCases();
 }
