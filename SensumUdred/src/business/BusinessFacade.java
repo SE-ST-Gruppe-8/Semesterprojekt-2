@@ -23,6 +23,11 @@ public class BusinessFacade implements IBusiness {
 
     public BusinessFacade() {
     }
+    
+    @Override
+    public void logOutActiveUser(){
+        security.logOutActiveUser();
+    }
 
     /**
      * A method to inject the data layer into the business layer
@@ -98,5 +103,10 @@ public class BusinessFacade implements IBusiness {
             data.logData("Login attempt with username: " + username);
             return false;
         }
+    }
+
+    @Override
+    public int getRole() {
+        return security.getActiveUser().getRole();
     }
 }

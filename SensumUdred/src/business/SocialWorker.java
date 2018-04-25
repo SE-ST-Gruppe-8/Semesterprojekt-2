@@ -2,7 +2,6 @@ package business;
 
 import java.util.HashSet;
 import java.util.Set;
-import javafx.util.Pair;
 
 /**
  *
@@ -16,14 +15,14 @@ public class SocialWorker extends User {
     private static final long serialVersionUID = 1L;
 
     public SocialWorker(String name, String id, String username, String password, String email) {
-        super(1, name, id, username, password, email);
+        super(name, id, username, password, email);
         this.cases = new HashSet<>();
         this.inquiries = new HashSet<>();
         this.references = new HashSet<>();
     }
 
-    public boolean createCase(String id, String description, String process,
-            SocialWorker sw, Citizen c, Order o) {
+    public boolean createCase(String id, String des, String process, SocialWorker sw, Citizen c) {
+        Case newCase = new Case(id, des, process, sw, c);
         // TODO
         return false;
     }
@@ -109,6 +108,11 @@ public class SocialWorker extends User {
         } catch (NullPointerException ex) {
         }
         return false;
+    }
+
+    @Override
+    public int getRole() {
+        return 1;
     }
 
 }
