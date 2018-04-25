@@ -68,6 +68,8 @@ public class FXMLDocumentController implements Initializable {
     private Button UpdateList;
     
     private PresentationFacade pf;
+    @FXML
+    private TextField usernameField;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -79,21 +81,34 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void loginButtonAction(ActionEvent event) {
         // TODO
+        ib.validateUser(usernameField.getText(), loginPasswordTextField.getText());
     }
 
     @FXML
     private void logoutButtonAction(ActionEvent event) {
         // TODO
+        
     }
 
     @FXML
     private void createUserButtonAction(ActionEvent event) {
         // TODO
+        int value;
+        if(createAdminRadioButton.isSelected()) {
+            value = 0;
+        } else {
+            value = 1;
+        }
+        ib.createUser(adminFirstNameTextField.getText(), adminLastNameTextField.getText(),
+                adminUsernameTextField.getText(), adminPasswordTextField.getText(),
+                adminEmailTextField.getText(), value);
     }
 
     @FXML
     private void deleteUserButtonAction(ActionEvent event) {
         // TODO
+        ib.deleteUser(adminUserListView.getSelectionModel().getSelectedItem());
+        
     }
 
     @FXML

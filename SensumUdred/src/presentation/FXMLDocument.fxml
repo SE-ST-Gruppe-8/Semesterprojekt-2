@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<TabPane prefHeight="300.0" prefWidth="720.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.FXMLDocumentController">
+<TabPane prefHeight="300.0" prefWidth="720.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.FXMLDocumentController">
    <tabs>
       <Tab fx:id="loginUsernameTextField" text="Login">
          <content>
@@ -34,7 +34,7 @@
                     </rowConstraints>
                      <children>
                         <Label text="Username" GridPane.columnIndex="1" />
-                        <TextField GridPane.columnIndex="2" />
+                        <TextField fx:id="usernameField" GridPane.columnIndex="2" />
                         <Label text="Password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField fx:id="loginPasswordTextField" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                      </children>

@@ -2,13 +2,15 @@ package business;
 
 import acq.IUser;
 import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
  * @author Søren Bendtsen
  */
 public class SystemAdmin extends User {
-
+    private static final long serialVersionUID = 1L;
     public SystemAdmin(String name, String id, String username, String password, String email) {
         super(0, name, id, username, password, email);
     }
@@ -30,9 +32,10 @@ public class SystemAdmin extends User {
         return user;
     }
 
-    public boolean deleteUser(IUser user, ArrayList<IUser> users) {
+    public boolean deleteUser(IUser user, ObservableList<IUser> users) {
         boolean userIsRemoved = false;
         if (users.contains(user)) {
+            System.out.println("brrt");
             userIsRemoved = users.remove(user);
         }
 
