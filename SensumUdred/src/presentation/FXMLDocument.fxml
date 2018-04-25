@@ -9,6 +9,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -55,6 +56,26 @@
          </content>
       </Tab>
       <Tab fx:id="socialTab" text="Social Worker" />
+      <Tab text="Cases">
+         <content>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox prefHeight="271.0" prefWidth="517.0" />
+                  <ListView fx:id="swCasesListView" prefHeight="200.0" prefWidth="200.0" />
+               </children>
+            </HBox>
+         </content>
+      </Tab>
+      <Tab text="Inquiries">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+      <Tab text="References">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
       <Tab fx:id="adminTab" text="Admin">
          <content>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
