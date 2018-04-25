@@ -62,15 +62,15 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="271.0" prefWidth="517.0" spacing="10.0">
                      <children>
-                        <Button fx:id="swCasesCreateCaseButton" mnemonicParsing="false" onAction="#createCase" text="Create case" />
+                        <Button fx:id="swCasesCreateCaseButton" mnemonicParsing="false" onAction="#createCaseAction" text="Create case" />
                         <Button mnemonicParsing="false" text="Edit case" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="135.0" spacing="10.0">
                      <children>
-                        <Button fx:id="UpdateList1" mnemonicParsing="false" onAction="#UpdateCaseListAction" text="Update List" />
-                        <ListView fx:id="adminUserListView1" maxWidth="-Infinity" prefHeight="200.0" prefWidth="125.0" />
-                        <Button fx:id="deleteUserButton1" mnemonicParsing="false" onAction="#deleteUserButtonAction" text="Delete case" />
+                        <ListView fx:id="swCasesList" maxWidth="-Infinity" prefHeight="200.0" prefWidth="125.0" />
+                        <Button fx:id="swDeleteCaseListButton" mnemonicParsing="false" onAction="#DeleteCaseAction" text="Delete case" />
+                        <Button fx:id="swUpdateCaseListButton" mnemonicParsing="false" onAction="#UpdateCaseListAction" text="Update List" />
                      </children>
                      <padding>
                         <Insets right="10.0" />

@@ -1,22 +1,21 @@
 package presentation;
 
-import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.List;
-import java.util.Scanner;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 
 public class AlertBox {
-    public AlertBox(){
-        
+
+    public AlertBox() {
+
     }
 
     /**
@@ -26,25 +25,38 @@ public class AlertBox {
      * @param filename the filename of the textfile. Textfile must be placed in
      * Presentation/Textfiles/
      */
-    static void display(String header) {
-        StringBuilder text = new StringBuilder();
+    public void display(String header) {
         Stage window = new Stage();
         window.setTitle(header);
         window.setMinWidth(400);
         window.setMaxWidth(600);
         window.setResizable(false);
-        Scanner input;
 
-        Label label = new Label();
-        label.setText(text.toString());
-        label.setWrapText(true);
+        TextField swCaseIdTextField = new TextField();
+        TextArea swCaseDesTextArea = new TextArea();
+        TextArea swCaseProcessTextArea = new TextArea();
+        Label swCaseIdLabel = new Label();
+        swCaseIdLabel.setText("ID");
+        Label swCaseDesLabel = new Label();
+        swCaseDesLabel.setText("Description");
+        Label swCaseProcessLabel = new Label();
+        swCaseProcessLabel.setText("Process");
 
         Button closeButton = new Button("Close");
         closeButton.setOnAction(e -> window.close());
 
-        VBox layout = new VBox(10);
-        layout.getChildren().addAll(label, closeButton);
-        layout.setAlignment(Pos.CENTER);
+        Button createButton = new Button("Create");
+//        createButton.setOnAction(insert create method here);
+
+        HBox buttonLayout = new HBox();
+        buttonLayout.getChildren().addAll(closeButton, createButton);
+        buttonLayout.setAlignment(Pos.CENTER);
+        buttonLayout.setSpacing(10);
+        buttonLayout.setPadding(new Insets(10, 10, 10, 10));
+        VBox layout = new VBox();
+        layout.getChildren().addAll(swCaseIdLabel, swCaseIdTextField, swCaseDesLabel, swCaseDesTextArea, swCaseProcessLabel, swCaseProcessTextArea, buttonLayout);
+        layout.setAlignment(Pos.CENTER_LEFT);
+        layout.setPadding(new Insets(10, 10, 0, 10));
 
         Scene scene = new Scene(layout);
         window.setScene(scene);
