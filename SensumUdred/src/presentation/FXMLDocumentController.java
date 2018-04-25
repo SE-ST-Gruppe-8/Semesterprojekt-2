@@ -101,7 +101,7 @@ public class FXMLDocumentController implements Initializable {
         }
         ib.createUser(adminFirstNameTextField.getText(), adminLastNameTextField.getText(),
                 adminUsernameTextField.getText(), adminPasswordTextField.getText(),
-                adminEmailTextField.getText(), 0);
+                adminEmailTextField.getText(), value);
     }
 
     @FXML

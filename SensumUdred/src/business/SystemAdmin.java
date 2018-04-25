@@ -10,7 +10,7 @@ import javafx.collections.ObservableList;
  * @author Søren Bendtsen
  */
 public class SystemAdmin extends User {
-
+    private static final long serialVersionUID = 1L;
     public SystemAdmin(String name, String id, String username, String password, String email) {
         super(0, name, id, username, password, email);
     }
