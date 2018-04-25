@@ -24,16 +24,26 @@ public class DataFacade implements IData {
 
     @Override
     public ArrayList<IUser> readUsers() {
-        return fm.readFile();
+        return new ArrayList<IUser>();
     }
 
     @Override
     public void saveUsers(ArrayList<IUser> data) {
-        fm.writeToFile(data);
+        
     }
 
     @Override
     public void logData(String logData) {
         dl.saveLog(logData);
+    }
+
+    @Override
+    public <T> void saveData(ArrayList<T> data, String filepath) {
+        fm.writeToFile(data, filepath);
+    }
+
+    @Override
+    public <T> void loadData(ArrayList<T> data, String filepath) {
+        fm.readFile(data, filepath);
     }
 }

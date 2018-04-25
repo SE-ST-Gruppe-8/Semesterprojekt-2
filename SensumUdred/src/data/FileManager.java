@@ -1,6 +1,7 @@
 package data;
 
 import acq.IUser;
+import business.SocialWorker;
 import business.SystemAdmin;
 import java.io.EOFException;
 import java.io.File;
@@ -22,16 +23,16 @@ public class FileManager {
     ObjectOutputStream fileWriter;
     File file;
 
-    public ArrayList<IUser> readFile() {
-        file = new File("users.dat");
-        ArrayList<IUser> data = new ArrayList<>();
+    public <T> ArrayList<T> readFile(ArrayList<T> data, String filepath) {
+        file = new File(filepath + ".dat");
+        
         boolean read = true;
         try {
             fileReader = new ObjectInputStream(new FileInputStream(file));
             while (read) {
                 try {
-                    IUser u = (IUser) fileReader.readObject();
-                    data.add(u);
+                    T t = (T) fileReader.readObject();
+                    data.add(t);
                 } catch (EOFException eof) {
                     System.out.println("Reached end of file.");
                     break; // stop reading
@@ -46,20 +47,20 @@ public class FileManager {
         return data;
     }
 
-    public void writeToFile(ArrayList<IUser> data) {
+    public <T> void writeToFile(ArrayList<T> data, String filepath) {
         System.out.println(data);
-        file = new File("users.dat");
+        file = new File(filepath + ".dat");
         try {
             fileWriter = new ObjectOutputStream(new FileOutputStream(file));
-            for (IUser u : data) {
-                fileWriter.writeObject(u);
+            for (T t : data) {
+                fileWriter.writeObject(t);
             }
             fileWriter.close();
         } catch (FileNotFoundException ex) {
             System.out.println("File not found.");
         } catch (IOException ex) {
             System.out.println("IOException encountered.");
-        }   
+        }
 
     }
 
@@ -67,10 +68,11 @@ public class FileManager {
         ArrayList<IUser> test = new ArrayList<>();
         FileManager fm = new FileManager();
         test.add(new SystemAdmin("ASS", "b", "starts", "twerking", "e"));
-
-
-        fm.writeToFile(test);
-        System.out.println(fm.readFile());
+        test.add(new SocialWorker("brrrSS", "b", "starts", "twerking", "e"));
+        fm.writeToFile(test, "users");
+        test = new ArrayList<>();
+        fm.readFile(test, "users");
+        System.out.println(test);
 
     }
 

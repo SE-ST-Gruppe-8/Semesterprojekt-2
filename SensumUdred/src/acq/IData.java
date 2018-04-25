@@ -18,5 +18,7 @@ public interface IData {
     public ArrayList<IUser> readUsers();
 
     public void logData(String logData);
+    <T>void saveData(ArrayList<T> data, String filepath);
+    <T>void loadData(ArrayList<T> data, String filepath);
 
 }
