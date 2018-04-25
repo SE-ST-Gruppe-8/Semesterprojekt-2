@@ -14,9 +14,13 @@ import java.util.ArrayList;
 public interface IData {
 
     public void saveUsers(ArrayList<IUser> data);
+    
+    public void saveCases(ArrayList<ICase> data);
 
     public ArrayList<IUser> readUsers();
 
     public void logData(String logData);
+    
+    
 
 }

@@ -10,13 +10,15 @@ import javafx.collections.ObservableList;
  * @author Søren Bendtsen
  */
 public class SystemAdmin extends User {
+
     private static final long serialVersionUID = 1L;
+
     public SystemAdmin(String name, String id, String username, String password, String email) {
-        super( name, id, username, password, email);
+        super(name, id, username, password, email);
     }
 
     public IUser createUser(String name, String id, String username, String password, String email, int type) {
-        User user = null;
+        IUser user = null;
         switch (type) {
             case 0:
                 user = new SystemAdmin(name, id, username, password, email);
@@ -46,6 +48,5 @@ public class SystemAdmin extends User {
     public int getRole() {
         return 0;
     }
-
 
 }

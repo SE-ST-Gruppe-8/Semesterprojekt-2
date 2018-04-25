@@ -13,8 +13,12 @@ import javafx.collections.ObservableList;
 public class BusinessFacade implements IBusiness {
 
     private IData data;
+
     private SecurityHandler security;
+
     private ObservableList<IUser> users;
+
+    private ObservableList<ICase> cases;
 
     @Override
     public ObservableList<IUser> getUsers() {
@@ -23,9 +27,9 @@ public class BusinessFacade implements IBusiness {
 
     public BusinessFacade() {
     }
-    
+
     @Override
-    public void logOutActiveUser(){
+    public void logOutActiveUser() {
         security.logOutActiveUser();
     }
 
@@ -64,7 +68,8 @@ public class BusinessFacade implements IBusiness {
                 data.saveUsers((ArrayList<IUser>) users.stream().collect(Collectors.toList()));
                 security.logData("Created user: " + userName);
             }
-        } else {
+        }
+        else {
             System.out.println("error, could not create user");
         }
     }
@@ -81,7 +86,8 @@ public class BusinessFacade implements IBusiness {
             if (((SystemAdmin) security.getActiveUser()).deleteUser(user, users)) {
                 security.logData("Deleted user " + user.toString());
                 data.saveUsers((ArrayList<IUser>) users.stream().collect(Collectors.toList()));
-            } else {
+            }
+            else {
                 System.out.println("User did not exist");
             }
         }
@@ -99,7 +105,8 @@ public class BusinessFacade implements IBusiness {
         if (security.validateUserLogin(data.readUsers(), username, password)) {
             data.logData(username + " logged in.");
             return true;
-        } else {
+        }
+        else {
             data.logData("Login attempt with username: " + username);
             return false;
         }
@@ -109,4 +116,24 @@ public class BusinessFacade implements IBusiness {
     public int getRole() {
         return security.getActiveUser().getRole();
     }
+
+    @Override
+    public void createCase(String id, String des, String process, SocialWorker sw, Citizen c) {
+        String s = "error, could not create case";
+        ICase newCase;
+        if (security.getActiveUser() instanceof SocialWorker) {
+            newCase = ((SocialWorker) security.getActiveUser()).createCase(id, des, process, sw, c);
+            if (newCase != null) {
+                cases.add(newCase);
+                data.saveCases((ArrayList<ICase>) cases.stream().collect(Collectors.toList()));
+                security.logData("Created case with id: " + id);
+            }
+            else {
+                System.out.println(s);
+            }
+
+        }
+
+    }
+
 }

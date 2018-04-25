@@ -1,5 +1,6 @@
 package business;
 
+import acq.ICase;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,8 +11,11 @@ import java.util.Set;
 public class SocialWorker extends User {
 
     private Set<Case> cases;
+
     private Set<Inquiry> inquiries;
+
     private Set<Reference> references;
+
     private static final long serialVersionUID = 1L;
 
     public SocialWorker(String name, String id, String username, String password, String email) {
@@ -21,10 +25,10 @@ public class SocialWorker extends User {
         this.references = new HashSet<>();
     }
 
-    public boolean createCase(String id, String des, String process, SocialWorker sw, Citizen c) {
-        Case newCase = new Case(id, des, process, sw, c);
-        // TODO
-        return false;
+    public ICase createCase(String id, String des, String process, SocialWorker sw, Citizen c) {
+        ICase newCase = null;
+        newCase = (ICase) new Case(id, des, process, sw, c);
+        return newCase;
     }
 
     public boolean createReference(String id, String socialInstance, String description) {
@@ -92,7 +96,8 @@ public class SocialWorker extends User {
             if (this.inquiries.contains(inq)) {
                 this.inquiries.remove(inq);
                 return true;
-            } else {
+            }
+            else {
             }
         } catch (NullPointerException ex) {
         }

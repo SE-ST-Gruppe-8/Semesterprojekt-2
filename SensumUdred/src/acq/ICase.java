@@ -11,4 +11,5 @@ package acq;
  */
 public interface ICase {
     
+
 }

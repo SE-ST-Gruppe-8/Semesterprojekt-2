@@ -5,16 +5,22 @@
  */
 package business;
 
+import acq.ICase;
+
 /**
  *
  * @author Bruger
  */
-public class Case {
+public class Case implements ICase {
 
     private final String ID;
+
     private String description;
+
     private String process;
+
     private SocialWorker socialWorker;
+
     private Citizen citizen;
 
     public Case(String id, String des, String process, SocialWorker sw, Citizen c) {
