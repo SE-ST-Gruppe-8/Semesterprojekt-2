@@ -16,7 +16,7 @@ public class SocialWorker extends User {
     private static final long serialVersionUID = 1L;
 
     public SocialWorker(String name, String id, String username, String password, String email) {
-        super(1, name, id, username, password, email);
+        super(name, id, username, password, email);
         this.cases = new HashSet<>();
         this.inquiries = new HashSet<>();
         this.references = new HashSet<>();
@@ -138,6 +138,11 @@ public class SocialWorker extends User {
             falseMessage = "An error occured";
         }
         return new Pair<>(false, falseMessage);
+    }
+
+    @Override
+    public int getRole() {
+        return 1;
     }
 
 }

@@ -17,7 +17,7 @@
 
 <TabPane prefHeight="300.0" prefWidth="720.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.FXMLDocumentController">
    <tabs>
-      <Tab fx:id="loginUsernameTextField" text="Login">
+      <Tab fx:id="loginTab" text="Login">
          <content>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
@@ -34,11 +34,16 @@
                     </rowConstraints>
                      <children>
                         <Label text="Username" GridPane.columnIndex="1" />
-                        <TextField fx:id="usernameField" GridPane.columnIndex="2" />
+                        <TextField fx:id="loginUsernameTextField" GridPane.columnIndex="2" />
                         <Label text="Password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField fx:id="loginPasswordTextField" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
+                  <HBox alignment="CENTER" prefHeight="22.0" prefWidth="720.0" spacing="10.0">
+                     <children>
+                        <Label fx:id="loginInfoLabel" />
+                     </children>
+                  </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginButtonAction" text="Login" />
@@ -49,8 +54,8 @@
             </VBox>
          </content>
       </Tab>
-      <Tab text="Social Worker" />
-      <Tab text="Admin">
+      <Tab fx:id="socialTab" text="Social Worker" />
+      <Tab fx:id="adminTab" text="Admin">
          <content>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>

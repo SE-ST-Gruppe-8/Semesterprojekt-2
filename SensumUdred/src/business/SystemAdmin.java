@@ -12,7 +12,7 @@ import javafx.collections.ObservableList;
 public class SystemAdmin extends User {
     private static final long serialVersionUID = 1L;
     public SystemAdmin(String name, String id, String username, String password, String email) {
-        super(0, name, id, username, password, email);
+        super( name, id, username, password, email);
     }
 
     public IUser createUser(String name, String id, String username, String password, String email, int type) {
@@ -41,5 +41,11 @@ public class SystemAdmin extends User {
 
         return userIsRemoved;
     }
+
+    @Override
+    public int getRole() {
+        return 0;
+    }
+
 
 }

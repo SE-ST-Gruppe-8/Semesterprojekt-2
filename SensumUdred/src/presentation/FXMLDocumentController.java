@@ -31,7 +31,7 @@ public class FXMLDocumentController implements Initializable {
     private IBusiness ib;
 
     @FXML
-    private Tab loginUsernameTextField;
+    private TextField loginUsernameTextField;
     @FXML
     private TextField loginPasswordTextField;
     @FXML
@@ -66,58 +66,86 @@ public class FXMLDocumentController implements Initializable {
     private ListView<IUser> adminUserListView;
     @FXML
     private Button UpdateList;
-    
-    private PresentationFacade pf;
     @FXML
-    private TextField usernameField;
+    private Tab loginTab;
+    @FXML
+    private Tab socialTab;
+    @FXML
+    private Tab adminTab;
+    @FXML
+    private Label loginInfoLabel;
+
+    private PresentationFacade pf;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
 
         ib = PresentationFacade.getIData().getIBusiness();
+        socialTab.setDisable(true);
+        adminTab.setDisable(true);
+        UpdateList();
     }
 
     @FXML
     private void loginButtonAction(ActionEvent event) {
         // TODO
-        ib.validateUser(usernameField.getText(), loginPasswordTextField.getText());
+        boolean iscorrect = ib.validateUser(loginUsernameTextField.getText(), loginPasswordTextField.getText());
+
+        if (iscorrect) {
+            loginInfoLabel.setText("Succesfully logged in as: " + loginUsernameTextField.getText());
+            if (ib.getRole() == 1)
+                socialTab.setDisable(false);
+            else if (ib.getRole() == 0)
+                adminTab.setDisable(false);
+        } else {
+            loginInfoLabel.setText("Wrong input");
+        }
+        
     }
 
     @FXML
     private void logoutButtonAction(ActionEvent event) {
         // TODO
-        
+        ib.logOutActiveUser();
+        adminTab.setDisable(true);
+        socialTab.setDisable(true);
+        loginInfoLabel.setText("You have logged out.");
+
     }
 
     @FXML
     private void createUserButtonAction(ActionEvent event) {
         // TODO
         int value;
-        if(createAdminRadioButton.isSelected()) {
+        if (createAdminRadioButton.isSelected()) {
             value = 0;
         } else {
             value = 1;
         }
-        ib.createUser(adminFirstNameTextField.getText(), adminLastNameTextField.getText(),
+        ib.createUser(adminFirstNameTextField.getText() + " " + adminLastNameTextField.getText(), "test ID",
                 adminUsernameTextField.getText(), adminPasswordTextField.getText(),
                 adminEmailTextField.getText(), value);
+        UpdateList();
     }
 
     @FXML
     private void deleteUserButtonAction(ActionEvent event) {
         // TODO
         ib.deleteUser(adminUserListView.getSelectionModel().getSelectedItem());
-        
+        UpdateList();
     }
 
     @FXML
     private void UpdateListAction(ActionEvent event) {
+        UpdateList();
+    }
+
+    public void UpdateList() {
         if (ib.getUsers() == null) {
             adminInfoLabel.setText("no Users installed");
         } else {
             adminUserListView.setItems(ib.getUsers());
         }
     }
-
 }
