@@ -3,6 +3,7 @@ package business;
 import acq.ICase;
 import java.util.HashSet;
 import java.util.Set;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -29,6 +30,14 @@ public class SocialWorker extends User {
         ICase newCase = null;
         newCase = (ICase) new Case(id, des, process, sw, c);
         return newCase;
+    }
+
+    public boolean deleteCase(ICase newCase, ObservableList<ICase> cases) {
+        boolean deleted = false;
+        if (cases.contains(newCase)) {
+            deleted = cases.remove(newCase);
+        }
+        return deleted;
     }
 
     public boolean createReference(String id, String socialInstance, String description) {
@@ -96,8 +105,7 @@ public class SocialWorker extends User {
             if (this.inquiries.contains(inq)) {
                 this.inquiries.remove(inq);
                 return true;
-            }
-            else {
+            } else {
             }
         } catch (NullPointerException ex) {
         }

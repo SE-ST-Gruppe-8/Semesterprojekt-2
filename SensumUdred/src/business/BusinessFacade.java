@@ -142,4 +142,16 @@ public class BusinessFacade implements IBusiness {
         return (SocialWorker) security.getActiveUser();
     }
 
+    @Override
+    public void deleteCase(ICase newCase) {
+        if (security.getActiveUser() instanceof SocialWorker) {
+            if (((SocialWorker) security.getActiveUser()).deleteCase(newCase, cases)) {
+                security.logData("Deleted case " + newCase.toString());
+                data.saveCases((ArrayList<ICase>) cases.stream().collect(Collectors.toList()));
+            } else {
+                System.out.println("Case did not exist");
+            }
+        }
+    }
+
 }

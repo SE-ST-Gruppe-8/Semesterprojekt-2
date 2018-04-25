@@ -36,4 +36,5 @@ public interface IBusiness {
 
     public ObservableList<ICase> getCases();
 
+     public void deleteCase(ICase newCase);
 }
