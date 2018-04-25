@@ -128,5 +128,6 @@ public class BusinessFacade implements IBusiness {
         citizens.remove(c);
         c.setInquiry((Inquiry) inquiry);
         citizens.add(c);
+        data.saveCitizens(citizens);
     }
 }
