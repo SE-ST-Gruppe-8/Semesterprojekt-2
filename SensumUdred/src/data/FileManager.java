@@ -1,5 +1,6 @@
 package data;
 
+import acq.ICitizen;
 import acq.IUser;
 import business.SystemAdmin;
 import java.io.EOFException;
@@ -46,6 +47,30 @@ public class FileManager {
         return data;
     }
 
+    public ArrayList<ICitizen> readCitizens() {
+        file = new File("users.dat");
+        ArrayList<ICitizen> data = new ArrayList<>();
+        boolean read = true;
+        try {
+            fileReader = new ObjectInputStream(new FileInputStream(file));
+            while (read) {
+                try {
+                    ICitizen c = (ICitizen) fileReader.readObject();
+                    data.add(c);
+                } catch (EOFException eof) {
+                    System.out.println("Reached end of file.");
+                    break; // stop reading
+                }
+            }
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Class not found.");
+        }
+        return data;
+    }
+
     public void writeToFile(ArrayList<IUser> data) {
         System.out.println(data);
         file = new File("users.dat");
@@ -59,7 +84,24 @@ public class FileManager {
             System.out.println("File not found.");
         } catch (IOException ex) {
             System.out.println("IOException encountered.");
-        }   
+        }
+
+    }
+
+    public void saveCitizens(ArrayList<ICitizen> data) {
+        System.out.println(data);
+        file = new File("users.dat");
+        try {
+            fileWriter = new ObjectOutputStream(new FileOutputStream(file));
+            for (ICitizen c : data) {
+                fileWriter.writeObject(c);
+            }
+            fileWriter.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("File not found.");
+        } catch (IOException ex) {
+            System.out.println("IOException encountered.");
+        }
 
     }
 
@@ -67,7 +109,6 @@ public class FileManager {
         ArrayList<IUser> test = new ArrayList<>();
         FileManager fm = new FileManager();
         test.add(new SystemAdmin("ASS", "b", "starts", "twerking", "e"));
-
 
         fm.writeToFile(test);
         System.out.println(fm.readFile());
