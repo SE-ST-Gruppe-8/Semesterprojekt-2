@@ -31,6 +31,4 @@ public interface IUser {
 
     public int getRole();
 
-    public void setRole(int role);
-
 }

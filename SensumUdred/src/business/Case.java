@@ -11,4 +11,18 @@ package business;
  */
 public class Case {
 
+    private final String ID;
+    private String description;
+    private String process;
+    private SocialWorker socialWorker;
+    private Citizen citizen;
+
+    public Case(String id, String des, String process, SocialWorker sw, Citizen c) {
+        this.ID = id;
+        this.description = des;
+        this.process = process;
+        this.socialWorker = sw;
+        this.citizen = c;
+    }
+
 }
