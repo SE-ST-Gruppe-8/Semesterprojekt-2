@@ -21,6 +21,7 @@ public interface IData {
 
     public void logData(String logData);
     
+    public ArrayList<ICase> readCases();
     
 
 }

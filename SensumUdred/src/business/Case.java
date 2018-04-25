@@ -6,12 +6,13 @@
 package business;
 
 import acq.ICase;
+import java.io.Serializable;
 
 /**
  *
  * @author Bruger
  */
-public class Case implements ICase {
+public class Case implements ICase, Serializable {
 
     private final String ID;
 
@@ -31,4 +32,7 @@ public class Case implements ICase {
         this.citizen = c;
     }
 
+    public String toString() {
+        return socialWorker.toString()+" "+ID;
+    }
 }

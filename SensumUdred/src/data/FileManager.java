@@ -2,6 +2,9 @@ package data;
 
 import acq.ICase;
 import acq.IUser;
+import business.Case;
+import business.Citizen;
+import business.SocialWorker;
 import business.SystemAdmin;
 import java.io.EOFException;
 import java.io.File;
@@ -85,6 +88,21 @@ public class FileManager {
         } catch (IOException ex) {
             System.out.println("IOException encountered.");
         }
+    }
+    public void writeCaseToFile(ArrayList<ICase> data) {
+        System.out.println(data);
+        file = new File("cases.dat");
+        try {
+            fileWriter = new ObjectOutputStream(new FileOutputStream(file));
+            for (ICase u : data) {
+                fileWriter.writeObject(u);
+            }
+            fileWriter.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("File not found.");
+        } catch (IOException ex) {
+            System.out.println("IOException encountered.");
+        }
 
     }
 
@@ -107,10 +125,19 @@ public class FileManager {
 
     public static void main(String[] args) {
         ArrayList<IUser> test = new ArrayList<>();
+        
+        ArrayList<ICase> test2 = new ArrayList<>();
         FileManager fm = new FileManager();
         test.add(new SystemAdmin("ASS", "b", "starts", "twerking", "e"));
+        SocialWorker sw = new SocialWorker( "polse","joe","polse123","lol","twerk");
+        test.add(sw);
+        test2.add( new Case("joe","pik","lol",sw,new Citizen()));
+        
+        
 
         fm.writeToFile(test);
+        fm.writeCaseToFile(test2);
+        
         System.out.println(fm.readFile());
 
     }

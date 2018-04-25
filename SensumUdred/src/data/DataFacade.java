@@ -41,4 +41,9 @@ public class DataFacade implements IData {
     public void saveCases(ArrayList<ICase> data) {
         fm.saveCases(data);
     }
+    
+    @Override
+    public ArrayList<ICase> readCases() {
+        return fm.readCases();
+    }
 }

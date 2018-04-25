@@ -21,6 +21,11 @@ public class BusinessFacade implements IBusiness {
     private ObservableList<ICase> cases;
 
     @Override
+    public ObservableList<ICase> getCases() {
+        return cases = FXCollections.observableArrayList(data.readCases());
+    }
+
+    @Override
     public ObservableList<IUser> getUsers() {
         return users = FXCollections.observableArrayList(data.readUsers());
     }
@@ -68,8 +73,7 @@ public class BusinessFacade implements IBusiness {
                 data.saveUsers((ArrayList<IUser>) users.stream().collect(Collectors.toList()));
                 security.logData("Created user: " + userName);
             }
-        }
-        else {
+        } else {
             System.out.println("error, could not create user");
         }
     }
@@ -86,8 +90,7 @@ public class BusinessFacade implements IBusiness {
             if (((SystemAdmin) security.getActiveUser()).deleteUser(user, users)) {
                 security.logData("Deleted user " + user.toString());
                 data.saveUsers((ArrayList<IUser>) users.stream().collect(Collectors.toList()));
-            }
-            else {
+            } else {
                 System.out.println("User did not exist");
             }
         }
@@ -105,8 +108,7 @@ public class BusinessFacade implements IBusiness {
         if (security.validateUserLogin(data.readUsers(), username, password)) {
             data.logData(username + " logged in.");
             return true;
-        }
-        else {
+        } else {
             data.logData("Login attempt with username: " + username);
             return false;
         }
@@ -127,13 +129,12 @@ public class BusinessFacade implements IBusiness {
                 cases.add(newCase);
                 data.saveCases((ArrayList<ICase>) cases.stream().collect(Collectors.toList()));
                 security.logData("Created case with id: " + id);
-            }
-            else {
+            } else {
                 System.out.println(s);
             }
-            System.out.println("joe");
-        }
 
+        }
+        System.out.println("joe" + id);
     }
 
     @Override
