@@ -5,7 +5,6 @@
  */
 package acq;
 
-import java.util.ArrayList;
 import javafx.collections.ObservableList;
 
 /**
