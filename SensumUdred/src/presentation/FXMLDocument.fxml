@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -16,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<TabPane prefHeight="300.0" prefWidth="720.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.FXMLDocumentController">
+<TabPane prefHeight="300.0" prefWidth="720.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.FXMLDocumentController">
    <tabs>
       <Tab fx:id="loginTab" text="Login">
          <content>
@@ -37,7 +38,7 @@
                         <Label text="Username" GridPane.columnIndex="1" />
                         <TextField fx:id="loginUsernameTextField" GridPane.columnIndex="2" />
                         <Label text="Password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField fx:id="loginPasswordTextField" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <PasswordField fx:id="loginPasswordTextField" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                   <HBox alignment="CENTER" prefHeight="22.0" prefWidth="720.0" spacing="10.0">
