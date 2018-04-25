@@ -29,7 +29,7 @@ public class FXMLDocumentController implements Initializable {
 
     private IBusiness ib;
     private AlertBox ab;
-    
+
     @FXML
     private TextField loginUsernameTextField;
     @FXML
@@ -70,7 +70,6 @@ public class FXMLDocumentController implements Initializable {
     private Button UpdateList;
     @FXML
     private Tab loginTab;
-    @FXML
     private Tab socialTab;
     @FXML
     private Tab adminTab;
@@ -84,13 +83,21 @@ public class FXMLDocumentController implements Initializable {
     private Button swDeleteCaseListButton;
     @FXML
     private Button swUpdateCaseListButton;
+    @FXML
+    private Tab casesTab;
+    @FXML
+    private Tab inquiriesTab;
+    @FXML
+    private Tab referenceTab;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
 
         ib = PresentationFacade.getIData().getIBusiness();
-        socialTab.setDisable(true);
+        casesTab.setDisable(true);
+        inquiriesTab.setDisable(true);
+        referenceTab.setDisable(true);
         adminTab.setDisable(true);
         updateUserList();
         updateCaseList();
@@ -102,15 +109,18 @@ public class FXMLDocumentController implements Initializable {
         boolean iscorrect = ib.validateUser(loginUsernameTextField.getText(), loginPasswordTextField.getText());
 
         if (iscorrect) {
-            loginInfoLabel.setText("Succesfully logged in as: " + loginUsernameTextField.getText());
-            if (ib.getRole() == 1)
-                socialTab.setDisable(false);
-            else if (ib.getRole() == 0)
+            loginInfoLabel.setText("Succesfully logged in as: " + ib.getActiveUser().getName());
+            if (ib.getRole() == 1) {
+                casesTab.setDisable(false);
+                inquiriesTab.setDisable(false);
+                referenceTab.setDisable(false);
+            } else if (ib.getRole() == 0) {
                 adminTab.setDisable(false);
+            }
         } else {
             loginInfoLabel.setText("Wrong input");
         }
-        
+
     }
 
     @FXML
@@ -118,7 +128,9 @@ public class FXMLDocumentController implements Initializable {
         // TODO
         ib.logOutActiveUser();
         adminTab.setDisable(true);
-        socialTab.setDisable(true);
+        casesTab.setDisable(true);
+        inquiriesTab.setDisable(true);
+        referenceTab.setDisable(true);
         loginInfoLabel.setText("You have logged out.");
 
     }
@@ -157,14 +169,14 @@ public class FXMLDocumentController implements Initializable {
             adminUserListView.setItems(ib.getUsers());
         }
     }
+
     public void updateCaseList() {
-        if (ib.getCases()== null) {
+        if (ib.getCases() == null) {
 //            sw.setText("no Users installed");
         } else {
             caseListView.setItems(ib.getCases());
         }
     }
-
 
     @FXML
     private void UpdateCaseListAction(ActionEvent event) {
@@ -176,11 +188,12 @@ public class FXMLDocumentController implements Initializable {
         updateCaseList();
         ab.display("Create case", ib);
         updateCaseList();
-        
+
     }
-    
 
     @FXML
     private void DeleteCaseAction(ActionEvent event) {
+        ib.deleteCase(caseListView.getSelectionModel().getSelectedItem());
+        updateCaseList();
     }
 }

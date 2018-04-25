@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<TabPane prefHeight="300.0" prefWidth="720.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.FXMLDocumentController">
+<TabPane prefHeight="300.0" prefWidth="720.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.FXMLDocumentController">
    <tabs>
       <Tab fx:id="loginTab" text="Login">
          <content>
@@ -56,8 +56,7 @@
             </VBox>
          </content>
       </Tab>
-      <Tab fx:id="socialTab" text="Social Worker" />
-      <Tab text="Cases">
+      <Tab fx:id="casesTab" text="Cases">
          <content>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -81,12 +80,12 @@
             </HBox>
          </content>
       </Tab>
-      <Tab text="Inquiries">
+      <Tab fx:id="inquiriesTab" text="Inquiries">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
         </content>
       </Tab>
-      <Tab text="References">
+      <Tab fx:id="referenceTab" text="References">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
         </content>
