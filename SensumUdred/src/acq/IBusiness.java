@@ -7,6 +7,7 @@ package acq;
 
 import business.Citizen;
 import business.SocialWorker;
+import business.User;
 import javafx.collections.ObservableList;
 
 /**
@@ -30,5 +31,7 @@ public interface IBusiness {
     public void logOutActiveUser();
 
     public int getRole();
+    
+    public User getActiveUser();
 
 }
