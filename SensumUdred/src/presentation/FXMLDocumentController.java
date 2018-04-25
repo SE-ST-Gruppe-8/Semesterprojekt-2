@@ -166,8 +166,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void createCaseAction(ActionEvent event) {
         ab = new AlertBox();
-        ab.display("Create case");
+        ab.display("Create case", ib);
+        
     }
+    
 
     @FXML
     private void DeleteCaseAction(ActionEvent event) {

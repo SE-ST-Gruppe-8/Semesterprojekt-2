@@ -32,6 +32,6 @@ public interface IBusiness {
 
     public int getRole();
     
-    public User getActiveUser();
+    public SocialWorker getActiveUser();
 
 }

@@ -1,5 +1,7 @@
 package presentation;
 
+import acq.IBusiness;
+import business.Citizen;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -25,7 +27,7 @@ public class AlertBox {
      * @param filename the filename of the textfile. Textfile must be placed in
      * Presentation/Textfiles/
      */
-    public void display(String header) {
+    public void display(String header, IBusiness ib) {
         Stage window = new Stage();
         window.setTitle(header);
         window.setMinWidth(400);
@@ -46,7 +48,9 @@ public class AlertBox {
         closeButton.setOnAction(e -> window.close());
 
         Button createButton = new Button("Create");
-//        createButton.setOnAction(insert create method here);
+        createButton.setOnAction(e -> ib.createCase(swCaseIdTextField.getText(), swCaseDesTextArea.getText(), swCaseProcessTextArea.getText(), ib.getActiveUser(), new Citizen()));
+//        createButton.setOnAction( e-> window.close());
+
 
         HBox buttonLayout = new HBox();
         buttonLayout.getChildren().addAll(closeButton, createButton);

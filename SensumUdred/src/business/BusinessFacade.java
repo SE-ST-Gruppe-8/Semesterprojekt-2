@@ -131,14 +131,14 @@ public class BusinessFacade implements IBusiness {
             else {
                 System.out.println(s);
             }
-
+            System.out.println("joe");
         }
 
     }
 
     @Override
-    public User getActiveUser() {
-        return security.getActiveUser();
+    public SocialWorker getActiveUser() {
+        return (SocialWorker) security.getActiveUser();
     }
 
 }
