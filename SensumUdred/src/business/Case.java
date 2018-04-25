@@ -5,10 +5,12 @@
  */
 package business;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Bruger
  */
-public class Case {
+public class Case implements Serializable{
 
 }

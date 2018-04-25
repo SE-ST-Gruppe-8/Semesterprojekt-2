@@ -5,13 +5,14 @@
  */
 package business;
 
-import java.util.ArrayList;
+import acq.IInquiry;
+import java.io.Serializable;
 
 /**
  *
  * @author Bruger
  */
-public class Inquiry {
+public class Inquiry implements IInquiry, Serializable {
     private String origin;
     private boolean isCitizenInformed;
     private String id;
@@ -25,18 +26,22 @@ public class Inquiry {
         this.id = id;
     }
 
+    @Override
     public String getOrigin() {
         return origin;
     }
 
+    @Override
     public boolean isCitizenInformed() {
         return isCitizenInformed;
     }
 
+    @Override
     public String getId() {
         return id;
     }
 
+    @Override
     public Citizen getCitizen() {
         return citizen;
     }

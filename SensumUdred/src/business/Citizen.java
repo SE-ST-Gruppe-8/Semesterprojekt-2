@@ -7,12 +7,13 @@ package business;
 
 import acq.ICitizen;
 import acq.IInquiry;
+import java.io.Serializable;
 
 /**
  *
  * @author Bruger
  */
-public class Citizen implements ICitizen{
+public class Citizen implements ICitizen, Serializable{
     private String name;
     private String id;
     private String needs;
