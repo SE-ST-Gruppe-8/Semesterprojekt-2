@@ -22,20 +22,20 @@ public class SocialWorker extends User {
         this.references = new HashSet<>();
     }
 
-    public Pair<Boolean, String> createCase(String id, String description, String process,
+    public boolean createCase(String id, String description, String process,
             SocialWorker sw, Citizen c, Order o) {
         // TODO
-        return new Pair<>(false, "Missing code");
+        return false;
     }
 
-    public Pair<Boolean, String> createReference(String id, String socialInstance, String description) {
+    public boolean createReference(String id, String socialInstance, String description) {
         // TODO
-        return new Pair<>(false, "Missing code");
+        return false;
     }
 
-    public Pair<Boolean, String> informCitizen(Case c) {
+    public boolean informCitizen(Case c) {
         // TODO
-        return new Pair<>(false, "Missing code");
+        return false;
     }
 
     public Set<Case> getCases() {
@@ -50,94 +50,65 @@ public class SocialWorker extends User {
         return this.references;
     }
 
-    public Pair<Boolean, String> addCase(Case c) {
-        String trueMessage;
-        String falseMessage;
+    public boolean addCase(Case c) {
         try {
             this.cases.add(c);
-            trueMessage = "The case was added";
-            return new Pair<>(true, trueMessage);
+            return true;
         } catch (NullPointerException ex) {
-            falseMessage = "An error occured";
-            return new Pair<>(false, falseMessage);
+            return false;
         }
     }
 
-    public Pair<Boolean, String> addInquiry(Inquiry inq) {
-        String trueMessage;
-        String falseMessage;
+    public boolean addInquiry(Inquiry inq) {
         try {
             this.inquiries.add(inq);
-            trueMessage = "The inquiry was added";
-            return new Pair<>(true, trueMessage);
+            return true;
         } catch (NullPointerException ex) {
-            falseMessage = "An error occured";
-            return new Pair<>(false, falseMessage);
+            return false;
         }
     }
 
-    public Pair<Boolean, String> addReference(Reference ref) {
-        String trueMessage;
-        String falseMessage;
+    public boolean addReference(Reference ref) {
         try {
             this.references.add(ref);
-            trueMessage = "The reference was added";
-            return new Pair<>(true, trueMessage);
+            return true;
         } catch (NullPointerException ex) {
-            falseMessage = "An error occured";
-            return new Pair<>(false, falseMessage);
+            return false;
         }
     }
 
-    public Pair<Boolean, String> removeCase(Case c) {
-        String trueMessage;
-        String falseMessage;
+    public boolean removeCase(Case c) {
         try {
             if (this.cases.contains(c)) {
                 this.cases.remove(c);
-                trueMessage = "The case was removed";
-                return new Pair<>(true, trueMessage);
-            } else {
-                falseMessage = "The case was not found";
+                return true;
             }
         } catch (NullPointerException ex) {
-            falseMessage = "An error occured";
         }
-        return new Pair<>(false, falseMessage);
+        return false;
     }
 
-    public Pair<Boolean, String> removeInquiry(Inquiry inq) {
-        String trueMessage;
-        String falseMessage;
+    public boolean removeInquiry(Inquiry inq) {
         try {
             if (this.inquiries.contains(inq)) {
                 this.inquiries.remove(inq);
-                trueMessage = "The inquiry was removed";
-                return new Pair<>(true, trueMessage);
+                return true;
             } else {
-                falseMessage = "The inquiry was not found";
             }
         } catch (NullPointerException ex) {
-            falseMessage = "An error occured";
         }
-        return new Pair<>(false, falseMessage);
+        return false;
     }
 
-    public Pair<Boolean, String> removeReference(Reference ref) {
-        String trueMessage;
-        String falseMessage;
+    public boolean removeReference(Reference ref) {
         try {
             if (this.references.contains(ref)) {
                 this.references.remove(ref);
-                trueMessage = "The reference was removed";
-                return new Pair<>(true, trueMessage);
-            } else {
-                falseMessage = "The reference was not found";
+                return true;
             }
         } catch (NullPointerException ex) {
-            falseMessage = "An error occured";
         }
-        return new Pair<>(false, falseMessage);
+        return false;
     }
 
 }
