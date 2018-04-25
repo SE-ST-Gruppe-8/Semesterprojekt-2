@@ -5,11 +5,14 @@
  */
 package business;
 
+import acq.ICitizen;
+import acq.IInquiry;
+
 /**
  *
  * @author Bruger
  */
-public class Citizen {
+public class Citizen implements ICitizen{
     private String name;
     private String id;
     private String needs;
@@ -53,9 +56,9 @@ public class Citizen {
     public void setReference(Reference reference) {
         this.reference = reference;
     }
-
-    public Inquiry getInquiry() {
-        return inquiry;
+    @Override
+    public IInquiry getInquiry() {
+        return (IInquiry) inquiry;
     }
     
     public void createInquiry(String id, String origin, boolean informed){

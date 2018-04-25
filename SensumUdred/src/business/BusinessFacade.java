@@ -15,6 +15,7 @@ public class BusinessFacade implements IBusiness {
     private IData data;
     private SecurityHandler security;
     private ObservableList<IUser> users;
+    private ObservableList<IInquiry> inquiries = FXCollections.observableArrayList();
 
     @Override
     public ObservableList<IUser> getUsers() {
@@ -102,7 +103,11 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public ObservableList<IInquiry> getInquiries() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<ICitizen> citizens = data.getCitizens();
+        for(ICitizen c : citizens) {
+            inquiries.add(c.getInquiry());
+        }
+        return inquiries;
     }
     
     public static void main(String[] args) {
@@ -110,6 +115,5 @@ public class BusinessFacade implements IBusiness {
         for(int i = 1; i <= 10; i++){
             inquiries.add(new Inquiry(String.valueOf(i), "origin"+i, true, new Citizen("Citizen"+(i), String.valueOf(i), "needs"+i)));
         }
-        
     }
 }
