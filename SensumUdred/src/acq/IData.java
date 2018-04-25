@@ -18,5 +18,6 @@ public interface IData {
     public ArrayList<IUser> readUsers();
 
     public void logData(String logData);
+    ArrayList<ICitizen> getCitizens();
 
 }

@@ -15,6 +15,7 @@ public class BusinessFacade implements IBusiness {
     private IData data;
     private SecurityHandler security;
     private ObservableList<IUser> users;
+    private ObservableList<IInquiry> inquiries = FXCollections.observableArrayList();
 
     @Override
     public ObservableList<IUser> getUsers() {
@@ -98,5 +99,14 @@ public class BusinessFacade implements IBusiness {
             data.logData("Login attempt with username: " + username);
             return false;
         }
+    }
+
+    @Override
+    public ObservableList<IInquiry> getInquiries() {
+        ArrayList<ICitizen> citizens = data.getCitizens();
+        for(ICitizen c : citizens) {
+            inquiries.add(c.getInquiry());
+        }
+        return inquiries;
     }
 }
