@@ -110,18 +110,7 @@ public class BusinessFacade implements IBusiness {
         }
         return inquiries;
     }
-
-    public void tester() {
-        ArrayList<ICitizen> citizens = new ArrayList<>();
-        for (int i = 1; i <= 10; i++) {
-            citizens.add(new Citizen("Citizen" + (i), String.valueOf(i), "needs" + i));
-        }
-        for (ICitizen c : citizens) {
-            c.createInquiry(String.valueOf(c.getId()), "origin" + c.getId(), true);
-        }
-        data.saveCitizens(citizens);
-    }
-
+    
     public void saveInquiry(IInquiry inquiry) {
         ArrayList<ICitizen> citizens = data.getCitizens();
         Citizen c = inquiry.getCitizen();
@@ -130,4 +119,17 @@ public class BusinessFacade implements IBusiness {
         citizens.add(c);
         data.saveCitizens(citizens);
     }
+
+//    public void tester() {
+//        ArrayList<ICitizen> citizens = new ArrayList<>();
+//        for (int i = 1; i <= 10; i++) {
+//            citizens.add(new Citizen("Citizen" + (i), String.valueOf(i), "needs" + i));
+//        }
+//        for (ICitizen c : citizens) {
+//            c.createInquiry(String.valueOf(c.getId()), "origin" + c.getId(), true);
+//        }
+//        data.saveCitizens(citizens);
+//    }
+
+    
 }
