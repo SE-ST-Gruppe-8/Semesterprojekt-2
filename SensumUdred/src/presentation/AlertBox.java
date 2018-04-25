@@ -14,7 +14,10 @@ import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Scanner;
 
-public abstract class AlertBox {
+public class AlertBox {
+    public AlertBox(){
+        
+    }
 
     /**
      * Display a popup window
@@ -23,7 +26,7 @@ public abstract class AlertBox {
      * @param filename the filename of the textfile. Textfile must be placed in
      * Presentation/Textfiles/
      */
-    static void display(String header, String filename) {
+    static void display(String header) {
         StringBuilder text = new StringBuilder();
         Stage window = new Stage();
         window.setTitle(header);
@@ -32,23 +35,6 @@ public abstract class AlertBox {
         window.setResizable(false);
         Scanner input;
 
-        File directory = new File("");
-        String realFilePath;
-        if (directory.getAbsolutePath().contains("WorldOfZuul21")) {
-            realFilePath = directory.getAbsolutePath() + "/src/Presentation/Textfiles/" + filename;
-        } else {
-            realFilePath = directory.getAbsolutePath() + "/WorldOfZuul21/src/Presentation/Textfiles/" + filename;
-        }
-        File file = new File(realFilePath);
-
-        try {
-            input = new Scanner(file);
-            while (input.hasNext()) {
-                text.append(input.nextLine()).append(System.lineSeparator());
-            }
-        } catch (FileNotFoundException ex) {
-            System.err.println("Error: File at " + realFilePath + " not found.");
-        }
         Label label = new Label();
         label.setText(text.toString());
         label.setWrapText(true);

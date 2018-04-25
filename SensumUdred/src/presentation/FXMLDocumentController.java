@@ -29,7 +29,7 @@ import javafx.scene.control.ToggleGroup;
 public class FXMLDocumentController implements Initializable {
 
     private IBusiness ib;
-
+    private AlertBox ab; 
     @FXML
     private TextField loginUsernameTextField;
     @FXML
@@ -76,6 +76,14 @@ public class FXMLDocumentController implements Initializable {
     private Label loginInfoLabel;
 
     private PresentationFacade pf;
+    @FXML
+    private ListView<?> adminUserListView1;
+    @FXML
+    private Button deleteUserButton1;
+    @FXML
+    private Button UpdateList1;
+    @FXML
+    private Button swCasesCreateCaseButton;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -147,5 +155,9 @@ public class FXMLDocumentController implements Initializable {
         } else {
             adminUserListView.setItems(ib.getUsers());
         }
+    }
+
+    @FXML
+    private void CreateCase(ActionEvent event) {
     }
 }
