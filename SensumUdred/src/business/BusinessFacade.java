@@ -18,7 +18,7 @@ public class BusinessFacade implements IBusiness {
 
     private ObservableList<IUser> users;
     private ObservableList<IInquiry> inquiries = FXCollections.observableArrayList();
-
+    private ObservableList<ICitizen> citizens;
     private ObservableList<ICase> cases;
 
     @Override
@@ -203,17 +203,20 @@ public class BusinessFacade implements IBusiness {
     }
     
     public void createCitizen(String name, String id, String needs) {
-//        ICitizen citizen;
-//        if (security.getActiveUser() instanceof SocialWorker) {
-//            citizen = ((ISocialWorker) security.getActiveUser()).createCitzen(name, id, needs);
-//                data.saveCases((ArrayList<ICase>) cases.stream().collect(Collectors.toList()));
-//                security.logData("Created case with id: " + id);
-//            } else {
-//                System.out.println(s);
-//            }
-//
+        ICitizen citizen;
+        String s = "Error";
+        if (security.getActiveUser() instanceof SocialWorker) {
+            citizen = ((ISocialWorker) security.getActiveUser()).createCitizen(name, id, needs);
+            if (citizen != null) {
+                citizens.add(citizen);
+                data.saveData((ArrayList<ICase>) cases.stream().collect(Collectors.toList()), "Citizens");
+                security.logData("Created case with id: " + id);
+            } else {
+                System.out.println(s);
+            }
+            
         }
 
-    
+    }
     
 }
