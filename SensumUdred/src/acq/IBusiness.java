@@ -29,6 +29,7 @@ public interface IBusiness {
     public ObservableList<IUser> getUsers();
 
     public ObservableList<IInquiry> getInquiries();
+    public void saveInquiry(IInquiry inquiry);
 
     public void logOutActiveUser();
 
@@ -38,5 +39,9 @@ public interface IBusiness {
 
     public ObservableList<ICase> getCases();
 
-     public void deleteCase(ICase newCase);
+    public void deleteCase(ICase newCase);
+     
+    public ObservableList<ICitizen> getCitizens();
+    
+    public void saveCitizens();
 }

@@ -127,6 +127,7 @@ public class BusinessFacade implements IBusiness {
         return inquiries;
     }
     
+    @Override
     public void saveInquiry(IInquiry inquiry) {
         ArrayList<ICitizen> citizens = data.getCitizens();
         Citizen c = inquiry.getCitizen();
@@ -184,5 +185,15 @@ public class BusinessFacade implements IBusiness {
                 System.out.println("Case did not exist");
             }
         }
+    }
+
+    @Override
+    public ObservableList<ICitizen> getCitizens() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void saveCitizens() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
