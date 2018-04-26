@@ -142,7 +142,7 @@ public class BusinessFacade implements IBusiness {
 //            citizens.add(new Citizen("Citizen" + (i), String.valueOf(i), "needs" + i));
 //        }
 //        for (ICitizen c : citizens) {
-//            c.createInquiry(String.valueOf(c.getId()), "origin" + c.getId(), true);
+//            c.createInquiry(String.valueOf(c.getId()), "origin" + c.getId(), true, "description");
 //        }
 //        data.saveCitizens(citizens);
 //    }

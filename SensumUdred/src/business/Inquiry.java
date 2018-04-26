@@ -17,13 +17,15 @@ public class Inquiry implements IInquiry, Serializable {
     private boolean isCitizenInformed;
     private String id;
     private Citizen citizen;
+    private String description;
     
     
-    public Inquiry(String id, String origin, boolean informed, Citizen citizen){
+    public Inquiry(String id, String origin, boolean informed, Citizen citizen, String description){
         this.origin = origin;
         this.isCitizenInformed = informed;
         this.citizen = citizen;
         this.id = id;
+        this.description = description;
     }
 
     @Override
@@ -45,4 +47,17 @@ public class Inquiry implements IInquiry, Serializable {
     public Citizen getCitizen() {
         return citizen;
     }
+
+    @Override
+    public String getDescription() {
+        return description;
+    }
+
+    @Override
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
+    
+    
 }
