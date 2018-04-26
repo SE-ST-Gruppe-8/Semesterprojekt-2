@@ -137,4 +137,14 @@ public class SocialWorker extends User implements ISocialWorker {
         return citizen;
     }
 
+ 
+    public boolean deleteCitizen(ICitizen citizen, ObservableList<ICitizen> citizens) {
+        boolean citizenRemoved = false;
+        if (citizens.contains(citizen)) {
+            System.out.println("brrt");
+            citizenRemoved = citizens.remove(citizen);
+        }
+        return citizenRemoved;
+    }
+
 }

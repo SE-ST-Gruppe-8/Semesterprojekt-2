@@ -42,4 +42,6 @@ public interface ISocialWorker {
     public int getRole();
     
     public ICitizen createCitizen(String name, String id, String needs);
+    
+    public boolean deleteCitizen(ICitizen citizen, ObservableList<ICitizen> citizens);
 }
