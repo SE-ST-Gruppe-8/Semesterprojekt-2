@@ -101,6 +101,7 @@ public class FXMLDocumentController implements Initializable {
         adminTab.setDisable(true);
         updateUserList();
         updateCaseList();
+        logoutButton.setDisable(true);
     }
 
     @FXML
@@ -110,6 +111,8 @@ public class FXMLDocumentController implements Initializable {
 
         if (iscorrect) {
             loginInfoLabel.setText("Succesfully logged in as: " + ib.getActiveUser().getName());
+            loginButton.setDisable(true);
+            logoutButton.setDisable(false);
             if (ib.getRole() == 1) {
                 casesTab.setDisable(false);
                 inquiriesTab.setDisable(false);
@@ -126,12 +129,15 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void logoutButtonAction(ActionEvent event) {
         // TODO
+
         ib.logOutActiveUser();
         adminTab.setDisable(true);
         casesTab.setDisable(true);
         inquiriesTab.setDisable(true);
         referenceTab.setDisable(true);
         loginInfoLabel.setText("You have logged out.");
+        logoutButton.setDisable(true);
+        loginButton.setDisable(false);
 
     }
 
