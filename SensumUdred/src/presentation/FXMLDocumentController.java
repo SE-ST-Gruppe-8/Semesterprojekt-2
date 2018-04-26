@@ -298,7 +298,7 @@ public class FXMLDocumentController implements Initializable {
         updateUserList();
         updateCitizenList();
         updateCaseList();
-//        updateInquiryList();
+        updateInquiryList();
     }
 
 }

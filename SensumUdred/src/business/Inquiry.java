@@ -59,6 +59,9 @@ public class Inquiry implements IInquiry, Serializable {
         this.description = description;
     }
     
+    public String toString(){
+        return citizen.getId()+" "+citizen.getName();
+    }
     
     
 }
