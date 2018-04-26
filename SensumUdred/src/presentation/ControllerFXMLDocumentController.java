@@ -25,18 +25,14 @@ import javafx.scene.control.ToggleGroup;
  *
  * @author Robin
  */
-public class FXMLDocumentController implements Initializable {
+public class ControllerFXMLDocumentController implements Initializable {
 
     private IBusiness ib;
     private AlertBox ab;
 
-    @FXML
     private TextField loginUsernameTextField;
-    @FXML
     private TextField loginPasswordTextField;
-    @FXML
     private Button loginButton;
-    @FXML
     private Button logoutButton;
     @FXML
     private RadioButton createSocialWorkerRadioButton;
@@ -68,12 +64,9 @@ public class FXMLDocumentController implements Initializable {
     private ListView<ICase> caseListView;
     @FXML
     private Button UpdateList;
-    @FXML
-    private Tab loginTab;
     private Tab socialTab;
     @FXML
     private Tab adminTab;
-    @FXML
     private Label loginInfoLabel;
 
     private PresentationFacade pf;
@@ -104,7 +97,6 @@ public class FXMLDocumentController implements Initializable {
         logoutButton.setDisable(true);
     }
 
-    @FXML
     private void loginButtonAction(ActionEvent event) {
         // TODO
         boolean iscorrect = ib.validateUser(loginUsernameTextField.getText(), loginPasswordTextField.getText());
@@ -126,7 +118,6 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-    @FXML
     private void logoutButtonAction(ActionEvent event) {
         // TODO
 
