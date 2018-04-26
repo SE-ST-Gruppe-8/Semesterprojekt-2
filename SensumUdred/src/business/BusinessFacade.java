@@ -27,7 +27,9 @@ public class BusinessFacade implements IBusiness {
     @Override
     public ObservableList<ICase> getCases() {
         ArrayList<ICase> cases = new ArrayList<>();
-        data.loadData(cases, "cases");
+        for(ICitizen ic : citizens) {
+           if(ic.getCase() != null) cases.add(ic.getCase());
+        }
         return this.cases = FXCollections.observableArrayList(cases);
     }
 
@@ -175,6 +177,9 @@ public class BusinessFacade implements IBusiness {
         ICase newCase;
         if (security.getActiveUser() instanceof SocialWorker) {
             newCase = ((ISocialWorker) security.getActiveUser()).createCase(id, des, process, sw, c);
+            System.out.println(newCase + "meow");
+            c.setCase((Case) newCase);
+            System.out.println(c.getName() + "meow");
             if (newCase != null) {
                 if (c.getCase() == null) {
                     cases.add(newCase);
@@ -184,7 +189,7 @@ public class BusinessFacade implements IBusiness {
                     cases.add(newCase);
                 }
 
-                data.saveData((ArrayList<ICase>) cases.stream().collect(Collectors.toList()), "cases");
+                data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
                 security.logData("Created case with id: " + id);
             } else {
                 System.out.println(s);
@@ -202,9 +207,9 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void deleteCase(ICase newCase) {
         if (security.getActiveUser() instanceof SocialWorker) {
-            if (((SocialWorker) security.getActiveUser()).deleteCase(newCase, cases)) {
+            if (((SocialWorker) security.getActiveUser()).deleteCase(newCase)) {
                 security.logData("Deleted case " + newCase.toString());
-                data.saveData((ArrayList<ICase>) cases.stream().collect(Collectors.toList()), "cases");
+                data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
             } else {
                 System.out.println("Case did not exist");
             }

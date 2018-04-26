@@ -16,7 +16,7 @@ public interface ISocialWorker {
 
     public ICase createCase(String id, String des, String process, ISocialWorker sw, ICitizen c);
 
-    public boolean deleteCase(ICase newCase, ObservableList<ICase> cases);
+    public boolean deleteCase(ICase newCase);
 
     public boolean createReference(String id, String socialInstance, String description);
 

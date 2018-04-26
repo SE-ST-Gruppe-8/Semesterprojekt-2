@@ -171,11 +171,12 @@ public class FileManager {
 
         
         test.add(sw);
-        test2.add(new Case("joe", "pind", "lol", sw, c));
         test3.add(c);
         fm.writeToFile(test, "users");
-        fm.writeToFile(test2, "cases");
+//        fm.writeToFile(test2, "cases");
         fm.writeToFile(test3, "citizens");
+
+        
 
         
     }

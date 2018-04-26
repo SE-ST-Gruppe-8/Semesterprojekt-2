@@ -10,6 +10,6 @@ package acq;
  * @author Frederik
  */
 public interface ICase {
-    
+    ICitizen getCitizen();
 
 }

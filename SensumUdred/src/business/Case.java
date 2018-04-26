@@ -14,7 +14,6 @@ import java.io.Serializable;
  *
  * @author Bruger
  */
-
 public class Case implements ICase, Serializable {
 
     private final String ID;
@@ -27,6 +26,8 @@ public class Case implements ICase, Serializable {
 
     private ICitizen citizen;
 
+    private static final long serialVersionUID = 1L;
+
     public Case(String id, String des, String process, ISocialWorker sw, ICitizen c) {
         this.ID = id;
         this.description = des;
@@ -36,6 +37,11 @@ public class Case implements ICase, Serializable {
     }
 
     public String toString() {
-        return this.socialWorker.toString()+" "+ID;
+        return this.socialWorker.toString()+" "+ID +citizen+description;
+    }
+
+    @Override
+    public ICitizen getCitizen() {
+        return this.citizen;
     }
 }

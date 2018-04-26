@@ -38,10 +38,11 @@ public class SocialWorker extends User implements ISocialWorker {
         return newCase;
     }
 
-    public boolean deleteCase(ICase newCase, ObservableList<ICase> cases) {
+    public boolean deleteCase(ICase newCase) {
         boolean deleted = false;
-        if (cases.contains(newCase)) {
-            deleted = cases.remove(newCase);
+        if (newCase.getCitizen() != null) {
+            newCase.getCitizen().setCase(null);
+            deleted = true;
         }
         return deleted;
     }

@@ -227,6 +227,7 @@ public class FXMLDocumentController implements Initializable {
     private void deleteCitizenAction(ActionEvent event) {
         ib.deleteCitizen(citizenListView.getSelectionModel().getSelectedItem());
         updateCitizenList();
+        updateCaseList();
     }
 
     @FXML
