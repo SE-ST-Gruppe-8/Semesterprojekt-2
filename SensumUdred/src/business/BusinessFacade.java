@@ -202,6 +202,7 @@ public class BusinessFacade implements IBusiness {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    @Override
     public void createCitizen(String name, String id, String needs) {
         ICitizen citizen;
         String s = "Error";
