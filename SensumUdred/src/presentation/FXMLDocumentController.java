@@ -30,7 +30,7 @@ import javafx.scene.control.ToggleGroup;
 public class FXMLDocumentController implements Initializable {
 
     private IBusiness ib;
-    private AlertBox ab;
+    private AlertBox ab = new AlertBox();
 
     @FXML
     private TextField loginUsernameTextField;
@@ -65,9 +65,13 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Label adminInfoLabel;
     @FXML
+    private Button updateUserListButton;
+    @FXML
     private ListView<IUser> adminUserListView;
     @FXML
     private ListView<ICase> caseListView;
+    @FXML
+    private ListView<ICitizen> citizenListView;
     @FXML
     private Tab loginTab;
     @FXML
@@ -90,26 +94,29 @@ public class FXMLDocumentController implements Initializable {
     private Label caseLabel;
     @FXML
     private Button editCaseButton;
-    @FXML
-    private ListView<ICitizen> citizenListView;
+
     @FXML
     private Button deleteCitizenButton;
     @FXML
     private Button updateCitizenButton;
     @FXML
-    private Button createInquirieButton;
+    private Button createInquiryButton;
     @FXML
-    private Button editInquirieButton;
+    private Button editInquiryButton;
     @FXML
-    private Button deleteInquirieButton;
+    private Button deleteInquiryButton;
+    @FXML
+    private Label inquiryLabel;
+    @FXML
+    private ListView<IInquiry> inquiryListView;
+    @FXML
+    private Button updateInquiryListButton;
     @FXML
     private Label inquiriesLabel;
     @FXML
-    private ListView<IInquiry> inquirieListView;
+    private Button createCitizenButton;
     @FXML
-    private Button updateInquirieListButton;
-    @FXML
-    private Button updateUserListButton;
+    private Button editCitizenButton;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -186,7 +193,6 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void createCaseAction(ActionEvent event) {
-        ab = new AlertBox();
         updateCaseList();
         if (citizenListView.getSelectionModel().getSelectedItem() != null) {
             ab.display("Create case", ib, (ICitizen) citizenListView.getSelectionModel().getSelectedItem());
@@ -198,27 +204,57 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void DeleteCaseAction(ActionEvent event) {
+    private void editCaseAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void deleteCaseAction(ActionEvent event) {
         ib.deleteCase(caseListView.getSelectionModel().getSelectedItem());
         updateCaseList();
     }
 
     @FXML
-    private void EditCaseAction(ActionEvent event) {
-        //TODO
+    private void createCitizenButtonAction(ActionEvent event) {
+
+        updateCitizenList();
+        ab.display("Create citizen", ib);
+        updateCitizenList();
+    }
+
+    @FXML
+    private void editCitizenButtonAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void deleteCitizenAction(ActionEvent event) {
+        ib.deleteCitizen(citizenListView.getSelectionModel().getSelectedItem());
+        updateCitizenList();
+    }
+
+    @FXML
+    private void createInquiryAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void editInquiryAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void deleteInquiryAction(ActionEvent event) {
+
     }
 
     public void updateInquiryList() {
         if (ib.getInquiries() == null) {
-            inquiriesLabel.setText("no Inquiries installed");
+            inquiryLabel.setText("no Inquiries installed");
         } else {
-            inquirieListView.setItems(ib.getInquiries());
+            inquiryListView.setItems(ib.getInquiries());
         }
     }
 
     public void updateCitizenList() {
         if (ib.getCitizen() == null) {
-            inquiriesLabel.setText("no Inquiries installed");
+            inquiryLabel.setText("no Inquiries installed");
         } else {
             citizenListView.setItems(ib.getCitizen());
         }
@@ -241,7 +277,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void UpdatInquirieListAction(ActionEvent event) {
+    private void updateInquiryListAction(ActionEvent event) {
         updateInquiryList();
     }
 

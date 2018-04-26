@@ -38,6 +38,13 @@ public class BusinessFacade implements IBusiness {
         return this.users = FXCollections.observableArrayList(users);
     }
 
+    @Override
+    public ObservableList<ICitizen> getCitizen() {
+        ArrayList<ICitizen> citizens = new ArrayList<>();
+        data.loadData(citizens, "citizens");
+        return this.citizens = FXCollections.observableArrayList(citizens);
+    }
+    
     public BusinessFacade() {
     }
 
@@ -229,11 +236,6 @@ public class BusinessFacade implements IBusiness {
         }
     }
 
-    @Override
-    public ObservableList<ICitizen> getCitizen() {
-        ArrayList<ICitizen> citizens = new ArrayList<>();
-        data.loadData(citizens, "citizens");
-        return this.citizens = FXCollections.observableArrayList(citizens);
-    }
+    
 
 }

@@ -49,9 +49,8 @@ public class AlertBox {
         closeButton.setOnAction(e -> window.close());
 
         Button createButton = new Button("Create");
-        createButton.setOnAction(e -> createAndClose(window,ib,swCaseIdTextField.getText(), swCaseDesTextArea.getText(), swCaseProcessTextArea.getText(), (ISocialWorker)ib.getActiveUser(), c));
+        createButton.setOnAction(e -> createAndClose(window, ib, swCaseIdTextField.getText(), swCaseDesTextArea.getText(), swCaseProcessTextArea.getText(), (ISocialWorker) ib.getActiveUser(), c));
 //        createButton.setOnAction( e-> window.close());
-
 
         HBox buttonLayout = new HBox();
         buttonLayout.getChildren().addAll(closeButton, createButton);
@@ -67,37 +66,53 @@ public class AlertBox {
         window.setScene(scene);
         window.showAndWait();
     }
-    
-    public void createAndClose(Stage window, IBusiness ib, String id, String des, String procs,ISocialWorker sw, ICitizen c){
-       ib.createCase(id, des, procs, sw, c);
-       window.close();
-    }
 
-    /**
-     * Display a popup window, with a highscore list
-     *
-     * @param header the text in the title bar of the window
-     * @param highScore List containing {@link IHighScore}
-     */
-    /*    static void display(String header, List<IHighScore> highScore) {
+    public void display(String header, IBusiness ib) {
         Stage window = new Stage();
         window.setTitle(header);
         window.setMinWidth(400);
         window.setMaxWidth(600);
+        window.setResizable(false);
 
-        ListView<IHighScore> highscore = new ListView<>();
-        ObservableList<IHighScore> highscorelist = highscore.getItems();
-        highscorelist.addAll(highScore);
+        TextField idTextField = new TextField();
+        TextField originTextField = new TextField();
+        TextArea descTextField = new TextArea();
+        Label swCaseIdLabel = new Label();
+        swCaseIdLabel.setText("ID");
+        Label swCaseDesLabel = new Label();
+        swCaseDesLabel.setText("Description");
+        Label swCaseProcessLabel = new Label();
+        swCaseProcessLabel.setText("Process");
 
         Button closeButton = new Button("Close");
         closeButton.setOnAction(e -> window.close());
 
-        VBox layout = new VBox(10);
-        layout.getChildren().addAll(highscore, closeButton);
-        layout.setAlignment(Pos.CENTER);
+        Button createButton = new Button("Create");
+        createButton.setOnAction(e -> createAndClose(window, ib, idTextField.getText(), originTextField.getText(), descTextField.getText()));
+//        createButton.setOnAction( e-> window.close());
+
+        HBox buttonLayout = new HBox();
+        buttonLayout.getChildren().addAll(closeButton, createButton);
+        buttonLayout.setAlignment(Pos.CENTER);
+        buttonLayout.setSpacing(10);
+        buttonLayout.setPadding(new Insets(10, 10, 10, 10));
+        VBox layout = new VBox();
+        layout.getChildren().addAll(swCaseIdLabel, idTextField, swCaseDesLabel, originTextField, swCaseProcessLabel, descTextField, buttonLayout);
+        layout.setAlignment(Pos.CENTER_LEFT);
+        layout.setPadding(new Insets(10, 10, 0, 10));
 
         Scene scene = new Scene(layout);
         window.setScene(scene);
         window.showAndWait();
-    }*/
+    }
+
+    public void createAndClose(Stage window, IBusiness ib, String id, String des, String procs, ISocialWorker sw, ICitizen c) {
+        ib.createCase(id, des, procs, sw, c);
+        window.close();
+    }
+
+    public void createAndClose(Stage window, IBusiness ib, String id, String origin, String description) {
+        ib.createCitizen(id, origin, description);
+        window.close();
+    }
 }

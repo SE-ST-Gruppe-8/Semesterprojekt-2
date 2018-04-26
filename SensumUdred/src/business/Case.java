@@ -36,6 +36,6 @@ public class Case implements ICase, Serializable {
     }
 
     public String toString() {
-        return socialWorker.toString()+" "+ID;
+        return this.socialWorker.toString()+" "+ID;
     }
 }

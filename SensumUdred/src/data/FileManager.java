@@ -168,9 +168,10 @@ public class FileManager {
         Citizen c = new Citizen("name", "id","needs");
         Inquiry i = new Inquiry("id","origin",false,c, "description");
         c.setInquiry(i);
+
         
         test.add(sw);
-        test2.add(new Case("joe", "pind", "lol", sw, new Citizen("name", "id","needs")));
+        test2.add(new Case("joe", "pind", "lol", sw, c));
         test3.add(c);
         fm.writeToFile(test, "users");
         fm.writeToFile(test2, "cases");
