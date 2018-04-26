@@ -52,51 +52,51 @@ public class FileManager {
     }
 
 
-    public ArrayList<ICase> readCases() {
-        file = new File("cases.dat");
-        ArrayList<ICase> data = new ArrayList<>();
-        boolean read = true;
-        try {
-            fileReader = new ObjectInputStream(new FileInputStream(file));
-            while (read) {
-                try {
-                    ICase c = (ICase) fileReader.readObject();
-                    data.add(c);
-                } catch (EOFException eof) {
-                    System.out.println("Reached end of file.");
-                    break; // stop reading
-                }
-            }
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        } catch (ClassNotFoundException ex) {
-            System.out.println("Class not found.");
-        }
-        return data;
-    }
+//    public ArrayList<ICase> readCases() {
+//        file = new File("cases.dat");
+//        ArrayList<ICase> data = new ArrayList<>();
+//        boolean read = true;
+//        try {
+//            fileReader = new ObjectInputStream(new FileInputStream(file));
+//            while (read) {
+//                try {
+//                    ICase c = (ICase) fileReader.readObject();
+//                    data.add(c);
+//                } catch (EOFException eof) {
+//                    System.out.println("Reached end of file.");
+//                    break; // stop reading
+//                }
+//            }
+//        } catch (IOException ex) {
+//            System.out.println(ex.getMessage());
+//        } catch (ClassNotFoundException ex) {
+//            System.out.println("Class not found.");
+//        }
+//        return data;
+//    }
     
-    public ArrayList<ICitizen> readCitizens() {
-        file = new File("citizens.dat");
-        ArrayList<ICitizen> data = new ArrayList<>();
-        boolean read = true;
-            try {
-                fileReader = new ObjectInputStream(new FileInputStream(file));
-                while (read) {
-                    try {
-                        ICitizen c = (ICitizen) fileReader.readObject();
-                    data.add(c);
-                } catch (EOFException eof) {
-                    System.out.println("Reached end of file.");
-                    break; // stop reading
-                }
-            }
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        } catch (ClassNotFoundException ex) {
-            System.out.println("Class not found.");
-        }
-        return data;
-    }
+//    public ArrayList<ICitizen> readCitizens() {
+//        file = new File("citizens.dat");
+//        ArrayList<ICitizen> data = new ArrayList<>();
+//        boolean read = true;
+//            try {
+//                fileReader = new ObjectInputStream(new FileInputStream(file));
+//                while (read) {
+//                    try {
+//                        ICitizen c = (ICitizen) fileReader.readObject();
+//                    data.add(c);
+//                } catch (EOFException eof) {
+//                    System.out.println("Reached end of file.");
+//                    break; // stop reading
+//                }
+//            }
+//        } catch (IOException ex) {
+//            System.out.println(ex.getMessage());
+//        } catch (ClassNotFoundException ex) {
+//            System.out.println("Class not found.");
+//        }
+//        return data;
+//    }
     
 
     public <T> void writeToFile(ArrayList<T> data, String filepath) {
@@ -115,54 +115,54 @@ public class FileManager {
         }
     }
 
-    public void saveCitizens(ArrayList<ICitizen> data) {
-        System.out.println(data);
-        file = new File("citizens.dat");
-        try {
-            fileWriter = new ObjectOutputStream(new FileOutputStream(file));
-            for (ICitizen c : data) {
-                fileWriter.writeObject(c);
-            }
-            fileWriter.close();
-        } catch (FileNotFoundException ex) {
-            System.out.println("File not found.");
-        } catch (IOException ex) {
-            System.out.println("IOException encountered.");
-        }
-
-    }
+//    public void saveCitizens(ArrayList<ICitizen> data) {
+//        System.out.println(data);
+//        file = new File("citizens.dat");
+//        try {
+//            fileWriter = new ObjectOutputStream(new FileOutputStream(file));
+//            for (ICitizen c : data) {
+//                fileWriter.writeObject(c);
+//            }
+//            fileWriter.close();
+//        } catch (FileNotFoundException ex) {
+//            System.out.println("File not found.");
+//        } catch (IOException ex) {
+//            System.out.println("IOException encountered.");
+//        }
+//
+//    }
     
-    public void writeCaseToFile(ArrayList<ICase> data) {
-        System.out.println(data);
-        file = new File("cases.dat");
-        try {
-            fileWriter = new ObjectOutputStream(new FileOutputStream(file));
-            for (ICase u : data) {
-                fileWriter.writeObject(u);
-            }
-            fileWriter.close();
-        } catch (FileNotFoundException ex) {
-            System.out.println("File not found.");
-        } catch (IOException ex) {
-            System.out.println("IOException encountered.");
-        }
-    }
+//    public void writeCaseToFile(ArrayList<ICase> data) {
+//        System.out.println(data);
+//        file = new File("cases.dat");
+//        try {
+//            fileWriter = new ObjectOutputStream(new FileOutputStream(file));
+//            for (ICase u : data) {
+//                fileWriter.writeObject(u);
+//            }
+//            fileWriter.close();
+//        } catch (FileNotFoundException ex) {
+//            System.out.println("File not found.");
+//        } catch (IOException ex) {
+//            System.out.println("IOException encountered.");
+//        }
+//    }
 
-    public void saveCases(ArrayList<ICase> data) {
-        System.out.println(data);
-        file = new File("cases.dat");
-        try {
-            fileWriter = new ObjectOutputStream(new FileOutputStream(file));
-            for (ICase c : data) {
-                fileWriter.writeObject(c);
-            }
-            fileWriter.close();
-        } catch (FileNotFoundException ex) {
-            System.out.println("File not found.");
-        } catch (IOException ex) {
-            System.out.println("IOException encountered.");
-        }
-    }
+//    public void saveCases(ArrayList<ICase> data) {
+//        System.out.println(data);
+//        file = new File("cases.dat");
+//        try {
+//            fileWriter = new ObjectOutputStream(new FileOutputStream(file));
+//            for (ICase c : data) {
+//                fileWriter.writeObject(c);
+//            }
+//            fileWriter.close();
+//        } catch (FileNotFoundException ex) {
+//            System.out.println("File not found.");
+//        } catch (IOException ex) {
+//            System.out.println("IOException encountered.");
+//        }
+//    }
 
     public static void main(String[] args) {
         ArrayList<IUser> test = new ArrayList<>();

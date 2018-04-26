@@ -13,7 +13,7 @@ import javafx.collections.ObservableList;
  * @author Robin
  */
 public interface ISocialWorker {
-    public ICase createCase(String id, String des, String process, SocialWorker sw, Citizen c);
+    public ICase createCase(String id, String des, String process, ISocialWorker sw, ICitizen c);
 
     public boolean deleteCase(ICase newCase, ObservableList<ICase> cases);
 
@@ -40,4 +40,6 @@ public interface ISocialWorker {
     public boolean removeReference(Reference ref);
 
     public int getRole();
+    
+    public ICitizen createCitizen(String name, String id, String needs);
 }

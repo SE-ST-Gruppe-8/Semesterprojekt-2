@@ -20,7 +20,7 @@ public interface IBusiness {
 
     public void createUser(String name, String id, String userName, String password, String email, int type);
 
-    public void createCase(String id, String des, String process, SocialWorker sw, Citizen c);
+    public void createCase(String id, String des, String process, ISocialWorker sw, ICitizen c);
 
     public void deleteUser(IUser user);
 
@@ -44,4 +44,7 @@ public interface IBusiness {
     public ObservableList<ICitizen> getCitizens();
     
     public void saveCitizens();
+    
+    public void createCitizen(String name, String id, String needs);
+
 }

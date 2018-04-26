@@ -6,6 +6,8 @@
 package business;
 
 import acq.ICase;
+import acq.ICitizen;
+import acq.ISocialWorker;
 import java.io.Serializable;
 
 /**
@@ -21,11 +23,11 @@ public class Case implements ICase, Serializable {
 
     private String process;
 
-    private SocialWorker socialWorker;
+    private ISocialWorker socialWorker;
 
-    private Citizen citizen;
+    private ICitizen citizen;
 
-    public Case(String id, String des, String process, SocialWorker sw, Citizen c) {
+    public Case(String id, String des, String process, ISocialWorker sw, ICitizen c) {
         this.ID = id;
         this.description = des;
         this.process = process;
