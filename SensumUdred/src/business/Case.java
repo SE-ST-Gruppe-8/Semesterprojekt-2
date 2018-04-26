@@ -5,10 +5,35 @@
  */
 package business;
 
+import acq.ICase;
+import java.io.Serializable;
+
 /**
  *
  * @author Bruger
  */
-public class Case {
 
+public class Case implements ICase, Serializable {
+
+    private final String ID;
+
+    private String description;
+
+    private String process;
+
+    private SocialWorker socialWorker;
+
+    private Citizen citizen;
+
+    public Case(String id, String des, String process, SocialWorker sw, Citizen c) {
+        this.ID = id;
+        this.description = des;
+        this.process = process;
+        this.socialWorker = sw;
+        this.citizen = c;
+    }
+
+    public String toString() {
+        return socialWorker.toString()+" "+ID;
+    }
 }

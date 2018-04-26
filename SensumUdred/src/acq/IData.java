@@ -14,6 +14,8 @@ import java.util.ArrayList;
 public interface IData {
 
     public void saveUsers(ArrayList<IUser> data);
+    
+    public void saveCases(ArrayList<ICase> data);
 
     public ArrayList<IUser> readUsers();
 
@@ -21,4 +23,9 @@ public interface IData {
     <T>void saveData(ArrayList<T> data, String filepath);
     <T>void loadData(ArrayList<T> data, String filepath);
 
+    ArrayList<ICitizen> getCitizens();
+    
+    public void saveCitizens(ArrayList<ICitizen> list);
+    
+    public ArrayList<ICase> readCases();
 }

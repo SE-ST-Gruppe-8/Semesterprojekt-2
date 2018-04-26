@@ -9,11 +9,9 @@ import java.io.Serializable;
  */
 public abstract class User implements IUser, Serializable {
     
-    private int role;
     private String name, ID, username, password, email;
 
-    public User(int role, String name, String id, String username, String password, String email) {
-        this.role = role;
+    public User(String name, String id, String username, String password, String email) {
         this.name = name;
         this.ID = id;
         this.username = username;
@@ -57,15 +55,9 @@ public abstract class User implements IUser, Serializable {
         this.email = email;
     }
 
-    public int getRole() {
-        return role;
-    }
-
-    public void setRole(int role) {
-        this.role = role;
-    }
+    public abstract int getRole();
     
     public String toString(){
-        return role + "\t" + name + "\t" + ID + "\t" + username + "\t" + email;
+        return name + "\t" + ID + "\t" + username + "\t" + email;
     }
 }

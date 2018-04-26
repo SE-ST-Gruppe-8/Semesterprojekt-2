@@ -38,6 +38,24 @@ public class DataFacade implements IData {
     }
 
     @Override
+    public ArrayList<ICitizen> getCitizens() {
+        return fm.readCitizens();
+    }
+
+    @Override
+    public void saveCitizens(ArrayList<ICitizen> list) {
+        fm.saveCitizens(list);
+    }
+        
+    public void saveCases(ArrayList<ICase> data) {
+        fm.saveCases(data);
+    }
+    
+    @Override
+    public ArrayList<ICase> readCases() {
+        return fm.readCases();
+    }
+    
     public <T> void saveData(ArrayList<T> data, String filepath) {
         fm.writeToFile(data, filepath);
     }
@@ -45,5 +63,6 @@ public class DataFacade implements IData {
     @Override
     public <T> void loadData(ArrayList<T> data, String filepath) {
         fm.readFile(data, filepath);
+
     }
 }
