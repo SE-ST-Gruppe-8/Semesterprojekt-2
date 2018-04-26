@@ -196,15 +196,7 @@ public class BusinessFacade implements IBusiness {
         }
     }
 
-    @Override
-    public ObservableList<ICitizen> getCitizens() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void saveCitizens() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 
     @Override
     public void createCitizen(String name, String id, String needs) {
