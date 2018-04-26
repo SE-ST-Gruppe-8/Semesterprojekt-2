@@ -237,7 +237,7 @@ public class FXMLDocumentController implements Initializable {
         if (ib.getInquiries()== null) {
             //in.setText("no Inquiries installed");
         } else {
-            inquirieInquirieListView.setItems(ib.getInquiries());
+//            inquirieInquirieListView.setItems(ib.getInquiries());
         }
     }
 }

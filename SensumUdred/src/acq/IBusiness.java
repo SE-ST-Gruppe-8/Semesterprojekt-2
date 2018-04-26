@@ -39,4 +39,6 @@ public interface IBusiness {
     public ObservableList<ICase> getCases();
 
      public void deleteCase(ICase newCase);
+     
+     public void createCitizen(String name, String id, String needs);
 }

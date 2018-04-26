@@ -131,4 +131,10 @@ public class SocialWorker extends User implements ISocialWorker {
         return 1;
     }
 
+    @Override
+    public ICitizen createCitizen(String name, String id, String needs) {
+        Citizen citizen = new Citizen(name, id, needs);
+        return citizen;
+    }
+
 }
