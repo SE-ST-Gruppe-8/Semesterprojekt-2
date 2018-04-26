@@ -1,6 +1,7 @@
 package business;
 
 import acq.ICase;
+import acq.ICitizen;
 import acq.ISocialWorker;
 import java.util.HashSet;
 import java.util.Set;
@@ -27,7 +28,8 @@ public class SocialWorker extends User implements ISocialWorker {
         this.references = new HashSet<>();
     }
 
-    public ICase createCase(String id, String des, String process, SocialWorker sw, Citizen c) {
+    @Override
+    public ICase createCase(String id, String des, String process, ISocialWorker sw, ICitizen c) {
         ICase newCase = null;
         newCase = (ICase) new Case(id, des, process, sw, c);
         return newCase;

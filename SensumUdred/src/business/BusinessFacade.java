@@ -152,11 +152,11 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void createCase(String id, String des, String process, SocialWorker sw, Citizen c) {
+    public void createCase(String id, String des, String process, ISocialWorker sw, ICitizen c) {
         String s = "error, could not create case";
         ICase newCase;
         if (security.getActiveUser() instanceof SocialWorker) {
-            newCase = ((SocialWorker) security.getActiveUser()).createCase(id, des, process, sw, c);
+            newCase = ((ISocialWorker) security.getActiveUser()).createCase(id, des, process, sw, c);
             if (newCase != null) {
                 cases.add(newCase);
                 data.saveCases((ArrayList<ICase>) cases.stream().collect(Collectors.toList()));
