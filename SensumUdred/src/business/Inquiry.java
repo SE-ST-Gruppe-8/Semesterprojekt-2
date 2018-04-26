@@ -18,6 +18,7 @@ public class Inquiry implements IInquiry, Serializable {
     private String id;
     private Citizen citizen;
     private String description;
+    private static final long serialVersionUID = 1L;
     
     
     public Inquiry(String id, String origin, boolean informed, Citizen citizen, String description){

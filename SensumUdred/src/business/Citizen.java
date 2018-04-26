@@ -20,6 +20,7 @@ public class Citizen implements ICitizen, Serializable{
     private Case citizenCase;
     private Reference reference;
     private Inquiry inquiry;
+    private static final long serialVersionUID = 1L;
 
     public Citizen(String name, String id, String needs) {
         this.name = name;

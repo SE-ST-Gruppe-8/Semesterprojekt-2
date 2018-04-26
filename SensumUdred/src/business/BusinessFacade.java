@@ -135,12 +135,13 @@ public class BusinessFacade implements IBusiness {
     @Override
     public ObservableList<IInquiry> getInquiries() {
         ArrayList<ICitizen> citizens = new ArrayList<>();
+        ArrayList<IInquiry> inquiries = new ArrayList<>(); // to be filled with inquiries
         data.loadData(citizens, "citizens");
-        for (ICitizen c : citizens) {
-            inquiries.add(c.getInquiry());
-
+        for (ICitizen c : citizens) { // get all inquiries belonging to citizens
+            inquiries.add(c.getInquiry()); // put them in the inquiries list
         }
-        return inquiries = FXCollections.observableArrayList(inquiries);
+        // set observablelist to be = inquiries and then return it
+        return this.inquiries = FXCollections.observableArrayList(inquiries);
     }
 
     @Override
