@@ -94,7 +94,6 @@ public class FXMLDocumentController implements Initializable {
     private Label caseLabel;
     @FXML
     private Button editCaseButton;
-
     @FXML
     private Button deleteCitizenButton;
     @FXML
@@ -186,7 +185,6 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void deleteUserButtonAction(ActionEvent event) {
-        // TODO
         ib.deleteUser(adminUserListView.getSelectionModel().getSelectedItem());
         updateUserList();
     }

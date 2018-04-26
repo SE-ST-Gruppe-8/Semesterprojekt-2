@@ -44,8 +44,8 @@ public interface IBusiness {
 
     public void createCitizen(String name, String id, String needs);
 
-    public void deleteCitizen(ICitizen citizen);
-
     public ObservableList<ICitizen> getCitizen();
+
+    public void deleteCitizen(ICitizen citizen);
 
 }

@@ -226,7 +226,7 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void deleteCitizen(ICitizen citizen) {
         String s = "Error with Citizen";
-        if (security.getActiveUser() instanceof SystemAdmin) {
+        if (security.getActiveUser() instanceof SocialWorker) {
             if (((SocialWorker) security.getActiveUser()).deleteCitizen(citizen, citizens)) {
                 security.logData("Deleted citizens " + citizen.getName());
                 data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
