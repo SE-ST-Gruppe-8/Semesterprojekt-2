@@ -1,6 +1,7 @@
 package business;
 
 import acq.ICase;
+import acq.ISocialWorker;
 import java.util.HashSet;
 import java.util.Set;
 import javafx.collections.ObservableList;
@@ -9,7 +10,7 @@ import javafx.collections.ObservableList;
  *
  * @author Søren Bendtsen
  */
-public class SocialWorker extends User {
+public class SocialWorker extends User implements ISocialWorker {
 
     private Set<Case> cases;
 
