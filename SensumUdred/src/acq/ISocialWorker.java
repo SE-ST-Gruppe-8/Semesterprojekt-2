@@ -40,4 +40,6 @@ public interface ISocialWorker {
     public boolean removeReference(Reference ref);
 
     public int getRole();
+    
+    public ICitizen createCitizen(String name, String id, String needs);
 }

@@ -185,4 +185,18 @@ public class BusinessFacade implements IBusiness {
             }
         }
     }
+
+    @Override
+    public void createCitizen(String name, String id, String needs) {
+        ICitizen citizen;
+        if (security.getActiveUser() instanceof SocialWorker) {
+            citizen = ((ISocialWorker) security.getActiveUser()).createCitzen(name, id, needs);
+                data.saveCases((ArrayList<ICase>) cases.stream().collect(Collectors.toList()));
+                security.logData("Created case with id: " + id);
+            } else {
+                System.out.println(s);
+            }
+
+        }
+    }
 }
