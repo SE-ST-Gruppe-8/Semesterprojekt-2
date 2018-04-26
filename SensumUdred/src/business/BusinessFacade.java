@@ -17,8 +17,11 @@ public class BusinessFacade implements IBusiness {
     private SecurityHandler security;
 
     private ObservableList<IUser> users;
-    private ObservableList<IInquiry> inquiries = FXCollections.observableArrayList();
+
+    private ObservableList<IInquiry> inquiries;
+
     private ObservableList<ICitizen> citizens;
+
     private ObservableList<ICase> cases;
 
     @Override
@@ -128,8 +131,9 @@ public class BusinessFacade implements IBusiness {
         data.loadData(citizens, "citizens");
         for (ICitizen c : citizens) {
             inquiries.add(c.getInquiry());
+            
         }
-        return inquiries;
+        return inquiries = FXCollections.observableArrayList(inquiries);
     }
     
     @Override

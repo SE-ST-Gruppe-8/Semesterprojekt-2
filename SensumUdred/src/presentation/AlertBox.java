@@ -1,8 +1,8 @@
 package presentation;
 
 import acq.IBusiness;
-import business.Citizen;
-import business.SocialWorker;
+import acq.ICitizen;
+import acq.ISocialWorker;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -28,7 +28,7 @@ public class AlertBox {
      * @param filename the filename of the textfile. Textfile must be placed in
      * Presentation/Textfiles/
      */
-    public void display(String header, IBusiness ib) {
+    public void display(String header, IBusiness ib, ICitizen c) {
         Stage window = new Stage();
         window.setTitle(header);
         window.setMinWidth(400);
@@ -49,7 +49,7 @@ public class AlertBox {
         closeButton.setOnAction(e -> window.close());
 
         Button createButton = new Button("Create");
-        createButton.setOnAction(e -> ib.createCase(swCaseIdTextField.getText(), swCaseDesTextArea.getText(), swCaseProcessTextArea.getText(), (SocialWorker)ib.getActiveUser(), new Citizen("name", "id", "needs")));
+        createButton.setOnAction(e -> createAndClose(window,ib,swCaseIdTextField.getText(), swCaseDesTextArea.getText(), swCaseProcessTextArea.getText(), (ISocialWorker)ib.getActiveUser(), c));
 //        createButton.setOnAction( e-> window.close());
 
 
@@ -66,6 +66,11 @@ public class AlertBox {
         Scene scene = new Scene(layout);
         window.setScene(scene);
         window.showAndWait();
+    }
+    
+    public void createAndClose(Stage window, IBusiness ib, String id, String des, String procs,ISocialWorker sw, ICitizen c){
+       ib.createCase(id, des, procs, sw, c);
+       window.close();
     }
 
     /**

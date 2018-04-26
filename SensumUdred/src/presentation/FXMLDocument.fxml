@@ -63,31 +63,59 @@
                   <VBox alignment="CENTER" prefHeight="271.0" prefWidth="517.0" spacing="10.0">
                      <children>
                         <Button fx:id="swCasesCreateCaseButton" mnemonicParsing="false" onAction="#createCaseAction" text="Create case" />
-                        <Button mnemonicParsing="false" text="Edit case" />
+                        <Button fx:id="swCasesEdtCaseButton" mnemonicParsing="false" onAction="#EditCaseAction" text="Edit case" />
+                        <Label fx:id="caseLabel" />
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="135.0" spacing="10.0">
+                  <VBox alignment="CENTER" prefHeight="271.0" prefWidth="196.0" spacing="10.0">
                      <children>
-                        <ListView fx:id="caseListView" maxWidth="-Infinity" prefHeight="200.0" prefWidth="125.0" />
+                        <ListView fx:id="citizenListView" maxWidth="-Infinity" prefHeight="200.0" prefWidth="162.0" />
+                        <Button fx:id="swDeleteCitizenListButton" mnemonicParsing="false" onAction="#DeleteCaseAction" text="Delete Citizen" />
+                        <Button fx:id="swUpdateCitizenListButton" mnemonicParsing="false" onAction="#UpdateCaseListAction" text="Update List" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="271.0" prefWidth="196.0" spacing="10.0">
+                     <children>
+                        <ListView fx:id="caseListView" maxWidth="-Infinity" prefHeight="200.0" prefWidth="162.0" />
                         <Button fx:id="swDeleteCaseListButton" mnemonicParsing="false" onAction="#DeleteCaseAction" text="Delete case" />
                         <Button fx:id="swUpdateCaseListButton" mnemonicParsing="false" onAction="#UpdateCaseListAction" text="Update List" />
                      </children>
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding>
                   </VBox>
                </children>
             </HBox>
          </content>
       </Tab>
       <Tab fx:id="inquiriesTab" text="Inquiries">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-        </content>
+         <content>
+            <HBox prefHeight="100.0" prefWidth="200.0" />
+         </content>
+         <content>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="271.0" prefWidth="517.0" spacing="10.0">
+                     <children>
+                        <Button fx:id="inquirieCreateInquirie" mnemonicParsing="false" onAction="#createCaseAction" text="Create Inquirie" />
+                        <Button fx:id="inquirieEditInquirie" mnemonicParsing="false" onAction="#EditCaseAction" text="Edit Inquirie" />
+                        <Label />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="271.0" prefWidth="196.0" spacing="10.0">
+                     <children>
+                        <ListView fx:id="inquirieInquirieListView" maxWidth="-Infinity" prefHeight="200.0" prefWidth="162.0" />
+                        <Button fx:id="inquirieEditInquirie" mnemonicParsing="false" onAction="#DeleteCaseAction" text="Delete Inquirie" />
+                        <Button fx:id="updateInquirieList" mnemonicParsing="false" onAction="#UpdatInquirieListAction" text="Update List" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </content>
       </Tab>
       <Tab fx:id="referenceTab" text="References">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="Her skal være en liste over referencer som behandlere har sendt til andre instanser" />
+               </children></AnchorPane>
         </content>
       </Tab>
       <Tab fx:id="adminTab" text="Admin">
