@@ -177,6 +177,7 @@ public class FileManager {
         test2.add( new Case("joe","pik","lol",sw,new Citizen("name", "id", "needs")));
         
         fm.writeToFile(test, "users");
+        fm.writeToFile(test2, "cases");
         test = new ArrayList<>();
         fm.readFile(test, "users");
         System.out.println(test);

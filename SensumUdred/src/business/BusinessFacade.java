@@ -17,8 +17,7 @@ public class BusinessFacade implements IBusiness {
     private SecurityHandler security;
 
     private ObservableList<IUser> users;
-    private ObservableList<IInquiry> inquiries = FXCollections.observableArrayList();
-
+    private ObservableList<IInquiry> inquiries;
     private ObservableList<ICase> cases;
 
     @Override
@@ -123,8 +122,9 @@ public class BusinessFacade implements IBusiness {
         ArrayList<ICitizen> citizens = data.getCitizens();
         for (ICitizen c : citizens) {
             inquiries.add(c.getInquiry());
+            
         }
-        return inquiries;
+        return inquiries = FXCollections.observableArrayList(inquiries);
     }
     
     public void saveInquiry(IInquiry inquiry) {
