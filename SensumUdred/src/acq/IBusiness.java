@@ -47,5 +47,11 @@ public interface IBusiness {
     public ObservableList<ICitizen> getCitizen();
 
     public void deleteCitizen(ICitizen citizen);
+    
+    public void createInquiry(String id, String origin, boolean informed, ICitizen citizen, String description);
+    
+    public void deleteInquiry(IInquiry i);
+    
+    
 
 }

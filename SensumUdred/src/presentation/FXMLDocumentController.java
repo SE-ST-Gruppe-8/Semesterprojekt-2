@@ -193,7 +193,7 @@ public class FXMLDocumentController implements Initializable {
     private void createCaseAction(ActionEvent event) {
         updateCaseList();
         if (citizenListView.getSelectionModel().getSelectedItem() != null) {
-            ab.display("Create case", ib, (ICitizen) citizenListView.getSelectionModel().getSelectedItem());
+            ab.displayCaseCreation("Create case", ib, (ICitizen) citizenListView.getSelectionModel().getSelectedItem());
         } else {
             caseLabel.setText("you must select a Citizen from the list to create a case");
         }
@@ -215,7 +215,7 @@ public class FXMLDocumentController implements Initializable {
     private void createCitizenButtonAction(ActionEvent event) {
 
         updateCitizenList();
-        ab.display("Create citizen", ib);
+        ab.displayCitizenCreation("Create citizen", ib);
         updateCitizenList();
     }
 
@@ -231,6 +231,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void createInquiryAction(ActionEvent event) {
+        ab.displayInquiryCreation("Inquiry", ib, citizenListView.getSelectionModel().getSelectedItem());
     }
 
     @FXML
@@ -239,6 +240,8 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void deleteInquiryAction(ActionEvent event) {
+        ib.deleteInquiry(inquiryListView.getSelectionModel().getSelectedItem());
+        updateInquiryList();
 
     }
 

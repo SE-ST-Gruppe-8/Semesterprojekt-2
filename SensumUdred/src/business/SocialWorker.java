@@ -2,6 +2,7 @@ package business;
 
 import acq.ICase;
 import acq.ICitizen;
+import acq.IInquiry;
 import acq.ISocialWorker;
 import java.util.HashSet;
 import java.util.Set;
@@ -139,6 +140,7 @@ public class SocialWorker extends User implements ISocialWorker {
         return citizen;
     }
 
+    @Override
     public boolean deleteCitizen(ICitizen citizen, ObservableList<ICitizen> citizens) {
         boolean citizenRemoved = false;
         if (citizens.contains(citizen)) {
@@ -146,6 +148,20 @@ public class SocialWorker extends User implements ISocialWorker {
         }
         return citizenRemoved;
     }
-    
-     
+
+    @Override
+    public IInquiry createInquiry(String id, String origin, boolean informed, ICitizen citizen, String description) {
+        Inquiry inquiry = new Inquiry(id, origin, informed, (Citizen) citizen, description);
+        return inquiry;
+    }
+
+    @Override
+    public boolean deleteInquiry(IInquiry inquiry, ObservableList<IInquiry> inquiries) {
+        boolean citizenRemoved = false;
+        if (inquiries.contains(inquiry)) {
+            citizenRemoved = inquiries.remove(inquiry);
+        }
+        return citizenRemoved;
+    }
+
 }
