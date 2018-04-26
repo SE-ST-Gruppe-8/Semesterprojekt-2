@@ -8,6 +8,7 @@ package presentation;
 import acq.IBusiness;
 import acq.ICase;
 import acq.ICitizen;
+import acq.IInquiry;
 import acq.IUser;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -90,7 +91,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button swCasesEdtCaseButton;
     @FXML
-    private ListView<?> citizenListView;
+    private ListView<ICitizen> citizenListView;
     @FXML
     private Button swDeleteCitizenListButton;
     @FXML
@@ -100,7 +101,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button inquirieEditInquirie;
     @FXML
-    private ListView<?> inquirieInquirieListView;
+    private ListView<IInquiry> inquirieInquirieListView;
     @FXML
     private Button updateInquirieList;
     @FXML
@@ -237,7 +238,7 @@ public class FXMLDocumentController implements Initializable {
         if (ib.getInquiries()== null) {
             //in.setText("no Inquiries installed");
         } else {
-//            inquirieInquirieListView.setItems(ib.getInquiries());
+            inquirieInquirieListView.setItems(ib.getInquiries());
         }
     }
 }
