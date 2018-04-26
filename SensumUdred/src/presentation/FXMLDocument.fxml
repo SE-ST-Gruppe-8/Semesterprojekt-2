@@ -62,23 +62,23 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="271.0" prefWidth="517.0" spacing="10.0">
                      <children>
-                        <Button fx:id="swCasesCreateCaseButton" mnemonicParsing="false" onAction="#createCaseAction" text="Create case" />
-                        <Button fx:id="swCasesEdtCaseButton" mnemonicParsing="false" onAction="#EditCaseAction" text="Edit case" />
+                        <Button fx:id="createCaseButton" mnemonicParsing="false" onAction="#createCaseAction" text="Create case" />
+                        <Button fx:id="editCaseButton" mnemonicParsing="false" onAction="#EditCaseAction" text="Edit case" />
                         <Label fx:id="caseLabel" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="271.0" prefWidth="196.0" spacing="10.0">
                      <children>
                         <ListView fx:id="citizenListView" maxWidth="-Infinity" prefHeight="200.0" prefWidth="162.0" />
-                        <Button fx:id="swDeleteCitizenListButton" mnemonicParsing="false" onAction="#DeleteCaseAction" text="Delete Citizen" />
-                        <Button fx:id="swUpdateCitizenListButton" mnemonicParsing="false" onAction="#UpdateCaseListAction" text="Update List" />
+                        <Button fx:id="deleteCitizenButton" mnemonicParsing="false" onAction="#DeleteCaseAction" text="Delete Citizen" />
+                        <Button fx:id="updateCitizenButton" mnemonicParsing="false" onAction="#UpdateCaseListAction" text="Update List" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="271.0" prefWidth="196.0" spacing="10.0">
                      <children>
                         <ListView fx:id="caseListView" maxWidth="-Infinity" prefHeight="200.0" prefWidth="162.0" />
-                        <Button fx:id="swDeleteCaseListButton" mnemonicParsing="false" onAction="#DeleteCaseAction" text="Delete case" />
-                        <Button fx:id="swUpdateCaseListButton" mnemonicParsing="false" onAction="#UpdateCaseListAction" text="Update List" />
+                        <Button fx:id="deleteCaseButton" mnemonicParsing="false" onAction="#DeleteCaseAction" text="Delete case" />
+                        <Button fx:id="updateCaseButton" mnemonicParsing="false" onAction="#UpdateCaseListAction" text="Update List" />
                      </children>
                   </VBox>
                </children>
@@ -94,16 +94,16 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="271.0" prefWidth="517.0" spacing="10.0">
                      <children>
-                        <Button fx:id="inquirieCreateInquirie" mnemonicParsing="false" onAction="#createCaseAction" text="Create Inquirie" />
-                        <Button fx:id="inquirieEditInquirie" mnemonicParsing="false" onAction="#EditCaseAction" text="Edit Inquirie" />
-                        <Label />
+                        <Button fx:id="createInquirieButton" mnemonicParsing="false" onAction="#createCaseAction" text="Create Inquirie" />
+                        <Button fx:id="editInquirieButton" mnemonicParsing="false" onAction="#EditCaseAction" text="Edit Inquirie" />
+                        <Label fx:id="inquiriesLabel" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="271.0" prefWidth="196.0" spacing="10.0">
                      <children>
-                        <ListView fx:id="inquirieInquirieListView" maxWidth="-Infinity" prefHeight="200.0" prefWidth="162.0" />
-                        <Button fx:id="inquirieEditInquirie" mnemonicParsing="false" onAction="#DeleteCaseAction" text="Delete Inquirie" />
-                        <Button fx:id="updateInquirieList" mnemonicParsing="false" onAction="#UpdatInquirieListAction" text="Update List" />
+                        <ListView fx:id="inquirieListView" maxWidth="-Infinity" prefHeight="200.0" prefWidth="162.0" />
+                        <Button fx:id="deleteInquirieButton" mnemonicParsing="false" onAction="#DeleteCaseAction" text="Delete Inquirie" />
+                        <Button fx:id="updateInquirieListButton" mnemonicParsing="false" onAction="#UpdatInquirieListAction" text="Update List" />
                      </children>
                   </VBox>
                </children>

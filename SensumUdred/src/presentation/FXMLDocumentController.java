@@ -75,37 +75,41 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Tab adminTab;
     @FXML
-    private Label loginInfoLabel;
-    @FXML
-    private Button swCasesCreateCaseButton;
-    @FXML
-    private Button swDeleteCaseListButton;
-    @FXML
-    private Button swUpdateCaseListButton;
-    @FXML
     private Tab casesTab;
     @FXML
     private Tab inquiriesTab;
     @FXML
     private Tab referenceTab;
     @FXML
-    private Button swCasesEdtCaseButton;
+    private Label loginInfoLabel;
+    @FXML
+    private Button createCaseButton;
+    @FXML
+    private Button deleteCaseButton;
+    @FXML
+    private Button updateCaseButton;
+    @FXML
+    private Label caseLabel;
+    @FXML
+    private Button editCaseButton;
     @FXML
     private ListView<ICitizen> citizenListView;
     @FXML
-    private Button swDeleteCitizenListButton;
+    private Button deleteCitizenButton;
     @FXML
-    private Button swUpdateCitizenListButton;
+    private Button updateCitizenButton;
     @FXML
-    private Button inquirieCreateInquirie;
+    private Button createInquirieButton;
     @FXML
-    private Button inquirieEditInquirie;
+    private Button editInquirieButton;
     @FXML
-    private ListView<IInquiry> inquirieInquirieListView;
+    private Button deleteInquirieButton;
     @FXML
-    private Button updateInquirieList;
+    private Label inquiriesLabel;
     @FXML
-    private Label caseLabel;
+    private ListView<IInquiry> inquirieListView;
+    @FXML
+    private Button updateInquirieListButton;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -213,8 +217,9 @@ public class FXMLDocumentController implements Initializable {
         updateCaseList();
         if (citizenListView.getSelectionModel().getSelectedItem() != null) {
             ab.display("Create case", ib, (ICitizen) citizenListView.getSelectionModel().getSelectedItem());
-        } else
+        } else {
             caseLabel.setText("you must select a Citizen from the list to create a case");
+        }
         updateCaseList();
 
     }
@@ -232,13 +237,14 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void UpdatInquirieListAction(ActionEvent event) {
-        
+        updateInquiryList();
     }
-    public void updateInquirieList() {
-        if (ib.getInquiries()== null) {
+
+    public void updateInquiryList() {
+        if (ib.getInquiries() == null) {
             //in.setText("no Inquiries installed");
         } else {
-            inquirieInquirieListView.setItems(ib.getInquiries());
+            inquirieListView.setItems(ib.getInquiries());
         }
     }
 }
