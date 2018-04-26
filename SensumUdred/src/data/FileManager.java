@@ -174,7 +174,7 @@ public class FileManager {
         
         SocialWorker sw = new SocialWorker( "polse","joe","polse123","lol","twerk");
         test.add(sw);
-        test2.add( new Case("joe","pik","lol",sw,new Citizen("name", "id", "needs")));
+        test2.add( new Case("joe","pind","lol",sw,new Citizen("name", "id", "needs")));
         
         fm.writeToFile(test, "users");
         test = new ArrayList<>();
