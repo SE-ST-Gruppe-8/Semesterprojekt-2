@@ -6,7 +6,6 @@
 package presentation;
 
 import acq.*;
-import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -43,7 +42,7 @@ public class PresentationFacade extends Application implements IPresentation {
      */
     @Override
     public void injectBusiness(IBusiness businessFacade) {
-        this.ib = businessFacade;
+          this.ib = businessFacade;
     }
 
     /**
@@ -61,16 +60,16 @@ public class PresentationFacade extends Application implements IPresentation {
 
     @Override
     public void start(Stage stage) throws Exception {
-//        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-//        Parent root = FXMLLoader.load(getClass().getResource("FXML_login.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLlogin.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        stage.setTitle("Sensum Udred");
-        
-    }
 
-  
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLlogin.fxml"));
+        Parent root = loader.load();
+
+        IPresentation controller = loader.getController();
+        controller.injectBusiness(ib);
+
+        stage.setTitle("Sensum Udred");
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 
 }

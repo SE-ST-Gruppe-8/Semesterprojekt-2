@@ -15,14 +15,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -30,13 +28,11 @@ import javafx.stage.Stage;
  *
  * @author Frederik
  */
-public class ControllerFXMLloginController implements Initializable {
+public class ControllerFXMLlogin implements Initializable, IPresentation {
 
     private IBusiness ib;
 
-    private AlertBox ab;
-
-    private PresentationFacade pf;
+    private String fxmlString;
 
     @FXML
     private TextField loginUsernameTextField;
@@ -60,22 +56,36 @@ public class ControllerFXMLloginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         ib = PresentationFacade.getIData().getIBusiness();
-        pf = PresentationFacade.getIData();
     }
 
     @FXML
     private void loginButtonAction(ActionEvent event) throws IOException {
+        boolean iscorrect = ib.validateUser(loginUsernameTextField.getText(), loginPasswordTextField.getText());
 
+        if (iscorrect) {
+            loginInfoLabel.setText("Succesfully logged in as: " + ib.getActiveUser().getName());
+            if (ib.getRole() == 1) {
+                fxmlString = "FXMLAdmin.fxml";
+
+            }
+            else if (ib.getRole() == 0) {
+                fxmlString = "FXMLSocialWorker.fxml";
+            }
+        }
+        else {
+            loginInfoLabel.setText("Wrong input");
+
+        }
         FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(getClass().getResource("ControllerFXMLloginController.fxml"));
- loader.setLocation(getClass().getResource("FXMLTest.fxml"));
+        loader.setLocation(getClass().getResource(fxmlString));
 
-        GridPane gridPane = loader.load();
+        AnchorPane anchorPane = loader.load();
         IPresentation controller = loader.getController();
         controller.injectBusiness(ib);
 
-        Scene scene2 = new Scene(gridPane);
+        Scene scene2 = new Scene(anchorPane);
         //Get Stage information
+
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene2);
         window.show();
@@ -84,6 +94,15 @@ public class ControllerFXMLloginController implements Initializable {
 
     @FXML
     private void logoutButtonAction(ActionEvent event) {
+    }
+
+    @Override
+    public void injectBusiness(IBusiness businessFacade) {
+
+    }
+
+    @Override
+    public void openUI() {
     }
 
 }
