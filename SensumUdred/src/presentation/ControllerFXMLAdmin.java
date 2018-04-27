@@ -24,7 +24,6 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -75,6 +74,9 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
     @FXML
     private Label adminInfoLabel;
+    
+    @FXML
+    private Label loginInfoLabelAdmin;
 
     @FXML
     private Button deleteUserButton;
@@ -92,7 +94,10 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         ib = PresentationFacade.getIData().getIBusiness();
+//        loginInfoLabelAdmin.setText("Logged in as: " + ib.getActiveUser().getName());
         updateUserList();
+        
+       
     }
 
     @Override

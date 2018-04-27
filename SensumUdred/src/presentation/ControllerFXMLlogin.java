@@ -73,12 +73,7 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
 //                fxmlString = "FXMLSocialWorker.fxml";
                 fxmlString = "FXMLAdmin.fxml";
             }
-        }
-        else {
-            loginInfoLabel.setText("Wrong input");
-
-        }
-        FXMLLoader loader = new FXMLLoader();
+                FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(fxmlString));
 
         AnchorPane anchorPane = loader.load();
@@ -91,6 +86,12 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene2);
         window.show();
+        }
+        else {
+            loginInfoLabel.setText("Wrong input");
+
+        }
+    
 
     }
 

@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
@@ -34,17 +35,16 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
     private AlertBox ab;
 
-
     @FXML
     private ListView<ICase> caseListView;
-
 
     private Tab socialTab;
 
     private Tab adminTab;
 
-//    private Label loginInfoLabel;
-
+    @FXML
+    private Label loginInfoLabelSW;
+    
     private PresentationFacade pf;
 
     @FXML
@@ -64,6 +64,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
     @FXML
     private Tab referenceTab;
+
     @FXML
     private Button logoutButtonSW;
 
@@ -71,9 +72,10 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         ib = PresentationFacade.getIData().getIBusiness();
+//        loginInfoLabelSW.setText("Logged in as: " + ib.getActiveUser().getName());
+        System.out.println("Logged in as: " + ib.getActiveUser().getName());
         updateCaseList();
     }
-
 
     public void updateCaseList() {
         if (ib.getCases() == null) {
@@ -113,8 +115,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
     @FXML
     private void logoutButtonAction(ActionEvent event) throws IOException {
-                 ib.logOutActiveUser();
-                FXMLLoader loader = new FXMLLoader();
+        ib.logOutActiveUser();
+        FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("FXMLlogin.fxml"));
 
         GridPane gridPane = loader.load();
