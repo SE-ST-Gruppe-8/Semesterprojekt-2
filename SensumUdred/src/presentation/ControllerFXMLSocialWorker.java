@@ -57,6 +57,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
     @FXML
     private Tab referenceTab;
+    @FXML
+    private Button logoutButtonSW;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -100,6 +102,10 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
     @Override
     public void openUI() {
+    }
+
+    @FXML
+    private void logoutButtonAction(ActionEvent event) {
     }
 
 }

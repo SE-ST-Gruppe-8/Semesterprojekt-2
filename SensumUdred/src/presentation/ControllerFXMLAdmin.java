@@ -75,6 +75,8 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
     @FXML
     private Button UpdateList;
+    @FXML
+    private Button logoutButtonAdmin;
 
     /**
      * Initializes the controller class.
@@ -130,6 +132,10 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
         else {
             adminUserListView.setItems(ib.getUsers());
         }
+    }
+
+    @FXML
+    private void logoutButtonAction(ActionEvent event) {
     }
 
 
