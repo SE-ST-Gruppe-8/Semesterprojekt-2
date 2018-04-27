@@ -62,47 +62,9 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         ib = PresentationFacade.getIData().getIBusiness();
-        casesTab.setDisable(true);
-        inquiriesTab.setDisable(true);
-        referenceTab.setDisable(true);
-//        adminTab.setDisable(true);
-//        updateUserList();
         updateCaseList();
     }
 
-//    private void createUserButtonAction(ActionEvent event) {
-//        // TODO
-//        int value;
-//        if (createAdminRadioButton.isSelected()) {
-//            value = 0;
-//        }
-//        else {
-//            value = 1;
-//        }
-//        ib.createUser(adminFirstNameTextField.getText() + " " + adminLastNameTextField.getText(), "test ID",
-//                adminUsernameTextField.getText(), adminPasswordTextField.getText(),
-//                adminEmailTextField.getText(), value);
-//        updateUserList();
-//    }
-
-//    private void deleteUserButtonAction(ActionEvent event) {
-//        // TODO
-//        ib.deleteUser(adminUserListView.getSelectionModel().getSelectedItem());
-//        updateUserList();
-//    }
-
-//    private void UpdateListAction(ActionEvent event) {
-//        updateUserList();
-//    }
-
-//    public void updateUserList() {
-//        if (ib.getUsers() == null) {
-//            adminInfoLabel.setText("no Users installed");
-//        }
-//        else {
-//            adminUserListView.setItems(ib.getUsers());
-//        }
-//    }
 
     public void updateCaseList() {
         if (ib.getCases() == null) {

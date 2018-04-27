@@ -65,11 +65,13 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
         if (iscorrect) {
             loginInfoLabel.setText("Succesfully logged in as: " + ib.getActiveUser().getName());
             if (ib.getRole() == 1) {
-                fxmlString = "FXMLAdmin.fxml";
+//                fxmlString = "FXMLAdmin.fxml";
+                fxmlString = "FXMLSocialWorker.fxml";
 
             }
             else if (ib.getRole() == 0) {
-                fxmlString = "FXMLSocialWorker.fxml";
+//                fxmlString = "FXMLSocialWorker.fxml";
+                fxmlString = "FXMLAdmin.fxml";
             }
         }
         else {
