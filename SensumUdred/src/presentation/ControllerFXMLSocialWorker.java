@@ -8,14 +8,21 @@ package presentation;
 import acq.IBusiness;
 import acq.IPresentation;
 import acq.ICase;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 /**
  *
@@ -105,7 +112,21 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     }
 
     @FXML
-    private void logoutButtonAction(ActionEvent event) {
+    private void logoutButtonAction(ActionEvent event) throws IOException {
+                 ib.logOutActiveUser();
+                FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("FXMLlogin.fxml"));
+
+        GridPane gridPane = loader.load();
+        IPresentation controller = loader.getController();
+        controller.injectBusiness(ib);
+
+        Scene scene2 = new Scene(gridPane);
+        //Get Stage information
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene2);
+        window.show();
     }
 
 }
