@@ -79,6 +79,7 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
         AnchorPane anchorPane = loader.load();
         IPresentation controller = loader.getController();
         controller.injectBusiness(ib);
+        
 
         Scene scene2 = new Scene(anchorPane);
         //Get Stage information

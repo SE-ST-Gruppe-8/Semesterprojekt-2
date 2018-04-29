@@ -64,6 +64,6 @@
          </tabs>
       </TabPane>
       <Button fx:id="logoutButtonSW" layoutX="650.0" layoutY="2.0" mnemonicParsing="false" onAction="#logoutButtonAction" text="Logout" />
-      <Label fx:id="loginInfoLabelAdmin" layoutX="250.0" layoutY="2.0" />
+      <Label fx:id="loginInfoLabelSW" layoutX="250.0" layoutY="2.0" />
    </children>
 </AnchorPane>

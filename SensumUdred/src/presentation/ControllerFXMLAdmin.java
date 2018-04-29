@@ -94,7 +94,7 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         ib = PresentationFacade.getIData().getIBusiness();
-//        loginInfoLabelAdmin.setText("Logged in as: " + ib.getActiveUser().getName());
+        loginInfoLabelAdmin.setText("Logged in as: " + ib.getActiveUser().getName());
         updateUserList();
         
        

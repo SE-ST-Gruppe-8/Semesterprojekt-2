@@ -72,10 +72,11 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         ib = PresentationFacade.getIData().getIBusiness();
-//        loginInfoLabelSW.setText("Logged in as: " + ib.getActiveUser().getName());
+        loginInfoLabelSW.setText("Logged in as: " + ib.getActiveUser().getName());
         System.out.println("Logged in as: " + ib.getActiveUser().getName());
         updateCaseList();
     }
+
 
     public void updateCaseList() {
         if (ib.getCases() == null) {
@@ -107,6 +108,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
     @Override
     public void injectBusiness(IBusiness businessFacade) {
+               
     }
 
     @Override
