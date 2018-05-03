@@ -44,4 +44,39 @@ public class Case implements ICase, Serializable {
     public ICitizen getCitizen() {
         return this.citizen;
     }
+
+    @Override
+    public String getDescription() {
+        return description;
+    }
+
+    @Override
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String getProcess() {
+        return process;
+    }
+
+    @Override
+    public void setProcess(String process) {
+        this.process = process;
+    }
+
+    @Override
+    public ISocialWorker getSocialWorker() {
+        return socialWorker;
+    }
+
+    @Override
+    public void setSocialWorker(ISocialWorker socialWorker) {
+        this.socialWorker = socialWorker;
+    }
+
+    @Override
+    public void setCitizen(ICitizen citizen) {
+        this.citizen = citizen;
+    }
 }
