@@ -157,10 +157,10 @@ public class SocialWorker extends User implements ISocialWorker {
     }
 
     @Override
-    public boolean deleteInquiry(IInquiry inquiry, ObservableList<IInquiry> inquiries) {
+    public boolean deleteInquiry(IInquiry inquiry) {
         boolean citizenRemoved = false;
-        if (inquiries.contains(inquiry)) {
-            citizenRemoved = inquiries.remove(inquiry);
+        if (inquiry != null) {
+            inquiry.getCitizen().setInquiry(null);
         }
         return citizenRemoved;
     }

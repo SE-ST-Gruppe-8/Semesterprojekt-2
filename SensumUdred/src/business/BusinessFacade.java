@@ -49,9 +49,7 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public ObservableList<IInquiry> getInquiries() {
-        ArrayList<ICitizen> citizens = new ArrayList<>();
         ArrayList<IInquiry> inquiries = new ArrayList<>(); // to be filled with inquiries
-        data.loadData(citizens, "citizens");
         for (ICitizen c : citizens) { // get all inquiries belonging to citizens
             inquiries.add(c.getInquiry()); // put them in the inquiries list
         }
@@ -270,7 +268,7 @@ public class BusinessFacade implements IBusiness {
     public void deleteInquiry(IInquiry i) {
         String s = "Error with Citizen";
         if (security.getActiveUser() instanceof SocialWorker) {
-            if (((SocialWorker) security.getActiveUser()).deleteInquiry(i, inquiries)) {
+            if (((SocialWorker) security.getActiveUser()).deleteInquiry(i)) {
                 security.logData("Deleted inquiry " + i.getCitizen().getName());
                 data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
             } else {
