@@ -3,19 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package acq;
-
+package javafx.scene.layout;
 
 /**
  *
- * @author Bruger
+ * @author Frederik
  */
-public interface IPresentation {
-
-    public void injectBusiness(IBusiness businessFacade);
-
-
-    public void openUI();
-    
+public class TapPane {
     
 }
