@@ -95,7 +95,6 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     public void updateCaseList() {
         if (ib.getCases() == null) {
             caseLabel.setText("No Useres Installed");
-//            sw.setText("no Users installed");
         }
         else {
             caseListView.setItems(ib.getCases());
