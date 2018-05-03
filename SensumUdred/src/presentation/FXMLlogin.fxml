@@ -47,7 +47,7 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginButtonAction" text="Login" />
-                  <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logoutButtonAction" text="Logout" />
+                  <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonAction" text="Exit" />
                </children>
             </HBox>
          </children>

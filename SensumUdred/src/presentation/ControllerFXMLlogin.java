@@ -10,6 +10,7 @@ import acq.IPresentation;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,7 +48,7 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
     private Button loginButton;
 
     @FXML
-    private Button logoutButton;
+    private Button exitButton;
 
     /**
      * Initializes the controller class.
@@ -96,9 +97,6 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
 
     }
 
-    @FXML
-    private void logoutButtonAction(ActionEvent event) {
-    }
 
     @Override
     public void injectBusiness(IBusiness businessFacade) {
@@ -107,6 +105,11 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
 
     @Override
     public void openUI() {
+    }
+
+    @FXML
+    private void exitButtonAction(ActionEvent event) {
+        Platform.exit();
     }
 
 }
