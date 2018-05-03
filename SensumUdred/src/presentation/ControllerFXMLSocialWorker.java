@@ -144,7 +144,6 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
    @FXML
     private void createCitizenAction(ActionEvent event) {
 
-        updateCitizenList();
         ab.displayCitizenCreation("Create citizen", ib);
         updateCitizenList();
     }
@@ -157,10 +156,20 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
     @FXML
     private void updateCitizenListAction(ActionEvent event) {
+        updateCitizenList();
     }
 
     @FXML
     private void updateCaseListAction(ActionEvent event) {
+        updateCaseList();
     }
 
+    
+    public void updateCitizenList() {
+        if (ib.getCitizen() == null) {
+            //indsæt ting på label
+        } else {
+            citizenListView.setItems(ib.getCitizen());
+        }
+    }
 }
