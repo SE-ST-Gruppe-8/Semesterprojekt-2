@@ -83,6 +83,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        ab = new AlertBox();
         ib = PresentationFacade.getIData().getIBusiness();
         loginInfoLabelSW.setText("Logged in as: " + ib.getActiveUser().getName());
         System.out.println("Logged in as: " + ib.getActiveUser().getName());
@@ -104,9 +105,13 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
     @FXML
     private void createCaseAction(ActionEvent event) {
-        ab = new AlertBox();
+        
         updateCaseList();
-        ab.displayCaseCreation("Create case", ib, citizenListView.getSelectionModel().getSelectedItem());//              Søren, fix this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        if (citizenListView.getSelectionModel().getSelectedItem() != null) {
+            ab.displayCaseCreation("Create case", ib, (ICitizen) citizenListView.getSelectionModel().getSelectedItem());
+        } else {
+            caseLabel.setText("you must select a Citizen from the list to create a case");
+        }
         updateCaseList();
 
     }
@@ -146,7 +151,6 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
    @FXML
     private void createCitizenAction(ActionEvent event) {
-
         ab.displayCitizenCreation("Create citizen", ib);
         updateCitizenList();
     }
