@@ -96,7 +96,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     private void createCaseAction(ActionEvent event) {
         ab = new AlertBox();
         updateCaseList();
-      //  ab.display("Create case", ib);//              Søren, fix this
+      //  ab.display("Create case", ib);//              Søren, fix this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         updateCaseList();
 
     }
