@@ -74,6 +74,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         ib = PresentationFacade.getIData().getIBusiness();
         loginInfoLabelSW.setText("Logged in as: " + ib.getActiveUser().getName());
         System.out.println("Logged in as: " + ib.getActiveUser().getName());
+        ib.getCitizen();
         updateCaseList();
     }
 
