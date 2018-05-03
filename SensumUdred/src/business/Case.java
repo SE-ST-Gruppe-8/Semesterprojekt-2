@@ -79,4 +79,10 @@ public class Case implements ICase, Serializable {
     public void setCitizen(ICitizen citizen) {
         this.citizen = citizen;
     }
+
+    @Override
+    public String getId() {
+        return ID;
+
+    }
 }

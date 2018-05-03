@@ -14,6 +14,8 @@ public interface ICase {
     public ICitizen getCitizen();
 
     public String getDescription();
+    
+    public String getId();
 
     public void setDescription(String description);
 

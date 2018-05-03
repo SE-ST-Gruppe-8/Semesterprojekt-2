@@ -217,13 +217,34 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
     @FXML
     private void editInquiryAction(ActionEvent event) {
+        if (InquiriesListView.getSelectionModel().getSelectedItem() != null) {
+            ab.displayInquiryEdit("Inquiry", ib, InquiriesListView.getSelectionModel().getSelectedItem());
+        } else {
+//            Label.setText("you must select a Inquiry from the list to view details");
+System.out.println("lol");
+        }
+        updateInquiryList();
+
     }
 
     @FXML
     private void editCitizenAction(ActionEvent event) {
+        if (citizenListView.getSelectionModel().getSelectedItem() != null) {
+            ab.displayCitizenEdit("Citizen", ib, citizenListView.getSelectionModel().getSelectedItem());
+        } else {
+            caseLabel.setText("you must select a Citizen from the list to view details");
+        }
+        updateCaseList();
+        updateCitizenList();
     }
 
     @FXML
     private void editCaseAction(ActionEvent event) {
+        if (caseListView.getSelectionModel().getSelectedItem() != null) {
+            ab.displayCaseEdit("Citizen", ib, caseListView.getSelectionModel().getSelectedItem());
+        } else {
+            caseLabel.setText("you must select a Case from the list to view details");
+        }
+        updateCaseList();
     }
 }

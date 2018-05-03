@@ -183,9 +183,9 @@ public class BusinessFacade implements IBusiness {
                     cases.add(newCase);
                     c.setCase((Case)newCase);
                 } else {
-                    cases.remove(c.getCase());
-                    c.setCase((Case)newCase);
-                    cases.add(newCase);
+//                    cases.remove(c.getCase());
+//                    c.setCase((Case)newCase);
+//                    cases.add(newCase);
                 }
 
                 data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");

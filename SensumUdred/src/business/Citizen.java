@@ -45,6 +45,11 @@ public class Citizen implements ICitizen, Serializable{
     public String getNeeds() {
         return needs;
     }
+    
+    
+    public void setNeeds(String needs){
+        this.needs=needs;
+    }
 
     @Override
     public Case getCase() {
@@ -83,5 +88,6 @@ public class Citizen implements ICitizen, Serializable{
      public String toString(){
          return this.getName();
      }
+
     
 }

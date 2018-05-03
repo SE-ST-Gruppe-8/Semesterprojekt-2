@@ -27,4 +27,5 @@ public interface ICitizen {
     
     public void setInquiry(Inquiry inquiry);
     
+    public void setNeeds(String needs);
 }
