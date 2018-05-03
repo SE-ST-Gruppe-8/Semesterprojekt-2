@@ -16,9 +16,9 @@
          <tabs>
             <Tab fx:id="casesTab" text="Cases">
                <content>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="300.0" prefWidth="720.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="270.0" prefWidth="110.0" spacing="10.0">
+                        <VBox alignment="CENTER" minWidth="125.0" prefHeight="260.0" prefWidth="135.0" spacing="10.0">
                            <children>
                               <Button fx:id="createCaseButton" mnemonicParsing="false" onAction="#createCaseAction" prefWidth="100.0" text="Create case" />
                               <Button fx:id="editCaseButton" mnemonicParsing="false" prefWidth="100.0" text="Edit case" />
@@ -27,8 +27,9 @@
                               <Label fx:id="caseLabel" />
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="270.0" prefWidth="305.0" spacing="10.0">
+                        <VBox alignment="TOP_CENTER" prefHeight="270.0" prefWidth="305.0" spacing="10.0">
                            <children>
+                              <Label text="Citizens" />
                               <ListView fx:id="citizenListView" maxWidth="-Infinity" prefHeight="198.0" prefWidth="344.0" />
                               <Button fx:id="deleteCitizenButton" mnemonicParsing="false" onAction="#deleteCitizenAction" prefHeight="26.0" prefWidth="100.0" text="Delete citizen" />
                               <Button fx:id="updateCitizenListButton" mnemonicParsing="false" onAction="#updateCitizenListAction" prefWidth="100.0" text="Update List" />
@@ -37,8 +38,9 @@
                               <Insets right="10.0" />
                            </padding>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="270.0" prefWidth="305.0" spacing="10.0">
+                        <VBox alignment="TOP_CENTER" prefHeight="270.0" prefWidth="305.0" spacing="10.0">
                            <children>
+                              <Label text="Cases" />
                               <ListView fx:id="caseListView" maxWidth="-Infinity" prefHeight="198.0" prefWidth="344.0" />
                               <Button fx:id="deleteCaseButton" mnemonicParsing="false" onAction="#DeleteCaseAction" prefWidth="100.0" text="Delete case" />
                               <Button fx:id="updateCaseListButton" mnemonicParsing="false" onAction="#updateCaseListAction" prefWidth="100.0" text="Update List" />
@@ -55,14 +57,42 @@
                </content>
             </Tab>
             <Tab fx:id="inquiriesTab" text="Inquiries">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
-            </Tab>
-            <Tab fx:id="referenceTab" text="References">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
+               <content>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox alignment="CENTER" minWidth="125.0" prefHeight="200.0" prefWidth="135.0" spacing="10.0">
+                           <children>
+                              <Button fx:id="createCaseButton1" mnemonicParsing="false" onAction="#createCaseAction" prefWidth="100.0" text="Create Inquiry" />
+                              <Button fx:id="editInquiryButton" mnemonicParsing="false" prefWidth="100.0" text="Edit Inquiry" />
+                              <Label fx:id="caseLabel1" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" prefHeight="270.0" prefWidth="305.0" spacing="10.0">
+                           <children>
+                              <Label text="Citizens" />
+                              <ListView fx:id="citizenListView1" maxWidth="-Infinity" prefHeight="160.0" prefWidth="283.0" />
+                           </children>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" prefHeight="270.0" prefWidth="305.0" spacing="10.0">
+                           <children>
+                              <Label text="Inquiries" />
+                              <ListView fx:id="InquiriesListView" maxWidth="-Infinity" prefHeight="160.0" prefWidth="283.0" />
+                              <Button fx:id="deleteInquiryButton" mnemonicParsing="false" onAction="#deleteInquiryAction" prefHeight="26.0" prefWidth="100.0" text="Delete inquiry" />
+                              <Button fx:id="updateInquiryListView" mnemonicParsing="false" onAction="#updateInquiryListAction" prefWidth="100.0" text="Update List" />
+                           </children>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+               </content>
             </Tab>
          </tabs>
       </TabPane>

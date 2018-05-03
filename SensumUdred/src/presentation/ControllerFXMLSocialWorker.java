@@ -55,9 +55,6 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     private Tab inquiriesTab;
 
     @FXML
-    private Tab referenceTab;
-
-    @FXML
     private Button logoutButtonSW;
     @FXML
     private Button createCaseButton;
