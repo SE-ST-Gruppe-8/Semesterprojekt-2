@@ -79,6 +79,7 @@ public class Citizen implements ICitizen, Serializable{
     public void setInquiry(Inquiry inquiry){
         this.inquiry = inquiry;
     }
+    @Override
      public String toString(){
          return this.getName();
      }
