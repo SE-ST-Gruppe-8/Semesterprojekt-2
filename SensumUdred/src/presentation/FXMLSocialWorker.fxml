@@ -7,23 +7,22 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.ControllerFXMLSocialWorker">
+<AnchorPane prefWidth="720.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.ControllerFXMLSocialWorker">
    <children>
-      <TabPane prefHeight="300.0" prefWidth="720.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="344.0" prefWidth="720.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
             <Tab fx:id="casesTab" text="Cases">
                <content>
-                  <HBox prefHeight="300.0" prefWidth="720.0">
+                  <HBox prefHeight="294.0" prefWidth="720.0">
                      <children>
                         <VBox alignment="CENTER" minWidth="125.0" prefHeight="260.0" prefWidth="135.0" spacing="10.0">
                            <children>
-                              <Button fx:id="createCaseButton" mnemonicParsing="false" onAction="#createCaseAction" prefWidth="100.0" text="Create case" />
-                              <Button fx:id="editCaseButton" mnemonicParsing="false" prefWidth="100.0" text="Edit case" />
-                              <Button fx:id="createCitizenButton" mnemonicParsing="false" onAction="#createCitizenAction" prefWidth="100.0" text="Create citizen" />
-                              <Button fx:id="editCitizenButton" mnemonicParsing="false" prefWidth="100.0" text="Edit citizen" />
                               <Label fx:id="caseLabel" />
                            </children>
                         </VBox>
@@ -31,8 +30,38 @@
                            <children>
                               <Label text="Citizens" />
                               <ListView fx:id="citizenListView" maxWidth="-Infinity" prefHeight="198.0" prefWidth="344.0" />
-                              <Button fx:id="deleteCitizenButton" mnemonicParsing="false" onAction="#deleteCitizenAction" prefHeight="26.0" prefWidth="100.0" text="Delete citizen" />
-                              <Button fx:id="updateCitizenListButton" mnemonicParsing="false" onAction="#updateCitizenListAction" prefWidth="100.0" text="Update List" />
+                              <GridPane>
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Button fx:id="deleteCitizenButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteCitizenAction" prefWidth="100.0" text="Delete citizen" GridPane.columnIndex="1">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="updateCitizenListButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateCitizenListAction" prefWidth="100.0" text="Update List" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="createCitizenButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createCitizenAction" prefWidth="100.0" text="Create citizen">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="editCitizenButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="100.0" text="Edit citizen" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                 </children>
+                              </GridPane>
                            </children>
                            <padding>
                               <Insets right="10.0" />
@@ -42,8 +71,38 @@
                            <children>
                               <Label text="Cases" />
                               <ListView fx:id="caseListView" maxWidth="-Infinity" prefHeight="198.0" prefWidth="344.0" />
-                              <Button fx:id="deleteCaseButton" mnemonicParsing="false" onAction="#DeleteCaseAction" prefWidth="100.0" text="Delete case" />
-                              <Button fx:id="updateCaseListButton" mnemonicParsing="false" onAction="#updateCaseListAction" prefWidth="100.0" text="Update List" />
+                              <GridPane>
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Button fx:id="deleteCaseButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#DeleteCaseAction" prefWidth="100.0" text="Delete case" GridPane.columnIndex="1">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="updateCaseListButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateCaseListAction" prefWidth="100.0" text="Update List" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="createCaseButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createCaseAction" prefWidth="100.0" text="Create case">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="editCaseButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="100.0" text="Edit case" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                 </children>
+                              </GridPane>
                            </children>
                            <padding>
                               <Insets right="10.0" />
@@ -62,15 +121,13 @@
                      <children>
                         <VBox alignment="CENTER" minWidth="125.0" prefHeight="200.0" prefWidth="135.0" spacing="10.0">
                            <children>
-                              <Button fx:id="createCaseButton1" mnemonicParsing="false" onAction="#createCaseAction" prefWidth="100.0" text="Create Inquiry" />
-                              <Button fx:id="editInquiryButton" mnemonicParsing="false" prefWidth="100.0" text="Edit Inquiry" />
                               <Label fx:id="caseLabel1" />
                            </children>
                         </VBox>
                         <VBox alignment="TOP_CENTER" prefHeight="270.0" prefWidth="305.0" spacing="10.0">
                            <children>
                               <Label text="Citizens" />
-                              <ListView fx:id="citizenListView1" maxWidth="-Infinity" prefHeight="160.0" prefWidth="283.0" />
+                              <ListView fx:id="citizenListView1" maxWidth="-Infinity" prefHeight="198.0" prefWidth="283.0" />
                            </children>
                            <padding>
                               <Insets right="10.0" />
@@ -79,9 +136,39 @@
                         <VBox alignment="TOP_CENTER" prefHeight="270.0" prefWidth="305.0" spacing="10.0">
                            <children>
                               <Label text="Inquiries" />
-                              <ListView fx:id="InquiriesListView" maxWidth="-Infinity" prefHeight="160.0" prefWidth="283.0" />
-                              <Button fx:id="deleteInquiryButton" mnemonicParsing="false" onAction="#deleteInquiryAction" prefHeight="26.0" prefWidth="100.0" text="Delete inquiry" />
-                              <Button fx:id="updateInquiryListView" mnemonicParsing="false" onAction="#updateInquiryListAction" prefWidth="100.0" text="Update List" />
+                              <ListView fx:id="InquiriesListView" maxWidth="-Infinity" prefHeight="198.0" prefWidth="283.0" />
+                              <GridPane>
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Button fx:id="deleteInquiryButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteInquiryAction" prefHeight="26.0" prefWidth="100.0" text="Delete inquiry" GridPane.columnIndex="1">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="updateInquiryListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateInquiryListAction" prefWidth="100.0" text="Update List" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="createCaseButton1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createCaseAction" prefWidth="100.0" text="Create Inquiry">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="editInquiryButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="100.0" text="Edit Inquiry" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                 </children>
+                              </GridPane>
                            </children>
                            <padding>
                               <Insets right="10.0" />
