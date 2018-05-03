@@ -27,6 +27,7 @@
                               <Button fx:id="editCaseButton" mnemonicParsing="false" text="Edit case" />
                               <Button fx:id="createCitizenButton" mnemonicParsing="false" onAction="#createCitizenAction" text="Create citizen" />
                               <Button fx:id="editCitizenButton" mnemonicParsing="false" text="Edit citizen" />
+                              <Label fx:id="caseLabel" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="157.0" spacing="10.0">

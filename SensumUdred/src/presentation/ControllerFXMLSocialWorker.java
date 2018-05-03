@@ -77,6 +77,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     private Button updateCaseListButton;
     @FXML
     private ListView<ICitizen> citizenListView;
+    @FXML
+    private Label caseLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -92,6 +94,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
     public void updateCaseList() {
         if (ib.getCases() == null) {
+            caseLabel.setText("No Useres Installed");
 //            sw.setText("no Users installed");
         }
         else {
