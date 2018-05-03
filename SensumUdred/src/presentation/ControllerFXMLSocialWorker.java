@@ -141,12 +141,18 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         window.show();
     }
 
-    @FXML
+   @FXML
     private void createCitizenAction(ActionEvent event) {
+
+        updateCitizenList();
+        ab.displayCitizenCreation("Create citizen", ib);
+        updateCitizenList();
     }
 
-    @FXML
+   @FXML
     private void deleteCitizenAction(ActionEvent event) {
+        ib.deleteCitizen(citizenListView.getSelectionModel().getSelectedItem());
+        updateCitizenList();
     }
 
     @FXML
