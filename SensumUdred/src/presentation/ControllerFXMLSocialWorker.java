@@ -86,6 +86,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         System.out.println("Logged in as: " + ib.getActiveUser().getName());
         ib.getCitizen();
         updateCaseList();
+        updateCitizenList();
     }
 
 
