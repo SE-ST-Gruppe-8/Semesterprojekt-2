@@ -76,6 +76,20 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     private ListView<ICitizen> citizenListView;
     @FXML
     private Label caseLabel;
+    @FXML
+    private Button createCaseButton1;
+    @FXML
+    private Button editInquiryButton;
+    @FXML
+    private Label caseLabel1;
+    @FXML
+    private ListView<?> citizenListView1;
+    @FXML
+    private ListView<?> InquiriesListView;
+    @FXML
+    private Button deleteInquiryButton;
+    @FXML
+    private Button updateInquiryListView;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -98,7 +112,6 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
             caseListView.setItems(ib.getCases());
         }
     }
-
 
     @FXML
     private void createCaseAction(ActionEvent event) {
@@ -176,5 +189,13 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         } else {
             citizenListView.setItems(ib.getCitizen());
         }
+    }
+
+    @FXML
+    private void deleteInquiryAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void updateInquiryListAction(ActionEvent event) {
     }
 }
