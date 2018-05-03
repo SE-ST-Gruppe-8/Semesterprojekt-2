@@ -13,15 +13,15 @@ import java.io.Serializable;
  * @author Bruger
  */
 public class Inquiry implements IInquiry, Serializable {
+
     private String origin;
     private boolean isCitizenInformed;
     private String id;
     private Citizen citizen;
     private String description;
     private static final long serialVersionUID = 1L;
-    
-    
-    public Inquiry(String id, String origin, boolean informed, Citizen citizen, String description){
+
+    public Inquiry(String id, String origin, boolean informed, Citizen citizen, String description) {
         this.origin = origin;
         this.isCitizenInformed = informed;
         this.citizen = citizen;
@@ -58,10 +58,9 @@ public class Inquiry implements IInquiry, Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    public String toString(){
-        return citizen.getId()+" "+citizen.getName();
+
+    public String toString() {
+        return this.id + " " + citizen.getName();
     }
-    
-    
+
 }
