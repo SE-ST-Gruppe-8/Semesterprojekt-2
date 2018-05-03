@@ -9,6 +9,7 @@ import acq.IBusiness;
 import acq.IPresentation;
 import acq.ICase;
 import acq.ICitizen;
+import acq.IInquiry;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -83,9 +84,9 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     @FXML
     private Label caseLabel1;
     @FXML
-    private ListView<?> citizenListView1;
+    private ListView<ICitizen> citizenListView1;
     @FXML
-    private ListView<?> InquiriesListView;
+    private ListView<IInquiry> InquiriesListView;
     @FXML
     private Button deleteInquiryButton;
     @FXML
