@@ -218,4 +218,12 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     @FXML
     private void editInquiryAction(ActionEvent event) {
     }
+
+    @FXML
+    private void editCitizenAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void editCaseAction(ActionEvent event) {
+    }
 }
