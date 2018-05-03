@@ -163,10 +163,10 @@ public class FileManager {
         ArrayList<ICase> test2 = new ArrayList<>();
         ArrayList<ICitizen> test3 = new ArrayList<>();
         FileManager fm = new FileManager();
-        test.add(new SystemAdmin("ASS", "b", "starts", "twerking", "e"));
-        SocialWorker sw = new SocialWorker("polse", "joe", "polse123", "lol", "twerk");
-        Citizen c = new Citizen("name", "id","needs");
-        Inquiry i = new Inquiry("id","origin",false,c, "description");
+        test.add(new SystemAdmin("Admin Jensen", "0", "admin", "super", "Admin@Sensum.dk"));
+        SocialWorker sw = new SocialWorker("Grethe", "1", "grethe123", "kode123", "Grethe@Sensum.dk");
+        Citizen c = new Citizen("Bob", "123456-2345","Mental ustabil");
+        Inquiry i = new Inquiry("0987","Plejehjem Odense",false,c, "Kan ikke tænke selv");
         c.setInquiry(i);
 
         
