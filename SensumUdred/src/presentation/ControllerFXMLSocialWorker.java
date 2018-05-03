@@ -214,4 +214,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         ab.displayInquiryCreation("Inquiry", ib, citizenListView1.getSelectionModel().getSelectedItem());
         updateInquiryList();
     }
+
+    @FXML
+    private void editInquiryAction(ActionEvent event) {
+    }
 }
