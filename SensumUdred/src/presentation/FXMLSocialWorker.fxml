@@ -60,22 +60,22 @@
                                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <Button fx:id="deleteCitizenButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteCitizenAction" prefWidth="100.0" text="Delete citizen" GridPane.columnIndex="1">
+                                                <Button fx:id="deleteCitizenButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteCitizenAction" prefWidth="100.0" text="Delete citizen" GridPane.columnIndex="1">
                                                    <GridPane.margin>
                                                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                                    </GridPane.margin>
                                                 </Button>
-                                                <Button fx:id="updateCitizenListButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateCitizenListAction" prefWidth="100.0" text="Update List" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                <Button fx:id="updateCitizenListButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateCitizenListAction" prefWidth="100.0" text="Update List" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                    <GridPane.margin>
                                                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                                    </GridPane.margin>
                                                 </Button>
-                                                <Button fx:id="createCitizenButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createCitizenAction" prefWidth="100.0" text="Create citizen">
+                                                <Button fx:id="createCitizenButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createCitizenAction" prefWidth="100.0" text="Create citizen">
                                                    <GridPane.margin>
                                                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                                    </GridPane.margin>
                                                 </Button>
-                                                <Button fx:id="editCitizenButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#editCitizenAction" prefWidth="100.0" text="Edit citizen" GridPane.rowIndex="1">
+                                                <Button fx:id="editCitizenButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#editCitizenAction" prefWidth="100.0" text="Edit citizen" GridPane.rowIndex="1">
                                                    <GridPane.margin>
                                                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                                    </GridPane.margin>
@@ -113,22 +113,22 @@
                                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <Button fx:id="deleteCaseButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#DeleteCaseAction" prefWidth="100.0" text="Delete case" GridPane.columnIndex="1">
+                                                <Button fx:id="deleteCaseButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#DeleteCaseAction" prefWidth="100.0" text="Delete case" GridPane.columnIndex="1">
                                                    <GridPane.margin>
                                                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                                    </GridPane.margin>
                                                 </Button>
-                                                <Button fx:id="updateCaseListButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateCaseListAction" prefWidth="100.0" text="Update List" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                <Button fx:id="updateCaseListButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateCaseListAction" prefWidth="100.0" text="Update List" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                    <GridPane.margin>
                                                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                                    </GridPane.margin>
                                                 </Button>
-                                                <Button fx:id="createCaseButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createCaseAction" prefWidth="100.0" text="Create case">
+                                                <Button fx:id="createCaseButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createCaseAction" prefWidth="100.0" text="Create case">
                                                    <GridPane.margin>
                                                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                                    </GridPane.margin>
                                                 </Button>
-                                                <Button fx:id="editCaseButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#editCaseAction" prefWidth="100.0" text="Edit case" GridPane.rowIndex="1">
+                                                <Button fx:id="editCaseButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#editCaseAction" prefWidth="100.0" text="Edit case" GridPane.rowIndex="1">
                                                    <GridPane.margin>
                                                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                                    </GridPane.margin>
@@ -219,7 +219,17 @@
             </Tab>
          </tabs>
       </TabPane>
-      <Button fx:id="logoutButtonSW" layoutX="650.0" layoutY="2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#logoutButtonAction" text="Logout" />
+      <GridPane layoutX="900.0" layoutY="2.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Button fx:id="logoutButtonSW" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#logoutButtonAction" text="Logout" />
+         </children>
+      </GridPane>
       <Label fx:id="loginInfoLabelSW" layoutX="250.0" layoutY="2.0" />
    </children>
 </AnchorPane>
