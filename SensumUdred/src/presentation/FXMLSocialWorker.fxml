@@ -121,6 +121,8 @@
                      <children>
                         <VBox alignment="CENTER" minWidth="125.0" prefHeight="200.0" prefWidth="135.0" spacing="10.0">
                            <children>
+                              <Button fx:id="createInquiryButton" mnemonicParsing="false" onAction="#createInquiryAction" prefWidth="100.0" text="Create Inquiry" />
+                              <Button fx:id="editInquiryButton" mnemonicParsing="false" prefWidth="100.0" text="Edit Inquiry" />
                               <Label fx:id="caseLabel1" />
                            </children>
                         </VBox>

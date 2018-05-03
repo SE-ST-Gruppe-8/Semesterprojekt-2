@@ -48,6 +48,6 @@ public interface ISocialWorker {
 
     public IInquiry createInquiry(String id, String origin, boolean informed, ICitizen citizen, String description);
 
-    public boolean deleteInquiry(IInquiry inquiry, ObservableList<IInquiry> inquiries);
+    public boolean deleteInquiry(IInquiry inquiry);
 
 }
