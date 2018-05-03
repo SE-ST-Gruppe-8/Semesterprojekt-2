@@ -8,6 +8,7 @@ package presentation;
 import acq.IBusiness;
 import acq.IPresentation;
 import acq.ICase;
+import acq.ICitizen;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,7 +22,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -47,14 +47,6 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     
     private PresentationFacade pf;
 
-    @FXML
-    private Button swCasesCreateCaseButton;
-
-    @FXML
-    private Button swDeleteCaseListButton;
-
-    @FXML
-    private Button swUpdateCaseListButton;
 
     @FXML
     private Tab casesTab;
@@ -67,6 +59,24 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
     @FXML
     private Button logoutButtonSW;
+    @FXML
+    private Button createCaseButton;
+    @FXML
+    private Button editCaseButton;
+    @FXML
+    private Button createCitizenButton;
+    @FXML
+    private Button editCitizenButton;
+    @FXML
+    private Button deleteCitizenButton;
+    @FXML
+    private Button updateCitizenListButton;
+    @FXML
+    private Button deleteCaseButton;
+    @FXML
+    private Button updateCaseListButton;
+    @FXML
+    private ListView<ICitizen> citizenListView;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -88,15 +98,12 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         }
     }
 
-    @FXML
-    private void UpdateCaseListAction(ActionEvent event) {
-    }
 
     @FXML
     private void createCaseAction(ActionEvent event) {
         ab = new AlertBox();
         updateCaseList();
-      //  ab.display("Create case", ib);//              Søren, fix this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        ab.displayCaseCreation("Create case", ib, citizenListView.getSelectionModel().getSelectedItem());//              Søren, fix this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         updateCaseList();
 
     }
@@ -132,6 +139,22 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene2);
         window.show();
+    }
+
+    @FXML
+    private void createCitizenAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void deleteCitizenAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void updateCitizenListAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void updateCaseListAction(ActionEvent event) {
     }
 
 }
