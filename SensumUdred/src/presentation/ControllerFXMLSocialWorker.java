@@ -159,6 +159,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     private void deleteCitizenAction(ActionEvent event) {
         ib.deleteCitizen(citizenListView.getSelectionModel().getSelectedItem());
         updateCitizenList();
+        updateCaseList();
     }
 
     @FXML
