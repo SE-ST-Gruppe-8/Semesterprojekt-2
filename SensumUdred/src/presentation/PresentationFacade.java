@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 public class PresentationFacade extends Application implements IPresentation {
 
     private IBusiness ib;
+
     private static PresentationFacade ui;
 
     public static PresentationFacade getUi() {
@@ -41,7 +42,7 @@ public class PresentationFacade extends Application implements IPresentation {
      */
     @Override
     public void injectBusiness(IBusiness businessFacade) {
-        this.ib = businessFacade;
+          this.ib = businessFacade;
     }
 
     /**
@@ -59,13 +60,16 @@ public class PresentationFacade extends Application implements IPresentation {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
 
-        Scene scene = new Scene(root);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLlogin.fxml"));
+        Parent root = loader.load();
 
-        stage.setScene(scene);
-        stage.show();
+        IPresentation controller = loader.getController();
+        controller.injectBusiness(ib);
+
         stage.setTitle("Sensum Udred");
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
 }

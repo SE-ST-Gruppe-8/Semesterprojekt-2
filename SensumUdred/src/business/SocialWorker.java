@@ -1,6 +1,9 @@
 package business;
 
 import acq.ICase;
+import acq.ICitizen;
+import acq.IInquiry;
+import acq.ISocialWorker;
 import java.util.HashSet;
 import java.util.Set;
 import javafx.collections.ObservableList;
@@ -9,13 +12,15 @@ import javafx.collections.ObservableList;
  *
  * @author Søren Bendtsen
  */
-public class SocialWorker extends User {
+public class SocialWorker extends User implements ISocialWorker {
 
     private Set<Case> cases;
 
     private Set<Inquiry> inquiries;
 
     private Set<Reference> references;
+
+    private Set<Citizen> citizens;
 
     private static final long serialVersionUID = 1L;
 
@@ -26,16 +31,18 @@ public class SocialWorker extends User {
         this.references = new HashSet<>();
     }
 
-    public ICase createCase(String id, String des, String process, SocialWorker sw, Citizen c) {
+    @Override
+    public ICase createCase(String id, String des, String process, ISocialWorker sw, ICitizen c) {
         ICase newCase = null;
         newCase = (ICase) new Case(id, des, process, sw, c);
         return newCase;
     }
 
-    public boolean deleteCase(ICase newCase, ObservableList<ICase> cases) {
+    public boolean deleteCase(ICase newCase) {
         boolean deleted = false;
-        if (cases.contains(newCase)) {
-            deleted = cases.remove(newCase);
+        if (newCase.getCitizen() != null) {
+            newCase.getCitizen().setCase(null);
+            deleted = true;
         }
         return deleted;
     }
@@ -126,6 +133,36 @@ public class SocialWorker extends User {
     @Override
     public int getRole() {
         return 1;
+    }
+
+    @Override
+    public ICitizen createCitizen(String name, String id, String needs) {
+        Citizen citizen = new Citizen(name, id, needs);
+        return citizen;
+    }
+
+    @Override
+    public boolean deleteCitizen(ICitizen citizen, ObservableList<ICitizen> citizens) {
+        boolean citizenRemoved = false;
+        if (citizens.contains(citizen)) {
+            citizenRemoved = citizens.remove(citizen);
+        }
+        return citizenRemoved;
+    }
+
+    @Override
+    public IInquiry createInquiry(String id, String origin, boolean informed, ICitizen citizen, String description) {
+        Inquiry inquiry = new Inquiry(id, origin, informed, (Citizen) citizen, description);
+        return inquiry;
+    }
+
+    @Override
+    public boolean deleteInquiry(IInquiry inquiry) {
+        boolean citizenRemoved = false;
+        if (inquiry != null) {
+            inquiry.getCitizen().setInquiry(null);
+        }
+        return citizenRemoved;
     }
 
 }

@@ -23,8 +23,9 @@ public interface ICitizen {
 
     public void setReference(Reference reference);
     
-    public void createInquiry(String id, String origin, boolean informed);
+    public void createInquiry(String id, String origin, boolean informed, String description);
     
     public void setInquiry(Inquiry inquiry);
     
+    public void setNeeds(String needs);
 }

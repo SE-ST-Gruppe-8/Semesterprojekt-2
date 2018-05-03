@@ -6,13 +6,14 @@
 package business;
 
 import acq.ICase;
+import acq.ICitizen;
+import acq.ISocialWorker;
 import java.io.Serializable;
 
 /**
  *
  * @author Bruger
  */
-
 public class Case implements ICase, Serializable {
 
     private final String ID;
@@ -21,11 +22,13 @@ public class Case implements ICase, Serializable {
 
     private String process;
 
-    private SocialWorker socialWorker;
+    private ISocialWorker socialWorker;
 
-    private Citizen citizen;
+    private ICitizen citizen;
 
-    public Case(String id, String des, String process, SocialWorker sw, Citizen c) {
+    private static final long serialVersionUID = 1L;
+
+    public Case(String id, String des, String process, ISocialWorker sw, ICitizen c) {
         this.ID = id;
         this.description = des;
         this.process = process;
@@ -34,6 +37,52 @@ public class Case implements ICase, Serializable {
     }
 
     public String toString() {
-        return socialWorker.toString()+" "+ID;
+        return this.socialWorker.toString() + " " + ID + " " + citizen + " " + description;
+    }
+
+    @Override
+    public ICitizen getCitizen() {
+        return this.citizen;
+    }
+
+    @Override
+    public String getDescription() {
+        return description;
+    }
+
+    @Override
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String getProcess() {
+        return process;
+    }
+
+    @Override
+    public void setProcess(String process) {
+        this.process = process;
+    }
+
+    @Override
+    public ISocialWorker getSocialWorker() {
+        return socialWorker;
+    }
+
+    @Override
+    public void setSocialWorker(ISocialWorker socialWorker) {
+        this.socialWorker = socialWorker;
+    }
+
+    @Override
+    public void setCitizen(ICitizen citizen) {
+        this.citizen = citizen;
+    }
+
+    @Override
+    public String getId() {
+        return ID;
+
     }
 }

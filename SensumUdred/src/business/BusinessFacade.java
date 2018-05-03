@@ -17,18 +17,44 @@ public class BusinessFacade implements IBusiness {
     private SecurityHandler security;
 
     private ObservableList<IUser> users;
-    private ObservableList<IInquiry> inquiries = FXCollections.observableArrayList();
+
+    private ObservableList<IInquiry> inquiries;
+
+    private ObservableList<ICitizen> citizens;
 
     private ObservableList<ICase> cases;
 
     @Override
     public ObservableList<ICase> getCases() {
-        return cases = FXCollections.observableArrayList(data.readCases());
+        ArrayList<ICase> cases = new ArrayList<>();
+        for(ICitizen ic : citizens) {
+           if(ic.getCase() != null) cases.add(ic.getCase());
+        }
+        return this.cases = FXCollections.observableArrayList(cases);
     }
 
     @Override
     public ObservableList<IUser> getUsers() {
-        return users = FXCollections.observableArrayList(data.readUsers());
+        ArrayList<IUser> users = new ArrayList<>();
+        data.loadData(users, "users");
+        return this.users = FXCollections.observableArrayList(users);
+    }
+
+    @Override
+    public ObservableList<ICitizen> getCitizen() {
+        ArrayList<ICitizen> citizens = new ArrayList<>();
+        data.loadData(citizens, "citizens");
+        return this.citizens = FXCollections.observableArrayList(citizens);
+    }
+
+    @Override
+    public ObservableList<IInquiry> getInquiries() {
+        ArrayList<IInquiry> inquiries = new ArrayList<>(); // to be filled with inquiries
+        for (ICitizen c : citizens) { // get all inquiries belonging to citizens
+            inquiries.add(c.getInquiry()); // put them in the inquiries list
+        }
+        // set observablelist to be = inquiries and then return it
+        return this.inquiries = FXCollections.observableArrayList(inquiries);
     }
 
     public BusinessFacade() {
@@ -72,7 +98,7 @@ public class BusinessFacade implements IBusiness {
 //                data.saveUsers(users);
                 System.out.println("meow");
                 users.add(user);
-                data.saveUsers((ArrayList<IUser>) users.stream().collect(Collectors.toList()));
+                data.saveData((ArrayList<IUser>) users.stream().collect(Collectors.toList()), "users");
                 security.logData("Created user: " + userName);
             }
         } else {
@@ -91,7 +117,7 @@ public class BusinessFacade implements IBusiness {
         if (security.getActiveUser() instanceof SystemAdmin) {
             if (((SystemAdmin) security.getActiveUser()).deleteUser(user, users)) {
                 security.logData("Deleted user " + user.toString());
-                data.saveUsers((ArrayList<IUser>) users.stream().collect(Collectors.toList()));
+                data.saveData((ArrayList<IUser>) users.stream().collect(Collectors.toList()), "users");
             } else {
                 System.out.println("User did not exist");
             }
@@ -106,7 +132,7 @@ public class BusinessFacade implements IBusiness {
      * @return
      */
     @Override
-    public boolean validateUser(String username, String password) { 
+    public boolean validateUser(String username, String password) {
         ArrayList<IUser> users = new ArrayList<>();
         data.loadData(users, "users");
         if (security.validateUserLogin(users, username, password)) {
@@ -119,21 +145,14 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public ObservableList<IInquiry> getInquiries() {
-        ArrayList<ICitizen> citizens = data.getCitizens();
-        for (ICitizen c : citizens) {
-            inquiries.add(c.getInquiry());
-        }
-        return inquiries;
-    }
-    
     public void saveInquiry(IInquiry inquiry) {
-        ArrayList<ICitizen> citizens = data.getCitizens();
+        ArrayList<ICitizen> citizens = new ArrayList<>();
+        data.loadData(citizens, "citizens");
         Citizen c = inquiry.getCitizen();
         citizens.remove(c);
         c.setInquiry((Inquiry) inquiry);
         citizens.add(c);
-        data.saveCitizens(citizens);
+        data.saveData(citizens, "citizens");
     }
 
 //    public void tester() {
@@ -142,46 +161,118 @@ public class BusinessFacade implements IBusiness {
 //            citizens.add(new Citizen("Citizen" + (i), String.valueOf(i), "needs" + i));
 //        }
 //        for (ICitizen c : citizens) {
-//            c.createInquiry(String.valueOf(c.getId()), "origin" + c.getId(), true);
+//            c.createInquiry(String.valueOf(c.getId()), "origin" + c.getId(), true, "description");
 //        }
 //        data.saveCitizens(citizens);
 //    }
-
     public int getRole() {
         return security.getActiveUser().getRole();
     }
 
     @Override
-    public void createCase(String id, String des, String process, SocialWorker sw, Citizen c) {
+    public void createCase(String id, String des, String process, ISocialWorker sw, ICitizen c) {
         String s = "error, could not create case";
         ICase newCase;
         if (security.getActiveUser() instanceof SocialWorker) {
-            newCase = ((SocialWorker) security.getActiveUser()).createCase(id, des, process, sw, c);
+            newCase = ((ISocialWorker) security.getActiveUser()).createCase(id, des, process, sw, c);
+            System.out.println(newCase + "meow");
+            c.setCase((Case) newCase);
+            System.out.println(c.getName() + "meow");
             if (newCase != null) {
-                cases.add(newCase);
-                data.saveCases((ArrayList<ICase>) cases.stream().collect(Collectors.toList()));
+                if (c.getCase() == null) {
+                    cases.add(newCase);
+                    c.setCase((Case)newCase);
+                } else {
+//                    cases.remove(c.getCase());
+//                    c.setCase((Case)newCase);
+//                    cases.add(newCase);
+                }
+
+                data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
                 security.logData("Created case with id: " + id);
             } else {
                 System.out.println(s);
             }
 
         }
-        System.out.println("joe" + id);
+        System.out.println(c.getName() + id);
     }
 
     @Override
     public User getActiveUser() {
-        return  security.getActiveUser();
+        return security.getActiveUser();
     }
 
     @Override
     public void deleteCase(ICase newCase) {
         if (security.getActiveUser() instanceof SocialWorker) {
-            if (((SocialWorker) security.getActiveUser()).deleteCase(newCase, cases)) {
+            if (((SocialWorker) security.getActiveUser()).deleteCase(newCase)) {
                 security.logData("Deleted case " + newCase.toString());
-                data.saveCases((ArrayList<ICase>) cases.stream().collect(Collectors.toList()));
+                data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
             } else {
                 System.out.println("Case did not exist");
+            }
+        }
+       
+    }
+
+    @Override
+    public void createCitizen(String name, String id, String needs) {
+        ICitizen citizen;
+        String s = "Error with Citizen";
+        if (security.getActiveUser() instanceof SocialWorker) {
+            citizen = ((ISocialWorker) security.getActiveUser()).createCitizen(name, id, needs);
+            if (citizen != null) {
+                citizens.add(citizen);
+                data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
+                security.logData("Created Citizen" + citizen.getName());
+            } else {
+                System.out.println(s);
+            }
+
+        }
+
+    }
+
+    @Override
+    public void deleteCitizen(ICitizen citizen) {
+        String s = "Error with Citizen";
+        if (security.getActiveUser() instanceof SocialWorker) {
+            if (((SocialWorker) security.getActiveUser()).deleteCitizen(citizen, citizens)) {
+                security.logData("Deleted citizens " + citizen.getName());
+                data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
+            } else {
+                System.out.println(s);
+            }
+        }
+    }
+
+    @Override
+    public void createInquiry(String id, String origin, boolean informed, ICitizen citizen, String description) {
+        IInquiry inquiry;
+        String s = "Error with Citizen";
+        if (security.getActiveUser() instanceof SocialWorker) {
+            inquiry = ((ISocialWorker) security.getActiveUser()).createInquiry(id, origin, informed, citizen, description);
+            if (citizen != null) {
+                citizen.setInquiry((Inquiry) inquiry);
+                data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "Citizens");
+                security.logData("Created Inquiry" + citizen.getName());
+            } else {
+                System.out.println(s);
+            }
+
+        }
+    }
+
+    @Override
+    public void deleteInquiry(IInquiry i) {
+        String s = "Error with Citizen";
+        if (security.getActiveUser() instanceof SocialWorker) {
+            if (((SocialWorker) security.getActiveUser()).deleteInquiry(i)) {
+                security.logData("Deleted inquiry " + i.getCitizen().getName());
+                data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
+            } else {
+                System.out.println(s);
             }
         }
     }

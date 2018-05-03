@@ -20,7 +20,7 @@ public interface IBusiness {
 
     public void createUser(String name, String id, String userName, String password, String email, int type);
 
-    public void createCase(String id, String des, String process, SocialWorker sw, Citizen c);
+    public void createCase(String id, String des, String process, ISocialWorker sw, ICitizen c);
 
     public void deleteUser(IUser user);
 
@@ -30,6 +30,8 @@ public interface IBusiness {
 
     public ObservableList<IInquiry> getInquiries();
 
+    public void saveInquiry(IInquiry inquiry);
+
     public void logOutActiveUser();
 
     public int getRole();
@@ -38,5 +40,18 @@ public interface IBusiness {
 
     public ObservableList<ICase> getCases();
 
-     public void deleteCase(ICase newCase);
+    public void deleteCase(ICase newCase);
+
+    public void createCitizen(String name, String id, String needs);
+
+    public ObservableList<ICitizen> getCitizen();
+
+    public void deleteCitizen(ICitizen citizen);
+    
+    public void createInquiry(String id, String origin, boolean informed, ICitizen citizen, String description);
+    
+    public void deleteInquiry(IInquiry i);
+    
+    
+
 }

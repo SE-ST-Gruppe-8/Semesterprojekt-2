@@ -20,6 +20,7 @@ public class Citizen implements ICitizen, Serializable{
     private Case citizenCase;
     private Reference reference;
     private Inquiry inquiry;
+    private static final long serialVersionUID = 1L;
 
     public Citizen(String name, String id, String needs) {
         this.name = name;
@@ -30,30 +31,42 @@ public class Citizen implements ICitizen, Serializable{
         this.inquiry = null;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public String getId() {
         return id;
     }
 
+    @Override
     public String getNeeds() {
         return needs;
     }
+    
+    
+    public void setNeeds(String needs){
+        this.needs=needs;
+    }
 
+    @Override
     public Case getCase() {
         return citizenCase;
     }
 
+    @Override
     public void setCase(Case citizenCase) {
         this.citizenCase = citizenCase;
     }
 
+    @Override
     public Reference getReference() {
         return reference;
     }
 
+    @Override
     public void setReference(Reference reference) {
         this.reference = reference;
     }
@@ -62,13 +75,19 @@ public class Citizen implements ICitizen, Serializable{
         return (IInquiry) inquiry;
     }
     
-    public void createInquiry(String id, String origin, boolean informed){
-        this.inquiry = new Inquiry(id, origin, informed, this);
+    @Override
+    public void createInquiry(String id, String origin, boolean informed, String description){
+        this.inquiry = new Inquiry(id, origin, informed, this, description);
     }
     
+    @Override
     public void setInquiry(Inquiry inquiry){
         this.inquiry = inquiry;
     }
-    
+    @Override
+     public String toString(){
+         return this.getName();
+     }
+
     
 }
