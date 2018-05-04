@@ -62,7 +62,7 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
     @FXML
     private void loginButtonAction(ActionEvent event) throws IOException {
         boolean iscorrect = ib.validateUser(loginUsernameTextField.getText(), loginPasswordTextField.getText());
-
+        
         if (iscorrect) {
             loginInfoLabel.setText("Succesfully logged in as: " + ib.getActiveUser().getName());
             if (ib.getRole() == 1) {
