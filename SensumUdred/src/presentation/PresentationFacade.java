@@ -19,13 +19,13 @@ import javafx.stage.Stage;
  */
 public class PresentationFacade extends Application implements IPresentation {
 
-    private IBusiness ib;
+    private static IBusiness ib;
 
-    private static PresentationFacade ui;
+//    private static PresentationFacade ui;
 
-    public static PresentationFacade getUi() {
-        return ui;
-    }
+//    public static PresentationFacade getUi() {
+//        return ui;
+//    }
 
     public IBusiness getIBusiness() {
         return ib;
@@ -50,13 +50,13 @@ public class PresentationFacade extends Application implements IPresentation {
      */
     @Override
     public void openUI() {
-        ui = this;
+//        ui = this;
         launch();
     }
 
-    public static PresentationFacade getIData() {
-        return ui;
-    }
+//    public static PresentationFacade getIData() {
+//        return ui;
+//    }
 
     @Override
     public void start(Stage stage) throws Exception {

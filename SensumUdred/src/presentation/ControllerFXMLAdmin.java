@@ -74,7 +74,7 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
     @FXML
     private Label adminInfoLabel;
-    
+
     @FXML
     private Label loginInfoLabelAdmin;
 
@@ -93,19 +93,21 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        ib = PresentationFacade.getIData().getIBusiness();
-        loginInfoLabelAdmin.setText("Logged in as: " + ib.getActiveUser().getName());
-        updateUserList();
-        
-       
+//        ib = PresentationFacade.getIData().getIBusiness();
+//        loginInfoLabelAdmin.setText("Logged in as: " + ib.getActiveUser().getName());
+//        updateUserList();
+
     }
 
     @Override
     public void injectBusiness(IBusiness businessFacade) {
+        ib = businessFacade;
     }
 
     @Override
     public void openUI() {
+        loginInfoLabelAdmin.setText("Logged in as: " + ib.getActiveUser().getName());
+        updateUserList();
     }
 
     @FXML
@@ -149,7 +151,7 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
     @FXML
     private void logoutButtonAction(ActionEvent event) throws IOException {
         ib.logOutActiveUser();
-                FXMLLoader loader = new FXMLLoader();
+        FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("FXMLlogin.fxml"));
 
         GridPane gridPane = loader.load();
