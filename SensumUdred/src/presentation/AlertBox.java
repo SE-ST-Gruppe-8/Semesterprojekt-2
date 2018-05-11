@@ -258,8 +258,7 @@ public class AlertBox {
         window.setResizable(false);
 
         ICitizen c = i.getCitizen();
-        TextField inquiryIdTextField = new TextField();
-        inquiryIdTextField.setText(i.getId());
+        
         TextField inquiryOriginTextField = new TextField();
         inquiryOriginTextField.setText(i.getOrigin());
         TextArea inquiryDescTextField = new TextArea();
@@ -302,7 +301,7 @@ public class AlertBox {
         buttonLayout.setSpacing(10);
         buttonLayout.setPadding(new Insets(10, 10, 10, 10));
         VBox layout = new VBox();
-        layout.getChildren().addAll(radioKeepers, swCaseIdLabel, inquiryIdTextField, swCaseDesLabel, inquiryOriginTextField, swCaseProcessLabel, inquiryDescTextField, buttonLayout);
+        layout.getChildren().addAll(radioKeepers, swCaseIdLabel, swCaseDesLabel, inquiryOriginTextField, swCaseProcessLabel, inquiryDescTextField, buttonLayout);
         layout.setAlignment(Pos.CENTER_LEFT);
         layout.setPadding(new Insets(10, 10, 0, 10));
 
