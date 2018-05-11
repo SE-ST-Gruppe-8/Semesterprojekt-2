@@ -72,6 +72,7 @@ public class PresentationFacade extends Application implements IPresentation {
     @Override
     public void stop() {
         System.out.println("Application closing " + ib.getActiveUser() + " logged out");
+        ib.logOutActiveUser();
         
     }
 
