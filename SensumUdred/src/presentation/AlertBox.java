@@ -44,7 +44,7 @@ public class AlertBox {
         TextArea processTextArea = new TextArea();
         processTextArea.setPromptText("Indtast forløbet for borgeren.");
         Label idLabel = new Label();
-        idLabel.setText("ID: " + c.getId());
+        idLabel.setText("ID: " + c.getId()+"-1");
         Label desLabel = new Label();
         desLabel.setText("Beskrivelse");
         Label processLabel = new Label();
@@ -85,7 +85,7 @@ public class AlertBox {
         TextArea swCaseProcessTextArea = new TextArea();
         swCaseProcessTextArea.setText(c.getProcess());
         Label swCaseIdLabel = new Label();
-        swCaseIdLabel.setText("ID: "+c.getCitizen().getId());
+        swCaseIdLabel.setText("ID: "+c.getId());
         Label swCaseDesLabel = new Label();
         swCaseDesLabel.setText("Beskrivelse");
         Label swCaseProcessLabel = new Label();
@@ -210,7 +210,7 @@ public class AlertBox {
         TextArea inquiryDescTextField = new TextArea();
         inquiryDescTextField.setPromptText("Indtast beskrivelse");
         Label idLabel = new Label();
-        idLabel.setText("ID: "+c.getId());
+        idLabel.setText("ID: "+c.getId()+"-2");
         Label originLabel = new Label();
         originLabel.setText("Indsender");
         Label descLabel = new Label();
@@ -264,7 +264,7 @@ public class AlertBox {
         TextArea inquiryDescTextField = new TextArea();
         inquiryDescTextField.setText(i.getDescription());
         Label swCaseIdLabel = new Label();
-        swCaseIdLabel.setText("ID: "+c.getId());
+        swCaseIdLabel.setText("ID: "+i.getId());
         Label swCaseDesLabel = new Label();
         swCaseDesLabel.setText("Indsender");
         Label swCaseProcessLabel = new Label();
@@ -311,7 +311,7 @@ public class AlertBox {
     }
 
     public void createAndClose(Stage window, IBusiness ib, String des, String procs, ISocialWorker sw, ICitizen c) {
-        ib.createCase(c.getId() + "case", des, procs, sw, c);
+        ib.createCase(c.getId() + "-1", des, procs, sw, c);
         window.close();
     }
 
@@ -325,9 +325,9 @@ public class AlertBox {
 
     public void createAndClose(Stage window, IBusiness ib, String origin, ICitizen c, String description, RadioButton r) {
         if (r.isSelected()) {
-            ib.createInquiry(c.getId() + "henvendelse", origin, true, c, description);
+            ib.createInquiry(c.getId() + "-2", origin, true, c, description);
         } else {
-            ib.createInquiry(c.getId() + "henvendelse", origin, false, c, description);
+            ib.createInquiry(c.getId() + "-2", origin, false, c, description);
         }
         window.close();
     }
