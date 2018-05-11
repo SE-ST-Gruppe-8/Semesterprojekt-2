@@ -261,7 +261,7 @@ public class AlertBox {
         closeButton.setOnAction(e -> window.close());
 
         Button createButton = new Button("Save");
-        createButton.setOnAction(e -> editInquiryAndClose(window,ib, c, inquiryIdTextField.getText()));
+        createButton.setOnAction(e -> editInquiryAndClose(window,ib, i, inquiryDescTextField.getText()));
 //        createButton.setOnAction( e-> window.close());
 
         HBox buttonLayout = new HBox();
@@ -295,18 +295,17 @@ public class AlertBox {
     }
     
     public void editCaseAndClose(Stage window, IBusiness ib, ICase c, String desc, String proc){
-        c.setDescription(desc);
-        c.setProcess(proc);
+        ib.editCase(desc, proc, c);
         window.close();
     }
 
     public void editCitizenAndClose(Stage window, IBusiness ib, ICitizen c, String needs) {
-        c.setNeeds(needs);
+        ib.editCitizen(needs, c);
         window.close();
     }
     
-    public void editInquiryAndClose(Stage window, IBusiness ib, ICitizen c, String desc){
-        c.getInquiry().setDescription(desc);
+    public void editInquiryAndClose(Stage window, IBusiness ib, IInquiry i, String desc){
+        ib.editInquiry(desc, i);
         window.close();
     }
     

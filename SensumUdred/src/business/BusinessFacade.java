@@ -27,8 +27,10 @@ public class BusinessFacade implements IBusiness {
     @Override
     public ObservableList<ICase> getCases() {
         ArrayList<ICase> cases = new ArrayList<>();
-        for(ICitizen ic : citizens) {
-           if(ic.getCase() != null) cases.add(ic.getCase());
+        for (ICitizen ic : citizens) {
+            if (ic.getCase() != null) {
+                cases.add(ic.getCase());
+            }
         }
         return this.cases = FXCollections.observableArrayList(cases);
     }
@@ -177,7 +179,7 @@ public class BusinessFacade implements IBusiness {
             if (newCase != null) {
                 if (c.getCase() == null) {
                     cases.add(newCase);
-                    c.setCase((Case)newCase);
+                    c.setCase((Case) newCase);
                 } else {
 //                    cases.remove(c.getCase());
 //                    c.setCase((Case)newCase);
@@ -209,7 +211,7 @@ public class BusinessFacade implements IBusiness {
                 System.out.println("Case did not exist");
             }
         }
-       
+
     }
 
     @Override
@@ -272,4 +274,24 @@ public class BusinessFacade implements IBusiness {
             }
         }
     }
+
+    @Override
+    public void editCase(String description, String process, ICase c) {
+        c.setDescription(description);
+        c.setProcess(process);
+        data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
+    }
+
+    @Override
+    public void editCitizen(String needs, ICitizen c) {
+        c.setNeeds(needs);
+        data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
+    }
+
+    @Override
+    public void editInquiry(String description, IInquiry i) {
+        i.setDescription(description);
+        data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
+    }
+
 }
