@@ -125,15 +125,16 @@ public class AlertBox {
         window.setResizable(false);
         
         TextField idTextField = new TextField();
-        idTextField.setPromptText("Indtast ID");
+        idTextField.setPromptText("Indtast navn");
         TextField originTextField = new TextField();
-        originTextField.setPromptText("Indtast indsender");
+        originTextField.setPromptText("Indtast ID");
         TextArea descTextField = new TextArea();
         descTextField.setPromptText("Indtast beskrivelse");
-        Label nameLabel = new Label();
-        nameLabel.setText("Navn");
         Label idLabel = new Label();
         idLabel.setText("ID");
+        Label nameLabel = new Label();
+        nameLabel.setText("Navn");
+        
         Label needsLabel = new Label();
         needsLabel.setText("Behov");
 

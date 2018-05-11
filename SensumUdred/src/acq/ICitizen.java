@@ -9,8 +9,10 @@ import business.Reference;
  * @author J
  */
 public interface ICitizen {
-    IInquiry getInquiry();
+    public IInquiry getInquiry();
+    
     public String getName();
+    
     public String getId();
 
     public String getNeeds();
