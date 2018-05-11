@@ -28,15 +28,12 @@
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1378.0" minWidth="10.0" prefWidth="680.0" />
                            </columnConstraints>
                            <rowConstraints>
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="27.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="346.0" minHeight="10.0" prefHeight="334.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <VBox alignment="CENTER" minWidth="125.0" spacing="10.0">
-                                 <children>
-                                    <Label fx:id="caseLabel" />
-                                 </children>
-                              </VBox>
-                              <VBox alignment="TOP_CENTER" spacing="10.0" GridPane.columnIndex="1">
+                              <VBox alignment="CENTER" minWidth="125.0" spacing="10.0" GridPane.rowIndex="1" />
+                              <VBox alignment="TOP_CENTER" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <children>
                                     <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="902.0" prefWidth="684.0">
                                        <columnConstraints>
@@ -89,7 +86,7 @@
                                     <Insets right="10.0" />
                                  </padding>
                               </VBox>
-                              <VBox alignment="TOP_CENTER" spacing="10.0" GridPane.columnIndex="2">
+                              <VBox alignment="TOP_CENTER" spacing="10.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <children>
                                     <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="900.0" prefWidth="665.0">
                                        <columnConstraints>
@@ -142,6 +139,8 @@
                                     <Insets right="10.0" />
                                  </padding>
                               </VBox>
+                              <Label fx:id="caseLabel" alignment="CENTER" prefHeight="17.0" prefWidth="884.0" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+                              <Label fx:id="caseLabel1" alignment="CENTER" prefHeight="17.0" prefWidth="911.0" GridPane.columnIndex="1" GridPane.columnSpan="2" />
                            </children>
                         </GridPane>
                      </children>
@@ -155,11 +154,6 @@
                <content>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <VBox alignment="CENTER" minWidth="125.0" prefHeight="200.0" prefWidth="135.0" spacing="10.0">
-                           <children>
-                              <Label fx:id="caseLabel1" />
-                           </children>
-                        </VBox>
                         <VBox alignment="TOP_CENTER" prefHeight="270.0" prefWidth="305.0" spacing="10.0">
                            <children>
                               <Label text="Borgere" />
