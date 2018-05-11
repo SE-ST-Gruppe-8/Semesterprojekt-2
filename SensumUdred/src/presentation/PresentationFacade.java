@@ -22,11 +22,9 @@ public class PresentationFacade extends Application implements IPresentation {
     private static IBusiness ib;
 
 //    private static PresentationFacade ui;
-
 //    public static PresentationFacade getUi() {
 //        return ui;
 //    }
-
     public IBusiness getIBusiness() {
         return ib;
     }
@@ -42,7 +40,7 @@ public class PresentationFacade extends Application implements IPresentation {
      */
     @Override
     public void injectBusiness(IBusiness businessFacade) {
-          this.ib = businessFacade;
+        this.ib = businessFacade;
     }
 
     /**
@@ -57,7 +55,6 @@ public class PresentationFacade extends Application implements IPresentation {
 //    public static PresentationFacade getIData() {
 //        return ui;
 //    }
-
     @Override
     public void start(Stage stage) throws Exception {
 
@@ -70,6 +67,12 @@ public class PresentationFacade extends Application implements IPresentation {
         stage.setTitle("Sensum Udred");
         stage.setScene(new Scene(root));
         stage.show();
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("Application closing " + ib.getActiveUser() + " logged out");
+        
     }
 
 }
