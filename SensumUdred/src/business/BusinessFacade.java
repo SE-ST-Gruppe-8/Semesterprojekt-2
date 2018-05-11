@@ -140,7 +140,6 @@ public class BusinessFacade implements IBusiness {
             security.logData(username + " logged in.");
             return true;
         } else {
-            security.logData("Login attempt with username: " + username);
             return false;
         }
     }
