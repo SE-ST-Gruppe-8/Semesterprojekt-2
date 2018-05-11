@@ -33,9 +33,9 @@
                   <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label text="Username" GridPane.columnIndex="1" />
+                  <Label text="Brugernavn" GridPane.columnIndex="1" />
                   <TextField fx:id="loginUsernameTextField" onAction="#loginButtonAction" GridPane.columnIndex="2" />
-                  <Label text="Password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="Kodeord" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <PasswordField fx:id="loginPasswordTextField" onAction="#loginButtonAction" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <HBox alignment="CENTER" prefHeight="22.0" prefWidth="720.0" spacing="10.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="2">
                      <children>
@@ -46,8 +46,8 @@
             </GridPane>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginButtonAction" text="Login" />
-                  <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonAction" text="Exit" />
+                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginButtonAction" text="Log ind" />
+                  <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonAction" text="Luk" />
                </children>
             </HBox>
          </children>

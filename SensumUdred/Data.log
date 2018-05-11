@@ -9,3 +9,15 @@ Thu May 03 16:47:22 CEST 2018	Admin Jensen	0	admin	Admin@Sensum.dk	Created user:
 Thu May 03 16:47:23 CEST 2018	Admin Jensen	0	admin	Admin@Sensum.dk	Deleted user t4 fn t4 ln	test ID	t4	t4@Sensum.dk
 Thu May 03 16:47:37 CEST 2018	Admin Jensen	0	admin	Admin@Sensum.dk	Created user: t5 fn t5 ln	test ID	t5	t5@Sensum.dk
 Thu May 03 16:47:39 CEST 2018	Admin Jensen	0	admin	Admin@Sensum.dk	Deleted user t5 fn t5 ln	test ID	t5	t5@Sensum.dk
+Fri May 11 12:16:12 CEST 2018	Grethe	1	grethe123	Grethe@Sensum.dk	grethe123 logged in.
+Fri May 11 12:17:05 CEST 2018	Grethe	1	grethe123	Grethe@Sensum.dk	Created case with id: 123
+Fri May 11 12:17:12 CEST 2018	Grethe	1	grethe123	Grethe@Sensum.dk	Deleted case SagsID: 123 	Borgernavn: Bob	BorgerID: 123456-2345	Sagsbehandler: Grethe
+Fri May 11 12:17:13 CEST 2018	Grethe	1	grethe123	Grethe@Sensum.dk	logged out.
+Fri May 11 12:26:12 CEST 2018	Grethe	1	grethe123	Grethe@Sensum.dk	grethe123 logged in.
+Fri May 11 12:26:48 CEST 2018	Grethe	1	grethe123	Grethe@Sensum.dk	logged out.
+Fri May 11 12:26:53 CEST 2018	Admin Jensen	0	admin	Admin@Sensum.dk	admin logged in.
+Fri May 11 12:27:10 CEST 2018	Admin Jensen	0	admin	Admin@Sensum.dk	logged out.
+Fri May 11 12:29:25 CEST 2018	Admin Jensen	0	admin	Admin@Sensum.dk	admin logged in.
+Fri May 11 12:29:32 CEST 2018	Admin Jensen	0	admin	Admin@Sensum.dk	logged out.
+Fri May 11 12:29:38 CEST 2018	Grethe	1	grethe123	Grethe@Sensum.dk	grethe123 logged in.
+Fri May 11 12:29:44 CEST 2018	Grethe	1	grethe123	Grethe@Sensum.dk	logged out.
