@@ -164,5 +164,4 @@ public class SocialWorker extends User implements ISocialWorker {
         }
         return citizenRemoved;
     }
-
 }

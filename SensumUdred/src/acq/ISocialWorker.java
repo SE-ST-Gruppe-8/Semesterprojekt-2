@@ -12,7 +12,7 @@ import javafx.collections.ObservableList;
  *
  * @author Robin
  */
-public interface ISocialWorker {
+public interface ISocialWorker extends IUser{
 
     public ICase createCase(String id, String des, String process, ISocialWorker sw, ICitizen c);
 

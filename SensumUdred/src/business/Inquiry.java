@@ -60,7 +60,7 @@ public class Inquiry implements IInquiry, Serializable {
     }
 
     public String toString() {
-        return this.id + " " + citizen.getName();
+        return "HendvendelsesID: " + this.id + "\tBorger: " + citizen.getName();
     }
 
 }

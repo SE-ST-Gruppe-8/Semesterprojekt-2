@@ -37,7 +37,7 @@ public class Case implements ICase, Serializable {
     }
 
     public String toString() {
-        return this.socialWorker.toString() + " " + ID + " " + citizen + " " + description;
+        return "SagsID: " + ID + " \t" + citizen + "\tSagsbehandler: " + this.socialWorker.getName();
     }
 
     @Override
