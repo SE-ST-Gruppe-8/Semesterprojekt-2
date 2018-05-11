@@ -5,8 +5,6 @@
  */
 package acq;
 
-import business.Citizen;
-import business.SocialWorker;
 import business.User;
 import javafx.collections.ObservableList;
 
@@ -23,6 +21,10 @@ public interface IBusiness {
     public void createCase(String id, String des, String process, ISocialWorker sw, ICitizen c);
 
     public void deleteUser(IUser user);
+    
+    public boolean hasUniqueUserID(String id);
+    
+    public boolean hasUnqiueCitizenID(String id);
 
     public boolean validateUser(String username, String password);
 

@@ -56,7 +56,6 @@ public class AlertBox {
         Button createButton = new Button("Opret");
         createButton.setOnAction(e -> createAndClose(window, ib, idTextField.getText(), desTextArea.getText(), processTextArea.getText(), (ISocialWorker) ib.getActiveUser(), c));
 
-
         HBox buttonLayout = new HBox();
         buttonLayout.getChildren().addAll(closeButton, createButton);
         buttonLayout.setAlignment(Pos.CENTER);
@@ -71,7 +70,7 @@ public class AlertBox {
         window.setScene(scene);
         window.showAndWait();
     }
-    
+
     public void displayCaseEdit(String header, IBusiness ib, ICase c) {
         Stage window = new Stage();
         window.setTitle(header);
@@ -81,8 +80,7 @@ public class AlertBox {
 
         TextField swCaseIdTextField = new TextField();
         swCaseIdTextField.setText(c.getId());
-        
-        
+
         TextArea swCaseDesTextArea = new TextArea();
         swCaseDesTextArea.setText(c.getDescription());
         TextArea swCaseProcessTextArea = new TextArea();
@@ -98,9 +96,9 @@ public class AlertBox {
         closeButton.setOnAction(e -> window.close());
 
         Button createButton = new Button("Gem");
-        createButton.setOnAction(e -> editCaseAndClose(window, ib,c, swCaseDesTextArea.getText(), swCaseProcessTextArea.getText()));
-//        createButton.setOnAction( e-> window.close());
+        createButton.setOnAction(e -> editCaseAndClose(window, ib, c, swCaseDesTextArea.getText(), swCaseProcessTextArea.getText()));
 
+//        createButton.setOnAction( e-> window.close());
         HBox buttonLayout = new HBox();
         buttonLayout.getChildren().addAll(closeButton, createButton);
         buttonLayout.setAlignment(Pos.CENTER);
@@ -116,14 +114,13 @@ public class AlertBox {
         window.showAndWait();
     }
 
-
     public void displayCitizenCreation(String header, IBusiness ib) {
         Stage window = new Stage();
         window.setTitle(header);
         window.setMinWidth(400);
         window.setMaxWidth(600);
         window.setResizable(false);
-        
+
         TextField idTextField = new TextField();
         idTextField.setPromptText("Indtast navn");
         TextField originTextField = new TextField();
@@ -134,7 +131,7 @@ public class AlertBox {
         idLabel.setText("ID");
         Label nameLabel = new Label();
         nameLabel.setText("Navn");
-        
+
         Label needsLabel = new Label();
         needsLabel.setText("Behov");
 
@@ -209,7 +206,6 @@ public class AlertBox {
         window.setMaxWidth(600);
         window.setResizable(false);
 
-        
         TextField inquiryIdTextField = new TextField();
         inquiryIdTextField.setPromptText("Indtast ID");
         TextField inquiryOriginTextField = new TextField();
@@ -244,8 +240,7 @@ public class AlertBox {
         window.setScene(scene);
         window.showAndWait();
     }
-    
-    
+
     public void displayInquiryEdit(String header, IBusiness ib, IInquiry i) {
         Stage window = new Stage();
         window.setTitle(header);
@@ -271,8 +266,9 @@ public class AlertBox {
         closeButton.setOnAction(e -> window.close());
 
         Button createButton = new Button("Save");
-        createButton.setOnAction(e -> editInquiryAndClose(window,ib, i, inquiryDescTextField.getText()));
-//        createButton.setOnAction( e-> window.close());
+
+        createButton.setOnAction(e -> editInquiryAndClose(window, ib, i, inquiryDescTextField.getText()));
+        // createButton.setOnAction( e-> window.close());
 
         HBox buttonLayout = new HBox();
         buttonLayout.getChildren().addAll(closeButton, createButton);
@@ -295,16 +291,19 @@ public class AlertBox {
     }
 
     public void createAndClose(Stage window, IBusiness ib, String id, String origin, String description) {
-        ib.createCitizen(id, origin, description);
-        window.close();
+        // if (ib.hasUnqiueCitizenID(id)) {
+        if (true) { // brug ovenstående linje når hasUniqueCitizenID(id) er implementeret i DataFacade!!!
+            ib.createCitizen(id, origin, description);
+            window.close();
+        }
     }
 
     public void createAndClose(Stage window, IBusiness ib, String id, String origin, boolean informed, ICitizen c, String description) {
         ib.createInquiry(id, origin, informed, c, description);
         window.close();
     }
-    
-    public void editCaseAndClose(Stage window, IBusiness ib, ICase c, String desc, String proc){
+
+    public void editCaseAndClose(Stage window, IBusiness ib, ICase c, String desc, String proc) {
         ib.editCase(desc, proc, c);
         window.close();
     }
@@ -313,11 +312,10 @@ public class AlertBox {
         ib.editCitizen(needs, c);
         window.close();
     }
-    
-    public void editInquiryAndClose(Stage window, IBusiness ib, IInquiry i, String desc){
+
+    public void editInquiryAndClose(Stage window, IBusiness ib, IInquiry i, String desc) {
         ib.editInquiry(desc, i);
         window.close();
     }
-    
-    
+
 }

@@ -184,7 +184,6 @@ public class BusinessFacade implements IBusiness {
                 if (c.getCase() == null) {
                     cases.add(newCase);
                     c.setCase((Case) newCase);
-
                 } else {
 
 //                    cases.remove(c.getCase());
@@ -298,6 +297,16 @@ public class BusinessFacade implements IBusiness {
     public void editInquiry(String description, IInquiry i) {
         i.setDescription(description);
         data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
+    }
+
+    @Override
+    public boolean hasUniqueUserID(String id) {
+        return data.hasUniqueUserUD(id);
+    }
+
+    @Override
+    public boolean hasUnqiueCitizenID(String id) {
+        return data.hasUniqueCitizenID(id);
     }
 
 }

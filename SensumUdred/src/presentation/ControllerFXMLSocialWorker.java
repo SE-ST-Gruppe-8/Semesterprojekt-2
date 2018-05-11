@@ -125,7 +125,6 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
             caseLabel.setText("you must select a Citizen from the list to create a case");
         }
         updateCaseList();
-
     }
 
     @FXML
