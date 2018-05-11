@@ -52,6 +52,12 @@ public interface IBusiness {
     
     public void deleteInquiry(IInquiry i);
     
+    void editCase(String description, String process, ICase c);
+    
+    void editCitizen(String needs, ICitizen c);
+    
+    void editInquiry(String description, IInquiry i);
+    
     
 
 }
