@@ -123,7 +123,6 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
             caseLabel.setText("you must select a Citizen from the list to create a case");
         }
         updateCaseList();
-
     }
 
     @FXML
@@ -221,7 +220,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
             ab.displayInquiryEdit("Inquiry", ib, InquiriesListView.getSelectionModel().getSelectedItem());
         } else {
 //            Label.setText("you must select a Inquiry from the list to view details");
-System.out.println("lol");
+            System.out.println("lol");
         }
         updateInquiryList();
 

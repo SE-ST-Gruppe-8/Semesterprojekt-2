@@ -27,8 +27,10 @@ public class BusinessFacade implements IBusiness {
     @Override
     public ObservableList<ICase> getCases() {
         ArrayList<ICase> cases = new ArrayList<>();
-        for(ICitizen ic : citizens) {
-           if(ic.getCase() != null) cases.add(ic.getCase());
+        for (ICitizen ic : citizens) {
+            if (ic.getCase() != null) {
+                cases.add(ic.getCase());
+            }
         }
         return this.cases = FXCollections.observableArrayList(cases);
     }
@@ -177,7 +179,7 @@ public class BusinessFacade implements IBusiness {
             if (newCase != null) {
                 if (c.getCase() == null) {
                     cases.add(newCase);
-                    c.setCase((Case)newCase);
+                    c.setCase((Case) newCase);
                 } else {
 //                    cases.remove(c.getCase());
 //                    c.setCase((Case)newCase);
@@ -209,7 +211,7 @@ public class BusinessFacade implements IBusiness {
                 System.out.println("Case did not exist");
             }
         }
-       
+
     }
 
     @Override
@@ -272,4 +274,15 @@ public class BusinessFacade implements IBusiness {
             }
         }
     }
+
+    @Override
+    public boolean hasUniqueUserID(String id) {
+        return data.hasUniqueUserUD(id);
+    }
+
+    @Override
+    public boolean hasUnqiueCitizenID(String id) {
+        return data.hasUniqueCitizenID(id);
+    }
+
 }

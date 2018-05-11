@@ -68,7 +68,7 @@ public class AlertBox {
         window.setScene(scene);
         window.showAndWait();
     }
-    
+
     public void displayCaseEdit(String header, IBusiness ib, ICase c) {
         Stage window = new Stage();
         window.setTitle(header);
@@ -78,8 +78,7 @@ public class AlertBox {
 
         TextField swCaseIdTextField = new TextField();
         swCaseIdTextField.setText(c.getId());
-        
-        
+
         TextArea swCaseDesTextArea = new TextArea();
         swCaseDesTextArea.setText(c.getDescription());
         TextArea swCaseProcessTextArea = new TextArea();
@@ -95,7 +94,7 @@ public class AlertBox {
         closeButton.setOnAction(e -> window.close());
 
         Button createButton = new Button("Save");
-        createButton.setOnAction(e -> editCaseAndClose(window, ib,c, swCaseDesTextArea.getText(), swCaseProcessTextArea.getText()));
+        createButton.setOnAction(e -> editCaseAndClose(window, ib, c, swCaseDesTextArea.getText(), swCaseProcessTextArea.getText()));
 //        createButton.setOnAction( e-> window.close());
 
         HBox buttonLayout = new HBox();
@@ -112,7 +111,6 @@ public class AlertBox {
         window.setScene(scene);
         window.showAndWait();
     }
-
 
     public void displayCitizenCreation(String header, IBusiness ib) {
         Stage window = new Stage();
@@ -202,7 +200,6 @@ public class AlertBox {
         window.setMaxWidth(600);
         window.setResizable(false);
 
-        
         TextField inquiryIdTextField = new TextField();
         TextField inquiryOriginTextField = new TextField();
         TextArea inquiryDescTextField = new TextArea();
@@ -234,8 +231,7 @@ public class AlertBox {
         window.setScene(scene);
         window.showAndWait();
     }
-    
-    
+
     public void displayInquiryEdit(String header, IBusiness ib, IInquiry i) {
         Stage window = new Stage();
         window.setTitle(header);
@@ -261,7 +257,7 @@ public class AlertBox {
         closeButton.setOnAction(e -> window.close());
 
         Button createButton = new Button("Save");
-        createButton.setOnAction(e -> editInquiryAndClose(window,ib, c, inquiryIdTextField.getText()));
+        createButton.setOnAction(e -> editInquiryAndClose(window, ib, c, inquiryIdTextField.getText()));
 //        createButton.setOnAction( e-> window.close());
 
         HBox buttonLayout = new HBox();
@@ -285,16 +281,19 @@ public class AlertBox {
     }
 
     public void createAndClose(Stage window, IBusiness ib, String id, String origin, String description) {
-        ib.createCitizen(id, origin, description);
-        window.close();
+        // if (ib.hasUnqiueCitizenID(id)) {
+        if (true) { // brug ovenstående linje når hasUniqueCitizenID(id) er implementeret i DataFacade!!!
+            ib.createCitizen(id, origin, description);
+            window.close();
+        }
     }
 
     public void createAndClose(Stage window, IBusiness ib, String id, String origin, boolean informed, ICitizen c, String description) {
         ib.createInquiry(id, origin, informed, c, description);
         window.close();
     }
-    
-    public void editCaseAndClose(Stage window, IBusiness ib, ICase c, String desc, String proc){
+
+    public void editCaseAndClose(Stage window, IBusiness ib, ICase c, String desc, String proc) {
         c.setDescription(desc);
         c.setProcess(proc);
         window.close();
@@ -304,11 +303,10 @@ public class AlertBox {
         c.setNeeds(needs);
         window.close();
     }
-    
-    public void editInquiryAndClose(Stage window, IBusiness ib, ICitizen c, String desc){
+
+    public void editInquiryAndClose(Stage window, IBusiness ib, ICitizen c, String desc) {
         c.getInquiry().setDescription(desc);
         window.close();
     }
-    
-    
+
 }

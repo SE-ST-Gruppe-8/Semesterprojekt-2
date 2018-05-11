@@ -74,7 +74,7 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
     @FXML
     private Label adminInfoLabel;
-    
+
     @FXML
     private Label loginInfoLabelAdmin;
 
@@ -85,10 +85,15 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
     private Button UpdateList;
 
     @FXML
-    private Button logoutButtonAdmin;
+    private TextField adminIdTextField;
+    @FXML
+    private Button logoutButtonSW;
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -96,8 +101,7 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
         ib = PresentationFacade.getIData().getIBusiness();
         loginInfoLabelAdmin.setText("Logged in as: " + ib.getActiveUser().getName());
         updateUserList();
-        
-       
+
     }
 
     @Override
@@ -110,19 +114,21 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
     @FXML
     private void createUserButtonAction(ActionEvent event) {
-//        // TODO
         int value;
         if (createAdminRadioButton.isSelected()) {
             value = 0;
-        }
-        else {
+        } else {
             value = 1;
         }
-        ib.createUser(adminFirstNameTextField.getText() + " " + adminLastNameTextField.getText(), "test ID",
-                adminUsernameTextField.getText(), adminPasswordTextField.getText(),
-                adminEmailTextField.getText(), value);
-        System.out.println("Role: " + ib.getRole());
-        updateUserList();
+        String id = adminIdTextField.getText();
+        // if (ib.hasUniqueUserID(id)) {
+        if (true) { // brug ovenstående linje når hasUniqueUserID(id) er implementeret i DataFacade!!!
+            ib.createUser(adminFirstNameTextField.getText() + " " + adminLastNameTextField.getText(), id,
+                    adminUsernameTextField.getText(), adminPasswordTextField.getText(),
+                    adminEmailTextField.getText(), value);
+            System.out.println("Role: " + ib.getRole());
+            updateUserList();
+        }
     }
 
     @FXML
@@ -132,16 +138,14 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
         updateUserList();
     }
 
-    @FXML
-    private void UpdateListAction(ActionEvent event) {
+    private void updateListAction(ActionEvent event) {
         updateUserList();
     }
 
     public void updateUserList() {
         if (ib.getUsers() == null) {
             adminInfoLabel.setText("no Users installed");
-        }
-        else {
+        } else {
             adminUserListView.setItems(ib.getUsers());
         }
     }
@@ -149,7 +153,7 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
     @FXML
     private void logoutButtonAction(ActionEvent event) throws IOException {
         ib.logOutActiveUser();
-                FXMLLoader loader = new FXMLLoader();
+        FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("FXMLlogin.fxml"));
 
         GridPane gridPane = loader.load();
@@ -163,6 +167,10 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
         window.setScene(scene2);
         window.show();
 
+    }
+
+    @FXML
+    private void UpdateListAction(ActionEvent event) {
     }
 
 }
