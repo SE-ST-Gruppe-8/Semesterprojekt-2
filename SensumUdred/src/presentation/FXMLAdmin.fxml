@@ -28,12 +28,12 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                                  <children>
-                                    <RadioButton fx:id="createSocialWorkerRadioButton" focusTraversable="false" mnemonicParsing="false" selected="true" text="Social worker">
+                                    <RadioButton fx:id="createSocialWorkerRadioButton" focusTraversable="false" mnemonicParsing="false" selected="true" text="Sagsbehandler">
                                        <toggleGroup>
                                           <ToggleGroup fx:id="createUserToggleGroup" />
                                        </toggleGroup>
                                     </RadioButton>
-                                    <RadioButton fx:id="createAdminRadioButton" focusTraversable="false" mnemonicParsing="false" text="Admin" toggleGroup="$createUserToggleGroup" />
+                                    <RadioButton fx:id="createAdminRadioButton" focusTraversable="false" mnemonicParsing="false" text="Administrator" toggleGroup="$createUserToggleGroup" />
                                  </children>
                               </HBox>
                               <GridPane>
@@ -52,37 +52,37 @@
                                  <children>
                                     <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1">
                                        <children>
-                                          <Label text="Username" />
+                                          <Label text="Brugernavn" />
                                           <TextField fx:id="adminUsernameTextField" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2">
                                        <children>
-                                          <Label text="First Name" />
+                                          <Label text="Fornavn" />
                                           <TextField fx:id="adminFirstNameTextField" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <children>
-                                          <Label text="Password" />
+                                          <Label text="Kodeord" />
                                           <TextField fx:id="adminPasswordTextField" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                        <children>
-                                          <Label text="Last Name" />
+                                          <Label text="Efternavn" />
                                           <TextField fx:id="adminLastNameTextField" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <children>
-                                          <Label text="Repeat Password" />
+                                          <Label text="Gentag kodeord" />
                                           <TextField fx:id="adminRepeatPasswordTextField" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                        <children>
-                                          <Label text="Email" />
+                                          <Label text="E-mail" />
                                           <TextField fx:id="adminEmailTextField" />
                                        </children>
                                     </HBox>
@@ -96,7 +96,7 @@
                               </GridPane>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                                  <children>
-                                    <Button fx:id="createUserButton" mnemonicParsing="false" onAction="#createUserButtonAction" text="Create user" />
+                                    <Button fx:id="createUserButton" mnemonicParsing="false" onAction="#createUserButtonAction" text="Opret bruger" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
@@ -109,8 +109,8 @@
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="135.0" spacing="10.0">
                            <children>
                               <ListView fx:id="adminUserListView" maxWidth="-Infinity" prefHeight="200.0" prefWidth="125.0" />
-                              <Button fx:id="deleteUserButton" mnemonicParsing="false" onAction="#deleteUserButtonAction" text="Delete user" />
-                              <Button fx:id="UpdateList" mnemonicParsing="false" onAction="#UpdateListAction" text="Update List" />
+                              <Button fx:id="deleteUserButton" mnemonicParsing="false" onAction="#deleteUserButtonAction" text="Slet bruger" />
+                              <Button fx:id="UpdateList" mnemonicParsing="false" onAction="#UpdateListAction" text="Opdatér liste" />
                            </children>
                            <padding>
                               <Insets right="10.0" />
@@ -122,7 +122,7 @@
             </Tab>
          </tabs>
       </TabPane>
-      <Button fx:id="logoutButtonSW" layoutX="660.0" layoutY="2.0" mnemonicParsing="false" onAction="#logoutButtonAction" text="Logout" />
+      <Button fx:id="logoutButtonSW" layoutX="660.0" layoutY="2.0" mnemonicParsing="false" onAction="#logoutButtonAction" text="Log ud" />
       <Label fx:id="loginInfoLabelAdmin" layoutX="260.0" layoutY="12.0" />
    </children>
 </AnchorPane>

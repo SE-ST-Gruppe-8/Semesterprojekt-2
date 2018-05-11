@@ -17,7 +17,7 @@
    <children>
       <TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="900.0" prefWidth="1600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <tabs>
-            <Tab fx:id="casesTab" text="Cases">
+            <Tab fx:id="casesTab" text="Sager">
                <content>
                   <HBox prefHeight="294.0" prefWidth="720.0">
                      <children>
@@ -48,7 +48,7 @@
                                           <RowConstraints maxHeight="372.0" minHeight="10.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="711.0" text="Citizens" />
+                                          <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="711.0" text="Borgere" />
                                           <ListView fx:id="citizenListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="260.0" prefWidth="420.0" GridPane.rowIndex="1" />
                                           <GridPane GridPane.rowIndex="2">
                                             <columnConstraints>
@@ -60,22 +60,22 @@
                                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <Button fx:id="deleteCitizenButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteCitizenAction" prefWidth="100.0" text="Delete citizen" GridPane.columnIndex="1">
+                                                <Button fx:id="deleteCitizenButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteCitizenAction" prefWidth="100.0" text="Slet borger" GridPane.columnIndex="1">
                                                    <GridPane.margin>
                                                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                                    </GridPane.margin>
                                                 </Button>
-                                                <Button fx:id="updateCitizenListButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateCitizenListAction" prefWidth="100.0" text="Update List" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                <Button fx:id="updateCitizenListButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateCitizenListAction" prefWidth="100.0" text="Opdater liste" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                    <GridPane.margin>
                                                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                                    </GridPane.margin>
                                                 </Button>
-                                                <Button fx:id="createCitizenButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createCitizenAction" prefWidth="100.0" text="Create citizen">
+                                                <Button fx:id="createCitizenButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createCitizenAction" prefWidth="100.0" text="Opret borger">
                                                    <GridPane.margin>
                                                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                                    </GridPane.margin>
                                                 </Button>
-                                                <Button fx:id="editCitizenButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#editCitizenAction" prefWidth="100.0" text="Edit citizen" GridPane.rowIndex="1">
+                                                <Button fx:id="editCitizenButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#editCitizenAction" prefWidth="100.0" text="Redigér borger" GridPane.rowIndex="1">
                                                    <GridPane.margin>
                                                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                                    </GridPane.margin>
@@ -101,7 +101,7 @@
                                           <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Cases" />
+                                          <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Sager" />
                                           <ListView fx:id="caseListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="260.0" prefWidth="420.0" GridPane.rowIndex="1" />
                                           <GridPane GridPane.rowIndex="2">
                                             <columnConstraints>
@@ -113,22 +113,22 @@
                                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <Button fx:id="deleteCaseButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#DeleteCaseAction" prefWidth="100.0" text="Delete case" GridPane.columnIndex="1">
+                                                <Button fx:id="deleteCaseButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#DeleteCaseAction" prefWidth="100.0" text="Slet sag" GridPane.columnIndex="1">
                                                    <GridPane.margin>
                                                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                                    </GridPane.margin>
                                                 </Button>
-                                                <Button fx:id="updateCaseListButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateCaseListAction" prefWidth="100.0" text="Update List" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                <Button fx:id="updateCaseListButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateCaseListAction" prefWidth="100.0" text="Opdater liste" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                    <GridPane.margin>
                                                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                                    </GridPane.margin>
                                                 </Button>
-                                                <Button fx:id="createCaseButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createCaseAction" prefWidth="100.0" text="Create case">
+                                                <Button fx:id="createCaseButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createCaseAction" prefWidth="100.0" text="Opret sag">
                                                    <GridPane.margin>
                                                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                                    </GridPane.margin>
                                                 </Button>
-                                                <Button fx:id="editCaseButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#editCaseAction" prefWidth="100.0" text="Edit case" GridPane.rowIndex="1">
+                                                <Button fx:id="editCaseButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#editCaseAction" prefWidth="100.0" text="Redigér sag" GridPane.rowIndex="1">
                                                    <GridPane.margin>
                                                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                                    </GridPane.margin>
@@ -151,7 +151,7 @@
                   </HBox>
                </content>
             </Tab>
-            <Tab fx:id="inquiriesTab" text="Inquiries">
+            <Tab fx:id="inquiriesTab" text="Henvendelser">
                <content>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -162,7 +162,7 @@
                         </VBox>
                         <VBox alignment="TOP_CENTER" prefHeight="270.0" prefWidth="305.0" spacing="10.0">
                            <children>
-                              <Label text="Citizens" />
+                              <Label text="Borgere" />
                               <ListView fx:id="citizenListView1" maxWidth="-Infinity" prefHeight="198.0" prefWidth="283.0" />
                            </children>
                            <padding>
@@ -171,7 +171,7 @@
                         </VBox>
                         <VBox alignment="TOP_CENTER" prefHeight="270.0" prefWidth="305.0" spacing="10.0">
                            <children>
-                              <Label text="Inquiries" />
+                              <Label text="Henvendelser" />
                               <ListView fx:id="InquiriesListView" maxWidth="-Infinity" prefHeight="198.0" prefWidth="283.0" />
                               <GridPane>
                                 <columnConstraints>
@@ -183,22 +183,22 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Button fx:id="deleteInquiryButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteInquiryAction" prefHeight="26.0" prefWidth="100.0" text="Delete inquiry" GridPane.columnIndex="1">
+                                    <Button fx:id="deleteInquiryButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteInquiryAction" prefHeight="26.0" prefWidth="100.0" text="Slet henvendelse" GridPane.columnIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                     </Button>
-                                    <Button fx:id="updateInquiryListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateInquiryListAction" prefWidth="100.0" text="Update List" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Button fx:id="updateInquiryListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateInquiryListAction" prefWidth="100.0" text="Opdater liste" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                     </Button>
-                                    <Button fx:id="createInquiryButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createInquiryAction" prefWidth="100.0" text="Create Inquiry">
+                                    <Button fx:id="createInquiryButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createInquiryAction" prefWidth="100.0" text="Opret henvendelse">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                     </Button>
-                                    <Button fx:id="editInquiryButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#editInquiryAction" prefWidth="100.0" text="Edit Inquiry" GridPane.rowIndex="1">
+                                    <Button fx:id="editInquiryButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#editInquiryAction" prefWidth="100.0" text="Redigér henvendelse" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
@@ -227,7 +227,7 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button fx:id="logoutButtonSW" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#logoutButtonAction" text="Logout" />
+            <Button fx:id="logoutButtonSW" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#logoutButtonAction" text="Log ud" />
          </children>
       </GridPane>
       <Label fx:id="loginInfoLabelSW" layoutX="250.0" layoutY="2.0" />
