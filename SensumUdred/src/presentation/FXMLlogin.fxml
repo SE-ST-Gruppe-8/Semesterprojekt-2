@@ -44,7 +44,7 @@
                   </HBox>
                </children>
             </GridPane>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+            <HBox alignment="CENTER" prefHeight="34.0" prefWidth="400.0" spacing="10.0">
                <children>
                   <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginButtonAction" text="Log ind" />
                   <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonAction" text="Luk" />

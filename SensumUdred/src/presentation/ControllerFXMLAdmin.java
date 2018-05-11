@@ -165,6 +165,10 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
         //Get Stage information
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setMinWidth(300);
+        window.setMinHeight(200);
+        window.setWidth(400);
+        window.setHeight(300);
         window.setScene(scene2);
         window.show();
 

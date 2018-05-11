@@ -65,6 +65,10 @@ public class PresentationFacade extends Application implements IPresentation {
         controller.injectBusiness(ib);
 
         stage.setTitle("Sensum Udred");
+        stage.setMinWidth(300);
+        stage.setMinHeight(200);
+        stage.setWidth(400);
+        stage.setHeight(300);
         stage.setScene(new Scene(root));
         stage.show();
     }

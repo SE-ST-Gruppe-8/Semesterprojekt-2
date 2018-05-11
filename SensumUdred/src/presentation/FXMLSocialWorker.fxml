@@ -15,7 +15,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.ControllerFXMLSocialWorker">
    <children>
-      <TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="900.0" prefWidth="1600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <tabs>
             <Tab fx:id="casesTab" text="Sager">
                <content>
@@ -219,7 +219,7 @@
             </Tab>
          </tabs>
       </TabPane>
-      <Label fx:id="loginInfoLabelSW" layoutX="250.0" layoutY="2.0" />
+      <Label fx:id="loginInfoLabelSW" layoutX="250.0" layoutY="2.0" prefHeight="17.0" prefWidth="227.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="5.0" />
       <Button fx:id="logoutButtonSW" layoutX="847.0" layoutY="2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#logoutButtonAction" text="Log ud" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
    </children>
 </AnchorPane>
