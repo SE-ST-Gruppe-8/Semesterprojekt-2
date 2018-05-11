@@ -86,7 +86,7 @@ public class Citizen implements ICitizen, Serializable{
     }
     @Override
      public String toString(){
-         return this.getName();
+         return "Borgernavn: "+this.getName() + "\tBorgerID: " + this.id;
      }
 
     

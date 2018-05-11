@@ -62,41 +62,34 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
     @FXML
     private void loginButtonAction(ActionEvent event) throws IOException {
         boolean iscorrect = ib.validateUser(loginUsernameTextField.getText(), loginPasswordTextField.getText());
-        
+
         if (iscorrect) {
             loginInfoLabel.setText("Succesfully logged in as: " + ib.getActiveUser().getName());
             if (ib.getRole() == 1) {
 //                fxmlString = "FXMLAdmin.fxml";
                 fxmlString = "FXMLSocialWorker.fxml";
 
-            }
-            else if (ib.getRole() == 0) {
+            } else if (ib.getRole() == 0) {
 //                fxmlString = "FXMLSocialWorker.fxml";
                 fxmlString = "FXMLAdmin.fxml";
             }
-                FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource(fxmlString));
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(fxmlString));
 
-        AnchorPane anchorPane = loader.load();
-        IPresentation controller = loader.getController();
-        controller.injectBusiness(ib);
-        
+            AnchorPane anchorPane = loader.load();
+            IPresentation controller = loader.getController();
+            controller.injectBusiness(ib);
 
-        Scene scene2 = new Scene(anchorPane);
-        //Get Stage information
+            Scene scene2 = new Scene(anchorPane);
+            //Get Stage information
 
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene2);
-        window.show();
-        }
-        else {
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(scene2);
+            window.show();
+        } else {
             loginInfoLabel.setText("Wrong input");
-
         }
-    
-
     }
-
 
     @Override
     public void injectBusiness(IBusiness businessFacade) {
@@ -111,5 +104,4 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
     private void exitButtonAction(ActionEvent event) {
         Platform.exit();
     }
-
 }
