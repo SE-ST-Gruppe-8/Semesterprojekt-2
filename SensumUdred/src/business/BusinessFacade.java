@@ -284,6 +284,7 @@ public class BusinessFacade implements IBusiness {
     public void editCase(String description, String process, ICase c) {
         c.setDescription(description);
         c.setProcess(process);
+        
         data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
     }
 
@@ -294,8 +295,9 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void editInquiry(String description, IInquiry i) {
+    public void editInquiry(String description, IInquiry i, boolean isInformed) {
         i.setDescription(description);
+        i.setIsCitizenInformed(isInformed);
         data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
     }
 

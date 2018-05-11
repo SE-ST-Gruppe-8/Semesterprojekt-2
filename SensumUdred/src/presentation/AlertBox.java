@@ -10,11 +10,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 
 public class AlertBox {
@@ -37,14 +39,12 @@ public class AlertBox {
         window.setMaxWidth(600);
         window.setResizable(false);
 
-        TextField idTextField = new TextField();
-        idTextField.setPromptText("Indtast et ID til sagen");
         TextArea desTextArea = new TextArea();
         desTextArea.setPromptText("Indtast en beskrivelse af sagen");
         TextArea processTextArea = new TextArea();
         processTextArea.setPromptText("Indtast forløbet for borgeren.");
         Label idLabel = new Label();
-        idLabel.setText("ID");
+        idLabel.setText("ID: " + c.getId()+"-1");
         Label desLabel = new Label();
         desLabel.setText("Beskrivelse");
         Label processLabel = new Label();
@@ -54,7 +54,7 @@ public class AlertBox {
         closeButton.setOnAction(e -> window.close());
 
         Button createButton = new Button("Opret");
-        createButton.setOnAction(e -> createAndClose(window, ib, idTextField.getText(), desTextArea.getText(), processTextArea.getText(), (ISocialWorker) ib.getActiveUser(), c));
+        createButton.setOnAction(e -> createAndClose(window, ib, desTextArea.getText(), processTextArea.getText(), (ISocialWorker) ib.getActiveUser(), c));
 
         HBox buttonLayout = new HBox();
         buttonLayout.getChildren().addAll(closeButton, createButton);
@@ -62,7 +62,7 @@ public class AlertBox {
         buttonLayout.setSpacing(10);
         buttonLayout.setPadding(new Insets(10, 10, 10, 10));
         VBox layout = new VBox();
-        layout.getChildren().addAll(idLabel, idTextField, desLabel, desTextArea, processLabel, processTextArea, buttonLayout);
+        layout.getChildren().addAll(idLabel, desLabel, desTextArea, processLabel, processTextArea, buttonLayout);
         layout.setAlignment(Pos.CENTER_LEFT);
         layout.setPadding(new Insets(10, 10, 0, 10));
 
@@ -78,15 +78,14 @@ public class AlertBox {
         window.setMaxWidth(600);
         window.setResizable(false);
 
-        TextField swCaseIdTextField = new TextField();
-        swCaseIdTextField.setText(c.getId());
+
 
         TextArea swCaseDesTextArea = new TextArea();
         swCaseDesTextArea.setText(c.getDescription());
         TextArea swCaseProcessTextArea = new TextArea();
         swCaseProcessTextArea.setText(c.getProcess());
         Label swCaseIdLabel = new Label();
-        swCaseIdLabel.setText("ID");
+        swCaseIdLabel.setText("ID: "+c.getId());
         Label swCaseDesLabel = new Label();
         swCaseDesLabel.setText("Beskrivelse");
         Label swCaseProcessLabel = new Label();
@@ -105,7 +104,7 @@ public class AlertBox {
         buttonLayout.setSpacing(10);
         buttonLayout.setPadding(new Insets(10, 10, 10, 10));
         VBox layout = new VBox();
-        layout.getChildren().addAll(swCaseIdLabel, swCaseIdTextField, swCaseDesLabel, swCaseDesTextArea, swCaseProcessLabel, swCaseProcessTextArea, buttonLayout);
+        layout.getChildren().addAll(swCaseIdLabel, swCaseDesLabel, swCaseDesTextArea, swCaseProcessLabel, swCaseProcessTextArea, buttonLayout);
         layout.setAlignment(Pos.CENTER_LEFT);
         layout.setPadding(new Insets(10, 10, 0, 10));
 
@@ -206,24 +205,34 @@ public class AlertBox {
         window.setMaxWidth(600);
         window.setResizable(false);
 
-        TextField inquiryIdTextField = new TextField();
-        inquiryIdTextField.setPromptText("Indtast ID");
         TextField inquiryOriginTextField = new TextField();
         inquiryOriginTextField.setPromptText("Indtast indsender");
         TextArea inquiryDescTextField = new TextArea();
         inquiryDescTextField.setPromptText("Indtast beskrivelse");
         Label idLabel = new Label();
-        idLabel.setText("ID");
+        idLabel.setText("ID: "+c.getId()+"-2");
         Label originLabel = new Label();
         originLabel.setText("Indsender");
         Label descLabel = new Label();
         descLabel.setText("Beskrivelse");
 
+        Label isInformedLabel = new Label();
+        isInformedLabel.setText("Er borgeren blevet informeret om henvendelse: ");
+
+        HBox radioKeepers = new HBox();
+        RadioButton radiob1 = new RadioButton();
+        RadioButton radiob2 = new RadioButton();
+        radiob1.setText("Ja  ");
+        radiob2.setText("Nej");
+        ToggleGroup tg = new ToggleGroup();
+        tg.getToggles().addAll(radiob1, radiob2);
+        radioKeepers.getChildren().addAll(isInformedLabel, radiob1, radiob2);
+
         Button closeButton = new Button("Luk");
         closeButton.setOnAction(e -> window.close());
 
         Button createButton = new Button("Opret");
-        createButton.setOnAction(e -> createAndClose(window, ib, inquiryIdTextField.getText(), inquiryOriginTextField.getText(), false, c, inquiryDescTextField.getText()));
+        createButton.setOnAction(e -> createAndClose(window, ib, inquiryOriginTextField.getText(), c, inquiryDescTextField.getText(), radiob1));
 //        createButton.setOnAction( e-> window.close());
 
         HBox buttonLayout = new HBox();
@@ -232,7 +241,7 @@ public class AlertBox {
         buttonLayout.setSpacing(10);
         buttonLayout.setPadding(new Insets(10, 10, 10, 10));
         VBox layout = new VBox();
-        layout.getChildren().addAll(idLabel, inquiryIdTextField, originLabel, inquiryOriginTextField, descLabel, inquiryDescTextField, buttonLayout);
+        layout.getChildren().addAll(radioKeepers, idLabel, originLabel, inquiryOriginTextField, descLabel, inquiryDescTextField, buttonLayout);
         layout.setAlignment(Pos.CENTER_LEFT);
         layout.setPadding(new Insets(10, 10, 0, 10));
 
@@ -249,25 +258,41 @@ public class AlertBox {
         window.setResizable(false);
 
         ICitizen c = i.getCitizen();
-        TextField inquiryIdTextField = new TextField();
-        inquiryIdTextField.setText(i.getId());
+        
         TextField inquiryOriginTextField = new TextField();
         inquiryOriginTextField.setText(i.getOrigin());
         TextArea inquiryDescTextField = new TextArea();
         inquiryDescTextField.setText(i.getDescription());
         Label swCaseIdLabel = new Label();
-        swCaseIdLabel.setText("ID");
+        swCaseIdLabel.setText("ID: "+i.getId());
         Label swCaseDesLabel = new Label();
         swCaseDesLabel.setText("Indsender");
         Label swCaseProcessLabel = new Label();
         swCaseProcessLabel.setText("Beskrivelse");
+
+        Label isInformedLabel = new Label();
+        isInformedLabel.setText("Er borgeren blevet informeret om henvendelse: ");
+
+        HBox radioKeepers = new HBox();
+        RadioButton radiob1 = new RadioButton();
+        RadioButton radiob2 = new RadioButton();
+        radiob1.setText("Ja  ");
+        radiob2.setText("Nej");
+        ToggleGroup tg = new ToggleGroup();
+        tg.getToggles().addAll(radiob1, radiob2);
+        radioKeepers.getChildren().addAll(isInformedLabel, radiob1, radiob2);
+        if (i.isCitizenInformed()) {
+            radiob1.setSelected(true);
+        } else {
+            radiob2.setSelected(true);
+        }
 
         Button closeButton = new Button("Close");
         closeButton.setOnAction(e -> window.close());
 
         Button createButton = new Button("Save");
 
-        createButton.setOnAction(e -> editInquiryAndClose(window, ib, i, inquiryDescTextField.getText()));
+        createButton.setOnAction(e -> editInquiryAndClose(window, ib, i, inquiryDescTextField.getText(), radiob1));
         // createButton.setOnAction( e-> window.close());
 
         HBox buttonLayout = new HBox();
@@ -276,7 +301,7 @@ public class AlertBox {
         buttonLayout.setSpacing(10);
         buttonLayout.setPadding(new Insets(10, 10, 10, 10));
         VBox layout = new VBox();
-        layout.getChildren().addAll(swCaseIdLabel, inquiryIdTextField, swCaseDesLabel, inquiryOriginTextField, swCaseProcessLabel, inquiryDescTextField, buttonLayout);
+        layout.getChildren().addAll(radioKeepers, swCaseIdLabel, swCaseDesLabel, inquiryOriginTextField, swCaseProcessLabel, inquiryDescTextField, buttonLayout);
         layout.setAlignment(Pos.CENTER_LEFT);
         layout.setPadding(new Insets(10, 10, 0, 10));
 
@@ -285,8 +310,8 @@ public class AlertBox {
         window.showAndWait();
     }
 
-    public void createAndClose(Stage window, IBusiness ib, String id, String des, String procs, ISocialWorker sw, ICitizen c) {
-        ib.createCase(id, des, procs, sw, c);
+    public void createAndClose(Stage window, IBusiness ib, String des, String procs, ISocialWorker sw, ICitizen c) {
+        ib.createCase(c.getId() + "-1", des, procs, sw, c);
         window.close();
     }
 
@@ -298,8 +323,12 @@ public class AlertBox {
         }
     }
 
-    public void createAndClose(Stage window, IBusiness ib, String id, String origin, boolean informed, ICitizen c, String description) {
-        ib.createInquiry(id, origin, informed, c, description);
+    public void createAndClose(Stage window, IBusiness ib, String origin, ICitizen c, String description, RadioButton r) {
+        if (r.isSelected()) {
+            ib.createInquiry(c.getId() + "-2", origin, true, c, description);
+        } else {
+            ib.createInquiry(c.getId() + "-2", origin, false, c, description);
+        }
         window.close();
     }
 
@@ -313,8 +342,13 @@ public class AlertBox {
         window.close();
     }
 
-    public void editInquiryAndClose(Stage window, IBusiness ib, IInquiry i, String desc) {
-        ib.editInquiry(desc, i);
+    public void editInquiryAndClose(Stage window, IBusiness ib, IInquiry i, String desc, RadioButton r) {
+
+        if (r.isSelected()) {
+            ib.editInquiry(desc, i, true);
+        } else {
+            ib.editInquiry(desc, i, false);
+        }
         window.close();
     }
 

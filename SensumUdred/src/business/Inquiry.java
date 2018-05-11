@@ -58,9 +58,16 @@ public class Inquiry implements IInquiry, Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+    
+    
 
     public String toString() {
         return "HendvendelsesID: " + this.id + "\tBorger: " + citizen.getName();
+    }
+
+    @Override
+    public void setIsCitizenInformed(boolean isInformed) {
+       this.isCitizenInformed = isInformed;
     }
 
 }

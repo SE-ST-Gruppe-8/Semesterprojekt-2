@@ -108,8 +108,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     public void updateCaseList() {
         if (ib.getCases() == null) {
             caseLabel.setText("No Useres Installed");
-        }
-        else {
+        } else {
             caseListView.setItems(ib.getCases());
         }
     }
@@ -120,8 +119,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         updateCaseList();
         if (citizenListView.getSelectionModel().getSelectedItem() != null) {
             ab.displayCaseCreation("Create case", ib, (ICitizen) citizenListView.getSelectionModel().getSelectedItem());
-        }
-        else {
+        } else {
             caseLabel.setText("you must select a Citizen from the list to create a case");
         }
         updateCaseList();
@@ -162,6 +160,10 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         //Get Stage information
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setMinWidth(300);
+        window.setMinHeight(200);
+        window.setWidth(400);
+        window.setHeight(300);
         window.setScene(scene2);
         window.show();
     }
@@ -174,10 +176,12 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
     @FXML
     private void deleteCitizenAction(ActionEvent event) {
-        ib.deleteCitizen(citizenListView.getSelectionModel().getSelectedItem());
-        updateCitizenList();
-        updateCaseList();
-        updateInquiryList();
+        if (citizenListView.getSelectionModel().getSelectedItem() != null) {
+            ib.deleteCitizen(citizenListView.getSelectionModel().getSelectedItem());
+            updateCitizenList();
+            updateCaseList();
+            updateInquiryList();
+        }
     }
 
     @FXML
@@ -193,8 +197,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     public void updateCitizenList() {
         if (ib.getCitizen() == null) {
             //indsæt ting på label
-        }
-        else {
+        } else {
             ObservableList<ICitizen> list = ib.getCitizen();
             citizenListView.setItems(list);
             citizenListView1.setItems(list);
@@ -207,8 +210,10 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
     @FXML
     private void deleteInquiryAction(ActionEvent event) {
-        ib.deleteInquiry(InquiriesListView.getSelectionModel().getSelectedItem());
-        updateInquiryList();
+        if (InquiriesListView.getSelectionModel().getSelectedItem() != null) {
+            ib.deleteInquiry(InquiriesListView.getSelectionModel().getSelectedItem());
+            updateInquiryList();
+        }
     }
 
     @FXML
@@ -219,16 +224,17 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
     @FXML
     private void createInquiryAction(ActionEvent event) {
-        ab.displayInquiryCreation("Inquiry", ib, citizenListView1.getSelectionModel().getSelectedItem());
-        updateInquiryList();
+        if (citizenListView1.getSelectionModel().getSelectedItem() != null) {
+            ab.displayInquiryCreation("Inquiry", ib, citizenListView1.getSelectionModel().getSelectedItem());
+            updateInquiryList();
+        }
     }
 
     @FXML
     private void editInquiryAction(ActionEvent event) {
         if (InquiriesListView.getSelectionModel().getSelectedItem() != null) {
             ab.displayInquiryEdit("Inquiry", ib, InquiriesListView.getSelectionModel().getSelectedItem());
-        }
-        else {
+        } else {
 //            Label.setText("you must select a Inquiry from the list to view details");
             System.out.println("lol");
         }
@@ -240,8 +246,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     private void editCitizenAction(ActionEvent event) {
         if (citizenListView.getSelectionModel().getSelectedItem() != null) {
             ab.displayCitizenEdit("Citizen", ib, citizenListView.getSelectionModel().getSelectedItem());
-        }
-        else {
+        } else {
             caseLabel.setText("you must select a Citizen from the list to view details");
         }
         updateCaseList();
@@ -252,8 +257,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     private void editCaseAction(ActionEvent event) {
         if (caseListView.getSelectionModel().getSelectedItem() != null) {
             ab.displayCaseEdit("Citizen", ib, caseListView.getSelectionModel().getSelectedItem());
-        }
-        else {
+        } else {
             caseLabel.setText("you must select a Case from the list to view details");
         }
         updateCaseList();

@@ -19,4 +19,6 @@ public interface IInquiry {
     public String getDescription();
 
     public void setDescription(String description);
+    
+    public void setIsCitizenInformed(boolean isInformed);
 }

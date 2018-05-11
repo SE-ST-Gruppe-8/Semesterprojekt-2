@@ -86,6 +86,10 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
             //Get Stage information
 
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setMinWidth(500);
+            window.setMinHeight(430);
+            window.setWidth(900);
+            window.setHeight(430);
             window.setScene(scene2);
             window.show();
         } else {

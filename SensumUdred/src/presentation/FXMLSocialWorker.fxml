@@ -15,7 +15,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.ControllerFXMLSocialWorker">
    <children>
-      <TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="900.0" prefWidth="1600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <tabs>
             <Tab fx:id="casesTab" text="Sager">
                <content>
@@ -28,15 +28,12 @@
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1378.0" minWidth="10.0" prefWidth="680.0" />
                            </columnConstraints>
                            <rowConstraints>
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="27.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="346.0" minHeight="10.0" prefHeight="334.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <VBox alignment="CENTER" minWidth="125.0" spacing="10.0">
-                                 <children>
-                                    <Label fx:id="caseLabel" />
-                                 </children>
-                              </VBox>
-                              <VBox alignment="TOP_CENTER" spacing="10.0" GridPane.columnIndex="1">
+                              <VBox alignment="CENTER" minWidth="125.0" spacing="10.0" GridPane.rowIndex="1" />
+                              <VBox alignment="TOP_CENTER" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <children>
                                     <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="902.0" prefWidth="684.0">
                                        <columnConstraints>
@@ -89,7 +86,7 @@
                                     <Insets right="10.0" />
                                  </padding>
                               </VBox>
-                              <VBox alignment="TOP_CENTER" spacing="10.0" GridPane.columnIndex="2">
+                              <VBox alignment="TOP_CENTER" spacing="10.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <children>
                                     <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="900.0" prefWidth="665.0">
                                        <columnConstraints>
@@ -142,6 +139,7 @@
                                     <Insets right="10.0" />
                                  </padding>
                               </VBox>
+                              <Label fx:id="caseLabel" alignment="CENTER" prefHeight="17.0" prefWidth="884.0" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="2" />
                            </children>
                         </GridPane>
                      </children>
@@ -153,23 +151,19 @@
             </Tab>
             <Tab fx:id="inquiriesTab" text="Henvendelser">
                <content>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="549.0" minWidth="10.0" prefWidth="426.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="537.0" minWidth="10.0" prefWidth="474.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="106.0" minHeight="0.0" prefHeight="16.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="347.0" minHeight="10.0" prefHeight="343.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="108.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
                      <children>
-                        <VBox alignment="CENTER" minWidth="125.0" prefHeight="200.0" prefWidth="135.0" spacing="10.0">
-                           <children>
-                              <Label fx:id="caseLabel1" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="TOP_CENTER" prefHeight="270.0" prefWidth="305.0" spacing="10.0">
-                           <children>
-                              <Label text="Borgere" />
-                              <ListView fx:id="citizenListView1" maxWidth="-Infinity" prefHeight="198.0" prefWidth="283.0" />
-                           </children>
-                           <padding>
-                              <Insets right="10.0" />
-                           </padding>
-                        </VBox>
-                        <VBox alignment="TOP_CENTER" prefHeight="270.0" prefWidth="305.0" spacing="10.0">
+                        <Label fx:id="caseLabel1" alignment="CENTER" prefHeight="17.0" prefWidth="911.0" GridPane.columnSpan="2" />
+                        <VBox alignment="TOP_CENTER" prefHeight="347.0" prefWidth="435.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <children>
                               <Label text="Henvendelser" />
                               <ListView fx:id="InquiriesListView" maxWidth="-Infinity" prefHeight="198.0" prefWidth="283.0" />
@@ -210,26 +204,22 @@
                               <Insets right="10.0" />
                            </padding>
                         </VBox>
+                        <VBox alignment="TOP_CENTER" prefHeight="270.0" prefWidth="305.0" spacing="10.0" GridPane.rowIndex="1">
+                           <children>
+                              <Label text="Borgere" />
+                              <ListView fx:id="citizenListView1" maxWidth="-Infinity" prefHeight="198.0" prefWidth="283.0" />
+                           </children>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </VBox>
                      </children>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </HBox>
+                  </GridPane>
                </content>
             </Tab>
          </tabs>
       </TabPane>
-      <GridPane layoutX="900.0" layoutY="2.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <Button fx:id="logoutButtonSW" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#logoutButtonAction" text="Log ud" />
-         </children>
-      </GridPane>
-      <Label fx:id="loginInfoLabelSW" layoutX="250.0" layoutY="2.0" />
+      <Label fx:id="loginInfoLabelSW" layoutX="250.0" layoutY="2.0" prefHeight="17.0" prefWidth="227.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="5.0" />
+      <Button fx:id="logoutButtonSW" layoutX="847.0" layoutY="2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#logoutButtonAction" text="Log ud" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
    </children>
 </AnchorPane>
