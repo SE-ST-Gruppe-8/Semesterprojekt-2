@@ -88,7 +88,6 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
             window.show();
         } else {
             loginInfoLabel.setText("Wrong input");
-
         }
     }
 
