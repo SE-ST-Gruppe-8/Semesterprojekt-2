@@ -58,7 +58,7 @@ public interface IBusiness {
     
     void editCitizen(String needs, ICitizen c);
     
-    void editInquiry(String description, IInquiry i);
+    void editInquiry(String description, IInquiry i,boolean isInformed);
     
     
 

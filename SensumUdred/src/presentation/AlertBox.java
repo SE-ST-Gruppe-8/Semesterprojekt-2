@@ -10,11 +10,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 
 public class AlertBox {
@@ -219,11 +221,23 @@ public class AlertBox {
         Label descLabel = new Label();
         descLabel.setText("Beskrivelse");
 
+        Label isInformedLabel = new Label();
+        isInformedLabel.setText("Er borgeren blevet informeret om henvendelse: ");
+
+        HBox radioKeepers = new HBox();
+        RadioButton radiob1 = new RadioButton();
+        RadioButton radiob2 = new RadioButton();
+        radiob1.setText("Ja  ");
+        radiob2.setText("Nej");
+        ToggleGroup tg = new ToggleGroup();
+        tg.getToggles().addAll(radiob1, radiob2);
+        radioKeepers.getChildren().addAll(isInformedLabel, radiob1, radiob2);
+
         Button closeButton = new Button("Luk");
         closeButton.setOnAction(e -> window.close());
 
         Button createButton = new Button("Opret");
-        createButton.setOnAction(e -> createAndClose(window, ib, inquiryIdTextField.getText(), inquiryOriginTextField.getText(), false, c, inquiryDescTextField.getText()));
+        createButton.setOnAction(e -> createAndClose(window, ib, inquiryIdTextField.getText(), inquiryOriginTextField.getText(), c, inquiryDescTextField.getText(), radiob1));
 //        createButton.setOnAction( e-> window.close());
 
         HBox buttonLayout = new HBox();
@@ -232,7 +246,7 @@ public class AlertBox {
         buttonLayout.setSpacing(10);
         buttonLayout.setPadding(new Insets(10, 10, 10, 10));
         VBox layout = new VBox();
-        layout.getChildren().addAll(idLabel, inquiryIdTextField, originLabel, inquiryOriginTextField, descLabel, inquiryDescTextField, buttonLayout);
+        layout.getChildren().addAll(radioKeepers, idLabel, inquiryIdTextField, originLabel, inquiryOriginTextField, descLabel, inquiryDescTextField, buttonLayout);
         layout.setAlignment(Pos.CENTER_LEFT);
         layout.setPadding(new Insets(10, 10, 0, 10));
 
@@ -247,6 +261,7 @@ public class AlertBox {
         window.setMinWidth(400);
         window.setMaxWidth(600);
         window.setResizable(false);
+        boolean isInformed = i.isCitizenInformed();
 
         ICitizen c = i.getCitizen();
         TextField inquiryIdTextField = new TextField();
@@ -262,12 +277,29 @@ public class AlertBox {
         Label swCaseProcessLabel = new Label();
         swCaseProcessLabel.setText("Beskrivelse");
 
+        Label isInformedLabel = new Label();
+        isInformedLabel.setText("Er borgeren blevet informeret om henvendelse: ");
+
+        HBox radioKeepers = new HBox();
+        RadioButton radiob1 = new RadioButton();
+        RadioButton radiob2 = new RadioButton();
+        radiob1.setText("Ja  ");
+        radiob2.setText("Nej");
+        ToggleGroup tg = new ToggleGroup();
+        tg.getToggles().addAll(radiob1, radiob2);
+        radioKeepers.getChildren().addAll(isInformedLabel, radiob1, radiob2);
+        if (i.isCitizenInformed()) {
+            radiob1.setSelected(true);
+        }else {
+            radiob2.setSelected(true);
+        }
+
         Button closeButton = new Button("Close");
         closeButton.setOnAction(e -> window.close());
 
         Button createButton = new Button("Save");
 
-        createButton.setOnAction(e -> editInquiryAndClose(window, ib, i, inquiryDescTextField.getText()));
+        createButton.setOnAction(e -> editInquiryAndClose(window, ib, i, inquiryDescTextField.getText(), radiob1));
         // createButton.setOnAction( e-> window.close());
 
         HBox buttonLayout = new HBox();
@@ -276,7 +308,7 @@ public class AlertBox {
         buttonLayout.setSpacing(10);
         buttonLayout.setPadding(new Insets(10, 10, 10, 10));
         VBox layout = new VBox();
-        layout.getChildren().addAll(swCaseIdLabel, inquiryIdTextField, swCaseDesLabel, inquiryOriginTextField, swCaseProcessLabel, inquiryDescTextField, buttonLayout);
+        layout.getChildren().addAll(radioKeepers, swCaseIdLabel, inquiryIdTextField, swCaseDesLabel, inquiryOriginTextField, swCaseProcessLabel, inquiryDescTextField, buttonLayout);
         layout.setAlignment(Pos.CENTER_LEFT);
         layout.setPadding(new Insets(10, 10, 0, 10));
 
@@ -298,8 +330,12 @@ public class AlertBox {
         }
     }
 
-    public void createAndClose(Stage window, IBusiness ib, String id, String origin, boolean informed, ICitizen c, String description) {
-        ib.createInquiry(id, origin, informed, c, description);
+    public void createAndClose(Stage window, IBusiness ib, String id, String origin, ICitizen c, String description, RadioButton r) {
+        if (r.isSelected()) {
+            ib.createInquiry(id, origin, true, c, description);
+        } else {
+            ib.createInquiry(id, origin, false, c, description);
+        }
         window.close();
     }
 
@@ -313,8 +349,13 @@ public class AlertBox {
         window.close();
     }
 
-    public void editInquiryAndClose(Stage window, IBusiness ib, IInquiry i, String desc) {
-        ib.editInquiry(desc, i);
+    public void editInquiryAndClose(Stage window, IBusiness ib, IInquiry i, String desc, RadioButton r) {
+
+        if (r.isSelected()) {
+            ib.editInquiry(desc, i, true);
+        } else {
+            ib.editInquiry(desc, i, false);
+        }
         window.close();
     }
 
