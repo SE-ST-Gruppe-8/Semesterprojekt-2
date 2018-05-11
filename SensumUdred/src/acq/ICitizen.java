@@ -9,8 +9,11 @@ import business.Reference;
  * @author J
  */
 public interface ICitizen {
-    IInquiry getInquiry();
+
+    public IInquiry getInquiry();
+
     public String getName();
+
     public String getId();
 
     public String getNeeds();
@@ -22,10 +25,10 @@ public interface ICitizen {
     public Reference getReference();
 
     public void setReference(Reference reference);
-    
+
     public void createInquiry(String id, String origin, boolean informed, String description);
-    
+
     public void setInquiry(Inquiry inquiry);
-    
+
     public void setNeeds(String needs);
 }

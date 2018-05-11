@@ -96,19 +96,20 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         ab = new AlertBox();
-        ib = PresentationFacade.getIData().getIBusiness();
-        loginInfoLabelSW.setText("Logged in as: " + ib.getActiveUser().getName());
-        System.out.println("Logged in as: " + ib.getActiveUser().getName());
-        ib.getCitizen();
-        updateCaseList();
-        updateCitizenList();
-        updateInquiryList();
+//        ib = PresentationFacade.getIData().getIBusiness();
+//        loginInfoLabelSW.setText("Logged in as: " + ib.getActiveUser().getName());
+//        System.out.println("Logged in as: " + ib.getActiveUser().getName());
+//        ib.getCitizen();
+//        updateCaseList();
+//        updateCitizenList();
+//        updateInquiryList();
     }
 
     public void updateCaseList() {
         if (ib.getCases() == null) {
             caseLabel.setText("No Useres Installed");
-        } else {
+        }
+        else {
             caseListView.setItems(ib.getCases());
         }
     }
@@ -119,11 +120,11 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         updateCaseList();
         if (citizenListView.getSelectionModel().getSelectedItem() != null) {
             ab.displayCaseCreation("Create case", ib, (ICitizen) citizenListView.getSelectionModel().getSelectedItem());
-        } else {
+        }
+        else {
             caseLabel.setText("you must select a Citizen from the list to create a case");
         }
         updateCaseList();
-
     }
 
     @FXML
@@ -134,11 +135,17 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
     @Override
     public void injectBusiness(IBusiness businessFacade) {
-
+        ib = businessFacade;
     }
 
     @Override
     public void openUI() {
+        loginInfoLabelSW.setText("Logged in as: " + ib.getActiveUser().getName());
+        System.out.println("Logged in as: " + ib.getActiveUser().getName());
+        ib.getCitizen();
+        updateCaseList();
+        updateCitizenList();
+        updateInquiryList();
     }
 
     @FXML
@@ -186,7 +193,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     public void updateCitizenList() {
         if (ib.getCitizen() == null) {
             //indsæt ting på label
-        } else {
+        }
+        else {
             ObservableList<ICitizen> list = ib.getCitizen();
             citizenListView.setItems(list);
             citizenListView1.setItems(list);
@@ -219,7 +227,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     private void editInquiryAction(ActionEvent event) {
         if (InquiriesListView.getSelectionModel().getSelectedItem() != null) {
             ab.displayInquiryEdit("Inquiry", ib, InquiriesListView.getSelectionModel().getSelectedItem());
-        } else {
+        }
+        else {
 //            Label.setText("you must select a Inquiry from the list to view details");
             System.out.println("lol");
         }
@@ -231,7 +240,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     private void editCitizenAction(ActionEvent event) {
         if (citizenListView.getSelectionModel().getSelectedItem() != null) {
             ab.displayCitizenEdit("Citizen", ib, citizenListView.getSelectionModel().getSelectedItem());
-        } else {
+        }
+        else {
             caseLabel.setText("you must select a Citizen from the list to view details");
         }
         updateCaseList();
@@ -242,9 +252,11 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     private void editCaseAction(ActionEvent event) {
         if (caseListView.getSelectionModel().getSelectedItem() != null) {
             ab.displayCaseEdit("Citizen", ib, caseListView.getSelectionModel().getSelectedItem());
-        } else {
+        }
+        else {
             caseLabel.setText("you must select a Case from the list to view details");
         }
         updateCaseList();
     }
+
 }

@@ -13,6 +13,10 @@ import java.util.ArrayList;
  */
 public interface IData {
 
+    public boolean hasUniqueUserUD(String id);
+    
+    public boolean hasUniqueCitizenID(String id);
+    
 //    public void saveUsers(ArrayList<IUser> data);
 //    
 //    public void saveCases(ArrayList<ICase> data);

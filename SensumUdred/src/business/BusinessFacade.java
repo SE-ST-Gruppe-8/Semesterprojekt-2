@@ -64,7 +64,9 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public void logOutActiveUser() {
+        security.logData("logged out.");
         security.logOutActiveUser();
+
     }
 
     /**
@@ -139,7 +141,9 @@ public class BusinessFacade implements IBusiness {
         if (security.validateUserLogin(users, username, password)) {
             security.logData(username + " logged in.");
             return true;
+
         } else {
+
             return false;
         }
     }
@@ -181,6 +185,7 @@ public class BusinessFacade implements IBusiness {
                     cases.add(newCase);
                     c.setCase((Case) newCase);
                 } else {
+
 //                    cases.remove(c.getCase());
 //                    c.setCase((Case)newCase);
 //                    cases.add(newCase);
@@ -292,6 +297,16 @@ public class BusinessFacade implements IBusiness {
     public void editInquiry(String description, IInquiry i) {
         i.setDescription(description);
         data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
+    }
+
+    @Override
+    public boolean hasUniqueUserID(String id) {
+        return data.hasUniqueUserUD(id);
+    }
+
+    @Override
+    public boolean hasUnqiueCitizenID(String id) {
+        return data.hasUniqueCitizenID(id);
     }
 
 }

@@ -20,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -56,7 +57,7 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        ib = PresentationFacade.getIData().getIBusiness();
+//        ib = PresentationFacade.getIData().getIBusiness();
     }
 
     @FXML
@@ -73,12 +74,13 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
 //                fxmlString = "FXMLSocialWorker.fxml";
                 fxmlString = "FXMLAdmin.fxml";
             }
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource(fxmlString));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlString));
 
-            AnchorPane anchorPane = loader.load();
-            IPresentation controller = loader.getController();
-            controller.injectBusiness(ib);
+        AnchorPane anchorPane = loader.load();
+        IPresentation controller = loader.getController();
+        controller.injectBusiness(ib);
+        controller.openUI();
+
 
             Scene scene2 = new Scene(anchorPane);
             //Get Stage information
@@ -94,6 +96,7 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
     @Override
     public void injectBusiness(IBusiness businessFacade) {
 
+        ib = businessFacade;
     }
 
     @Override
