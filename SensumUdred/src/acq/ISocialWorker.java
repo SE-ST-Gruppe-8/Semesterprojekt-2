@@ -34,11 +34,11 @@ public interface ISocialWorker extends IUser{
 
     public boolean addReference(Reference ref);
 
-    public boolean removeCase(Case c);
-
-    public boolean removeInquiry(Inquiry inq);
-
-    public boolean removeReference(Reference ref);
+//    public boolean removeCase(Case c);
+//
+//    public boolean removeInquiry(Inquiry inq);
+//
+//    public boolean removeReference(Reference ref);
 
     public int getRole();
 
