@@ -21,20 +21,10 @@ public interface IBusiness {
     public void createCase(String id, String des, String process, ISocialWorker sw, ICitizen c);
 
     public void deleteUser(IUser user);
-
+    
     public boolean hasUniqueUserID(String id);
-
+    
     public boolean hasUnqiueCitizenID(String id);
-
-    public boolean hasAcceptableID(String id);
-
-    public boolean hasAcceptablePassword(String password, String repeatedPassword);
-
-    public boolean hasAcceptableUsername(String username);
-
-    public boolean hasAcceptableMail(String mail);
-
-    public boolean hasAcceptableName(String name);
 
     public boolean validateUser(String username, String password);
 
@@ -59,15 +49,17 @@ public interface IBusiness {
     public ObservableList<ICitizen> getCitizen();
 
     public void deleteCitizen(ICitizen citizen);
-
+    
     public void createInquiry(String id, String origin, boolean informed, ICitizen citizen, String description);
-
+    
     public void deleteInquiry(IInquiry i);
-
+    
     void editCase(String description, String process, ICase c);
-
+    
     void editCitizen(String needs, ICitizen c);
-
-    void editInquiry(String description, IInquiry i, boolean isInformed);
+    
+    void editInquiry(String description, IInquiry i,boolean isInformed);
+    
+    
 
 }

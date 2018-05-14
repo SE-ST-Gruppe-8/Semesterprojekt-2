@@ -44,7 +44,7 @@ public class AlertBox {
         TextArea processTextArea = new TextArea();
         processTextArea.setPromptText("Indtast forløbet for borgeren.");
         Label idLabel = new Label();
-        idLabel.setText("ID: " + c.getId() + "-1");
+        idLabel.setText("ID: " + c.getId()+"-1");
         Label desLabel = new Label();
         desLabel.setText("Beskrivelse");
         Label processLabel = new Label();
@@ -78,12 +78,14 @@ public class AlertBox {
         window.setMaxWidth(600);
         window.setResizable(false);
 
+
+
         TextArea swCaseDesTextArea = new TextArea();
         swCaseDesTextArea.setText(c.getDescription());
         TextArea swCaseProcessTextArea = new TextArea();
         swCaseProcessTextArea.setText(c.getProcess());
         Label swCaseIdLabel = new Label();
-        swCaseIdLabel.setText("ID: " + c.getId());
+        swCaseIdLabel.setText("ID: "+c.getId());
         Label swCaseDesLabel = new Label();
         swCaseDesLabel.setText("Beskrivelse");
         Label swCaseProcessLabel = new Label();
@@ -118,16 +120,17 @@ public class AlertBox {
         window.setMaxWidth(600);
         window.setResizable(false);
 
-        TextField nameTextField = new TextField();
-        nameTextField.setPromptText("Indtast navn");
         TextField idTextField = new TextField();
-        idTextField.setPromptText("Indtast ID");
-        TextArea needsTextField = new TextArea();
-        needsTextField.setPromptText("Indtast behov");
-        Label nameLabel = new Label();
-        nameLabel.setText("ID");
+        idTextField.setPromptText("Indtast navn");
+        TextField originTextField = new TextField();
+        originTextField.setPromptText("Indtast ID");
+        TextArea descTextField = new TextArea();
+        descTextField.setPromptText("Indtast beskrivelse");
         Label idLabel = new Label();
-        idLabel.setText("Navn");
+        idLabel.setText("ID");
+        Label nameLabel = new Label();
+        nameLabel.setText("Navn");
+
         Label needsLabel = new Label();
         needsLabel.setText("Behov");
 
@@ -135,7 +138,7 @@ public class AlertBox {
         closeButton.setOnAction(e -> window.close());
 
         Button createButton = new Button("Opret");
-        createButton.setOnAction(e -> createAndClose(window, ib, nameTextField.getText(), idTextField.getText(), needsTextField.getText()));
+        createButton.setOnAction(e -> createAndClose(window, ib, idTextField.getText(), originTextField.getText(), descTextField.getText()));
 //        createButton.setOnAction( e-> window.close());
 
         HBox buttonLayout = new HBox();
@@ -144,7 +147,7 @@ public class AlertBox {
         buttonLayout.setSpacing(10);
         buttonLayout.setPadding(new Insets(10, 10, 10, 10));
         VBox layout = new VBox();
-        layout.getChildren().addAll(idLabel, nameTextField, nameLabel, idTextField, needsLabel, needsTextField, buttonLayout);
+        layout.getChildren().addAll(nameLabel, idTextField, idLabel, originTextField, needsLabel, descTextField, buttonLayout);
         layout.setAlignment(Pos.CENTER_LEFT);
         layout.setPadding(new Insets(10, 10, 0, 10));
 
@@ -207,7 +210,7 @@ public class AlertBox {
         TextArea inquiryDescTextField = new TextArea();
         inquiryDescTextField.setPromptText("Indtast beskrivelse");
         Label idLabel = new Label();
-        idLabel.setText("ID: " + c.getId() + "-2");
+        idLabel.setText("ID: "+c.getId()+"-2");
         Label originLabel = new Label();
         originLabel.setText("Indsender");
         Label descLabel = new Label();
@@ -256,13 +259,13 @@ public class AlertBox {
         window.setResizable(false);
 
         ICitizen c = i.getCitizen();
-
+        
         TextField inquiryOriginTextField = new TextField();
         inquiryOriginTextField.setText(i.getOrigin());
         TextArea inquiryDescTextField = new TextArea();
         inquiryDescTextField.setText(i.getDescription());
         Label swCaseIdLabel = new Label();
-        swCaseIdLabel.setText("ID: " + i.getId());
+        swCaseIdLabel.setText("ID: "+i.getId());
         Label swCaseDesLabel = new Label();
         swCaseDesLabel.setText("Indsender");
         Label swCaseProcessLabel = new Label();
@@ -313,9 +316,10 @@ public class AlertBox {
         window.close();
     }
 
-    public void createAndClose(Stage window, IBusiness ib, String name, String id, String needs) {
-        if (ib.hasUnqiueCitizenID(id) && ib.hasAcceptableID(id) && ib.hasAcceptableName(name)) {
-            ib.createCitizen(name, id, needs);
+    public void createAndClose(Stage window, IBusiness ib, String id, String origin, String description) {
+        // if (ib.hasUnqiueCitizenID(id)) {
+        if (true) { // brug ovenstående linje når hasUniqueCitizenID(id) er implementeret i DataFacade!!!
+            ib.createCitizen(id, origin, description);
             window.close();
         }
     }
