@@ -51,3 +51,81 @@ Mon May 14 14:48:24 CEST 2018	grethe123	Logged in.
 Mon May 14 14:48:32 CEST 2018	grethe123	Logged out.
 Mon May 14 14:49:31 CEST 2018	grethe123	Logged in.
 Mon May 14 14:50:33 CEST 2018	grethe123	Logged out.
+Mon May 14 15:03:19 CEST 2018	grethe123	Logged in.
+Mon May 14 15:03:31 CEST 2018	grethe123	Created Citizen: Borgernavn: wew	BorgerID: 2323213
+Mon May 14 15:03:37 CEST 2018	grethe123	Created Inquiry: HendvendelsesID: 2323213-2	Borger: wew	Borgeren er informeret om henvendelsen
+Mon May 14 15:03:58 CEST 2018	grethe123	Created case with id: 2323213-1
+Mon May 14 15:04:08 CEST 2018	grethe123	Created Citizen: Borgernavn: egssy	BorgerID: t46
+Mon May 14 15:04:17 CEST 2018	grethe123	Created Inquiry: HendvendelsesID: t46-2	Borger: egssy	Borgeren er ikke informeret om henvendelsen
+Mon May 14 15:04:37 CEST 2018	grethe123	Deleted citizens: Borgernavn: egssy	BorgerID: t46
+Mon May 14 15:04:39 CEST 2018	grethe123	Deleted citizens: Borgernavn: wew	BorgerID: 2323213
+Mon May 14 15:04:41 CEST 2018	grethe123	Deleted citizens: Borgernavn: ddfasdf	BorgerID: 1321321
+Mon May 14 15:04:52 CEST 2018	grethe123	Created Citizen: Borgernavn: rewrew	BorgerID: 21321321
+Mon May 14 15:05:22 CEST 2018	grethe123	Logged out.
+Mon May 14 15:06:33 CEST 2018	grethe123	Logged in.
+Mon May 14 15:06:43 CEST 2018	grethe123	Created Citizen: Borgernavn: dfsfdsf	BorgerID: 13123
+Mon May 14 15:06:54 CEST 2018	grethe123	Created Inquiry: HendvendelsesID: 21321321-2	Borger: rewrew	Borgeren er ikke informeret om henvendelsen
+Mon May 14 15:06:58 CEST 2018	grethe123	Created Inquiry: HendvendelsesID: 13123-2	Borger: dfsfdsf	Borgeren er ikke informeret om henvendelsen
+Mon May 14 15:07:03 CEST 2018	grethe123	Created case with id: 21321321-1
+Mon May 14 15:07:09 CEST 2018	grethe123	Created case with id: 13123-1
+Mon May 14 15:07:14 CEST 2018	grethe123	Deleted citizens: Borgernavn: dfsfdsf	BorgerID: 13123
+Mon May 14 15:07:41 CEST 2018	grethe123	Logged out.
+Mon May 14 15:08:07 CEST 2018	grethe123	Logged in.
+Mon May 14 15:08:23 CEST 2018	grethe123	Logged out.
+Mon May 14 15:09:05 CEST 2018	grethe123	Logged in.
+Mon May 14 15:09:09 CEST 2018	grethe123	Deleted case SagsID: 21321321-1 	Borgernavn: rewrew	BorgerID: 21321321	Sagsbehandler: Grethe
+Mon May 14 15:09:16 CEST 2018	grethe123	Deleted case SagsID: 21321321-1 	Borgernavn: rewrew	BorgerID: 21321321	Sagsbehandler: Grethe
+Mon May 14 15:10:01 CEST 2018	grethe123	Created case with id: 21321321-1
+Mon May 14 15:10:06 CEST 2018	grethe123	Deleted case SagsID: 21321321-1 	Borgernavn: rewrew	BorgerID: 21321321	Sagsbehandler: Grethe
+Mon May 14 15:10:17 CEST 2018	grethe123	Created case with id: 21321321-1
+Mon May 14 15:10:19 CEST 2018	grethe123	Deleted case SagsID: 21321321-1 	Borgernavn: rewrew	BorgerID: 21321321	Sagsbehandler: Grethe
+Mon May 14 15:10:35 CEST 2018	grethe123	Created Citizen: Borgernavn: erertret	BorgerID: 1324324324
+Mon May 14 15:10:45 CEST 2018	grethe123	Created Inquiry: HendvendelsesID: 1324324324-2	Borger: erertret	Borgeren er ikke informeret om henvendelsen
+Mon May 14 15:10:57 CEST 2018	grethe123	Created case with id: 1324324324-1
+Mon May 14 15:11:01 CEST 2018	grethe123	Created case with id: 21321321-1
+Mon May 14 15:11:22 CEST 2018	grethe123	Logged out.
+Mon May 14 15:12:01 CEST 2018	grethe123	Logged in.
+Mon May 14 15:12:38 CEST 2018	grethe123	Deleted case SagsID: 1324324324-1 	Borgernavn: erertret	BorgerID: 1324324324	Sagsbehandler: Grethe
+Mon May 14 15:12:41 CEST 2018	grethe123	Deleted case SagsID: 21321321-1 	Borgernavn: rewrew	BorgerID: 21321321	Sagsbehandler: Grethe
+Mon May 14 15:12:44 CEST 2018	grethe123	Deleted case SagsID: 1324324324-1 	Borgernavn: erertret	BorgerID: 1324324324	Sagsbehandler: Grethe
+Mon May 14 15:14:38 CEST 2018	grethe123	Created case with id: 21321321-1
+Mon May 14 15:14:43 CEST 2018	grethe123	Created case with id: 1324324324-1
+Mon May 14 15:14:47 CEST 2018	grethe123	Deleted case SagsID: 1324324324-1 	Borgernavn: erertret	BorgerID: 1324324324	Sagsbehandler: Grethe
+Mon May 14 15:14:48 CEST 2018	grethe123	Deleted case SagsID: 21321321-1 	Borgernavn: rewrew	BorgerID: 21321321	Sagsbehandler: Grethe
+Mon May 14 15:14:52 CEST 2018	grethe123	Created case with id: 21321321-1
+Mon May 14 15:14:57 CEST 2018	grethe123	Created case with id: 1324324324-1
+Mon May 14 15:14:59 CEST 2018	grethe123	Logged out.
+Mon May 14 15:17:09 CEST 2018	grethe123	Logged in.
+Mon May 14 15:17:14 CEST 2018	grethe123	Deleted case SagsID: 21321321-1 	Borgernavn: rewrew	BorgerID: 21321321	Sagsbehandler: Grethe
+Mon May 14 15:17:16 CEST 2018	grethe123	Logged out.
+Mon May 14 15:17:23 CEST 2018	grethe123	Logged in.
+Mon May 14 15:17:35 CEST 2018	grethe123	Deleted case SagsID: 1324324324-1 	Borgernavn: erertret	BorgerID: 1324324324	Sagsbehandler: Grethe
+Mon May 14 15:17:37 CEST 2018	grethe123	Deleted case SagsID: 21321321-1 	Borgernavn: rewrew	BorgerID: 21321321	Sagsbehandler: Grethe
+Mon May 14 15:17:38 CEST 2018	grethe123	Deleted case SagsID: 1324324324-1 	Borgernavn: erertret	BorgerID: 1324324324	Sagsbehandler: Grethe
+Mon May 14 15:17:41 CEST 2018	grethe123	Logged out.
+Mon May 14 15:17:49 CEST 2018	grethe123	Logged in.
+Mon May 14 15:18:01 CEST 2018	grethe123	Logged out.
+Mon May 14 15:18:22 CEST 2018	grethe123	Logged in.
+Mon May 14 15:18:31 CEST 2018	grethe123	Created case with id: 21321321-1
+Mon May 14 15:18:36 CEST 2018	grethe123	Created case with id: 1324324324-1
+Mon May 14 15:19:05 CEST 2018	grethe123	Deleted case SagsID: 1324324324-1 	Borgernavn: erertret	BorgerID: 1324324324	Sagsbehandler: Grethe
+Mon May 14 15:19:07 CEST 2018	grethe123	Logged out.
+Mon May 14 15:19:14 CEST 2018	grethe123	Logged in.
+Mon May 14 15:19:18 CEST 2018	grethe123	Deleted case SagsID: 21321321-1 	Borgernavn: rewrew	BorgerID: 21321321	Sagsbehandler: Grethe
+Mon May 14 15:19:20 CEST 2018	grethe123	Logged out.
+Mon May 14 15:19:28 CEST 2018	grethe123	Logged in.
+Mon May 14 15:19:30 CEST 2018	grethe123	Deleted case SagsID: 21321321-1 	Borgernavn: rewrew	BorgerID: 21321321	Sagsbehandler: Grethe
+Mon May 14 15:19:45 CEST 2018	grethe123	Deleted case SagsID: 21321321-1 	Borgernavn: rewrew	BorgerID: 21321321	Sagsbehandler: Grethe
+Mon May 14 15:19:52 CEST 2018	grethe123	Logged out.
+Mon May 14 15:19:59 CEST 2018	grethe123	Logged in.
+Mon May 14 15:20:05 CEST 2018	grethe123	Created case with id: 21321321-1
+Mon May 14 15:20:06 CEST 2018	grethe123	Logged out.
+Mon May 14 15:20:14 CEST 2018	grethe123	Logged in.
+Mon May 14 15:20:21 CEST 2018	grethe123	Deleted case SagsID: 21321321-1 	Borgernavn: rewrew	BorgerID: 21321321	Sagsbehandler: Grethe
+Mon May 14 15:20:55 CEST 2018	grethe123	Logged out.
+Mon May 14 15:21:04 CEST 2018	grethe123	Logged in.
+Mon May 14 15:21:12 CEST 2018	grethe123	Logged out.
+Mon May 14 15:21:19 CEST 2018	grethe123	Logged in.
+Mon May 14 15:21:42 CEST 2018	grethe123	Logged out.
+Mon May 14 15:21:49 CEST 2018	grethe123	Logged in.
+Mon May 14 15:22:09 CEST 2018	grethe123	Logged out.
