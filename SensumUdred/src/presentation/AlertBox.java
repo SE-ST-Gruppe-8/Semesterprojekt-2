@@ -210,7 +210,7 @@ public class AlertBox {
         TextArea inquiryDescTextField = new TextArea();
         inquiryDescTextField.setPromptText("Indtast beskrivelse");
         Label idLabel = new Label();
-        idLabel.setText("ID: "+c.getId()+"-2");
+//        idLabel.setText("ID: "+c.getCitizen().getId()+"-2");
         Label originLabel = new Label();
         originLabel.setText("Indsender");
         Label descLabel = new Label();

@@ -172,3 +172,9 @@ Mon May 14 13:16:59 CEST 2018	Name: Admin Jensen	ID: 0	Username: admin	Mail: Adm
 Mon May 14 13:18:02 CEST 2018	Name: Admin Jensen	ID: 0	Username: admin	Mail: Admin@Sensum.dk	Created user: Name: soren bendtsen	ID: 030493-1671	Username: polse123	Mail: soren@mail.dk
 Mon May 14 13:18:05 CEST 2018	Name: Admin Jensen	ID: 0	Username: admin	Mail: Admin@Sensum.dk	logged out.
 Mon May 14 13:18:10 CEST 2018	Name: soren bendtsen	ID: 030493-1671	Username: polse123	Mail: soren@mail.dk	polse123 logged in.
+Mon May 14 13:45:12 CEST 2018	Grethe	1	grethe123	Grethe@Sensum.dk	grethe123 logged in.
+Mon May 14 13:45:17 CEST 2018	Grethe	1	grethe123	Grethe@Sensum.dk	Deleted citizens: Borgernavn: Bob	BorgerID: 123456-2345
+Mon May 14 13:45:20 CEST 2018	Grethe	1	grethe123	Grethe@Sensum.dk	Created Citizen: Borgernavn: 123	BorgerID: 123
+Mon May 14 13:45:23 CEST 2018	Grethe	1	grethe123	Grethe@Sensum.dk	Created Inquiry: HendvendelsesID: 123-2	Borger: 123
+Mon May 14 13:45:28 CEST 2018	Grethe	1	grethe123	Grethe@Sensum.dk	Created case with id: 123-1
+Mon May 14 13:45:34 CEST 2018	Grethe	1	grethe123	Grethe@Sensum.dk	logged out.
