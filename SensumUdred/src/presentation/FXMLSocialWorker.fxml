@@ -9,11 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.ControllerFXMLSocialWorker">
+<AnchorPane prefHeight="400.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.ControllerFXMLSocialWorker">
    <children>
       <TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <tabs>
@@ -138,99 +136,82 @@
             </Tab>
             <Tab fx:id="casesTab" text="Sager">
                <content>
-                  <HBox prefHeight="294.0" prefWidth="720.0">
+                  <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="450.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="450.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="15.0" minHeight="15.0" prefHeight="15.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="200.0" prefHeight="250.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
                      <children>
-                        <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                        <GridPane prefHeight="338.0" prefWidth="440.0" GridPane.rowIndex="1">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="15.0" minHeight="15.0" prefHeight="15.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="250.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <ListView fx:id="inquiryListView1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="324.0" prefWidth="482.0" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </ListView>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="15.0" maxWidth="1.7976931348623157E308" minHeight="15.0" prefHeight="15.0" prefWidth="450.0" text="Henvendelser" />
+                           </children>
+                        </GridPane>
+                        <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="900.0" prefWidth="665.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="450.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="450.0" />
+                              <ColumnConstraints />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
                            </columnConstraints>
                            <rowConstraints>
                               <RowConstraints maxHeight="15.0" minHeight="15.0" prefHeight="15.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="200.0" prefHeight="250.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="200.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <VBox alignment="TOP_CENTER" prefHeight="351.0" prefWidth="448.0" spacing="10.0" GridPane.rowIndex="1">
-                                 <padding>
-                                    <Insets right="10.0" />
-                                 </padding>
+                              <Label alignment="CENTER" maxHeight="15.0" maxWidth="1.7976931348623157E308" minHeight="15.0" prefHeight="15.0" prefWidth="450.0" text="Sager" GridPane.columnIndex="1" />
+                              <ListView fx:id="caseListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="250.0" prefWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
                                  <children>
-                                    <GridPane prefHeight="338.0" prefWidth="440.0">
-                                      <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints maxHeight="15.0" minHeight="15.0" prefHeight="15.0" vgrow="SOMETIMES" />
-                                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="250.0" vgrow="SOMETIMES" />
-                                      </rowConstraints>
-                                       <children>
-                                          <ListView fx:id="inquiryListView1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="324.0" prefWidth="482.0" GridPane.rowIndex="1" />
-                                          <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="15.0" maxWidth="1.7976931348623157E308" minHeight="15.0" prefHeight="15.0" prefWidth="450.0" text="Henvendelser" />
-                                       </children>
-                                    </GridPane>
+                                    <Button fx:id="deleteCaseButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#DeleteCaseAction" prefWidth="100.0" text="Slet sag" GridPane.columnIndex="1">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="updateCaseListButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateCaseListAction" prefWidth="100.0" text="Opdater liste" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="createCaseButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createCaseAction" prefWidth="100.0" text="Opret sag">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="editCaseButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#editCaseAction" prefWidth="100.0" text="Redigér sag" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </Button>
                                  </children>
-                              </VBox>
-                              <VBox alignment="TOP_CENTER" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                 <children>
-                                    <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="900.0" prefWidth="665.0">
-                                       <columnConstraints>
-                                          <ColumnConstraints />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints maxHeight="15.0" minHeight="15.0" prefHeight="15.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="1.7976931348623157E308" minHeight="200.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                       <children>
-                                          <Label alignment="CENTER" maxHeight="15.0" maxWidth="1.7976931348623157E308" minHeight="15.0" prefHeight="15.0" prefWidth="450.0" text="Sager" GridPane.columnIndex="1" />
-                                          <ListView fx:id="caseListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="250.0" prefWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                            <columnConstraints>
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                             <children>
-                                                <Button fx:id="deleteCaseButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#DeleteCaseAction" prefWidth="100.0" text="Slet sag" GridPane.columnIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                   </GridPane.margin>
-                                                </Button>
-                                                <Button fx:id="updateCaseListButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateCaseListAction" prefWidth="100.0" text="Opdater liste" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                   </GridPane.margin>
-                                                </Button>
-                                                <Button fx:id="createCaseButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createCaseAction" prefWidth="100.0" text="Opret sag">
-                                                   <GridPane.margin>
-                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                   </GridPane.margin>
-                                                </Button>
-                                                <Button fx:id="editCaseButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#editCaseAction" prefWidth="100.0" text="Redigér sag" GridPane.rowIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                   </GridPane.margin>
-                                                </Button>
-                                             </children>
-                                          </GridPane>
-                                       </children>
-                                    </GridPane>
-                                 </children>
-                                 <padding>
-                                    <Insets right="10.0" />
-                                 </padding>
-                              </VBox>
+                              </GridPane>
                            </children>
                         </GridPane>
                      </children>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </HBox>
+                  </GridPane>
                </content>
             </Tab>
             <Tab text="Untitled Tab">
