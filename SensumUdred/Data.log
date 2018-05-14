@@ -125,3 +125,21 @@ Mon May 14 11:48:45 CEST 2018	Grethe	1	grethe123	Grethe@Sensum.dk	Deleted case S
 Mon May 14 11:48:56 CEST 2018	Grethe	1	grethe123	Grethe@Sensum.dk	Created case with id: 123-1
 Mon May 14 11:48:58 CEST 2018	Grethe	1	grethe123	Grethe@Sensum.dk	Deleted case SagsID: 123-1 	Borgernavn: qwe	BorgerID: 123	Sagsbehandler: Grethe
 Mon May 14 11:49:01 CEST 2018	Grethe	1	grethe123	Grethe@Sensum.dk	logged out.
+Mon May 14 12:22:02 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	grethe123 logged in.
+Mon May 14 12:22:08 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	logged out.
+Mon May 14 12:22:17 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	grethe123 logged in.
+Mon May 14 12:22:26 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	Created case with id: 123456-2345-1
+Mon May 14 12:22:31 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	Edited case: SagsID: 123456-2345-1 	Borgernavn: Bob	BorgerID: 123456-2345	Sagsbehandler: Grethe
+Mon May 14 12:22:39 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	Deleted inquiry: HendvendelsesID: 0987	Borger: Bob	Borgeren er ikke oplyst om henvendelsen
+Mon May 14 12:22:45 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	Created Inquiry: HendvendelsesID: 123456-2345-2	Borger: Bob	Borgeren er ikke oplyst om henvendelsen
+Mon May 14 12:22:50 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	Edited inquiry: HendvendelsesID: 123456-2345-2	Borger: Bob	Borgeren er oplyst om henvendelsen
+Mon May 14 12:23:05 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	Deleted inquiry: HendvendelsesID: 123456-2345-2	Borger: Bob	Borgeren er oplyst om henvendelsen
+Mon May 14 12:23:09 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	Deleted case SagsID: 123456-2345-1 	Borgernavn: Bob	BorgerID: 123456-2345	Sagsbehandler: Grethe
+Mon May 14 12:23:12 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	Deleted citizens: Borgernavn: Bob	BorgerID: 123456-2345
+Mon May 14 12:23:14 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	logged out.
+Mon May 14 12:23:55 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	grethe123 logged in.
+Mon May 14 12:24:22 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	Created Citizen: Borgernavn: qwe	BorgerID: 1234
+Mon May 14 12:24:47 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	Created Inquiry: HendvendelsesID: 1234-2	Borger: qwe	Borgeren er ikke oplyst om henvendelsen
+Mon May 14 12:24:55 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	Edited inquiry: HendvendelsesID: 1234-2	Borger: qwe	Borgeren er oplyst om henvendelsen
+Mon May 14 12:25:09 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	Deleted inquiry: HendvendelsesID: 1234-2	Borger: qwe	Borgeren er oplyst om henvendelsen
+Mon May 14 12:25:19 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	logged out.
