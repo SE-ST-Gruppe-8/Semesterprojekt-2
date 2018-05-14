@@ -115,8 +115,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     private void createCaseAction(ActionEvent event) {
 
         updateCaseList();
-        if (citizenListView.getSelectionModel().getSelectedItem() != null) {
-            ab.displayCaseCreation("Create case", ib, (ICitizen) citizenListView.getSelectionModel().getSelectedItem());
+        if (inquiryListView1.getSelectionModel().getSelectedItem() != null) {
+            ab.displayCaseCreation("Create case", ib, (ICitizen) inquiryListView1.getSelectionModel().getSelectedItem().getCitizen());
         } else {
             caseLabel.setText("vælg en borger fra listen over borgerer");
         }
