@@ -129,7 +129,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
     @FXML
     private void DeleteCaseAction(ActionEvent event) {
-        if (citizenListView.getSelectionModel().getSelectedItem() != null) {
+        if (caseListView.getSelectionModel().getSelectedItem() != null) {
             ib.deleteCase(caseListView.getSelectionModel().getSelectedItem());
             updateCaseList();
         } else {
