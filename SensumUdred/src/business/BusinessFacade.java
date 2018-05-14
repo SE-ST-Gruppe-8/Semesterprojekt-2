@@ -12,6 +12,12 @@ import javafx.collections.ObservableList;
  */
 public class BusinessFacade implements IBusiness {
 
+    private static final int ID_LENGTH = 4;
+
+    private static final int PASSWORD_LENGTH = 4;
+
+    private static final int USERNAME_LENGTH = 4;
+
     private IData data;
 
     private SecurityHandler security;
@@ -169,6 +175,7 @@ public class BusinessFacade implements IBusiness {
 //        }
 //        data.saveCitizens(citizens);
 //    }
+    @Override
     public int getRole() {
         return security.getActiveUser().getRole();
     }
@@ -284,7 +291,7 @@ public class BusinessFacade implements IBusiness {
     public void editCase(String description, String process, ICase c) {
         c.setDescription(description);
         c.setProcess(process);
-        
+
         data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
     }
 
@@ -301,14 +308,75 @@ public class BusinessFacade implements IBusiness {
         data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
     }
 
+    // changed when database is added!!!
     @Override
     public boolean hasUniqueUserID(String id) {
-        return data.hasUniqueUserUD(id);
+        // return data.hasUniqueUserUD(id);
+        return true;
+    }
+
+    // changed when database is added!!!
+    @Override
+    public boolean hasUnqiueCitizenID(String id) {
+        // return data.hasUniqueCitizenID(id);
+        return true;
     }
 
     @Override
-    public boolean hasUnqiueCitizenID(String id) {
-        return data.hasUniqueCitizenID(id);
+    public boolean hasAcceptableID(String id) {
+        try {
+            if (id.length() >= ID_LENGTH) {
+                return true;
+            }
+        } catch (NullPointerException ex) {
+        }
+        return false;
+    }
+
+    @Override
+    public boolean hasAcceptablePassword(String password, String repeatedPassword) {
+        try {
+            if (password.equals(repeatedPassword)) {
+                if (password.length() >= PASSWORD_LENGTH) {
+                    return true;
+                }
+            }
+        } catch (NullPointerException ex) {
+        }
+        return false;
+    }
+
+    @Override
+    public boolean hasAcceptableUsername(String username) {
+        try {
+            if (username.length() >= USERNAME_LENGTH) {
+                return true;
+            }
+        } catch (NullPointerException ex) {
+        }
+        return false;
+    }
+
+    @Override
+    public boolean hasAcceptableMail(String mail) {
+        try {
+            if (mail.contains("@")) {
+                return true;
+            }
+        } catch (NullPointerException ex) {
+        }
+        return false;
+    }
+
+    @Override
+    public boolean hasAcceptableName(String name) {
+        try {
+            if (name.length() >= 1) {
+                return true;
+            }
+        } catch (NullPointerException ex) {
+        }
+        return false;
     }
 
 }

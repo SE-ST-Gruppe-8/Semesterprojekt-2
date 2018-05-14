@@ -33,28 +33,18 @@ import javafx.stage.Stage;
  */
 public class ControllerFXMLSocialWorker implements Initializable, IPresentation {
 
+    private PresentationFacade pf;
     private IBusiness ib;
-
     private AlertBox ab;
 
     @FXML
-    private ListView<ICase> caseListView;
-
-    private Tab socialTab;
-
-    private Tab adminTab;
-
-    @FXML
     private Label loginInfoLabelSW;
-
-    private PresentationFacade pf;
-
+    @FXML
+    private ListView<ICase> caseListView;
     @FXML
     private Tab casesTab;
-
     @FXML
     private Tab inquiriesTab;
-
     @FXML
     private Button logoutButtonSW;
     @FXML
