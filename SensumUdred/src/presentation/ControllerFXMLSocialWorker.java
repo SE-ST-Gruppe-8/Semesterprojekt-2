@@ -200,6 +200,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         } else {
             ObservableList<ICitizen> list = ib.getCitizen();
             citizenListView.setItems(list);
+            updateInquiryList();
         }
     }
 
