@@ -80,8 +80,6 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     @FXML
     private Button editInquiryButton;
     @FXML
-    private Label caseLabel1;
-    @FXML
     private ListView<IInquiry> inquiriesListView;
     @FXML
     private Button deleteInquiryButton;
@@ -91,6 +89,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     private Button createInquiryButton;
     @FXML
     private ListView<IInquiry> inquiryListView1;
+    @FXML
+    private Label inquiryLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

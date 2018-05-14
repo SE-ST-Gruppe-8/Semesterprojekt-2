@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="400.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.ControllerFXMLSocialWorker">
+<AnchorPane prefHeight="400.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.ControllerFXMLSocialWorker">
    <children>
       <TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <tabs>
@@ -23,11 +23,11 @@
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="443.2000427246094" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints maxHeight="15.0" minHeight="15.0" prefHeight="15.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
                       <RowConstraints maxHeight="1.7976931348623157E308" minHeight="99.0" prefHeight="500.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label fx:id="caseLabel1" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="15.0" prefWidth="900.0" GridPane.columnSpan="2" />
+                        <Label fx:id="inquiryLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="20.0" prefWidth="900.0" GridPane.columnSpan="2" />
                         <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="902.0" prefWidth="484.0" GridPane.rowIndex="1">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
@@ -43,6 +43,9 @@
                                  <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
                               </ListView>
                               <GridPane GridPane.rowIndex="2">
                                  <columnConstraints>
@@ -83,7 +86,7 @@
                         </GridPane>
                         <GridPane alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
                           <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
                           </columnConstraints>
                           <rowConstraints>
                               <RowConstraints maxHeight="15.0" minHeight="15.0" prefHeight="15.0" valignment="CENTER" vgrow="SOMETIMES" />
@@ -126,7 +129,13 @@
                                     </Button>
                                  </children>
                               </GridPane>
-                              <ListView fx:id="inquiriesListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="250.0" prefWidth="450.0" GridPane.rowIndex="1" />
+                              <ListView fx:id="inquiriesListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="250.0" prefWidth="450.0" GridPane.rowIndex="1">
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin></ListView>
                               <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="18.0" prefWidth="445.0" text="Henvendelser" />
                            </children>
                         </GridPane>
@@ -142,7 +151,7 @@
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="450.0" />
                      </columnConstraints>
                      <rowConstraints>
-                        <RowConstraints maxHeight="15.0" minHeight="15.0" prefHeight="15.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="1.7976931348623157E308" minHeight="200.0" prefHeight="250.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
@@ -155,12 +164,15 @@
                             <RowConstraints maxHeight="1.7976931348623157E308" minHeight="250.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <ListView fx:id="inquiryListView1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="324.0" prefWidth="482.0" GridPane.rowIndex="1">
+                              <ListView fx:id="inquiryListView1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="300.0" prefWidth="450.0" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </GridPane.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
                               </ListView>
-                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="15.0" maxWidth="1.7976931348623157E308" minHeight="15.0" prefHeight="15.0" prefWidth="450.0" text="Henvendelser" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="20.0" maxWidth="1.7976931348623157E308" minHeight="20.0" prefHeight="20.0" prefWidth="450.0" text="Henvendelser" />
                            </children>
                         </GridPane>
                         <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="900.0" prefWidth="665.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -174,8 +186,14 @@
                               <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Label alignment="CENTER" maxHeight="15.0" maxWidth="1.7976931348623157E308" minHeight="15.0" prefHeight="15.0" prefWidth="450.0" text="Sager" GridPane.columnIndex="1" />
-                              <ListView fx:id="caseListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="250.0" prefWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label alignment="CENTER" maxHeight="20.0" maxWidth="1.7976931348623157E308" minHeight="20.0" prefHeight="20.0" prefWidth="450.0" text="Sager" GridPane.columnIndex="1" />
+                              <ListView fx:id="caseListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="250.0" prefWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding></ListView>
                               <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -210,14 +228,10 @@
                               </GridPane>
                            </children>
                         </GridPane>
+                        <Label fx:id="caseLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="20.0" prefWidth="814.0" />
                      </children>
                   </GridPane>
                </content>
-            </Tab>
-            <Tab text="Untitled Tab">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
             </Tab>
          </tabs>
       </TabPane>

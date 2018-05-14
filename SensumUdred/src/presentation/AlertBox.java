@@ -224,6 +224,7 @@ public class AlertBox {
         RadioButton radiob2 = new RadioButton();
         radiob1.setText("Ja  ");
         radiob2.setText("Nej");
+        radiob2.setSelected(true);
         ToggleGroup tg = new ToggleGroup();
         tg.getToggles().addAll(radiob1, radiob2);
         radioKeepers.getChildren().addAll(isInformedLabel, radiob1, radiob2);
@@ -287,10 +288,10 @@ public class AlertBox {
             radiob2.setSelected(true);
         }
 
-        Button closeButton = new Button("Close");
+        Button closeButton = new Button("Luk");
         closeButton.setOnAction(e -> window.close());
 
-        Button createButton = new Button("Save");
+        Button createButton = new Button("Gem");
 
         createButton.setOnAction(e -> editInquiryAndClose(window, ib, i, inquiryDescTextField.getText(), radiob1));
         // createButton.setOnAction( e-> window.close());
