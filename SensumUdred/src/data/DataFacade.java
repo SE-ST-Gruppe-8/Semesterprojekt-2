@@ -17,6 +17,8 @@ public class DataFacade implements IData {
     private FileManager fm;
     private DataLogger dl;
 
+
+
     public DataFacade() {
         fm = new FileManager();
         dl = new DataLogger();
@@ -31,7 +33,6 @@ public class DataFacade implements IData {
 //    public void saveUsers(ArrayList<IUser> data) {
 //        
 //    }
-
     @Override
     public void logData(String logData) {
         dl.saveLog(logData);
@@ -46,7 +47,6 @@ public class DataFacade implements IData {
 //    public void saveCitizens(ArrayList<ICitizen> list) {
 //        fm.saveCitizens(list);
 //    }
-        
 //    public void saveCases(ArrayList<ICase> data) {
 //        fm.saveCases(data);
 //    }
@@ -55,7 +55,6 @@ public class DataFacade implements IData {
 //    public ArrayList<ICase> readCases() {
 //        return fm.readCases();
 //    }
-    
     public <T> void saveData(ArrayList<T> data, String filepath) {
         fm.writeToFile(data, filepath);
     }
@@ -75,4 +74,5 @@ public class DataFacade implements IData {
     public boolean hasUniqueCitizenID(String id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }
