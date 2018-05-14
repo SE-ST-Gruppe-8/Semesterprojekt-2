@@ -157,3 +157,18 @@ Mon May 14 13:05:07 CEST 2018	soren bendtsen	test ID	polse123	sorenbendtsen1993@
 Mon May 14 13:07:00 CEST 2018	soren bendtsen	test ID	polse123	sorenbendtsen1993@gmail.com	logged out.
 Mon May 14 13:07:08 CEST 2018	soren bendtsen	test ID	polse123	sorenbendtsen1993@gmail.com	polse123 logged in.
 Mon May 14 13:07:18 CEST 2018	soren bendtsen	test ID	polse123	sorenbendtsen1993@gmail.com	logged out.
+Mon May 14 13:11:49 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	grethe123 logged in.
+Mon May 14 13:12:12 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	Edited inquiry: HendvendelsesID: 0987	Borger: Bob	Borgeren er oplyst om henvendelsen
+Mon May 14 13:13:51 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	logged out.
+Mon May 14 13:14:00 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	grethe123 logged in.
+Mon May 14 13:14:07 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	Edited inquiry: HendvendelsesID: 0987	Borger: Bob	Borgeren er ikke oplyst om henvendelsen
+Mon May 14 13:14:41 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	Edited inquiry: HendvendelsesID: 0987	Borger: Bob	Borgeren er oplyst om henvendelsen
+Mon May 14 13:14:45 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	Edited inquiry: HendvendelsesID: 0987	Borger: Bob	Borgeren er ikke oplyst om henvendelsen
+Mon May 14 13:15:01 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	logged out.
+Mon May 14 13:15:09 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	grethe123 logged in.
+Mon May 14 13:15:17 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	Edited inquiry: HendvendelsesID: 0987	Borger: Bob	Borgeren er oplyst om henvendelsen
+Mon May 14 13:15:18 CEST 2018	Name: Grethe	ID: 1	Username: grethe123	Mail: Grethe@Sensum.dk	logged out.
+Mon May 14 13:16:59 CEST 2018	Name: Admin Jensen	ID: 0	Username: admin	Mail: Admin@Sensum.dk	admin logged in.
+Mon May 14 13:18:02 CEST 2018	Name: Admin Jensen	ID: 0	Username: admin	Mail: Admin@Sensum.dk	Created user: Name: soren bendtsen	ID: 030493-1671	Username: polse123	Mail: soren@mail.dk
+Mon May 14 13:18:05 CEST 2018	Name: Admin Jensen	ID: 0	Username: admin	Mail: Admin@Sensum.dk	logged out.
+Mon May 14 13:18:10 CEST 2018	Name: soren bendtsen	ID: 030493-1671	Username: polse123	Mail: soren@mail.dk	polse123 logged in.

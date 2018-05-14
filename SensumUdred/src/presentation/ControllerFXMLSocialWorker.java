@@ -226,10 +226,10 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         if (inquiriesListView.getSelectionModel().getSelectedItem() != null) {
             ab.displayInquiryEdit("Inquiry", ib, inquiriesListView.getSelectionModel().getSelectedItem());
         } else {
-//            Label.setText("you must select a Inquiry from the list to view details");
+            inquiryLabel.setText("you must select a Inquiry from the list to view details");
             System.out.println("lol");
         }
-        updateInquiryList();
+        updateCitizenList();
 
     }
 

@@ -340,7 +340,7 @@ public class AlertBox {
     }
 
     public void editInquiryAndClose(Stage window, IBusiness ib, IInquiry i, String desc, RadioButton r) {
-
+        
         if (r.isSelected()) {
             ib.editInquiry(desc, i, true);
         } else {
