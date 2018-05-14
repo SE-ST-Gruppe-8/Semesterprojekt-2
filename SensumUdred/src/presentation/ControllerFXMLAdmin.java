@@ -115,27 +115,20 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
     @FXML
     private void createUserButtonAction(ActionEvent event) {
-        int value; // user type
+        int value;
         if (createAdminRadioButton.isSelected()) {
-            value = 0; // admin value
+            value = 0;
         } else {
-            value = 1; // social worker value
+            value = 1;
         }
         String id = adminIdTextField.getText();
-        String password = adminPasswordTextField.getText();
-        String repeatedPassword = adminRepeatPasswordTextField.getText();
-        String username = adminUsernameTextField.getText();
-        String firstName = adminFirstNameTextField.getText();
-        String lastName = adminLastNameTextField.getText();
-        String email = adminEmailTextField.getText();
-        if (ib.hasAcceptableID(id) && ib.hasUniqueUserID(id)) {
-            if (ib.hasAcceptablePassword(password, repeatedPassword) && ib.hasAcceptableUsername(username)) {
-                if (ib.hasAcceptableName(firstName + " " + lastName) && ib.hasAcceptableMail(email)) {
-                    ib.createUser(firstName + " " + lastName, id, username, password, email, value);
-                    System.out.println("Role: " + ib.getRole());
-                    updateUserList();
-                }
-            }
+        // if (ib.hasUniqueUserID(id)) {
+        if (true) { // brug ovenstående linje når hasUniqueUserID(id) er implementeret i DataFacade!!!
+            ib.createUser(adminFirstNameTextField.getText() + " " + adminLastNameTextField.getText(), id,
+                    adminUsernameTextField.getText(), adminPasswordTextField.getText(),
+                    adminEmailTextField.getText(), value);
+            System.out.println("Role: " + ib.getRole());
+            updateUserList();
         }
     }
 
