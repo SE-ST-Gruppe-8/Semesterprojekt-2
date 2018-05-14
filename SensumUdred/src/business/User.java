@@ -10,7 +10,6 @@ import java.io.Serializable;
 public abstract class User implements IUser, Serializable {
 
     private final String ID;
-
     private String name, username, password, email;
 
     public User(String name, String id, String username, String password, String email) {
@@ -73,4 +72,5 @@ public abstract class User implements IUser, Serializable {
     public String toString() {
         return "Name: " + name + "\tID: " + ID + "\tUsername: " + username + "\tMail: " + email;
     }
+
 }

@@ -15,13 +15,10 @@ import javafx.collections.ObservableList;
 public class SocialWorker extends User implements ISocialWorker {
 
     private Set<Case> cases;
-
     private Set<Inquiry> inquiries;
-
     private Set<Reference> references;
-
     private Set<Citizen> citizens;
-
+    private static final int ROLE = 1;
     private static final long serialVersionUID = 1L;
 
     public SocialWorker(String name, String id, String username, String password, String email) {
@@ -38,6 +35,7 @@ public class SocialWorker extends User implements ISocialWorker {
         return newCase;
     }
 
+    @Override
     public boolean deleteCase(ICase newCase) {
         boolean deleted = false;
         if (newCase.getCitizen() != null) {
@@ -47,28 +45,34 @@ public class SocialWorker extends User implements ISocialWorker {
         return deleted;
     }
 
+    @Override
     public boolean createReference(String id, String socialInstance, String description) {
         // TODO
         return false;
     }
 
+    @Override
     public boolean informCitizen(Case c) {
         // TODO
         return false;
     }
 
+    @Override
     public Set<Case> getCases() {
         return this.cases;
     }
 
+    @Override
     public Set<Inquiry> getInquiries() {
         return this.inquiries;
     }
 
+    @Override
     public Set<Reference> getReferences() {
         return this.references;
     }
 
+    @Override
     public boolean addCase(Case c) {
         try {
             this.cases.add(c);
@@ -78,6 +82,7 @@ public class SocialWorker extends User implements ISocialWorker {
         }
     }
 
+    @Override
     public boolean addInquiry(Inquiry inq) {
         try {
             this.inquiries.add(inq);
@@ -87,6 +92,7 @@ public class SocialWorker extends User implements ISocialWorker {
         }
     }
 
+    @Override
     public boolean addReference(Reference ref) {
         try {
             this.references.add(ref);
@@ -129,10 +135,13 @@ public class SocialWorker extends User implements ISocialWorker {
 //        }
 //        return false;
 //    }
-
     @Override
     public int getRole() {
         return 1;
+    }
+
+    public static int getSWRole() {
+        return ROLE;
     }
 
     @Override

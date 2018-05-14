@@ -2,6 +2,7 @@ package business;
 
 import acq.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -49,7 +50,22 @@ public class BusinessFacade implements IBusiness {
     @Override
     public ObservableList<IUser> getUsers() {
         ArrayList<IUser> users = new ArrayList<>();
-        data.loadData(users, "users");
+        ////FileManager
+//          data.loadData(users, "users");
+//          return this.users = FXCollections.observableArrayList(users);
+        ////SQL
+        List<String[]> list = data.readUsers();
+        for (String[] array : list) {
+            User user = null;
+            if (Integer.parseInt(array[5]) == SystemAdmin.getAdminRole()) {
+                user = new SystemAdmin(array[0], array[1], array[2], array[3], array[4]);
+            } else if (Integer.parseInt(array[5]) == SocialWorker.getSWRole()) {
+                user = new SocialWorker(array[0], array[1], array[2], array[3], array[4]);
+            }
+            if (user != null) {
+                users.add(user);
+            }
+        }
         return this.users = FXCollections.observableArrayList(users);
     }
 
@@ -107,14 +123,15 @@ public class BusinessFacade implements IBusiness {
         IUser user;
         if (security.getActiveUser() instanceof SystemAdmin) {
             user = ((SystemAdmin) security.getActiveUser()).createUser(name, id, userName, password, email, type);
-            if (user != null) {
+            data.saveUsers(user);
+//            if (user != null) {
 //                ArrayList<IUser> users = data.readUsers();
 //                users.add(user);
 //                data.saveUsers(users);
-                users.add(user);
-                data.saveData((ArrayList<IUser>) users.stream().collect(Collectors.toList()), "users");
-                security.logData("Created user: " + user.toString());
-            }
+//                users.add(user);
+//                data.saveData((ArrayList<IUser>) users.stream().collect(Collectors.toList()), "users");
+            security.logData("Created user: " + user.toString());
+//            }
         } else {
             System.out.println("error, could not create user");
         }

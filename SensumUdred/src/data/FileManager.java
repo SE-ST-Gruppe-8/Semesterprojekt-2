@@ -3,7 +3,6 @@ package data;
 import acq.ICase;
 import acq.ICitizen;
 import acq.IUser;
-import business.Case;
 import business.Citizen;
 import business.Inquiry;
 import business.SocialWorker;
