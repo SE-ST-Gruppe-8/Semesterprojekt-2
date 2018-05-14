@@ -233,7 +233,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
             ab.displayInquiryCreation("Opret henvendelse", ib, citizenListView.getSelectionModel().getSelectedItem());
             updateInquiryList();
         } else {
-            inquiryLabel.setText("Vælg en borger fra listen over borgerer");
+            inquiryLabel.setText("Vælg en henvendelse fra listen over henvendelser");
         }
     }
 
