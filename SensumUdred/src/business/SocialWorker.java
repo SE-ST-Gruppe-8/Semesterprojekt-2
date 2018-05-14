@@ -96,39 +96,39 @@ public class SocialWorker extends User implements ISocialWorker {
         }
     }
 
-    public boolean removeCase(Case c) {
-        try {
-            if (this.cases.contains(c)) {
-                this.cases.remove(c);
-                return true;
-            }
-        } catch (NullPointerException ex) {
-        }
-        return false;
-    }
-
-    public boolean removeInquiry(Inquiry inq) {
-        try {
-            if (this.inquiries.contains(inq)) {
-                this.inquiries.remove(inq);
-                return true;
-            } else {
-            }
-        } catch (NullPointerException ex) {
-        }
-        return false;
-    }
-
-    public boolean removeReference(Reference ref) {
-        try {
-            if (this.references.contains(ref)) {
-                this.references.remove(ref);
-                return true;
-            }
-        } catch (NullPointerException ex) {
-        }
-        return false;
-    }
+//    public boolean removeCase(Case c) {
+//        try {
+//            if (this.cases.contains(c)) {
+//                this.cases.remove(c);
+//                return true;
+//            }
+//        } catch (NullPointerException ex) {
+//        }
+//        return false;
+//    }
+//
+//    public boolean removeInquiry(Inquiry inq) {
+//        try {
+//            if (this.inquiries.contains(inq)) {
+//                this.inquiries.remove(inq);
+//                return true;
+//            } else {
+//            }
+//        } catch (NullPointerException ex) {
+//        }
+//        return false;
+//    }
+//
+//    public boolean removeReference(Reference ref) {
+//        try {
+//            if (this.references.contains(ref)) {
+//                this.references.remove(ref);
+//                return true;
+//            }
+//        } catch (NullPointerException ex) {
+//        }
+//        return false;
+//    }
 
     @Override
     public int getRole() {
@@ -158,10 +158,11 @@ public class SocialWorker extends User implements ISocialWorker {
 
     @Override
     public boolean deleteInquiry(IInquiry inquiry) {
-        boolean citizenRemoved = false;
+        boolean inquiryRemoved = false;
         if (inquiry != null) {
             inquiry.getCitizen().setInquiry(null);
+            inquiryRemoved = true;
         }
-        return citizenRemoved;
+        return inquiryRemoved;
     }
 }
