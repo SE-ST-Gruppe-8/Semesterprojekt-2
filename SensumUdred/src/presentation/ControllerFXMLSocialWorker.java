@@ -115,8 +115,12 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     private void createCaseAction(ActionEvent event) {
 
         updateCaseList();
-        if (citizenListView.getSelectionModel().getSelectedItem() != null) {
-            ab.displayCaseCreation("Create case", ib, (ICitizen) citizenListView.getSelectionModel().getSelectedItem());
+        if (inquiryListView1.getSelectionModel().getSelectedItem() != null) {
+            if (inquiryListView1.getSelectionModel().getSelectedItem().getCitizen().getCase() == null) {
+                ab.displayCaseCreation("Opret sag", ib, (ICitizen) inquiryListView1.getSelectionModel().getSelectedItem().getCitizen());
+            } else {
+                caseLabel.setText("denne henvendelse har allerede en sag");
+            }
         } else {
             caseLabel.setText("vælg en borger fra listen over borgerer");
         }
@@ -125,7 +129,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
     @FXML
     private void DeleteCaseAction(ActionEvent event) {
-        if (citizenListView.getSelectionModel().getSelectedItem() != null) {
+        if (caseListView.getSelectionModel().getSelectedItem() != null) {
             ib.deleteCase(caseListView.getSelectionModel().getSelectedItem());
             updateCaseList();
         } else {
@@ -143,8 +147,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         loginInfoLabelSW.setText("Logged in as: " + ib.getActiveUser().getName());
         System.out.println("Logged in as: " + ib.getActiveUser().getName());
         ib.getCitizen();
-        updateCaseList();
         updateCitizenList();
+        updateCaseList();
         updateInquiryList();
     }
 
@@ -230,10 +234,14 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     @FXML
     private void createInquiryAction(ActionEvent event) {
         if (citizenListView.getSelectionModel().getSelectedItem() != null) {
-            ab.displayInquiryCreation("Opret henvendelse", ib, citizenListView.getSelectionModel().getSelectedItem());
+            if (citizenListView.getSelectionModel().getSelectedItem().getInquiry() == null) {
+                ab.displayInquiryCreation("Opret henvendelse", ib, citizenListView.getSelectionModel().getSelectedItem());
+            } else {
+                inquiryLabel.setText("denne borger har allerede en henvendelse");
+            }
             updateInquiryList();
         } else {
-            inquiryLabel.setText("Vælg en borger fra listen over borgerer");
+            inquiryLabel.setText("Vælg en henvendelse fra listen over henvendelser");
         }
     }
 

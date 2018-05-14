@@ -62,7 +62,12 @@ public class Inquiry implements IInquiry, Serializable {
     
 
     public String toString() {
-        return "HendvendelsesID: " + this.id + "\tBorger: " + citizen.getName();
+        if (isCitizenInformed) {
+            return "HendvendelsesID: " + this.id + "\tBorger: " + citizen.getName() + "\tBorgeren er informeret om henvendelsen";
+        }else{
+            return "HendvendelsesID: " + this.id + "\tBorger: " + citizen.getName() + "\tBorgeren er ikke informeret om henvendelsen";
+        }
+        
     }
 
     @Override
