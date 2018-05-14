@@ -16,9 +16,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.ControllerFXMLAdmin">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.ControllerFXMLAdmin">
    <children>
-      <TabPane prefHeight="300.0" prefWidth="720.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="400.0" prefWidth="720.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <tabs>
             <Tab fx:id="adminTab" text="Admin">
                <content>
@@ -106,9 +106,9 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="135.0" spacing="10.0">
+                        <VBox alignment="CENTER" prefHeight="371.0" prefWidth="244.0" spacing="10.0">
                            <children>
-                              <ListView fx:id="adminUserListView" maxWidth="-Infinity" prefHeight="200.0" prefWidth="125.0" />
+                              <ListView fx:id="adminUserListView" maxWidth="-Infinity" prefHeight="200.0" prefWidth="222.0" />
                               <Button fx:id="deleteUserButton" mnemonicParsing="false" onAction="#deleteUserButtonAction" text="Slet bruger" />
                               <Button fx:id="UpdateList" mnemonicParsing="false" onAction="#UpdateListAction" text="Opdatér liste" />
                            </children>
@@ -122,7 +122,7 @@
             </Tab>
          </tabs>
       </TabPane>
-      <Button fx:id="logoutButtonSW" layoutX="660.0" layoutY="2.0" mnemonicParsing="false" onAction="#logoutButtonAction" text="Log ud" />
-      <Label fx:id="loginInfoLabelAdmin" layoutX="260.0" layoutY="12.0" />
+      <Button fx:id="logoutButtonSW" layoutX="660.0" layoutY="2.0" mnemonicParsing="false" onAction="#logoutButtonAction" text="Log ud" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
+      <Label fx:id="loginInfoLabelAdmin" layoutX="260.0" layoutY="12.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="12.0" />
    </children>
 </AnchorPane>
