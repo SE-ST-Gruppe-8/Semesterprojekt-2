@@ -116,7 +116,11 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
         updateCaseList();
         if (inquiryListView1.getSelectionModel().getSelectedItem() != null) {
-            ab.displayCaseCreation("Create case", ib, (ICitizen) inquiryListView1.getSelectionModel().getSelectedItem().getCitizen());
+            if (inquiryListView1.getSelectionModel().getSelectedItem().getCitizen().getCase() == null) {
+                ab.displayCaseCreation("Opret sag", ib, (ICitizen) inquiryListView1.getSelectionModel().getSelectedItem().getCitizen());
+            } else {
+                caseLabel.setText("denne henvendelse har allerede en sag");
+            }
         } else {
             caseLabel.setText("vælg en borger fra listen over borgerer");
         }
@@ -230,7 +234,11 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     @FXML
     private void createInquiryAction(ActionEvent event) {
         if (citizenListView.getSelectionModel().getSelectedItem() != null) {
-            ab.displayInquiryCreation("Opret henvendelse", ib, citizenListView.getSelectionModel().getSelectedItem());
+            if (citizenListView.getSelectionModel().getSelectedItem().getInquiry() == null) {
+                ab.displayInquiryCreation("Opret henvendelse", ib, citizenListView.getSelectionModel().getSelectedItem());
+            } else{
+                inquiryLabel.setText("denne borger har allerede en henvendelse");
+            }
             updateInquiryList();
         } else {
             inquiryLabel.setText("Vælg en henvendelse fra listen over henvendelser");
