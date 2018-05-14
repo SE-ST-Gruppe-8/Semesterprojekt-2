@@ -129,7 +129,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
     @FXML
     private void DeleteCaseAction(ActionEvent event) {
-        if (citizenListView.getSelectionModel().getSelectedItem() != null) {
+        if (caseListView.getSelectionModel().getSelectedItem() != null) {
             ib.deleteCase(caseListView.getSelectionModel().getSelectedItem());
             updateCaseList();
         } else {
@@ -147,8 +147,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         loginInfoLabelSW.setText("Logged in as: " + ib.getActiveUser().getName());
         System.out.println("Logged in as: " + ib.getActiveUser().getName());
         ib.getCitizen();
-        updateCaseList();
         updateCitizenList();
+        updateCaseList();
         updateInquiryList();
     }
 
@@ -236,7 +236,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         if (citizenListView.getSelectionModel().getSelectedItem() != null) {
             if (citizenListView.getSelectionModel().getSelectedItem().getInquiry() == null) {
                 ab.displayInquiryCreation("Opret henvendelse", ib, citizenListView.getSelectionModel().getSelectedItem());
-            } else{
+            } else {
                 inquiryLabel.setText("denne borger har allerede en henvendelse");
             }
             updateInquiryList();
