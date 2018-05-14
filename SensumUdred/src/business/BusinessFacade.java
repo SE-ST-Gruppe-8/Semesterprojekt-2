@@ -12,11 +12,16 @@ import javafx.collections.ObservableList;
  */
 public class BusinessFacade implements IBusiness {
 
-    private static final int ID_LENGTH = 4;
+    private static final int ID_LENGTH = 10;
 
-    private static final int PASSWORD_LENGTH = 4;
+    private static final int PASSWORD_MIN_LENGTH = 4;
+    private static final int PASSWORD_MAX_LENGTH = 16;
 
-    private static final int USERNAME_LENGTH = 4;
+    private static final int USERNAME_MIN_LENGTH = 4;
+    private static final int USERNAME_MAX_LENGTH = 16;
+
+    private static final int NAME_MAX_LENGTH = 100;
+    private static final int MAIL_MAX_LENGTH = 50;
 
     private IData data;
 
@@ -328,7 +333,7 @@ public class BusinessFacade implements IBusiness {
     @Override
     public boolean hasAcceptableID(String id) {
         try {
-            if (id.length() >= ID_LENGTH) {
+            if (id.length() == ID_LENGTH) {
                 return true;
             }
         } catch (NullPointerException ex) {
@@ -340,7 +345,7 @@ public class BusinessFacade implements IBusiness {
     public boolean hasAcceptablePassword(String password, String repeatedPassword) {
         try {
             if (password.equals(repeatedPassword)) {
-                if (password.length() >= PASSWORD_LENGTH) {
+                if (password.length() >= PASSWORD_MIN_LENGTH && password.length() <= PASSWORD_MAX_LENGTH) {
                     return true;
                 }
             }
@@ -352,7 +357,7 @@ public class BusinessFacade implements IBusiness {
     @Override
     public boolean hasAcceptableUsername(String username) {
         try {
-            if (username.length() >= USERNAME_LENGTH) {
+            if (username.length() >= USERNAME_MIN_LENGTH && username.length() <= USERNAME_MAX_LENGTH) {
                 return true;
             }
         } catch (NullPointerException ex) {
@@ -363,7 +368,7 @@ public class BusinessFacade implements IBusiness {
     @Override
     public boolean hasAcceptableMail(String mail) {
         try {
-            if (mail.contains("@")) {
+            if (mail.length() <= MAIL_MAX_LENGTH && mail.contains("@")) {
                 return true;
             }
         } catch (NullPointerException ex) {
@@ -374,7 +379,7 @@ public class BusinessFacade implements IBusiness {
     @Override
     public boolean hasAcceptableName(String name) {
         try {
-            if (name.length() >= 1) {
+            if (name.length() >= 1 && name.length() <= NAME_MAX_LENGTH) {
                 return true;
             }
         } catch (NullPointerException ex) {
