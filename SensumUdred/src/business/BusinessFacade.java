@@ -70,7 +70,7 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public void logOutActiveUser() {
-        security.logData("logged out.");
+        security.logData("Logged out.");
         security.logOutActiveUser();
 
     }
@@ -145,7 +145,7 @@ public class BusinessFacade implements IBusiness {
         ArrayList<IUser> users = new ArrayList<>();
         data.loadData(users, "users");
         if (security.validateUserLogin(users, username, password)) {
-            security.logData(username + " logged in.");
+            security.logData("Logged in.");
             return true;
 
         } else {
