@@ -82,15 +82,15 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     @FXML
     private Label caseLabel1;
     @FXML
-    private ListView<ICitizen> citizenListView1;
-    @FXML
-    private ListView<IInquiry> InquiriesListView;
+    private ListView<IInquiry> inquiriesListView;
     @FXML
     private Button deleteInquiryButton;
     @FXML
     private Button updateInquiryListView;
     @FXML
     private Button createInquiryButton;
+    @FXML
+    private ListView<IInquiry> inquiryListView1;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -200,18 +200,18 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         } else {
             ObservableList<ICitizen> list = ib.getCitizen();
             citizenListView.setItems(list);
-            citizenListView1.setItems(list);
         }
     }
 
     public void updateInquiryList() {
-        InquiriesListView.setItems(ib.getInquiries());
+        inquiriesListView.setItems(ib.getInquiries());
+        inquiryListView1.setItems(ib.getInquiries());
     }
 
     @FXML
     private void deleteInquiryAction(ActionEvent event) {
-        if (InquiriesListView.getSelectionModel().getSelectedItem() != null) {
-            ib.deleteInquiry(InquiriesListView.getSelectionModel().getSelectedItem());
+        if (inquiriesListView.getSelectionModel().getSelectedItem() != null) {
+            ib.deleteInquiry(inquiriesListView.getSelectionModel().getSelectedItem());
             updateInquiryList();
         }
     }
@@ -224,16 +224,16 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
     @FXML
     private void createInquiryAction(ActionEvent event) {
-        if (citizenListView1.getSelectionModel().getSelectedItem() != null) {
-            ab.displayInquiryCreation("Inquiry", ib, citizenListView1.getSelectionModel().getSelectedItem());
+        if (citizenListView.getSelectionModel().getSelectedItem() != null) {
+            ab.displayInquiryCreation("Inquiry", ib, citizenListView.getSelectionModel().getSelectedItem());
             updateInquiryList();
         }
     }
 
     @FXML
     private void editInquiryAction(ActionEvent event) {
-        if (InquiriesListView.getSelectionModel().getSelectedItem() != null) {
-            ab.displayInquiryEdit("Inquiry", ib, InquiriesListView.getSelectionModel().getSelectedItem());
+        if (inquiriesListView.getSelectionModel().getSelectedItem() != null) {
+            ab.displayInquiryEdit("Inquiry", ib, inquiriesListView.getSelectionModel().getSelectedItem());
         } else {
 //            Label.setText("you must select a Inquiry from the list to view details");
             System.out.println("lol");
