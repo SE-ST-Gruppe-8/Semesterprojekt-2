@@ -67,6 +67,19 @@ public class DBManager {
             return null;
         }
     }
+    
+    public boolean deleteUser(IUser user) {
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"users\" where username ='"+ user.getUsername()+"'");
+            
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
 
     public static void main(String[] args) {
         DBManager dbm = new DBManager();

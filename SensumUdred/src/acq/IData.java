@@ -26,6 +26,8 @@ public interface IData {
 
     public void saveUsers(IUser user);
     
+    public void deleteUser(IUser user);
+    
     public void logData(String logData);
 
     <T> void saveData(ArrayList<T> data, String filepath);

@@ -83,5 +83,12 @@ public class DataFacade implements IData {
     public void saveUsers(IUser user) {
         dbm.saveUser(user);
     }
+    
+    
+    @Override
+    public void deleteUser(IUser user) {
+        dbm.deleteUser(user);
+    }
+    
 
 }
