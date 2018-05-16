@@ -12,8 +12,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.util.Pair;
-import org.postgresql.util.PSQLException;
 
 /**
  *
@@ -152,6 +150,19 @@ public class DBManager {
         } catch (Exception ex) {
             System.out.println(ex);
             return false;
+        }
+    }
+
+    public void saveLog(String date, String username, String logData) {
+        String data = "('" + date + "','" + username + "','" + logData + "');";
+
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("insert into logdata values" + data);
+            rs1.close();
+            st1.close();
+        } catch (Exception ex) {
+            System.out.println(ex);
         }
     }
 

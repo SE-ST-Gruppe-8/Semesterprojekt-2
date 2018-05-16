@@ -41,6 +41,11 @@ public class DataFacade implements IData {
         dl.saveLog(logData);
     }
 
+    @Override
+    public void logData(String date, String username, String logData) {
+        dbm.saveLog(date, username, logData);
+    }
+
 //    @Override
 //    public ArrayList<ICitizen> getCitizens() {
 //        return fm.readCitizens();

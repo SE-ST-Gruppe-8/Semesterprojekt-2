@@ -23,10 +23,15 @@ public class SecurityHandler {
 //        activeUser = new SystemAdmin("brrt","brrt","brrt","brrt","brrt");
     }
 
-    public void logData(String dataToBeLogged) {
+    public void logDataToFile(String dataToBeLogged) {
         String log = new Date().toString() + "\t" + activeUser.toString() + "\t" + dataToBeLogged;
         System.out.println("Logging: " + log);
         data.logData(log);
+    }
+
+    public void logData(String dataToBeLogged) {
+        System.out.println("Logging: " + new Date().toString() + "\t" + activeUser.toString() + "\t" + dataToBeLogged);
+        data.logData(new Date().toString(), activeUser.getUsername(), dataToBeLogged);
     }
 
     public User getActiveUser() {

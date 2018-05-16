@@ -33,6 +33,8 @@ public interface IData {
     public void deleteUser(IUser user);
 
     public void logData(String logData);
+    
+    public void logData(String date, String username, String logData);
 
     <T> void saveData(ArrayList<T> data, String filepath);
 

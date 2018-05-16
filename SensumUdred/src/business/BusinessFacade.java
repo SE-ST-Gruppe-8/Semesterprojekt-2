@@ -21,7 +21,7 @@ public class BusinessFacade implements IBusiness {
     private static final int USERNAME_MIN_LENGTH = 4;
     private static final int USERNAME_MAX_LENGTH = 16;
 
-    private static final int NAME_MIN_lENGTH = 3;
+    private static final int NAME_MIN_LENGTH = 3;
     private static final int NAME_MAX_LENGTH = 100;
 
     private static final int MAIL_MAX_LENGTH = 50;
@@ -95,7 +95,6 @@ public class BusinessFacade implements IBusiness {
     public void logOutActiveUser() {
         security.logData("logged out.");
         security.logOutActiveUser();
-
     }
 
     /**
@@ -345,13 +344,11 @@ public class BusinessFacade implements IBusiness {
         data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
     }
 
-    // changed when database is added!!!
     @Override
     public boolean hasUniqueUserID(String id) {
         return data.hasUniqueUserUD(id);
     }
 
-    // changed when database is added!!!
     @Override
     public boolean hasUnqiueCitizenID(String id) {
         return data.hasUniqueCitizenID(id);
@@ -406,7 +403,7 @@ public class BusinessFacade implements IBusiness {
     @Override
     public boolean hasAcceptableName(String name) {
         try {
-            if (name.length() >= NAME_MIN_lENGTH && name.length() <= NAME_MAX_LENGTH) {
+            if (name.length() >= NAME_MIN_LENGTH && name.length() <= NAME_MAX_LENGTH) {
                 return true;
             }
         } catch (NullPointerException ex) {
@@ -417,7 +414,7 @@ public class BusinessFacade implements IBusiness {
     @Override
     public int[] getFinalInts() {
         return new int[]{ID_LENGTH, PASSWORD_MIN_LENGTH, PASSWORD_MAX_LENGTH, USERNAME_MIN_LENGTH,
-            USERNAME_MAX_LENGTH, NAME_MIN_lENGTH, NAME_MAX_LENGTH, MAIL_MAX_LENGTH};
+            USERNAME_MAX_LENGTH, NAME_MIN_LENGTH, NAME_MAX_LENGTH, MAIL_MAX_LENGTH};
     }
 
     @Override

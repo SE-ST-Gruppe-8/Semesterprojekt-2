@@ -138,6 +138,7 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
                                 ib.createUser(firstName + " " + lastName, id, username, password, email, value);
                                 System.out.println("Role: " + ib.getRole());
                                 updateUserList();
+                                adminInfoLabel.setText("Success");
                             } else {
                                 adminInfoLabel.setText("Emailen skal indeholde et @, og må maks indeholde "
                                         + ib.getFinalInts()[7] + " tegn");

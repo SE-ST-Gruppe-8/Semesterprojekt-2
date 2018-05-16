@@ -1,30 +1,37 @@
 
 CREATE TABLE Users (
-    id CHAR(10) Unique,
+    id CHAR(10) UNIQUE,
     name VARCHAR(100),
     mail VARCHAR(50),
-    username CHAR(16) Unique,
+    username CHAR(16) UNIQUE,
     password CHAR(16),
     role INT
 );
 
 CREATE TABLE Citizens (
-    id CHAR(10) Primary Key,
+    id CHAR(10) PRIMARY KEY,
     name VARCHAR(100),
     needs VARCHAR(200)
 );
 
 CREATE TABLE Cases (
-    id CHAR(10) Primary Key,
+    id CHAR(10) PRIMARY KEY,
     description VARCHAR(200),
     process VARCHAR(200)
 );
 
 CREATE TABLE Inquiries (
-    id CHAR(10) Primary Key,
+    id CHAR(10) PRIMARY KEY,
     description VARCHAR(200),
     isCitizenInformed Boolean,
     origin VARCHAR(200)
+);
+
+CREATE TABLE LogData (
+    dateLogged VARCHAR(50),
+    username CHAR(16),
+    dataline VARCHAR(200),
+    PRIMARY KEY(dateLogged, username)
 );
 
 CREATE TABLE RegisteredBy (
@@ -54,9 +61,4 @@ CREATE TABLE CreatedBy (
     FOREIGN KEY (userId) REFERENCES Users(id) ON DELETE SET NULL ON UPDATE CASCADE,
     FOREIGN KEY (caseId) REFERENCES Cases(id) ON DELETE SET NULL ON UPDATE CASCADE
 );
-
-INSERT INTO Users VALUES('1234567890','Jens Jensen','jensen@gmail.com','jensen','jens','1');
-INSERT INTO Users VALUES('1234567891','Monika Jensen','mon@gmail.com','monika','mon','0');
-INSERT INTO Citizens VALUES('1111112222','Søren Sørensen','Shockterapi');
-INSERT INTO Citizens VALUES('1111112223','Fred Frederiksen','Den fulde behandling');
 
