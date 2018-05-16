@@ -284,13 +284,14 @@ public class BusinessFacade implements IBusiness {
     public void editCase(String description, String process, ICase c) {
         c.setDescription(description);
         c.setProcess(process);
-        
+        security.logData("Edited Case: " + c.toString());
         data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
     }
 
     @Override
     public void editCitizen(String needs, ICitizen c) {
         c.setNeeds(needs);
+        security.logData("Edited Citizen: " + c.toString());
         data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
     }
 
@@ -298,6 +299,7 @@ public class BusinessFacade implements IBusiness {
     public void editInquiry(String description, IInquiry i, boolean isInformed) {
         i.setDescription(description);
         i.setIsCitizenInformed(isInformed);
+        security.logData("Edited Inquiry: " + i.toString());
         data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
     }
 
