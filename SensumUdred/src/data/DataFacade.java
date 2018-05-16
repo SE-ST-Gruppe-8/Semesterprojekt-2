@@ -7,7 +7,6 @@ package data;
 
 import acq.*;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -16,25 +15,23 @@ import java.util.List;
 public class DataFacade implements IData {
 
     private FileManager fm;
-    private DBManager dbm;
     private DataLogger dl;
 
     public DataFacade() {
         fm = new FileManager();
-        dbm = new DBManager();
         dl = new DataLogger();
     }
 
-    @Override
-    public List<String[]> readUsers() {
-        return dbm.loadUsers();
-    }
-
+//    @Override
+//    public ArrayList<IUser> readUsers() {
+//        return new ArrayList<IUser>();
+//    }
 //
 //    @Override
 //    public void saveUsers(ArrayList<IUser> data) {
 //        
 //    }
+
     @Override
     public void logData(String logData) {
         dl.saveLog(logData);
@@ -49,6 +46,7 @@ public class DataFacade implements IData {
 //    public void saveCitizens(ArrayList<ICitizen> list) {
 //        fm.saveCitizens(list);
 //    }
+        
 //    public void saveCases(ArrayList<ICase> data) {
 //        fm.saveCases(data);
 //    }
@@ -57,7 +55,7 @@ public class DataFacade implements IData {
 //    public ArrayList<ICase> readCases() {
 //        return fm.readCases();
 //    }
-    @Override
+    
     public <T> void saveData(ArrayList<T> data, String filepath) {
         fm.writeToFile(data, filepath);
     }
@@ -77,17 +75,4 @@ public class DataFacade implements IData {
     public boolean hasUniqueCitizenID(String id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    @Override
-    public void saveUsers(IUser user) {
-        dbm.saveUser(user);
-    }
-    
-    
-    @Override
-    public void deleteUser(IUser user) {
-        dbm.deleteUser(user);
-    }
-    
-
 }

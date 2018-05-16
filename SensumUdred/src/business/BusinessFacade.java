@@ -2,7 +2,6 @@ package business;
 
 import acq.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,17 +11,6 @@ import javafx.collections.ObservableList;
  * @author Bruger
  */
 public class BusinessFacade implements IBusiness {
-
-    private static final int ID_LENGTH = 10;
-
-    private static final int PASSWORD_MIN_LENGTH = 4;
-    private static final int PASSWORD_MAX_LENGTH = 16;
-
-    private static final int USERNAME_MIN_LENGTH = 4;
-    private static final int USERNAME_MAX_LENGTH = 16;
-
-    private static final int NAME_MAX_LENGTH = 100;
-    private static final int MAIL_MAX_LENGTH = 50;
 
     private IData data;
 
@@ -50,22 +38,7 @@ public class BusinessFacade implements IBusiness {
     @Override
     public ObservableList<IUser> getUsers() {
         ArrayList<IUser> users = new ArrayList<>();
-        ////FileManager
-//          data.loadData(users, "users");
-//          return this.users = FXCollections.observableArrayList(users);
-        ////SQL
-        List<String[]> list = data.readUsers();
-        for (String[] array : list) {
-            User user = null;
-            if (Integer.parseInt(array[5]) == SystemAdmin.getAdminRole()) {
-                user = new SystemAdmin(array[0], array[1], array[2], array[3], array[4]);
-            } else if (Integer.parseInt(array[5]) == SocialWorker.getSWRole()) {
-                user = new SocialWorker(array[0], array[1], array[2], array[3], array[4]);
-            }
-            if (user != null) {
-                users.add(user);
-            }
-        }
+        data.loadData(users, "users");
         return this.users = FXCollections.observableArrayList(users);
     }
 
@@ -91,7 +64,7 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public void logOutActiveUser() {
-        security.logData("logged out.");
+        security.logData("Logged out.");
         security.logOutActiveUser();
 
     }
@@ -123,15 +96,14 @@ public class BusinessFacade implements IBusiness {
         IUser user;
         if (security.getActiveUser() instanceof SystemAdmin) {
             user = ((SystemAdmin) security.getActiveUser()).createUser(name, id, userName, password, email, type);
-            data.saveUsers(user);
-//            if (user != null) {
+            if (user != null) {
 //                ArrayList<IUser> users = data.readUsers();
 //                users.add(user);
 //                data.saveUsers(users);
-//                users.add(user);
-//                data.saveData((ArrayList<IUser>) users.stream().collect(Collectors.toList()), "users");
-            security.logData("Created user: " + user.toString());
-//            }
+                users.add(user);
+                data.saveData((ArrayList<IUser>) users.stream().collect(Collectors.toList()), "users");
+                security.logData("Created user: " + user.toString());
+            }
         } else {
             System.out.println("error, could not create user");
         }
@@ -147,9 +119,7 @@ public class BusinessFacade implements IBusiness {
     public void deleteUser(IUser user) {
         if (security.getActiveUser() instanceof SystemAdmin) {
             if (((SystemAdmin) security.getActiveUser()).deleteUser(user, users)) {
-                data.deleteUser(user);
                 security.logData("Deleted user " + user.toString());
-//                data.saveUsers(user);
                 data.saveData((ArrayList<IUser>) users.stream().collect(Collectors.toList()), "users");
             } else {
                 System.out.println("User did not exist");
@@ -169,7 +139,7 @@ public class BusinessFacade implements IBusiness {
         ArrayList<IUser> users = new ArrayList<>();
         data.loadData(users, "users");
         if (security.validateUserLogin(users, username, password)) {
-            security.logData(username + " logged in.");
+            security.logData("Logged in.");
             return true;
 
         } else {
@@ -186,7 +156,6 @@ public class BusinessFacade implements IBusiness {
         citizens.remove(c);
         c.setInquiry((Inquiry) inquiry);
         citizens.add(c);
-        security.logData("Saved inquiry: " + c.toString());
         data.saveData(citizens, "citizens");
     }
 
@@ -200,7 +169,6 @@ public class BusinessFacade implements IBusiness {
 //        }
 //        data.saveCitizens(citizens);
 //    }
-    @Override
     public int getRole() {
         return security.getActiveUser().getRole();
     }
@@ -316,14 +284,13 @@ public class BusinessFacade implements IBusiness {
     public void editCase(String description, String process, ICase c) {
         c.setDescription(description);
         c.setProcess(process);
-        security.logData("Edited case: " + c.toString());
+        
         data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
     }
 
     @Override
     public void editCitizen(String needs, ICitizen c) {
         c.setNeeds(needs);
-        security.logData("Edited citizen: " + c.toString());
         data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
     }
 
@@ -331,79 +298,17 @@ public class BusinessFacade implements IBusiness {
     public void editInquiry(String description, IInquiry i, boolean isInformed) {
         i.setDescription(description);
         i.setIsCitizenInformed(isInformed);
-        security.logData("Edited inquiry: " + i.toString());
         data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
     }
 
-    // changed when database is added!!!
     @Override
     public boolean hasUniqueUserID(String id) {
-        // return data.hasUniqueUserUD(id);
-        return true;
+        return data.hasUniqueUserUD(id);
     }
 
-    // changed when database is added!!!
     @Override
     public boolean hasUnqiueCitizenID(String id) {
-        // return data.hasUniqueCitizenID(id);
-        return true;
-    }
-
-    @Override
-    public boolean hasAcceptableID(String id) {
-        try {
-            if (id.length() == ID_LENGTH) {
-                return true;
-            }
-        } catch (NullPointerException ex) {
-        }
-        return false;
-    }
-
-    @Override
-    public boolean hasAcceptablePassword(String password, String repeatedPassword) {
-        try {
-            if (password.equals(repeatedPassword)) {
-                if (password.length() >= PASSWORD_MIN_LENGTH && password.length() <= PASSWORD_MAX_LENGTH) {
-                    return true;
-                }
-            }
-        } catch (NullPointerException ex) {
-        }
-        return false;
-    }
-
-    @Override
-    public boolean hasAcceptableUsername(String username) {
-        try {
-            if (username.length() >= USERNAME_MIN_LENGTH && username.length() <= USERNAME_MAX_LENGTH) {
-                return true;
-            }
-        } catch (NullPointerException ex) {
-        }
-        return false;
-    }
-
-    @Override
-    public boolean hasAcceptableMail(String mail) {
-        try {
-            if (mail.length() <= MAIL_MAX_LENGTH && mail.contains("@")) {
-                return true;
-            }
-        } catch (NullPointerException ex) {
-        }
-        return false;
-    }
-
-    @Override
-    public boolean hasAcceptableName(String name) {
-        try {
-            if (name.length() >= 1 && name.length() <= NAME_MAX_LENGTH) {
-                return true;
-            }
-        } catch (NullPointerException ex) {
-        }
-        return false;
+        return data.hasUniqueCitizenID(id);
     }
 
 }
