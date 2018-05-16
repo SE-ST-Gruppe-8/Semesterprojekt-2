@@ -18,6 +18,8 @@ public interface IData {
 
     public boolean hasUniqueCitizenID(String id);
 
+    public boolean hasUniqueUsername(String username);
+
 //    public void saveUsers(ArrayList<IUser> data);
 //    
 //    public void saveCases(ArrayList<ICase> data);
@@ -25,9 +27,9 @@ public interface IData {
     public List<String[]> readUsers();
 
     public void saveUsers(IUser user);
-    
+
     public void deleteUser(IUser user);
-    
+
     public void logData(String logData);
 
     <T> void saveData(ArrayList<T> data, String filepath);

@@ -69,25 +69,28 @@ public class DataFacade implements IData {
     }
 
     @Override
-    public boolean hasUniqueUserUD(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean hasUniqueCitizenID(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public void saveUsers(IUser user) {
         dbm.saveUser(user);
     }
-    
-    
+
     @Override
     public void deleteUser(IUser user) {
         dbm.deleteUser(user);
     }
-    
+
+    @Override
+    public boolean hasUniqueUserUD(String id) {
+        return dbm.hasUniqueUserID(id);
+    }
+
+    @Override
+    public boolean hasUniqueCitizenID(String id) {
+        return dbm.hasUniqueCitizenID(id);
+    }
+
+    @Override
+    public boolean hasUniqueUsername(String username) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

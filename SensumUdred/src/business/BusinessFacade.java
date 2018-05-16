@@ -141,7 +141,6 @@ public class BusinessFacade implements IBusiness {
      * a method to delete a user from the system
      *
      * @param user
-     * @param users
      */
     @Override
     public void deleteUser(IUser user) {
@@ -338,15 +337,13 @@ public class BusinessFacade implements IBusiness {
     // changed when database is added!!!
     @Override
     public boolean hasUniqueUserID(String id) {
-        // return data.hasUniqueUserUD(id);
-        return true;
+        return data.hasUniqueUserUD(id);
     }
 
     // changed when database is added!!!
     @Override
     public boolean hasUnqiueCitizenID(String id) {
-        // return data.hasUniqueCitizenID(id);
-        return true;
+        return data.hasUniqueCitizenID(id);
     }
 
     @Override

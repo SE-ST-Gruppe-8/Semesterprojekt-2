@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import org.postgresql.util.PSQLException;
 
 /**
  *
@@ -33,7 +34,7 @@ public class DBManager {
         int role = user.getRole();
         String data = "('" + id + "','" + name + "','" + mail + "','" + username + "','" + password + "','" + role + "');";
 
-        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)){
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("insert into users values" + data);
             rs1.close();
@@ -45,7 +46,7 @@ public class DBManager {
 
     public List<String[]> loadUsers() {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
-            
+
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("select * from \"public\".\"users\"");
             List<String[]> list = new ArrayList<>();
@@ -67,13 +68,13 @@ public class DBManager {
             return null;
         }
     }
-    
+
     public boolean deleteUser(IUser user) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
-            
+
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"users\" where username ='"+ user.getUsername()+"'");
-            
+            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"users\" where username ='" + user.getUsername() + "'");
+
             return true;
         } catch (Exception e) {
             System.out.println(e);
@@ -81,11 +82,67 @@ public class DBManager {
         }
     }
 
+    public boolean hasUniqueUserID(String id) {
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("select * from \"public\".\"users\" where id = '" + id + "'");
+
+            while (rs1.next()) {
+                if (rs1.getString("id").equals(id)) {
+                    return false;
+                }
+            }
+            return true;
+
+        } catch (Exception ex) {
+            System.out.println(ex);
+            return false;
+        }
+    }
+
+    public boolean hasUniqueCitizenID(String id) {
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("select * from \"public\".\"citizens\" where id = '" + id + "'");
+
+            while (rs1.next()) {
+                if (rs1.getString("id").equals(id)) {
+                    return false;
+                }
+            }
+            return true;
+
+        } catch (Exception ex) {
+            System.out.println(ex);
+            return false;
+        }
+    }
+
+    public boolean hasUniqueUsername(String username) {
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("select * from \"public\".\"users\" where username = '" + username + "'");
+
+            while (rs1.next()) {
+                if (rs1.getString("username").equals(username)) {
+                    return false;
+                }
+            }
+            return true;
+
+        } catch (Exception ex) {
+            System.out.println(ex);
+            return false;
+        }
+    }
+
     public static void main(String[] args) {
-        DBManager dbm = new DBManager();
+//        DBManager dbm = new DBManager();
 //        IUser u = new SocialWorker("Frederik Fredriksen", "0011223344", "frede", "frede", "frede@gmail.com");
 //        dbm.saveUser(u);
 //        dbm.loadUsers();
+//        String id = "1111110000";
+//        dbm.hasUniqueUserID(id);
     }
 
 }
