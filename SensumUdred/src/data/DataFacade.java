@@ -29,8 +29,7 @@ public class DataFacade implements IData {
     public List<String[]> readUsers() {
         return dbm.loadUsers();
     }
-    
-    
+
 //
 //    @Override
 //    public void saveUsers(ArrayList<IUser> data) {
