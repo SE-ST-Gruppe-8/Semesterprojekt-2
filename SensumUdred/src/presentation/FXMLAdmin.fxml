@@ -12,112 +12,190 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.ControllerFXMLAdmin">
    <children>
-      <TabPane prefHeight="400.0" prefWidth="720.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TabPane layoutX="10.0" layoutY="10.0" prefHeight="410.0" prefWidth="901.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <tabs>
             <Tab fx:id="adminTab" text="Admin">
                <content>
-                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="NEVER" maxWidth="111.0" minWidth="10.0" prefWidth="101.0" />
+                        <ColumnConstraints hgrow="NEVER" maxWidth="255.0" minWidth="10.0" prefWidth="237.0" />
+                        <ColumnConstraints hgrow="NEVER" maxWidth="138.0" minWidth="10.0" prefWidth="110.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="82.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
                      <children>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="575.0" spacing="10.0">
+                        <VBox GridPane.columnSpan="2" GridPane.rowSpan="2">
                            <children>
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
-                                 <children>
-                                    <RadioButton fx:id="createSocialWorkerRadioButton" focusTraversable="false" mnemonicParsing="false" selected="true" text="Sagsbehandler">
-                                       <toggleGroup>
-                                          <ToggleGroup fx:id="createUserToggleGroup" />
-                                       </toggleGroup>
-                                    </RadioButton>
-                                    <RadioButton fx:id="createAdminRadioButton" focusTraversable="false" mnemonicParsing="false" text="Administrator" toggleGroup="$createUserToggleGroup" />
-                                 </children>
-                              </HBox>
-                              <GridPane>
+                              <GridPane prefHeight="326.0" prefWidth="338.0">
                                  <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="30.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="30.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                  </columnConstraints>
                                  <rowConstraints>
-                                    <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1">
-                                       <children>
-                                          <Label text="Brugernavn" />
-                                          <TextField fx:id="adminUsernameTextField" />
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2">
-                                       <children>
-                                          <Label text="Fornavn" />
-                                          <TextField fx:id="adminFirstNameTextField" />
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                       <children>
-                                          <Label text="Kodeord" />
-                                          <TextField fx:id="adminPasswordTextField" />
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                                       <children>
-                                          <Label text="Efternavn" />
-                                          <TextField fx:id="adminLastNameTextField" />
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                       <children>
-                                          <Label text="Gentag kodeord" />
-                                          <TextField fx:id="adminRepeatPasswordTextField" />
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                                       <children>
-                                          <Label text="E-mail" />
-                                          <TextField fx:id="adminEmailTextField" />
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                       <children>
-                                          <Label text="ID" />
-                                          <TextField fx:id="adminIdTextField" />
-                                       </children>
-                                    </HBox>
+                                    <Label text="Brugernavn:">
+                                       <GridPane.margin>
+                                          <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label text="Kodeord:" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label prefHeight="17.0" prefWidth="177.0" text="Gentag kodeord:" GridPane.rowIndex="2">
+                                       <GridPane.margin>
+                                          <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label text="ID:" GridPane.rowIndex="3">
+                                       <GridPane.margin>
+                                          <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <TextField fx:id="adminUsernameTextField" GridPane.columnIndex="1" GridPane.columnSpan="2">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="adminPasswordTextField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="adminRepeatPasswordTextField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="adminIdTextField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Label text="Fornavn:" GridPane.rowIndex="4">
+                                       <GridPane.margin>
+                                          <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <TextField fx:id="adminFirstNameTextField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="adminLastNameTextField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="adminEmailTextField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Label text="Efternavn:" GridPane.rowIndex="5">
+                                       <GridPane.margin>
+                                          <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label text="E-mail:" GridPane.rowIndex="6">
+                                       <GridPane.margin>
+                                          <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Button fx:id="createUserButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createUserButtonAction" text="Opret bruger" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </Button>
                                  </children>
                               </GridPane>
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
-                                 <children>
-                                    <Button fx:id="createUserButton" mnemonicParsing="false" onAction="#createUserButtonAction" text="Opret bruger" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                 <children>
-                                    <Label fx:id="adminInfoLabel" />
-                                 </children>
-                              </HBox>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="371.0" prefWidth="244.0" spacing="10.0">
+                        <ListView fx:id="adminUserListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="77.0" prefWidth="262.0" GridPane.columnIndex="3" GridPane.columnSpan="4" GridPane.rowSpan="2">
+                           <GridPane.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </GridPane.margin>
+                        </ListView>
+                        <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
                            <children>
-                              <ListView fx:id="adminUserListView" maxWidth="-Infinity" prefHeight="200.0" prefWidth="222.0" />
-                              <Button fx:id="deleteUserButton" mnemonicParsing="false" onAction="#deleteUserButtonAction" text="Slet bruger" />
-                              <Button fx:id="UpdateList" mnemonicParsing="false" onAction="#UpdateListAction" text="Opdatér liste" />
+                              <Button fx:id="UpdateList" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#UpdateListAction" text="Opdatér liste" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="15.0" left="10.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Button>
+                              <Button fx:id="deleteUserButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteUserButtonAction" text="Slet bruger" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="15.0" left="10.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Button>
                            </children>
-                           <padding>
-                              <Insets right="10.0" />
-                           </padding>
-                        </VBox>
+                        </GridPane>
+                        <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="179.0" prefWidth="152.0" GridPane.columnIndex="2">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <RadioButton fx:id="createAdminRadioButton" focusTraversable="false" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Administrator" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="createUserToggleGroup" />
+                                 </toggleGroup>
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="createSocialWorkerRadioButton" focusTraversable="false" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="17.0" prefWidth="116.0" selected="true" text="Sagsbehandler" GridPane.columnSpan="2">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="createUserToggleGroup" />
+                                 </toggleGroup>
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </RadioButton>
+                           </children>
+                        </GridPane>
                      </children>
-                  </HBox>
+                  </GridPane>
                </content>
             </Tab>
          </tabs>

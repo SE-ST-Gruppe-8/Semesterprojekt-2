@@ -33,8 +33,7 @@ public class DBManager {
         int role = user.getRole();
         String data = "('" + id + "','" + name + "','" + mail + "','" + username + "','" + password + "','" + role + "');";
 
-        try {
-            Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)){
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("insert into users values" + data);
             rs1.close();
@@ -45,8 +44,8 @@ public class DBManager {
     }
 
     public List<String[]> loadUsers() {
-        try {
-            Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("select * from \"public\".\"users\"");
             List<String[]> list = new ArrayList<>();
@@ -66,6 +65,19 @@ public class DBManager {
         } catch (Exception e) {
             System.out.println(e);
             return null;
+        }
+    }
+    
+    public boolean deleteUser(IUser user) {
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"users\" where username ='"+ user.getUsername()+"'");
+            
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
         }
     }
 
