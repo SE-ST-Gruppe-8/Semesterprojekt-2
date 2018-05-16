@@ -86,6 +86,7 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
     @FXML
     private TextField adminIdTextField;
+
     @FXML
     private Button logoutButtonSW;
 
@@ -128,14 +129,36 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
         String firstName = adminFirstNameTextField.getText();
         String lastName = adminLastNameTextField.getText();
         String email = adminEmailTextField.getText();
-        if (ib.hasAcceptableID(id) && ib.hasUniqueUserID(id)) {
-            if (ib.hasAcceptablePassword(password, repeatedPassword) && ib.hasAcceptableUsername(username)) {
-                if (ib.hasAcceptableName(firstName + " " + lastName) && ib.hasAcceptableMail(email)) {
-                    ib.createUser(firstName + " " + lastName, id, username, password, email, value);
-                    System.out.println("Role: " + ib.getRole());
-                    updateUserList();
+        if (ib.hasAcceptableID(id)) {
+            if (ib.hasUniqueUserID(id)) {
+                if (ib.hasAcceptablePassword(password, repeatedPassword)) {
+                    if (ib.hasAcceptableUsername(username)) {
+                        if (ib.hasAcceptableName(firstName + " " + lastName)) {
+                            if (ib.hasAcceptableMail(email)) {
+                                ib.createUser(firstName + " " + lastName, id, username, password, email, value);
+                                System.out.println("Role: " + ib.getRole());
+                                updateUserList();
+                            } else {
+                                adminInfoLabel.setText("Emailen skal indeholde et @, og må maks indeholde "
+                                        + ib.getFinalInts()[7] + " tegn");
+                            }
+                        } else {
+                            adminInfoLabel.setText("Navnet skal indeholde mellem " + ib.getFinalInts()[5] + " og "
+                                    + ib.getFinalInts()[6] + " tegn");
+                        }
+                    } else {
+                        adminInfoLabel.setText("Brugernavnet skal indeholde mellem " + ib.getFinalInts()[3] + " og "
+                                + ib.getFinalInts()[4] + " tegn");
+                    }
+                } else {
+                    adminInfoLabel.setText("Kodeordet skal indeholde mellem " + ib.getFinalInts()[1] + " og "
+                            + ib.getFinalInts()[2] + " tegn, og de to kodeord skal matche");
                 }
+            } else {
+                adminInfoLabel.setText("ID'et eksisterer allerede");
             }
+        } else {
+            adminInfoLabel.setText("ID'et skal indeholde " + ib.getFinalInts()[0] + " tegn");
         }
     }
 

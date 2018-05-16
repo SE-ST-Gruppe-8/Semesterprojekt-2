@@ -102,14 +102,13 @@ public class DBManager {
     public boolean hasUniqueCitizenID(String id) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("select * from \"public\".\"citizens\" where id = '" + id + "'");
-
-            while (rs1.next()) {
-                if (rs1.getString("id").equals(id)) {
-                    return false;
-                }
+            ResultSet rs1 = st1.executeQuery("select COUNT(id) FROM \"public\".\"citizens\" where id = '" + id + "'");
+            rs1.next();
+            if (rs1.getInt("count") == 1) {
+                return false;
+            } else {
+                return true;
             }
-            return true;
 
         } catch (Exception ex) {
             System.out.println(ex);
@@ -120,12 +119,10 @@ public class DBManager {
     public boolean hasUniqueUsername(String username) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("select * from \"public\".\"users\" where username = '" + username + "'");
-
-            while (rs1.next()) {
-                if (rs1.getString("username").equals(username)) {
-                    return false;
-                }
+            ResultSet rs1 = st1.executeQuery("select COUNT(username) FROM \"public\".\"users\" where username = '" + username + "'");
+            rs1.next();
+            if (rs1.getInt("count") == 1) {
+                return false;
             }
             return true;
 
