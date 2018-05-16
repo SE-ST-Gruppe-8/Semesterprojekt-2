@@ -20,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -52,8 +53,6 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
 
     /**
      * Initializes the controller class.
-     * @param url
-     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -75,12 +74,13 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
 //                fxmlString = "FXMLSocialWorker.fxml";
                 fxmlString = "FXMLAdmin.fxml";
             }
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlString));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlString));
 
-            AnchorPane anchorPane = loader.load();
-            IPresentation controller = loader.getController();
-            controller.injectBusiness(ib);
-            controller.openUI();
+        AnchorPane anchorPane = loader.load();
+        IPresentation controller = loader.getController();
+        controller.injectBusiness(ib);
+        controller.openUI();
+
 
             Scene scene2 = new Scene(anchorPane);
             //Get Stage information

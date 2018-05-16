@@ -6,7 +6,6 @@
 package acq;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -15,24 +14,18 @@ import java.util.List;
 public interface IData {
 
     public boolean hasUniqueUserUD(String id);
-
+    
     public boolean hasUniqueCitizenID(String id);
-
+    
 //    public void saveUsers(ArrayList<IUser> data);
 //    
 //    public void saveCases(ArrayList<ICase> data);
 //
-    public List<String[]> readUsers();
+//    public ArrayList<IUser> readUsers();
 
-    public void saveUsers(IUser user);
-    
-    public void deleteUser(IUser user);
-    
     public void logData(String logData);
-
-    <T> void saveData(ArrayList<T> data, String filepath);
-
-    <T> void loadData(ArrayList<T> data, String filepath);
+    <T>void saveData(ArrayList<T> data, String filepath);
+    <T>void loadData(ArrayList<T> data, String filepath);
 
 //    ArrayList<ICitizen> getCitizens();
 //    

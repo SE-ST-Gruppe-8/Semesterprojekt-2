@@ -18,9 +18,7 @@ public class Case implements ICase, Serializable {
 
     private final String ID;
 
-    private String description;
-
-    private String process;
+    private String description,process;
 
     private ISocialWorker socialWorker;
 
