@@ -85,14 +85,13 @@ public class DBManager {
     public boolean hasUniqueUserID(String id) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("select * from \"public\".\"users\" where id = '" + id + "'");
-
-            while (rs1.next()) {
-                if (rs1.getString("id").equals(id)) {
-                    return false;
-                }
+            ResultSet rs1 = st1.executeQuery("select COUNT(id) FROM \"public\".\"users\" where id = '" + id + "'");
+            rs1.next();
+            if (rs1.getInt("count") == 1) {
+                return false;
+            } else {
+                return true;
             }
-            return true;
 
         } catch (Exception ex) {
             System.out.println(ex);
@@ -137,12 +136,12 @@ public class DBManager {
     }
 
     public static void main(String[] args) {
-//        DBManager dbm = new DBManager();
+        DBManager dbm = new DBManager();
 //        IUser u = new SocialWorker("Frederik Fredriksen", "0011223344", "frede", "frede", "frede@gmail.com");
 //        dbm.saveUser(u);
 //        dbm.loadUsers();
-//        String id = "1111110000";
-//        dbm.hasUniqueUserID(id);
+        String id = "0";
+        dbm.hasUniqueUserID(id);
     }
 
 }
