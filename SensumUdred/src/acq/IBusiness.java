@@ -71,5 +71,9 @@ public interface IBusiness {
     public void editInquiry(String description, IInquiry i, boolean isInformed);
 
     public int[] getFinalInts();
+    
+    public int getSocialWorkerRoleInt();
+    
+    public int getAdminRoleInt();
 
 }

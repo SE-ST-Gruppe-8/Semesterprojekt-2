@@ -8,6 +8,7 @@ package data;
 import acq.*;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.util.Pair;
 
 /**
  *
@@ -65,12 +66,16 @@ public class DataFacade implements IData {
     @Override
     public <T> void loadData(ArrayList<T> data, String filepath) {
         fm.readFile(data, filepath);
-
     }
 
     @Override
     public void saveUsers(IUser user) {
         dbm.saveUser(user);
+    }
+
+    @Override
+    public String[] loadUser(String username) {
+        return dbm.loadUser(username);
     }
 
     @Override

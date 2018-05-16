@@ -28,6 +28,8 @@ public interface IData {
 
     public void saveUsers(IUser user);
 
+    public String[] loadUser(String username);
+
     public void deleteUser(IUser user);
 
     public void logData(String logData);

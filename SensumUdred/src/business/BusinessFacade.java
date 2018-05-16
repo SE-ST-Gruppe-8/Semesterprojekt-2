@@ -106,7 +106,7 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void injectData(IData dataLayer) {
         data = dataLayer;
-        security = new SecurityHandler(data);
+        security = new SecurityHandler(data, this);
         //tester(); //creates citizens with inquires
     }
 
@@ -167,7 +167,7 @@ public class BusinessFacade implements IBusiness {
      */
     @Override
     public boolean validateUser(String username, String password) {
-        ArrayList<IUser> users = new ArrayList<>();
+        /*ArrayList<IUser> users = new ArrayList<>();
         data.loadData(users, "users");
         if (security.validateUserLogin(users, username, password)) {
             security.logData(username + " logged in.");
@@ -176,7 +176,17 @@ public class BusinessFacade implements IBusiness {
         } else {
 
             return false;
+        }*/
+        String[] array = data.loadUser(username);
+        array[3] = array[3].trim();
+        password = password.trim();
+        if (array != null) {
+            if (security.validateUserlogin(array, password)) {
+                security.logData(username + " logged in.");
+                return true;
+            }
         }
+        return false;
     }
 
     @Override
@@ -267,7 +277,6 @@ public class BusinessFacade implements IBusiness {
             }
 
         }
-
     }
 
     @Override
@@ -409,6 +418,16 @@ public class BusinessFacade implements IBusiness {
     public int[] getFinalInts() {
         return new int[]{ID_LENGTH, PASSWORD_MIN_LENGTH, PASSWORD_MAX_LENGTH, USERNAME_MIN_LENGTH,
             USERNAME_MAX_LENGTH, NAME_MIN_lENGTH, NAME_MAX_LENGTH, MAIL_MAX_LENGTH};
+    }
+
+    @Override
+    public int getSocialWorkerRoleInt() {
+        return SocialWorker.getSWRole();
+    }
+
+    @Override
+    public int getAdminRoleInt() {
+        return SystemAdmin.getAdminRole();
     }
 
 }

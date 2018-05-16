@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.util.Pair;
 import org.postgresql.util.PSQLException;
 
 /**
@@ -39,8 +40,8 @@ public class DBManager {
             ResultSet rs1 = st1.executeQuery("insert into users values" + data);
             rs1.close();
             st1.close();
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (Exception ex) {
+            System.out.println(ex);
         }
     }
 
@@ -63,8 +64,30 @@ public class DBManager {
             rs1.close();
             st1.close();
             return list;
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            return null;
+        }
+    }
+
+    public String[] loadUser(String username) {
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("select * FROM \"public\".\"users\" where username = '" + username + "'");
+            String[] array = new String[6];
+            while (rs1.next()) {
+                array[0] = rs1.getString("name");
+                array[1] = rs1.getString("id");
+                array[2] = rs1.getString("username");
+                array[3] = rs1.getString("password");
+                array[4] = rs1.getString("mail");
+                array[5] = rs1.getString("role");
+            }
+            rs1.close();
+            st1.close();
+            return array;
+        } catch (Exception ex) {
+            System.out.println(ex);
             return null;
         }
     }
@@ -76,8 +99,8 @@ public class DBManager {
             ResultSet rs1 = st1.executeQuery("delete from \"public\".\"users\" where username ='" + user.getUsername() + "'");
 
             return true;
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (Exception ex) {
+            System.out.println(ex);
             return false;
         }
     }
@@ -133,12 +156,12 @@ public class DBManager {
     }
 
     public static void main(String[] args) {
-        DBManager dbm = new DBManager();
+//        DBManager dbm = new DBManager();
 //        IUser u = new SocialWorker("Frederik Fredriksen", "0011223344", "frede", "frede", "frede@gmail.com");
 //        dbm.saveUser(u);
 //        dbm.loadUsers();
-        String id = "0";
-        dbm.hasUniqueUserID(id);
+//        String id = "0";
+//        dbm.hasUniqueUserID(id);
     }
 
 }
