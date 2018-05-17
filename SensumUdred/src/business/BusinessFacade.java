@@ -121,7 +121,7 @@ public class BusinessFacade implements IBusiness {
                 security.logData("Created user: " + user.toString());
 //            }
         } else {
-            System.out.println("error, could not create user");
+            System.out.println("Error, could not create user");
         }
     }
 
@@ -134,7 +134,7 @@ public class BusinessFacade implements IBusiness {
     public void deleteUser(IUser user) {
         if (security.getActiveUser() instanceof SystemAdmin) {
             if (((SystemAdmin) security.getActiveUser()).deleteUser(user, users)) {
-                security.logData("Deleted user " + user.toString());
+                security.logData("Deleted user: " + user.toString());
                 data.saveData((ArrayList<IUser>) users.stream().collect(Collectors.toList()), "users");
             } else {
                 System.out.println("User did not exist");
@@ -166,7 +166,7 @@ public class BusinessFacade implements IBusiness {
         password = password.trim();
         if (array != null) {
             if (security.validateUserlogin(array, password)) {
-                security.logData(username + " logged in.");
+                security.logData("Logged in.");
                 return true;
             }
         }
@@ -227,7 +227,7 @@ public class BusinessFacade implements IBusiness {
 //        System.out.println(c.getName() + id);
 //    }
 
-        String s = "error, could not create case";
+        String s = "Error, could not create case";
         ICase newCase;
         if (security.getActiveUser() instanceof SocialWorker) {
             newCase = ((ISocialWorker) security.getActiveUser()).createCase(id, des, process, sw, c);
@@ -244,7 +244,7 @@ public class BusinessFacade implements IBusiness {
                 }
 
                 data.saveCase(newCase);
-                security.logData("Created case with id: " + id);
+                security.logData("Created case with ID: " + id);
             } else {
                 System.out.println(s);
             }
@@ -264,7 +264,7 @@ public class BusinessFacade implements IBusiness {
     public void deleteCase(ICase newCase) {
         if (security.getActiveUser() instanceof SocialWorker) {
             if (((SocialWorker) security.getActiveUser()).deleteCase(newCase)) {
-                security.logData("Deleted case " + newCase.toString());
+                security.logData("Deleted case: " + newCase.toString());
                 data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
             } else {
                 System.out.println("Case did not exist");
