@@ -130,7 +130,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     public void openUI() {
         loginInfoLabelSW.setText("Logged in as: " + ib.getActiveUser().getName());
         System.out.println("Logged in as: " + ib.getActiveUser().getName());
-        ib.getCitizen();
+        ib.processStuff();
         updateCaseList();
         updateCitizenList();
         updateInquiryList();
