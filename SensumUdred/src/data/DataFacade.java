@@ -94,6 +94,11 @@ public class DataFacade implements IData {
     public void deleteUser(IUser user) {
         dbm.deleteUser(user);
     }
+    
+      @Override
+    public void deleteInquiry(IInquiry inquiry) {
+        dbm.deleteInquiry(inquiry);
+    }
 
     @Override
     public boolean hasUniqueUserUD(String id) {
@@ -109,4 +114,25 @@ public class DataFacade implements IData {
     public boolean hasUniqueUsername(String username) {
         return dbm.hasUniqueUsername(username);
     }
+
+    @Override
+    public List<String[]> getCitizenData() {
+        return dbm.getEverything();
+    }
+
+    @Override
+    public void saveCase(ICase casen) {
+        dbm.saveCase(casen);
+    }
+
+    @Override
+    public void saveInquiry(IInquiry inquiry) {
+        dbm.saveInquiry(inquiry);
+    }
+
+    @Override
+    public void saveCitizen(ICitizen citizen) {
+        dbm.saveCitizen(citizen);
+    }
+
 }
