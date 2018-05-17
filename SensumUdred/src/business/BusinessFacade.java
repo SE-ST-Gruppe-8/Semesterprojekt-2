@@ -121,7 +121,7 @@ public class BusinessFacade implements IBusiness {
             security.logData("Created user: " + user.toString());
 //            }
         } else {
-            System.out.println("Error, could not create user");
+            System.out.println("Error: Could not create user");
         }
     }
 
@@ -137,7 +137,7 @@ public class BusinessFacade implements IBusiness {
                 security.logData("Deleted user: " + user.toString());
                 data.saveData((ArrayList<IUser>) users.stream().collect(Collectors.toList()), "users");
             } else {
-                System.out.println("User did not exist");
+                System.out.println("User does not exist");
             }
         }
     }
@@ -162,7 +162,6 @@ public class BusinessFacade implements IBusiness {
             return false;
         }*/
         String[] array = data.loadUser(username);
-        System.out.println(array[0] + array[1] + array[2]);
         array[3] = array[3].trim();
         password = password.trim();
         if (array != null) {
@@ -372,7 +371,7 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void editCase(String description, String process,ICase c) {
+    public void editCase(String description, String process, ICase c) {
         c.setDescription(description);
         c.setProcess(process);
         security.logData("Edited case: " + c.toString());
