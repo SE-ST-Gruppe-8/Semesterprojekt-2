@@ -34,12 +34,10 @@ public class DataFacade implements IData {
 //    public void saveUsers(ArrayList<IUser> data) {
 //        
 //    }
-    
     @Override
-    public List<String[]> readUsers(){
+    public List<String[]> readUsers() {
         return dbm.loadUsers();
     }
-    
 
     @Override
     public void logData(String logData) {
@@ -60,7 +58,6 @@ public class DataFacade implements IData {
 //    public void saveCitizens(ArrayList<ICitizen> list) {
 //        fm.saveCitizens(list);
 //    }
-        
 //    public void saveCases(ArrayList<ICase> data) {
 //        fm.saveCases(data);
 //    }
@@ -69,7 +66,6 @@ public class DataFacade implements IData {
 //    public ArrayList<ICase> readCases() {
 //        return fm.readCases();
 //    }
-    
     @Override
     public <T> void saveData(ArrayList<T> data, String filepath) {
         fm.writeToFile(data, filepath);
@@ -94,8 +90,13 @@ public class DataFacade implements IData {
     public void deleteUser(IUser user) {
         dbm.deleteUser(user);
     }
-    
-      @Override
+
+    @Override
+    public void deleteCase(ICase theCase) {
+        dbm.deleteCase(theCase);
+    }
+
+    @Override
     public void deleteInquiry(IInquiry inquiry) {
         dbm.deleteInquiry(inquiry);
     }

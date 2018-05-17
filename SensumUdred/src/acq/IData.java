@@ -36,6 +36,8 @@ public interface IData {
     public void deleteUser(IUser user);
     
     public void deleteInquiry(IInquiry inquiry);
+    
+    public void deleteCase(ICase theCase);
 
     public void logData(String logData);
 

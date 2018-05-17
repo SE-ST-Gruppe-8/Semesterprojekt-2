@@ -60,6 +60,8 @@ public class SecurityHandler {
     public boolean validateUserLogin(ArrayList<IUser> users, String username, String password) {
         //if the login is true - find the user that matches the login info and set that user to activeUser
         for (IUser u : users) {
+            
+            System.out.println(u.getUsername() + " hehe " + username);
             if (u.getUsername().equals(username)) {
                 if (u.getPassword().equals(password)) {
                     setActiveUser(u);

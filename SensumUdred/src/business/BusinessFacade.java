@@ -162,6 +162,7 @@ public class BusinessFacade implements IBusiness {
             return false;
         }*/
         String[] array = data.loadUser(username);
+        System.out.println(array[0] + array[1] + array[2]);
         array[3] = array[3].trim();
         password = password.trim();
         if (array != null) {
@@ -298,6 +299,7 @@ public class BusinessFacade implements IBusiness {
             citizen = ((ISocialWorker) security.getActiveUser()).createCitizen(name, id, needs);
             if (citizen != null) {
                 citizens.add(citizen);
+                inquiries.add(citizen.getInquiry());
                 data.saveCitizen(citizen);
                 security.logData("Created Citizen: " + citizen.toString());
             } else {
@@ -337,10 +339,14 @@ public class BusinessFacade implements IBusiness {
 //        }
         IInquiry inquiry;
         String s = "Error";
+
+        int index = inquiries.indexOf(citizen.getInquiry());
+
         if (security.getActiveUser() instanceof SocialWorker) {
             inquiry = ((ISocialWorker) security.getActiveUser()).createInquiry(id, origin, informed, citizen, description);
             if (citizen != null) {
                 citizen.setInquiry((Inquiry) inquiry);
+                inquiries.set(index, inquiry);
                 data.saveInquiry(inquiry);
                 security.logData("Created Inquiry: " + citizen.getInquiry().toString());
             } else {
@@ -381,8 +387,7 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void editInquiry(String description, IInquiry i, boolean isInformed)
-    {
+    public void editInquiry(String description, IInquiry i, boolean isInformed) {
         i.setDescription(description);
         i.setIsCitizenInformed(isInformed);
         security.logData("Edited inquiry: " + i.toString());
@@ -486,12 +491,32 @@ public class BusinessFacade implements IBusiness {
         List<String[]> rawData = data.getCitizenData();
         for (String[] s : rawData) {
             Citizen c = new Citizen(s[1], s[0], s[2]);
-            Inquiry i = new Inquiry(s[3], s[6], Boolean.getBoolean(s[5]), c, s[4]);
-            Case ca = new Case(s[7], s[8], s[9], (SocialWorker) security.getActiveUser(), c);
+            Inquiry i;
+            Case ca;
+            if (s[3] == null || s[3].equals("null")) {
+                i = null;
+            } else {
+                i = new Inquiry(s[3], s[6], Boolean.getBoolean(s[5]), c, s[4]);
+                inquiries.add(i);
+            }
+            if (s[7] == null || s[3].equals("null")) {
+                ca = null;
+            } else {
+                ca = new Case(s[7], s[8], s[9], (SocialWorker) security.getActiveUser(), c);
+                cases.add(ca);
+            }
+
+            c.setInquiry(i);
+            c.setCase(ca);
             citizens.add(c);
-            inquiries.add(i);
-            cases.add(ca);
         }
+    }
+
+    @Override
+    public void clearLists() {
+        citizens.clear();
+        inquiries.clear();
+        cases.clear();
     }
 
 }
