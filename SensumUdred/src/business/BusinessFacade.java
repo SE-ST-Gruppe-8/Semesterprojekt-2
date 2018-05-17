@@ -427,4 +427,17 @@ public class BusinessFacade implements IBusiness {
         return SystemAdmin.getAdminRole();
     }
 
+    @Override
+    public void processStuff() {
+        List<String[]> rawData = data.getCitizenData();
+        for(String[] s : rawData) {
+            Citizen c = new Citizen(s[1],s[0],s[2]);
+            Inquiry i = new Inquiry(s[3],s[6],Boolean.getBoolean(s[5]),c,s[4]);
+            Case ca = new Case(s[7],s[8],s[9],(SocialWorker)security.getActiveUser(),c);
+            citizens.add(c);
+            inquiries.add(i);
+            cases.add(ca);
+        }
+    }
+
 }

@@ -13,6 +13,8 @@ import java.util.List;
  * @author Bruger
  */
 public interface IData {
+    
+    List<String[]> getCitizenData();
 
     public boolean hasUniqueUserUD(String id);
 

@@ -75,5 +75,7 @@ public interface IBusiness {
     public int getSocialWorkerRoleInt();
     
     public int getAdminRoleInt();
+    
+    void processStuff();
 
 }
