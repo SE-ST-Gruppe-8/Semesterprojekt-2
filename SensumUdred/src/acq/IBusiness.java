@@ -26,6 +26,8 @@ public interface IBusiness {
 
     public boolean hasUnqiueCitizenID(String id);
 
+    public boolean hasUniqueUsername(String username);
+
     public boolean hasAcceptableID(String id);
 
     public boolean hasAcceptablePassword(String password, String repeatedPassword);
@@ -71,9 +73,9 @@ public interface IBusiness {
     public void editInquiry(String description, IInquiry i, boolean isInformed);
 
     public int[] getFinalInts();
-    
+
     public int getSocialWorkerRoleInt();
-    
+
     public int getAdminRoleInt();
 
 }

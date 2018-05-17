@@ -133,19 +133,23 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
             if (ib.hasUniqueUserID(id)) {
                 if (ib.hasAcceptablePassword(password, repeatedPassword)) {
                     if (ib.hasAcceptableUsername(username)) {
-                        if (ib.hasAcceptableName(firstName + " " + lastName)) {
-                            if (ib.hasAcceptableMail(email)) {
-                                ib.createUser(firstName + " " + lastName, id, username, password, email, value);
-                                System.out.println("Role: " + ib.getRole());
-                                updateUserList();
-                                adminInfoLabel.setText("Success");
+                        if (ib.hasUniqueUsername(username)) {
+                            if (ib.hasAcceptableName(firstName + " " + lastName)) {
+                                if (ib.hasAcceptableMail(email)) {
+                                    ib.createUser(firstName + " " + lastName, id, username, password, email, value);
+                                    System.out.println("Role: " + ib.getRole());
+                                    updateUserList();
+                                    adminInfoLabel.setText("Success");
+                                } else {
+                                    adminInfoLabel.setText("Emailen skal indeholde et @, og må maks indeholde "
+                                            + ib.getFinalInts()[7] + " tegn");
+                                }
                             } else {
-                                adminInfoLabel.setText("Emailen skal indeholde et @, og må maks indeholde "
-                                        + ib.getFinalInts()[7] + " tegn");
+                                adminInfoLabel.setText("Navnet skal indeholde mellem " + ib.getFinalInts()[5] + " og "
+                                        + ib.getFinalInts()[6] + " tegn");
                             }
                         } else {
-                            adminInfoLabel.setText("Navnet skal indeholde mellem " + ib.getFinalInts()[5] + " og "
-                                    + ib.getFinalInts()[6] + " tegn");
+                            adminInfoLabel.setText("Brugernavnet eksisterer allerede");
                         }
                     } else {
                         adminInfoLabel.setText("Brugernavnet skal indeholde mellem " + ib.getFinalInts()[3] + " og "
@@ -165,7 +169,6 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
     @FXML
     private void deleteUserButtonAction(ActionEvent event) {
-        // TODO
         ib.deleteUser(adminUserListView.getSelectionModel().getSelectedItem());
         updateUserList();
     }

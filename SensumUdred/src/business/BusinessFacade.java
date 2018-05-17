@@ -355,6 +355,11 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
+    public boolean hasUniqueUsername(String username) {
+        return data.hasUniqueUsername(username);
+    }
+
+    @Override
     public boolean hasAcceptableID(String id) {
         try {
             if (id.length() == ID_LENGTH) {
