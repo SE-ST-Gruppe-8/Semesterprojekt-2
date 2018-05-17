@@ -103,7 +103,6 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
 
     @Override
     public void injectBusiness(IBusiness businessFacade) {
-
         ib = businessFacade;
     }
 

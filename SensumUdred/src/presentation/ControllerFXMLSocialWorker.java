@@ -188,7 +188,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
             updateCaseList();
             updateInquiryList();
         } else {
-            inquiryLabel.setText("Vælg en borger over listen over borgerer");
+            inquiryLabel.setText("Vælg en borger fra listen over borgerer");
         }
     }
 
