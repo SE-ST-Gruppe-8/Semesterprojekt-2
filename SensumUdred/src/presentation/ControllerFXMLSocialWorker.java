@@ -119,10 +119,10 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
             if (inquiryListView1.getSelectionModel().getSelectedItem().getCitizen().getCase() == null) {
                 ab.displayCaseCreation("Opret sag", ib, (ICitizen) inquiryListView1.getSelectionModel().getSelectedItem().getCitizen());
             } else {
-                caseLabel.setText("denne henvendelse har allerede en sag");
+                caseLabel.setText("Denne henvendelse har allerede en sag");
             }
         } else {
-            caseLabel.setText("vælg en borger fra listen over borgerer");
+            caseLabel.setText("Vælg en borger fra listen over borgerer");
         }
         updateCaseList();
     }
@@ -133,7 +133,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
             ib.deleteCase(caseListView.getSelectionModel().getSelectedItem());
             updateCaseList();
         } else {
-            caseLabel.setText("vælg en sag fra listen over sager");
+            caseLabel.setText("Vælg en sag fra listen over sager");
         }
     }
 
@@ -237,12 +237,12 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
             if (citizenListView.getSelectionModel().getSelectedItem().getInquiry() == null) {
                 ab.displayInquiryCreation("Opret henvendelse", ib, citizenListView.getSelectionModel().getSelectedItem());
             } else {
-                inquiryLabel.setText("denne borger har allerede en henvendelse");
+                inquiryLabel.setText("Denne borger har allerede en henvendelse");
                 ab.displayInquiryCreation("Opret henvendelse", ib, citizenListView.getSelectionModel().getSelectedItem());
             }
             updateInquiryList();
         } else {
-            inquiryLabel.setText("Vælg en henvendelse fra listen over henvendelser");
+            inquiryLabel.setText("Vælg en borger fra listen over borgere");
         }
     }
 
@@ -262,7 +262,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         if (citizenListView.getSelectionModel().getSelectedItem() != null) {
             ab.displayCitizenEdit("Rediger Borger", ib, citizenListView.getSelectionModel().getSelectedItem());
         } else {
-            inquiryLabel.setText("vælg en borger fra listen over borgerer");
+            inquiryLabel.setText("Vælg en borger fra listen over borgerer");
         }
         updateCaseList();
         updateCitizenList();
@@ -273,7 +273,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         if (caseListView.getSelectionModel().getSelectedItem() != null) {
             ab.displayCaseEdit("Rediger borger", ib, caseListView.getSelectionModel().getSelectedItem());
         } else {
-            caseLabel.setText("vælg en sag fra listen over sager");
+            caseLabel.setText("Vælg en sag fra listen over sager");
         }
         updateCaseList();
     }
