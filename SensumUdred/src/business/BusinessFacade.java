@@ -93,7 +93,7 @@ public class BusinessFacade implements IBusiness {
     public void injectData(IData dataLayer) {
         data = dataLayer;
         security = new SecurityHandler(data, this);
-        //tester(); //creates citizens with inquires
+        //tester(); //creates citizenList with inquires
     }
 
     /**
@@ -175,26 +175,27 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public void saveInquiry(IInquiry inquiry) {
-        ArrayList<ICitizen> citizens = new ArrayList<>();
-        data.loadData(citizens, "citizens");
+        ArrayList<ICitizen> citizenList = new ArrayList<>();
+        data.loadData(citizenList, "citizens");
         Citizen c = inquiry.getCitizen();
-        citizens.remove(c);
+        citizenList.remove(c);
         c.setInquiry((Inquiry) inquiry);
-        citizens.add(c);
+        citizenList.add(c);
         security.logData("Saved inquiry: " + c.toString());
-        data.saveData(citizens, "citizens");
+        data.saveData(citizenList, "citizens");
     }
 
 //    public void tester() {
-//        ArrayList<ICitizen> citizens = new ArrayList<>();
+//        ArrayList<ICitizen> citizenList = new ArrayList<>();
 //        for (int i = 1; i <= 10; i++) {
-//            citizens.add(new Citizen("Citizen" + (i), String.valueOf(i), "needs" + i));
+//            citizenList.add(new Citizen("Citizen" + (i), String.valueOf(i), "needs" + i));
 //        }
-//        for (ICitizen c : citizens) {
+//        for (ICitizen c : citizenList) {
 //            c.createInquiry(String.valueOf(c.getId()), "origin" + c.getId(), true, "description");
 //        }
-//        data.saveCitizens(citizens);
+//        data.saveCitizens(citizenList);
 //    }
+    @Override
     public int getRole() {
         return security.getActiveUser().getRole();
     }
@@ -217,7 +218,7 @@ public class BusinessFacade implements IBusiness {
 ////                    cases.add(newCase);
 //                }
 //
-//                data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
+//                data.saveData((ArrayList<ICitizen>) citizenList.stream().collect(Collectors.toList()), "citizenList");
 //                security.logData("Created case with id: " + id);
 //            } else {
 //                System.out.println(s);
@@ -283,8 +284,8 @@ public class BusinessFacade implements IBusiness {
 //        if (security.getActiveUser() instanceof SocialWorker) {
 //            citizen = ((ISocialWorker) security.getActiveUser()).createCitizen(name, id, needs);
 //            if (citizen != null) {
-//                citizens.add(citizen);
-//                data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
+//                citizenList.add(citizen);
+//                data.saveData((ArrayList<ICitizen>) citizenList.stream().collect(Collectors.toList()), "citizenList");
 //                security.logData("Created Citizen: " + citizen.toString());
 //            } else {
 //                System.out.println(s);
@@ -329,7 +330,7 @@ public class BusinessFacade implements IBusiness {
 //            inquiry = ((ISocialWorker) security.getActiveUser()).createInquiry(id, origin, informed, citizen, description);
 //            if (citizen != null) {
 //                citizen.setInquiry((Inquiry) inquiry);
-//                data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "Citizens");
+//                data.saveData((ArrayList<ICitizen>) citizenList.stream().collect(Collectors.toList()), "Citizens");
 //                security.logData("Created Inquiry: " + citizen.getInquiry().toString());
 //            } else {
 //                System.out.println(s);
@@ -343,9 +344,9 @@ public class BusinessFacade implements IBusiness {
 
         if (security.getActiveUser() instanceof SocialWorker) {
             inquiry = ((ISocialWorker) security.getActiveUser()).createInquiry(id, origin, informed, citizen, description);
-            if (citizen != null) {
+            if (citizen.getInquiry() == null) {
                 citizen.setInquiry((Inquiry) inquiry);
-                inquiries.set(index, inquiry);
+                inquiries.add(inquiry);
                 data.saveInquiry(inquiry);
                 security.logData("Created Inquiry: " + citizen.getInquiry().toString());
             } else {
@@ -361,6 +362,7 @@ public class BusinessFacade implements IBusiness {
         String s = "Error with Citizen";
         if (security.getActiveUser() instanceof SocialWorker) {
             if (((SocialWorker) security.getActiveUser()).deleteInquiry(i)) {
+                inquiries.remove(i);
                 data.deleteInquiry(i);
                 security.logData("Deleted inquiry: " + i.toString());
                 data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
