@@ -9,6 +9,8 @@ import acq.ICase;
 import acq.ICitizen;
 import acq.IInquiry;
 import acq.IUser;
+import business.Citizen;
+import business.Inquiry;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -59,6 +61,64 @@ public class DBManager {
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("insert into inquiries values" + data + "\n"
                     + " insert into hasinquiry values('" + citizenid + "','" + id + "')");
+            rs1.close();
+            st1.close();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        
+        
+    }
+    
+        public void updateInquiry(IInquiry inquiry) {
+        String id = inquiry.getId();
+        String description = inquiry.getDescription();
+        String informed = Boolean.toString(inquiry.isCitizenInformed());
+        String origin = inquiry.getOrigin();
+        String citizenid = inquiry.getCitizen().getId();
+        
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("UPDATE inquiries set inquiryid = '" + id + "', inquirydescription = '" 
+                + description + "', iscitizeninformed = '"
+                + informed + "', origin = '" + origin + "' where inquiryid = '" + id + "';\n" 
+                + " Update hasinquiry set citizenid = '" + citizenid + "',  inquiryid = '" + id
+                + "' where inquiryid = '" + id + "';");
+            rs1.close();
+            st1.close();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
+    
+    public void updateCitizen(ICitizen citizen) {
+        String id = citizen.getId();
+        String name = citizen.getName();
+        String needs = citizen.getNeeds();
+        
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("UPDATE citizens set id = '" + id + "', name = '" 
+                + name + "', needs = '" + needs + "' where id = '" + id + "';\n");
+            rs1.close();
+            st1.close();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
+    
+    public void updateCase(ICase casen) {
+        String id = casen.getId();
+        String description = casen.getDescription();
+        String process = casen.getProcess();
+        String citizenid = casen.getCitizen().getId();
+        
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("UPDATE cases set caseid = '" + id + "', casedescription = '" 
+                + description + "', process = '" + process + "' where caseid = '" + id + "';\n" 
+                + " Update hascase set citizenid = '" + citizenid + "',  caseid = '" + id
+                + "' where caseid = '" + id + "';");
             rs1.close();
             st1.close();
         } catch (Exception ex) {
@@ -267,14 +327,12 @@ public class DBManager {
     }
 
     public static void main(String[] args) {
-//        DBManager dbm = new DBManager();
+        DBManager dbm = new DBManager();
 //        IUser u = new SocialWorker("Frederik Fredriksen", "0011223344", "frede", "frede", "frede@gmail.com");
 //        dbm.saveUser(u);
 //        dbm.loadUsers();
 //        String id = "0";
 //        dbm.hasUniqueUserID(id);
-//          ICitizen c = new Citizen("bob", "bygger", "noget");
-//          dbm.saveCitizen(c);
     }
 
 }

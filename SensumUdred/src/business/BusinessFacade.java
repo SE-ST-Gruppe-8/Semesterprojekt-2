@@ -44,8 +44,8 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-  public ObservableList<IUser> getUsers() {
-         ArrayList<IUser> users = new ArrayList<>();
+    public ObservableList<IUser> getUsers() {
+        ArrayList<IUser> users = new ArrayList<>();
         ////FileManager
 //          data.loadData(users, "users");
 //          return this.users = FXCollections.observableArrayList(users);
@@ -62,8 +62,8 @@ public class BusinessFacade implements IBusiness {
                 users.add(user);
             }
         }
-         return this.users = FXCollections.observableArrayList(users);
-     }
+        return this.users = FXCollections.observableArrayList(users);
+    }
 
     @Override
     public ObservableList<ICitizen> getCitizen() {
@@ -118,7 +118,7 @@ public class BusinessFacade implements IBusiness {
 //                data.saveUsers(users);
 //                users.add(user);
 //                data.saveData((ArrayList<IUser>) users.stream().collect(Collectors.toList()), "users");
-                security.logData("Created user: " + user.toString());
+            security.logData("Created user: " + user.toString());
 //            }
         } else {
             System.out.println("Error, could not create user");
@@ -162,7 +162,7 @@ public class BusinessFacade implements IBusiness {
             return false;
         }*/
         String[] array = data.loadUser(username);
-        System.out.println(array[0] + array [1] + array[2]);
+        System.out.println(array[0] + array[1] + array[2]);
         array[3] = array[3].trim();
         password = password.trim();
         if (array != null) {
@@ -250,11 +250,9 @@ public class BusinessFacade implements IBusiness {
                 System.out.println(s);
             }
 
-            
         }
         System.out.println(c.getName() + id);
     }
-
 
     @Override
     public User getActiveUser() {
@@ -312,8 +310,7 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void deleteCitizen(ICitizen citizen
-    ) {
+    public void deleteCitizen(ICitizen citizen) {
         String s = "Error with Citizen";
         if (security.getActiveUser() instanceof SocialWorker) {
             if (((SocialWorker) security.getActiveUser()).deleteCitizen(citizen, citizens)) {
@@ -326,8 +323,7 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void createInquiry(String id, String origin,boolean informed, ICitizen citizen,String description)
-        {
+    public void createInquiry(String id, String origin, boolean informed, ICitizen citizen, String description) {
 //        IInquiry inquiry;
 //        String s = "Error with Citizen";
 //        if (security.getActiveUser() instanceof SocialWorker) {
@@ -341,27 +337,28 @@ public class BusinessFacade implements IBusiness {
 //            }
 //
 //        }
-            IInquiry inquiry;
-            String s = "Error";
-            int index = inquiries.indexOf(citizen.getInquiry());
-            if (security.getActiveUser() instanceof SocialWorker) {
-                inquiry = ((ISocialWorker) security.getActiveUser()).createInquiry(id, origin, informed, citizen, description);
-                if (citizen != null) {
-                    citizen.setInquiry((Inquiry) inquiry);
-                    inquiries.set(index, inquiry);
-                    data.saveInquiry(inquiry);
-                    security.logData("Created Inquiry: " + citizen.getInquiry().toString());
-                } else {
-                    System.out.println(s);
-                }
+        IInquiry inquiry;
+        String s = "Error";
 
+        int index = inquiries.indexOf(citizen.getInquiry());
+
+        if (security.getActiveUser() instanceof SocialWorker) {
+            inquiry = ((ISocialWorker) security.getActiveUser()).createInquiry(id, origin, informed, citizen, description);
+            if (citizen != null) {
+                citizen.setInquiry((Inquiry) inquiry);
+                inquiries.set(index, inquiry);
+                data.saveInquiry(inquiry);
+                security.logData("Created Inquiry: " + citizen.getInquiry().toString());
+            } else {
+                System.out.println(s);
             }
+
+        }
 
     }
 
     @Override
-    public void deleteInquiry(IInquiry i
-    ) {
+    public void deleteInquiry(IInquiry i) {
         String s = "Error with Citizen";
         if (security.getActiveUser() instanceof SocialWorker) {
             if (((SocialWorker) security.getActiveUser()).deleteInquiry(i)) {
@@ -375,42 +372,35 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void editCase(String description, String process,
-             ICase c
-    ) {
+    public void editCase(String description, String process,ICase c) {
         c.setDescription(description);
         c.setProcess(process);
         security.logData("Edited case: " + c.toString());
-        data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
+        data.updateCase(c);
     }
 
     @Override
-    public void editCitizen(String needs, ICitizen c
-    ) {
+    public void editCitizen(String needs, ICitizen c) {
         c.setNeeds(needs);
         security.logData("Edited citizen: " + c.toString());
-        data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
+        data.updateCitizen(c);
     }
 
     @Override
-    public void editInquiry(String description, IInquiry i,
-             boolean isInformed
-    ) {
+    public void editInquiry(String description, IInquiry i, boolean isInformed) {
         i.setDescription(description);
         i.setIsCitizenInformed(isInformed);
         security.logData("Edited inquiry: " + i.toString());
-        data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
+        data.updateInquiry(i);
     }
 
     @Override
-    public boolean hasUniqueUserID(String id
-    ) {
+    public boolean hasUniqueUserID(String id) {
         return data.hasUniqueUserUD(id);
     }
 
     @Override
-    public boolean hasUnqiueCitizenID(String id
-    ) {
+    public boolean hasUnqiueCitizenID(String id) {
         return data.hasUniqueCitizenID(id);
     }
 
@@ -502,17 +492,23 @@ public class BusinessFacade implements IBusiness {
         for (String[] s : rawData) {
             Citizen c = new Citizen(s[1], s[0], s[2]);
             Inquiry i;
-            if(s[3] == null || s[3].equals("null")) {
+            Case ca;
+            if (s[3] == null || s[3].equals("null")) {
                 i = null;
             } else {
                 i = new Inquiry(s[3], s[6], Boolean.getBoolean(s[5]), c, s[4]);
+                inquiries.add(i);
             }
-            Case ca = new Case(s[7], s[8], s[9], (SocialWorker) security.getActiveUser(), c);
+            if (s[7] == null || s[3].equals("null")) {
+                ca = null;
+            } else {
+                ca = new Case(s[7], s[8], s[9], (SocialWorker) security.getActiveUser(), c);
+                cases.add(ca);
+            }
+
             c.setInquiry(i);
             c.setCase(ca);
             citizens.add(c);
-            inquiries.add(i);
-            cases.add(ca);
         }
     }
 

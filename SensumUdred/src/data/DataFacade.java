@@ -136,4 +136,19 @@ public class DataFacade implements IData {
         dbm.saveCitizen(citizen);
     }
 
+    @Override
+    public void updateInquiry(IInquiry inquiry) {
+        dbm.updateInquiry(inquiry);
+    }
+
+    @Override
+    public void updateCase(ICase casen) {
+        dbm.updateCase(casen);
+    }
+
+    @Override
+    public void updateCitizen(ICitizen citizen) {
+        dbm.updateCitizen(citizen);
+    }
+
 }
