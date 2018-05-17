@@ -41,6 +41,12 @@ public interface IData {
     <T> void saveData(ArrayList<T> data, String filepath);
 
     <T> void loadData(ArrayList<T> data, String filepath);
+    
+    void saveCase(ICase casen);
+    
+    void saveInquiry(IInquiry inquiry);
+    
+    void saveCitizen(ICitizen citizen);
 
 //    ArrayList<ICitizen> getCitizens();
 //    

@@ -108,4 +108,19 @@ public class DataFacade implements IData {
         return dbm.getEverything();
     }
 
+    @Override
+    public void saveCase(ICase casen) {
+        dbm.saveCase(casen);
+    }
+
+    @Override
+    public void saveInquiry(IInquiry inquiry) {
+        dbm.saveInquiry(inquiry);
+    }
+
+    @Override
+    public void saveCitizen(ICitizen citizen) {
+        dbm.saveCitizen(citizen);
+    }
+
 }

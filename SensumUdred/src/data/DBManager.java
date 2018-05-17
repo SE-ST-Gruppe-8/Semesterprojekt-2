@@ -5,6 +5,9 @@
  */
 package data;
 
+import acq.ICase;
+import acq.ICitizen;
+import acq.IInquiry;
 import acq.IUser;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -26,7 +29,7 @@ public class DBManager {
     private String dbUrl = "jdbc:postgresql://horton.elephantsql.com:5432/flugkwex";
     private String dbUsername = "flugkwex";
     private String dbPassword = "361Fvzl2AmnhDLVqPtBhomyr0-ojDBBC";
-    
+
     public void saveUser(IUser user) {
         String id = user.getID();
         String name = user.getName();
@@ -35,10 +38,29 @@ public class DBManager {
         String password = user.getPassword();
         int role = user.getRole();
         String data = "('" + id + "','" + name + "','" + mail + "','" + username + "','" + password + "','" + role + "');";
-        
+
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("insert into users values" + data);
+            rs1.close();
+            st1.close();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
+
+    public void saveInquiry(IInquiry inquiry) {
+        String id = inquiry.getId();
+        String description = inquiry.getDescription();
+        String informed = Boolean.toString(inquiry.isCitizenInformed());
+        String origin = inquiry.getOrigin();
+        String citizenid = inquiry.getCitizen().getId();
+        String data = "('" + id + "','" + description + "','" + informed + "','" + origin + "');";
+
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("insert into inquires values" + data + "\n"
+                    + " AND insert into hasinquiry values " + citizenid + "" + id);
             rs1.close();
             st1.close();
         } catch (Exception ex) {
@@ -56,9 +78,9 @@ public class DBManager {
                     + "FROM citizens\n"
                     + "LEFT JOIN inquiries ON inquiries.inquiryid = (SELECT inquiryid FROM hasinquiry WHERE citizenid = citizens.id)\n"
                     + "LEFT JOIN cases ON cases.caseid = (SELECT caseid FROM hascase WHERE citizenid = citizens.id)");
-            while(rs1.next()) {
+            while (rs1.next()) {
                 String[] s = new String[10];
-                for(int i = 0; i < s.length; i++) {
+                for (int i = 0; i < s.length; i++) {
                     s[i] = rs1.getString(columns[i]);
                 }
                 data.add(s);
@@ -71,10 +93,46 @@ public class DBManager {
             return null;
         }
     }
-    
+
+    public void saveCase(ICase casen) {
+        String id = casen.getId();
+        String description = casen.getDescription();
+        String process = casen.getProcess();
+        String citizenid = casen.getCitizen().toString();
+        String data = "('" + id + "','" + description + "','" + process + "');";
+
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("insert into cases values" + data + "\n"
+                    + "insert into hascase values " + citizenid + "" + id);
+
+            rs1.close();
+            st1.close();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
+
+    public void saveCitizen(ICitizen citizen) {
+        String id = citizen.getId();
+        String name = citizen.getName();
+        String needs = citizen.getNeeds();
+        String data = "('" + id + "','" + name + "','" + needs + "');";
+
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("insert into citizens values" + data);
+
+            rs1.close();
+            st1.close();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
+
     public List<String[]> loadUsers() {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
-            
+
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("select * from \"public\".\"users\"");
             List<String[]> list = new ArrayList<>();
@@ -96,7 +154,7 @@ public class DBManager {
             return null;
         }
     }
-    
+
     public String[] loadUser(String username) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
@@ -118,20 +176,20 @@ public class DBManager {
             return null;
         }
     }
-    
+
     public boolean deleteUser(IUser user) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
-            
+
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("delete from \"public\".\"users\" where username ='" + user.getUsername() + "'");
-            
+
             return true;
         } catch (Exception ex) {
             System.out.println(ex);
             return false;
         }
     }
-    
+
     public boolean hasUniqueUserID(String id) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
@@ -142,13 +200,13 @@ public class DBManager {
             } else {
                 return true;
             }
-            
+
         } catch (Exception ex) {
             System.out.println(ex);
             return false;
         }
     }
-    
+
     public boolean hasUniqueCitizenID(String id) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
@@ -159,13 +217,13 @@ public class DBManager {
             } else {
                 return true;
             }
-            
+
         } catch (Exception ex) {
             System.out.println(ex);
             return false;
         }
     }
-    
+
     public boolean hasUniqueUsername(String username) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
@@ -175,16 +233,16 @@ public class DBManager {
                 return false;
             }
             return true;
-            
+
         } catch (Exception ex) {
             System.out.println(ex);
             return false;
         }
     }
-    
+
     public void saveLog(String date, String username, String logData) {
         String data = "('" + date + "','" + username + "','" + logData + "');";
-        
+
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("insert into logdata values" + data);
@@ -194,7 +252,7 @@ public class DBManager {
             System.out.println(ex);
         }
     }
-    
+
     public static void main(String[] args) {
 //        DBManager dbm = new DBManager();
 //        IUser u = new SocialWorker("Frederik Fredriksen", "0011223344", "frede", "frede", "frede@gmail.com");
@@ -202,6 +260,8 @@ public class DBManager {
 //        dbm.loadUsers();
 //        String id = "0";
 //        dbm.hasUniqueUserID(id);
+//          ICitizen c = new Citizen("bob", "bygger", "noget");
+//          dbm.saveCitizen(c);
     }
-    
+
 }
