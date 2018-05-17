@@ -70,9 +70,6 @@ public abstract class User implements IUser, Serializable {
     
     @Override
     public String toString() {
-        String s = String.format("Name: %-20s ID: %-12s Username: %-18s Mail: %-20s", name, ID, username, email);
-        System.out.println(s);
-        return s;
-//        return "Name: " + name + "\tID: " + ID + "\tUsername: " + username + "\tMail: " + email;
+        return String.format("Name: %-20s ID: %-12s Username: %-18s Mail: %-20s", name, ID, username, email);
     }
 }
