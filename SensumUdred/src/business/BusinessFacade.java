@@ -32,21 +32,15 @@ public class BusinessFacade implements IBusiness {
 
     private ObservableList<IUser> users;
 
-    private ObservableList<IInquiry> inquiries;
+    private ObservableList<IInquiry> inquiries = FXCollections.observableArrayList();
 
-    private ObservableList<ICitizen> citizens;
+    private ObservableList<ICitizen> citizens = FXCollections.observableArrayList();
 
-    private ObservableList<ICase> cases;
+    private ObservableList<ICase> cases = FXCollections.observableArrayList();
 
     @Override
     public ObservableList<ICase> getCases() {
-        ArrayList<ICase> cases = new ArrayList<>();
-        for (ICitizen ic : citizens) {
-            if (ic.getCase() != null) {
-                cases.add(ic.getCase());
-            }
-        }
-        return this.cases = FXCollections.observableArrayList(cases);
+        return this.cases;
     }
 
     @Override
@@ -73,19 +67,12 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public ObservableList<ICitizen> getCitizen() {
-        ArrayList<ICitizen> citizens = new ArrayList<>();
-        data.loadData(citizens, "citizens");
-        return this.citizens = FXCollections.observableArrayList(citizens);
+        return this.citizens;
     }
 
     @Override
     public ObservableList<IInquiry> getInquiries() {
-        ArrayList<IInquiry> inquiries = new ArrayList<>(); // to be filled with inquiries
-        for (ICitizen c : citizens) { // get all inquiries belonging to citizens
-            inquiries.add(c.getInquiry()); // put them in the inquiries list
-        }
-        // set observablelist to be = inquiries and then return it
-        return this.inquiries = FXCollections.observableArrayList(inquiries);
+        return this.inquiries;
     }
 
     public BusinessFacade() {
@@ -430,10 +417,10 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void processStuff() {
         List<String[]> rawData = data.getCitizenData();
-        for(String[] s : rawData) {
-            Citizen c = new Citizen(s[1],s[0],s[2]);
-            Inquiry i = new Inquiry(s[3],s[6],Boolean.getBoolean(s[5]),c,s[4]);
-            Case ca = new Case(s[7],s[8],s[9],(SocialWorker)security.getActiveUser(),c);
+        for (String[] s : rawData) {
+            Citizen c = new Citizen(s[1], s[0], s[2]);
+            Inquiry i = new Inquiry(s[3], s[6], Boolean.getBoolean(s[5]), c, s[4]);
+            Case ca = new Case(s[7], s[8], s[9], (SocialWorker) security.getActiveUser(), c);
             citizens.add(c);
             inquiries.add(i);
             cases.add(ca);
