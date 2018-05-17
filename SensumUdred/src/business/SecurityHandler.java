@@ -23,7 +23,6 @@ public class SecurityHandler {
 //        activeUser = new SystemAdmin("brrt","brrt","brrt","brrt","brrt");
     }
 
-
     public void logDataToFile(String dataToBeLogged) {
         String log = new Date().toString() + "\t" + activeUser.toString() + "\t" + dataToBeLogged;
         System.out.println("Logging: " + log);

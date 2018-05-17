@@ -8,7 +8,6 @@ package data;
 import acq.*;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.util.Pair;
 
 /**
  *
@@ -71,6 +70,7 @@ public class DataFacade implements IData {
 //        return fm.readCases();
 //    }
     
+    @Override
     public <T> void saveData(ArrayList<T> data, String filepath) {
         fm.writeToFile(data, filepath);
     }

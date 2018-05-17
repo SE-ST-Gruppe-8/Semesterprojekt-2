@@ -58,21 +58,18 @@ public class Inquiry implements IInquiry, Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    
 
     public String toString() {
         if (isCitizenInformed) {
             return "HendvendelsesID: " + this.id + "\tBorger: " + citizen.getName() + "\tBorgeren er informeret om henvendelsen";
-        }else{
+        } else {
             return "HendvendelsesID: " + this.id + "\tBorger: " + citizen.getName() + "\tBorgeren er ikke informeret om henvendelsen";
         }
-        
     }
 
     @Override
     public void setIsCitizenInformed(boolean isInformed) {
-       this.isCitizenInformed = isInformed;
+        this.isCitizenInformed = isInformed;
     }
 
 }

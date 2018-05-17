@@ -2,6 +2,7 @@ package business;
 
 import acq.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -49,11 +50,26 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public ObservableList<IUser> getUsers() {
-        ArrayList<IUser> users = new ArrayList<>();
-        data.loadData(users, "users");
-        return this.users = FXCollections.observableArrayList(users);
-    }
+  public ObservableList<IUser> getUsers() {
+         ArrayList<IUser> users = new ArrayList<>();
+        ////FileManager
+//          data.loadData(users, "users");
+//          return this.users = FXCollections.observableArrayList(users);
+        ////SQL
+        List<String[]> list = data.readUsers();
+        for (String[] array : list) {
+            User user = null;
+            if (Integer.parseInt(array[5]) == SystemAdmin.getAdminRole()) {
+                user = new SystemAdmin(array[0], array[1], array[2], array[3], array[4]);
+            } else if (Integer.parseInt(array[5]) == SocialWorker.getSWRole()) {
+                user = new SocialWorker(array[0], array[1], array[2], array[3], array[4]);
+            }
+            if (user != null) {
+                users.add(user);
+            }
+        }
+         return this.users = FXCollections.observableArrayList(users);
+     }
 
     @Override
     public ObservableList<ICitizen> getCitizen() {
@@ -108,14 +124,15 @@ public class BusinessFacade implements IBusiness {
         IUser user;
         if (security.getActiveUser() instanceof SystemAdmin) {
             user = ((SystemAdmin) security.getActiveUser()).createUser(name, id, userName, password, email, type);
-            if (user != null) {
+            data.saveUsers(user);
+//            if (user != null) {
 //                ArrayList<IUser> users = data.readUsers();
 //                users.add(user);
 //                data.saveUsers(users);
-                users.add(user);
-                data.saveData((ArrayList<IUser>) users.stream().collect(Collectors.toList()), "users");
+//                users.add(user);
+//                data.saveData((ArrayList<IUser>) users.stream().collect(Collectors.toList()), "users");
                 security.logData("Created user: " + user.toString());
-            }
+//            }
         } else {
             System.out.println("error, could not create user");
         }
@@ -177,6 +194,7 @@ public class BusinessFacade implements IBusiness {
         citizens.remove(c);
         c.setInquiry((Inquiry) inquiry);
         citizens.add(c);
+        security.logData("Saved inquiry: " + c.toString());
         data.saveData(citizens, "citizens");
     }
 
@@ -304,14 +322,14 @@ public class BusinessFacade implements IBusiness {
     public void editCase(String description, String process, ICase c) {
         c.setDescription(description);
         c.setProcess(process);
-        security.logData("Edited Case: " + c.toString());
+        security.logData("Edited case: " + c.toString());
         data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
     }
 
     @Override
     public void editCitizen(String needs, ICitizen c) {
         c.setNeeds(needs);
-        security.logData("Edited Citizen: " + c.toString());
+        security.logData("Edited citizen: " + c.toString());
         data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
     }
 
@@ -319,7 +337,7 @@ public class BusinessFacade implements IBusiness {
     public void editInquiry(String description, IInquiry i, boolean isInformed) {
         i.setDescription(description);
         i.setIsCitizenInformed(isInformed);
-        security.logData("Edited Inquiry: " + i.toString());
+        security.logData("Edited inquiry: " + i.toString());
         data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
     }
 

@@ -116,11 +116,11 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
     @FXML
     private void createUserButtonAction(ActionEvent event) {
-        int value;
+        int value; // user type
         if (createAdminRadioButton.isSelected()) {
-            value = 0;
+            value = 0; // admin value
         } else {
-            value = 1;
+            value = 1; // social worker value
         }
         String id = adminIdTextField.getText();
         String password = adminPasswordTextField.getText();
