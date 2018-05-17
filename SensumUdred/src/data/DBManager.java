@@ -98,7 +98,7 @@ public class DBManager {
         String id = casen.getId();
         String description = casen.getDescription();
         String process = casen.getProcess();
-        String citizenid = casen.getCitizen().toString();
+        String citizenid = casen.getCitizen().getId();
         String data = "('" + id + "','" + description + "','" + process + "');";
 
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
