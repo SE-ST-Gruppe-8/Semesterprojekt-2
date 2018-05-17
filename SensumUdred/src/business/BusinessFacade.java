@@ -310,8 +310,7 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void deleteCitizen(ICitizen citizen
-    ) {
+    public void deleteCitizen(ICitizen citizen) {
         String s = "Error with Citizen";
         if (security.getActiveUser() instanceof SocialWorker) {
             if (((SocialWorker) security.getActiveUser()).deleteCitizen(citizen, citizens)) {
@@ -340,7 +339,9 @@ public class BusinessFacade implements IBusiness {
 //        }
         IInquiry inquiry;
         String s = "Error";
+
         int index = inquiries.indexOf(citizen.getInquiry());
+
         if (security.getActiveUser() instanceof SocialWorker) {
             inquiry = ((ISocialWorker) security.getActiveUser()).createInquiry(id, origin, informed, citizen, description);
             if (citizen != null) {
@@ -357,8 +358,7 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void deleteInquiry(IInquiry i
-    ) {
+    public void deleteInquiry(IInquiry i) {
         String s = "Error with Citizen";
         if (security.getActiveUser() instanceof SocialWorker) {
             if (((SocialWorker) security.getActiveUser()).deleteInquiry(i)) {
@@ -372,42 +372,35 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void editCase(String description, String process,
-            ICase c
-    ) {
+    public void editCase(String description, String process,ICase c) {
         c.setDescription(description);
         c.setProcess(process);
         security.logData("Edited case: " + c.toString());
-        data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
+        data.updateCase(c);
     }
 
     @Override
-    public void editCitizen(String needs, ICitizen c
-    ) {
+    public void editCitizen(String needs, ICitizen c) {
         c.setNeeds(needs);
         security.logData("Edited citizen: " + c.toString());
-        data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
+        data.updateCitizen(c);
     }
 
     @Override
-    public void editInquiry(String description, IInquiry i,
-            boolean isInformed
-    ) {
+    public void editInquiry(String description, IInquiry i, boolean isInformed) {
         i.setDescription(description);
         i.setIsCitizenInformed(isInformed);
         security.logData("Edited inquiry: " + i.toString());
-        data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
+        data.updateInquiry(i);
     }
 
     @Override
-    public boolean hasUniqueUserID(String id
-    ) {
+    public boolean hasUniqueUserID(String id) {
         return data.hasUniqueUserUD(id);
     }
 
     @Override
-    public boolean hasUnqiueCitizenID(String id
-    ) {
+    public boolean hasUnqiueCitizenID(String id) {
         return data.hasUniqueCitizenID(id);
     }
 

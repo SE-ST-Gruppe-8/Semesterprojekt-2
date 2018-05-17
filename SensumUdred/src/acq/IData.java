@@ -53,6 +53,11 @@ public interface IData {
     
     void saveCitizen(ICitizen citizen);
 
+    void updateInquiry(IInquiry inquiry);
+    
+    void updateCase(ICase casen);
+    
+    void updateCitizen(ICitizen citizen);
 //    ArrayList<ICitizen> getCitizens();
 //    
 //    public void saveCitizens(ArrayList<ICitizen> list);
