@@ -29,8 +29,8 @@ public class AlertBox {
      * Display a popup window
      *
      * @param header the text in the title bar of the window
-     * @param filename the filename of the textfile. Textfile must be placed in
-     * Presentation/Textfiles/
+     * @param ib
+     * @param c
      */
     public void displayCaseCreation(String header, IBusiness ib, ICitizen c) {
         Stage window = new Stage();

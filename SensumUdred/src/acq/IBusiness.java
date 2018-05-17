@@ -26,6 +26,18 @@ public interface IBusiness {
     
     public boolean hasUnqiueCitizenID(String id);
 
+    public boolean hasUniqueUsername(String username);
+
+    public boolean hasAcceptableID(String id);
+
+    public boolean hasAcceptablePassword(String password, String repeatedPassword);
+
+    public boolean hasAcceptableUsername(String username);
+
+    public boolean hasAcceptableMail(String mail);
+
+    public boolean hasAcceptableName(String name);
+
     public boolean validateUser(String username, String password);
 
     public ObservableList<IUser> getUsers();
@@ -61,19 +73,8 @@ public interface IBusiness {
     public void editInquiry(String description, IInquiry i, boolean isInformed);
 
     public int[] getFinalInts();
-    
-    public int getSocialWorkerRoleInt();
-    
-    public int getAdminRoleInt();
-    
-    public boolean hasAcceptableName(String name);
-    
-    public boolean hasAcceptableMail(String mail);
-    
-    public boolean hasAcceptableUsername(String username);
-    
-    public boolean hasAcceptablePassword(String password, String repeatedPassword);
-    
-    public boolean hasAcceptableID(String id);
 
+    public int getSocialWorkerRoleInt();
+
+    public int getAdminRoleInt();
 }

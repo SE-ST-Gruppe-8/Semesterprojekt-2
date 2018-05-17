@@ -43,10 +43,10 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
     private ListView<IUser> adminUserListView;
 
     @FXML
-    private RadioButton createSocialWorkerRadioButton;
+    private ToggleGroup createUserToggleGroup;
 
     @FXML
-    private ToggleGroup createUserToggleGroup;
+    private RadioButton createSocialWorkerRadioButton;
 
     @FXML
     private RadioButton createAdminRadioButton;
@@ -101,6 +101,9 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
 //        ib = PresentationFacade.getIData().getIBusiness();
 //        loginInfoLabelAdmin.setText("Logged in as: " + ib.getActiveUser().getName());
 //        updateUserList();
+//        createSocialWorkerRadioButton.setToggleGroup(createUserToggleGroup);
+//        createAdminRadioButton.setToggleGroup(createUserToggleGroup);
+//        createSocialWorkerRadioButton.setSelected(true);
     }
 
     @Override
@@ -119,53 +122,60 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
         int value; // user type
         if (createAdminRadioButton.isSelected()) {
             value = 0; // admin value
-        } else {
+        } else if (createSocialWorkerRadioButton.isSelected()) {
             value = 1; // social worker value
+        } else {
+            value = -1;
         }
-        String id = adminIdTextField.getText();
-        String password = adminPasswordTextField.getText();
-        String repeatedPassword = adminRepeatPasswordTextField.getText();
-        String username = adminUsernameTextField.getText();
-        String firstName = adminFirstNameTextField.getText();
-        String lastName = adminLastNameTextField.getText();
-        String email = adminEmailTextField.getText();
-        if (ib.hasAcceptableID(id)) {
-            if (ib.hasUniqueUserID(id)) {
-                if (ib.hasAcceptablePassword(password, repeatedPassword)) {
-                    if (ib.hasAcceptableUsername(username)) {
-                        if (ib.hasAcceptableName(firstName + " " + lastName)) {
-                            if (ib.hasAcceptableMail(email)) {
-                                ib.createUser(firstName + " " + lastName, id, username, password, email, value);
-                                System.out.println("Role: " + ib.getRole());
-                                updateUserList();
-                                adminInfoLabel.setText("Success");
+        if (value != -1) {
+            String id = adminIdTextField.getText();
+            String password = adminPasswordTextField.getText();
+            String repeatedPassword = adminRepeatPasswordTextField.getText();
+            String username = adminUsernameTextField.getText();
+            String firstName = adminFirstNameTextField.getText();
+            String lastName = adminLastNameTextField.getText();
+            String email = adminEmailTextField.getText();
+            if (ib.hasAcceptableID(id)) {
+                if (ib.hasUniqueUserID(id)) {
+                    if (ib.hasAcceptablePassword(password, repeatedPassword)) {
+                        if (ib.hasAcceptableUsername(username)) {
+                            if (ib.hasUniqueUsername(username)) {
+                                if (ib.hasAcceptableName(firstName + " " + lastName)) {
+                                    if (ib.hasAcceptableMail(email)) {
+                                        ib.createUser(firstName + " " + lastName, id, username, password, email, value);
+                                        System.out.println("Role: " + ib.getRole());
+                                        updateUserList();
+                                        adminInfoLabel.setText("Success");
+                                    } else {
+                                        adminInfoLabel.setText("Emailen skal indeholde et @, og må maks indeholde "
+                                                + ib.getFinalInts()[7] + " tegn");
+                                    }
+                                } else {
+                                    adminInfoLabel.setText("Navnet skal indeholde mellem " + ib.getFinalInts()[5] + " og "
+                                            + ib.getFinalInts()[6] + " tegn");
+                                }
                             } else {
-                                adminInfoLabel.setText("Emailen skal indeholde et @, og må maks indeholde "
-                                        + ib.getFinalInts()[7] + " tegn");
+                                adminInfoLabel.setText("Brugernavnet eksisterer allerede");
                             }
                         } else {
-                            adminInfoLabel.setText("Navnet skal indeholde mellem " + ib.getFinalInts()[5] + " og "
-                                    + ib.getFinalInts()[6] + " tegn");
+                            adminInfoLabel.setText("Brugernavnet skal indeholde mellem " + ib.getFinalInts()[3] + " og "
+                                    + ib.getFinalInts()[4] + " tegn");
                         }
                     } else {
-                        adminInfoLabel.setText("Brugernavnet skal indeholde mellem " + ib.getFinalInts()[3] + " og "
-                                + ib.getFinalInts()[4] + " tegn");
+                        adminInfoLabel.setText("Kodeordet skal indeholde mellem " + ib.getFinalInts()[1] + " og "
+                                + ib.getFinalInts()[2] + " tegn, og de to kodeord skal matche");
                     }
                 } else {
-                    adminInfoLabel.setText("Kodeordet skal indeholde mellem " + ib.getFinalInts()[1] + " og "
-                            + ib.getFinalInts()[2] + " tegn, og de to kodeord skal matche");
+                    adminInfoLabel.setText("ID'et eksisterer allerede");
                 }
             } else {
-                adminInfoLabel.setText("ID'et eksisterer allerede");
+                adminInfoLabel.setText("ID'et skal indeholde " + ib.getFinalInts()[0] + " tegn");
             }
-        } else {
-            adminInfoLabel.setText("ID'et skal indeholde " + ib.getFinalInts()[0] + " tegn");
         }
     }
 
     @FXML
     private void deleteUserButtonAction(ActionEvent event) {
-        // TODO
         ib.deleteUser(adminUserListView.getSelectionModel().getSelectedItem());
         updateUserList();
     }

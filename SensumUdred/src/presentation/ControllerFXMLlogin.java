@@ -95,9 +95,10 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
                 window.setScene(scene2);
                 window.show();
             } else {
-                loginInfoLabel.setText("Wrong input");
+                loginInfoLabel.setText("Forkert input");
             }
         } catch (NullPointerException ex) {
+            loginInfoLabel.setText("Forkert input");
         }
     }
 
