@@ -50,8 +50,8 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public ObservableList<IUser> getUsers() {
-        ArrayList<IUser> users = new ArrayList<>();
+  public ObservableList<IUser> getUsers() {
+         ArrayList<IUser> users = new ArrayList<>();
         ////FileManager
 //          data.loadData(users, "users");
 //          return this.users = FXCollections.observableArrayList(users);
@@ -68,8 +68,8 @@ public class BusinessFacade implements IBusiness {
                 users.add(user);
             }
         }
-        return this.users = FXCollections.observableArrayList(users);
-    }
+         return this.users = FXCollections.observableArrayList(users);
+     }
 
     @Override
     public ObservableList<ICitizen> getCitizen() {
@@ -93,7 +93,7 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public void logOutActiveUser() {
-        security.logData("logged out.");
+        security.logData("Logged out.");
         security.logOutActiveUser();
     }
 
@@ -131,7 +131,7 @@ public class BusinessFacade implements IBusiness {
 //                data.saveUsers(users);
 //                users.add(user);
 //                data.saveData((ArrayList<IUser>) users.stream().collect(Collectors.toList()), "users");
-            security.logData("Created user: " + user.toString());
+                security.logData("Created user: " + user.toString());
 //            }
         } else {
             System.out.println("error, could not create user");
@@ -147,9 +147,7 @@ public class BusinessFacade implements IBusiness {
     public void deleteUser(IUser user) {
         if (security.getActiveUser() instanceof SystemAdmin) {
             if (((SystemAdmin) security.getActiveUser()).deleteUser(user, users)) {
-                data.deleteUser(user);
                 security.logData("Deleted user " + user.toString());
-//                data.saveUsers(user);
                 data.saveData((ArrayList<IUser>) users.stream().collect(Collectors.toList()), "users");
             } else {
                 System.out.println("User did not exist");
@@ -169,7 +167,7 @@ public class BusinessFacade implements IBusiness {
         /*ArrayList<IUser> users = new ArrayList<>();
         data.loadData(users, "users");
         if (security.validateUserLogin(users, username, password)) {
-            security.logData(username + " logged in.");
+            security.logData("Logged in.");
             return true;
 
         } else {
@@ -210,7 +208,6 @@ public class BusinessFacade implements IBusiness {
 //        }
 //        data.saveCitizens(citizens);
 //    }
-    @Override
     public int getRole() {
         return security.getActiveUser().getRole();
     }

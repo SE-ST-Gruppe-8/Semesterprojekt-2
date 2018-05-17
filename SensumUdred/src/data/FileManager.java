@@ -173,11 +173,6 @@ public class FileManager {
         fm.writeToFile(test, "users");
 //        fm.writeToFile(test2, "cases");
         fm.writeToFile(test3, "citizens");
-        
-        
-        //Add admin to online database
-        DBManager dBManager = new DBManager();
-        dBManager.saveUser(new SystemAdmin("Admin Jensen", "0", "admin", "super", "Admin@Sensum.dk"));
 
     }
 

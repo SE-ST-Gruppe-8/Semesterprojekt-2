@@ -24,5 +24,4 @@ public class DataLogger {
             output.close();
         }
     }
-    
 }

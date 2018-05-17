@@ -135,12 +135,13 @@ public class SocialWorker extends User implements ISocialWorker {
 //        }
 //        return false;
 //    }
+
     @Override
     public int getRole() {
         return 1;
     }
-
-    public static int getSWRole() {
+    
+    public static int getSWRole(){
         return ROLE;
     }
 
@@ -167,11 +168,10 @@ public class SocialWorker extends User implements ISocialWorker {
 
     @Override
     public boolean deleteInquiry(IInquiry inquiry) {
-        boolean inquiryRemoved = false;
         if (inquiry != null) {
             inquiry.getCitizen().setInquiry(null);
-            inquiryRemoved = true;
+            return true;
         }
-        return inquiryRemoved;
+        return false;
     }
 }

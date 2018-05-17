@@ -8,7 +8,6 @@ package data;
 import acq.*;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.util.Pair;
 
 /**
  *
@@ -17,8 +16,8 @@ import javafx.util.Pair;
 public class DataFacade implements IData {
 
     private FileManager fm;
-    private DBManager dbm;
     private DataLogger dl;
+    private DBManager dbm;
 
     public DataFacade() {
         fm = new FileManager();
@@ -26,16 +25,22 @@ public class DataFacade implements IData {
         dl = new DataLogger();
     }
 
-    @Override
-    public List<String[]> readUsers() {
-        return dbm.loadUsers();
-    }
-
+//    @Override
+//    public ArrayList<IUser> readUsers() {
+//        return new ArrayList<IUser>();
+//    }
 //
 //    @Override
 //    public void saveUsers(ArrayList<IUser> data) {
 //        
 //    }
+    
+    @Override
+    public List<String[]> readUsers(){
+        return dbm.loadUsers();
+    }
+    
+
     @Override
     public void logData(String logData) {
         dl.saveLog(logData);
@@ -55,6 +60,7 @@ public class DataFacade implements IData {
 //    public void saveCitizens(ArrayList<ICitizen> list) {
 //        fm.saveCitizens(list);
 //    }
+        
 //    public void saveCases(ArrayList<ICase> data) {
 //        fm.saveCases(data);
 //    }
@@ -63,6 +69,7 @@ public class DataFacade implements IData {
 //    public ArrayList<ICase> readCases() {
 //        return fm.readCases();
 //    }
+    
     @Override
     public <T> void saveData(ArrayList<T> data, String filepath) {
         fm.writeToFile(data, filepath);
@@ -102,5 +109,4 @@ public class DataFacade implements IData {
     public boolean hasUniqueUsername(String username) {
         return dbm.hasUniqueUsername(username);
     }
-
 }

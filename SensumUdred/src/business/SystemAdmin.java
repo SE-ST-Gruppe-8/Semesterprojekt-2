@@ -49,9 +49,8 @@ public class SystemAdmin extends User {
     public int getRole() {
         return 0;
     }
-    
+
     public static int getAdminRole() {
         return ROLE;
     }
-
 }

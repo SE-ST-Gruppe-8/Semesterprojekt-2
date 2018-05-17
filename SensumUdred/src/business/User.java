@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author Søren Bendtsen
  */
 public abstract class User implements IUser, Serializable {
-
+    
     private final String ID;
     private String name, username, password, email;
 
@@ -67,10 +67,9 @@ public abstract class User implements IUser, Serializable {
 
     @Override
     public abstract int getRole();
-
+    
     @Override
-    public String toString() {
+    public String toString(){
         return "Name: " + name + "\tID: " + ID + "\tUsername: " + username + "\tMail: " + email;
     }
-
 }
