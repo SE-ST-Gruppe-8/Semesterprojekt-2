@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="400.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.ControllerFXMLSocialWorker">
+<AnchorPane prefHeight="400.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.ControllerFXMLSocialWorker">
    <children>
       <TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <tabs>
@@ -62,7 +62,7 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                     </Button>
-                                    <Button fx:id="updateCitizenListButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateCitizenListAction" prefWidth="100.0" text="Opdater liste" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Button fx:id="updateCitizenListButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateCitizenListAction" prefWidth="100.0" text="Opdatér liste" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
@@ -109,7 +109,7 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                     </Button>
-                                    <Button fx:id="updateInquiryListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateInquiryListAction" prefWidth="100.0" text="Opdater liste" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Button fx:id="updateInquiryListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateInquiryListAction" prefWidth="100.0" text="Opdatér liste" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
