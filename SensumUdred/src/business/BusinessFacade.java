@@ -301,6 +301,7 @@ public class BusinessFacade implements IBusiness {
             citizen = ((ISocialWorker) security.getActiveUser()).createCitizen(name, id, needs);
             if (citizen != null) {
                 citizens.add(citizen);
+                inquiries.add(citizen.getInquiry());
                 data.saveCitizen(citizen);
                 security.logData("Created Citizen: " + citizen.toString());
             } else {
@@ -500,7 +501,12 @@ public class BusinessFacade implements IBusiness {
         List<String[]> rawData = data.getCitizenData();
         for (String[] s : rawData) {
             Citizen c = new Citizen(s[1], s[0], s[2]);
-            Inquiry i = new Inquiry(s[3], s[6], Boolean.getBoolean(s[5]), c, s[4]);
+            Inquiry i;
+            if(s[3] == null || s[3].equals("null")) {
+                i = null;
+            } else {
+                i = new Inquiry(s[3], s[6], Boolean.getBoolean(s[5]), c, s[4]);
+            }
             Case ca = new Case(s[7], s[8], s[9], (SocialWorker) security.getActiveUser(), c);
             c.setInquiry(i);
             c.setCase(ca);
