@@ -188,14 +188,24 @@ public class DBManager {
             return false;
         }
     }
-    
-        public boolean deleteInquiry(IInquiry inquiry) {
+
+    public boolean deleteInquiry(IInquiry inquiry) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
 
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"inquiries\" where inquiryid ='" + inquiry.getId()+ "'");
-            System.out.println("****" + inquiry.getId());
+            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"inquiries\" where inquiryid ='" + inquiry.getId() + "'");
+            return true;
+        } catch (Exception ex) {
+            System.out.println(ex);
+            return false;
+        }
+    }
 
+    public boolean deleteCase(ICase theCase) {
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"cases\" where caseid ='" + theCase.getId() + "'");
             return true;
         } catch (Exception ex) {
             System.out.println(ex);
@@ -210,7 +220,8 @@ public class DBManager {
             rs1.next();
             if (rs1.getInt("count") == 1) {
                 return false;
-            } else {
+            }
+            else {
                 return true;
             }
 
@@ -227,7 +238,8 @@ public class DBManager {
             rs1.next();
             if (rs1.getInt("count") == 1) {
                 return false;
-            } else {
+            }
+            else {
                 return true;
             }
 
