@@ -189,6 +189,20 @@ public class DBManager {
             return false;
         }
     }
+    
+        public boolean deleteInquiry(IInquiry inquiry) {
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"inquiries\" where inquiryid ='" + inquiry.getId()+ "'");
+            System.out.println("****" + inquiry.getId());
+
+            return true;
+        } catch (Exception ex) {
+            System.out.println(ex);
+            return false;
+        }
+    }
 
     public boolean hasUniqueUserID(String id) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {

@@ -33,6 +33,8 @@ public interface IData {
     public String[] loadUser(String username);
 
     public void deleteUser(IUser user);
+    
+    public void deleteInquiry(IInquiry inquiry);
 
     public void logData(String logData);
     

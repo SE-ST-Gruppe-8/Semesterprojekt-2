@@ -87,6 +87,11 @@ public class DataFacade implements IData {
     public void deleteUser(IUser user) {
         dbm.deleteUser(user);
     }
+    
+      @Override
+    public void deleteInquiry(IInquiry inquiry) {
+        dbm.deleteInquiry(inquiry);
+    }
 
     @Override
     public boolean hasUniqueUserUD(String id) {
@@ -122,5 +127,7 @@ public class DataFacade implements IData {
     public void saveCitizen(ICitizen citizen) {
         dbm.saveCitizen(citizen);
     }
+
+  
 
 }
