@@ -13,6 +13,8 @@ import java.util.List;
  * @author Bruger
  */
 public interface IData {
+    
+    List<String[]> getCitizenData();
 
     public boolean hasUniqueUserUD(String id);
 
@@ -32,6 +34,8 @@ public interface IData {
     public String[] loadUser(String username);
 
     public void deleteUser(IUser user);
+    
+    public void deleteInquiry(IInquiry inquiry);
 
     public void logData(String logData);
 
@@ -40,6 +44,12 @@ public interface IData {
     <T> void saveData(ArrayList<T> data, String filepath);
 
     <T> void loadData(ArrayList<T> data, String filepath);
+    
+    void saveCase(ICase casen);
+    
+    void saveInquiry(IInquiry inquiry);
+    
+    void saveCitizen(ICitizen citizen);
 
 //    ArrayList<ICitizen> getCitizens();
 //    

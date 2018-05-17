@@ -5,13 +5,19 @@
  */
 package data;
 
+import acq.ICase;
+import acq.ICitizen;
+import acq.IInquiry;
 import acq.IUser;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -36,6 +42,87 @@ public class DBManager {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("insert into users values" + data);
+            rs1.close();
+            st1.close();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
+
+    public void saveInquiry(IInquiry inquiry) {
+        String id = inquiry.getId();
+        String description = inquiry.getDescription();
+        String informed = Boolean.toString(inquiry.isCitizenInformed());
+        String origin = inquiry.getOrigin();
+        String citizenid = inquiry.getCitizen().getId();
+        String data = "('" + id + "','" + description + "','" + informed + "','" + origin + "');";
+
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("insert into inquires values" + data + "\n"
+                    + " AND insert into hasinquiry values " + citizenid + "" + id);
+            rs1.close();
+            st1.close();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
+
+    public List<String[]> getEverything() {
+        String[] columns = {"id", "name", "needs", "inquiryid", "inquirydescription", "iscitizeninformed", "origin",
+            "caseid", "casedescription", "process"};
+        ArrayList<String[]> data = new ArrayList<>();
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("SELECT citizens.*, inquiries.*, cases.*\n"
+                    + "FROM citizens\n"
+                    + "LEFT JOIN inquiries ON inquiries.inquiryid = (SELECT inquiryid FROM hasinquiry WHERE citizenid = citizens.id)\n"
+                    + "LEFT JOIN cases ON cases.caseid = (SELECT caseid FROM hascase WHERE citizenid = citizens.id)");
+            while (rs1.next()) {
+                String[] s = new String[10];
+                for (int i = 0; i < s.length; i++) {
+                    s[i] = rs1.getString(columns[i]);
+                }
+                data.add(s);
+            }
+            rs1.close();
+            st1.close();
+            return data;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+    }
+
+    public void saveCase(ICase casen) {
+        String id = casen.getId();
+        String description = casen.getDescription();
+        String process = casen.getProcess();
+        String citizenid = casen.getCitizen().toString();
+        String data = "('" + id + "','" + description + "','" + process + "');";
+
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("insert into cases values" + data + "\n"
+                    + "insert into hascase values " + citizenid + "" + id);
+
+            rs1.close();
+            st1.close();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
+
+    public void saveCitizen(ICitizen citizen) {
+        String id = citizen.getId();
+        String name = citizen.getName();
+        String needs = citizen.getNeeds();
+        String data = "('" + id + "','" + name + "','" + needs + "');";
+
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("insert into citizens values" + data);
+
             rs1.close();
             st1.close();
         } catch (Exception ex) {
@@ -95,6 +182,20 @@ public class DBManager {
 
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("delete from \"public\".\"users\" where username ='" + user.getUsername() + "'");
+
+            return true;
+        } catch (Exception ex) {
+            System.out.println(ex);
+            return false;
+        }
+    }
+    
+        public boolean deleteInquiry(IInquiry inquiry) {
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"inquiries\" where inquiryid ='" + inquiry.getId()+ "'");
+            System.out.println("****" + inquiry.getId());
 
             return true;
         } catch (Exception ex) {
@@ -173,6 +274,8 @@ public class DBManager {
 //        dbm.loadUsers();
 //        String id = "0";
 //        dbm.hasUniqueUserID(id);
+//          ICitizen c = new Citizen("bob", "bygger", "noget");
+//          dbm.saveCitizen(c);
     }
 
 }
