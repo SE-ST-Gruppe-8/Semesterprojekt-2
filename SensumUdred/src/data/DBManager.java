@@ -16,8 +16,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -72,6 +70,7 @@ public class DBManager {
         String[] columns = {"id", "name", "needs", "inquiryid", "inquirydescription", "iscitizeninformed", "origin",
             "caseid", "casedescription", "process"};
         ArrayList<String[]> data = new ArrayList<>();
+
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("SELECT citizens.*, inquiries.*, cases.*\n"
@@ -105,7 +104,6 @@ public class DBManager {
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("insert into cases values" + data + "\n"
                     + "insert into hascase values " + citizenid + "" + id);
-
             rs1.close();
             st1.close();
         } catch (Exception ex) {
@@ -122,7 +120,6 @@ public class DBManager {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("insert into citizens values" + data);
-
             rs1.close();
             st1.close();
         } catch (Exception ex) {
@@ -132,7 +129,6 @@ public class DBManager {
 
     public List<String[]> loadUsers() {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
-
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("select * from \"public\".\"users\"");
             List<String[]> list = new ArrayList<>();
@@ -179,24 +175,20 @@ public class DBManager {
 
     public boolean deleteUser(IUser user) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
-
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("delete from \"public\".\"users\" where username ='" + user.getUsername() + "'");
-
             return true;
         } catch (Exception ex) {
             System.out.println(ex);
             return false;
         }
     }
-    
-        public boolean deleteInquiry(IInquiry inquiry) {
+
+    public boolean deleteInquiry(IInquiry inquiry) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
-
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"inquiries\" where inquiryid ='" + inquiry.getId()+ "'");
+            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"inquiries\" where inquiryid ='" + inquiry.getId() + "'");
             System.out.println("****" + inquiry.getId());
-
             return true;
         } catch (Exception ex) {
             System.out.println(ex);
@@ -214,7 +206,6 @@ public class DBManager {
             } else {
                 return true;
             }
-
         } catch (Exception ex) {
             System.out.println(ex);
             return false;
@@ -231,7 +222,6 @@ public class DBManager {
             } else {
                 return true;
             }
-
         } catch (Exception ex) {
             System.out.println(ex);
             return false;
@@ -247,7 +237,6 @@ public class DBManager {
                 return false;
             }
             return true;
-
         } catch (Exception ex) {
             System.out.println(ex);
             return false;
