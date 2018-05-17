@@ -344,9 +344,9 @@ public class BusinessFacade implements IBusiness {
 
         if (security.getActiveUser() instanceof SocialWorker) {
             inquiry = ((ISocialWorker) security.getActiveUser()).createInquiry(id, origin, informed, citizen, description);
-            if (citizen != null) {
+            if (citizen.getInquiry() == null) {
                 citizen.setInquiry((Inquiry) inquiry);
-                inquiries.set(index, inquiry);
+                inquiries.add(inquiry);
                 data.saveInquiry(inquiry);
                 security.logData("Created Inquiry: " + citizen.getInquiry().toString());
             } else {
