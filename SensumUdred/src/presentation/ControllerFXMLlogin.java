@@ -53,6 +53,9 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -62,38 +65,39 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
 
     @FXML
     private void loginButtonAction(ActionEvent event) throws IOException {
-        boolean iscorrect = ib.validateUser(loginUsernameTextField.getText(), loginPasswordTextField.getText());
-
-        if (iscorrect) {
-            loginInfoLabel.setText("Succesfully logged in as: " + ib.getActiveUser().getName());
-            if (ib.getRole() == 1) {
+        try {
+            boolean iscorrect = ib.validateUser(loginUsernameTextField.getText(), loginPasswordTextField.getText());
+            if (iscorrect) {
+                loginInfoLabel.setText("Succesfully logged in as: " + ib.getActiveUser().getName());
+                if (ib.getRole() == ib.getSocialWorkerRoleInt()) {
 //                fxmlString = "FXMLAdmin.fxml";
-                fxmlString = "FXMLSocialWorker.fxml";
+                    fxmlString = "FXMLSocialWorker.fxml";
 
-            } else if (ib.getRole() == 0) {
+                } else if (ib.getRole() == ib.getAdminRoleInt()) {
 //                fxmlString = "FXMLSocialWorker.fxml";
-                fxmlString = "FXMLAdmin.fxml";
-            }
+                    fxmlString = "FXMLAdmin.fxml";
+                }
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlString));
 
-        AnchorPane anchorPane = loader.load();
-        IPresentation controller = loader.getController();
-        controller.injectBusiness(ib);
-        controller.openUI();
+                AnchorPane anchorPane = loader.load();
+                IPresentation controller = loader.getController();
+                controller.injectBusiness(ib);
+                controller.openUI();
 
+                Scene scene2 = new Scene(anchorPane);
+                //Get Stage information
 
-            Scene scene2 = new Scene(anchorPane);
-            //Get Stage information
-
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setMinWidth(500);
-            window.setMinHeight(430);
-            window.setWidth(900);
-            window.setHeight(430);
-            window.setScene(scene2);
-            window.show();
-        } else {
-            loginInfoLabel.setText("Wrong input");
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setMinWidth(500);
+                window.setMinHeight(430);
+                window.setWidth(900);
+                window.setHeight(430);
+                window.setScene(scene2);
+                window.show();
+            } else {
+                loginInfoLabel.setText("Wrong input");
+            }
+        } catch (NullPointerException ex) {
         }
     }
 

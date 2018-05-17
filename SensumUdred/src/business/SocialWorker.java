@@ -22,6 +22,8 @@ public class SocialWorker extends User implements ISocialWorker {
 
     private Set<Citizen> citizens;
 
+    private static final int ROLE = 1;
+    
     private static final long serialVersionUID = 1L;
 
     public SocialWorker(String name, String id, String username, String password, String email) {
@@ -133,6 +135,10 @@ public class SocialWorker extends User implements ISocialWorker {
     @Override
     public int getRole() {
         return 1;
+    }
+    
+    public static int getSWRole(){
+        return ROLE;
     }
 
     @Override

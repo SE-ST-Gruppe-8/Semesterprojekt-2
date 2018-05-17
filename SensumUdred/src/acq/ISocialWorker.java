@@ -49,5 +49,5 @@ public interface ISocialWorker extends IUser{
     public IInquiry createInquiry(String id, String origin, boolean informed, ICitizen citizen, String description);
 
     public boolean deleteInquiry(IInquiry inquiry);
-
+ 
 }

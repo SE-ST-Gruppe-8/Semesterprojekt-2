@@ -53,13 +53,27 @@ public interface IBusiness {
     public void createInquiry(String id, String origin, boolean informed, ICitizen citizen, String description);
     
     public void deleteInquiry(IInquiry i);
+
+    public void editCase(String description, String process, ICase c);
+
+    public void editCitizen(String needs, ICitizen c);
+
+    public void editInquiry(String description, IInquiry i, boolean isInformed);
+
+    public int[] getFinalInts();
     
-    void editCase(String description, String process, ICase c);
+    public int getSocialWorkerRoleInt();
     
-    void editCitizen(String needs, ICitizen c);
+    public int getAdminRoleInt();
     
-    void editInquiry(String description, IInquiry i,boolean isInformed);
+    public boolean hasAcceptableName(String name);
     
+    public boolean hasAcceptableMail(String mail);
     
+    public boolean hasAcceptableUsername(String username);
+    
+    public boolean hasAcceptablePassword(String password, String repeatedPassword);
+    
+    public boolean hasAcceptableID(String id);
 
 }

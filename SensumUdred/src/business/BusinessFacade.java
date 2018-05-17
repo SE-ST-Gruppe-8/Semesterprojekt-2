@@ -12,6 +12,19 @@ import javafx.collections.ObservableList;
  */
 public class BusinessFacade implements IBusiness {
 
+    private static final int ID_LENGTH = 10;
+
+    private static final int PASSWORD_MIN_LENGTH = 4;
+    private static final int PASSWORD_MAX_LENGTH = 16;
+
+    private static final int USERNAME_MIN_LENGTH = 4;
+    private static final int USERNAME_MAX_LENGTH = 16;
+
+    private static final int NAME_MIN_LENGTH = 3;
+    private static final int NAME_MAX_LENGTH = 100;
+
+    private static final int MAIL_MAX_LENGTH = 50;
+
     private IData data;
 
     private SecurityHandler security;
@@ -66,7 +79,6 @@ public class BusinessFacade implements IBusiness {
     public void logOutActiveUser() {
         security.logData("Logged out.");
         security.logOutActiveUser();
-
     }
 
     /**
@@ -77,7 +89,7 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void injectData(IData dataLayer) {
         data = dataLayer;
-        security = new SecurityHandler(data);
+        security = new SecurityHandler(data, this);
         //tester(); //creates citizens with inquires
     }
 
@@ -113,7 +125,6 @@ public class BusinessFacade implements IBusiness {
      * a method to delete a user from the system
      *
      * @param user
-     * @param users
      */
     @Override
     public void deleteUser(IUser user) {
@@ -136,7 +147,7 @@ public class BusinessFacade implements IBusiness {
      */
     @Override
     public boolean validateUser(String username, String password) {
-        ArrayList<IUser> users = new ArrayList<>();
+        /*ArrayList<IUser> users = new ArrayList<>();
         data.loadData(users, "users");
         if (security.validateUserLogin(users, username, password)) {
             security.logData("Logged in.");
@@ -145,7 +156,17 @@ public class BusinessFacade implements IBusiness {
         } else {
 
             return false;
+        }*/
+        String[] array = data.loadUser(username);
+        array[3] = array[3].trim();
+        password = password.trim();
+        if (array != null) {
+            if (security.validateUserlogin(array, password)) {
+                security.logData(username + " logged in.");
+                return true;
+            }
         }
+        return false;
     }
 
     @Override
@@ -234,7 +255,6 @@ public class BusinessFacade implements IBusiness {
             }
 
         }
-
     }
 
     @Override
@@ -311,6 +331,79 @@ public class BusinessFacade implements IBusiness {
     @Override
     public boolean hasUnqiueCitizenID(String id) {
         return data.hasUniqueCitizenID(id);
+    }
+
+    @Override
+    public boolean hasAcceptableID(String id) {
+        try {
+            if (id.length() == ID_LENGTH) {
+                return true;
+            }
+        } catch (NullPointerException ex) {
+        }
+        return false;
+    }
+
+    @Override
+    public boolean hasAcceptablePassword(String password, String repeatedPassword) {
+        try {
+            if (password.equals(repeatedPassword)) {
+                if (password.length() >= PASSWORD_MIN_LENGTH && password.length() <= PASSWORD_MAX_LENGTH) {
+                    return true;
+                }
+            }
+        } catch (NullPointerException ex) {
+        }
+        return false;
+    }
+
+    @Override
+    public boolean hasAcceptableUsername(String username) {
+        try {
+            if (username.length() >= USERNAME_MIN_LENGTH && username.length() <= USERNAME_MAX_LENGTH) {
+                return true;
+            }
+        } catch (NullPointerException ex) {
+        }
+        return false;
+    }
+
+    @Override
+    public boolean hasAcceptableMail(String mail) {
+        try {
+            if (mail.length() <= MAIL_MAX_LENGTH && mail.contains("@")) {
+                return true;
+            }
+        } catch (NullPointerException ex) {
+        }
+        return false;
+    }
+
+    @Override
+    public boolean hasAcceptableName(String name) {
+        try {
+            if (name.length() >= NAME_MIN_LENGTH && name.length() <= NAME_MAX_LENGTH) {
+                return true;
+            }
+        } catch (NullPointerException ex) {
+        }
+        return false;
+    }
+
+    @Override
+    public int[] getFinalInts() {
+        return new int[]{ID_LENGTH, PASSWORD_MIN_LENGTH, PASSWORD_MAX_LENGTH, USERNAME_MIN_LENGTH,
+            USERNAME_MAX_LENGTH, NAME_MIN_LENGTH, NAME_MAX_LENGTH, MAIL_MAX_LENGTH};
+    }
+
+    @Override
+    public int getSocialWorkerRoleInt() {
+        return SocialWorker.getSWRole();
+    }
+
+    @Override
+    public int getAdminRoleInt() {
+        return SystemAdmin.getAdminRole();
     }
 
 }
