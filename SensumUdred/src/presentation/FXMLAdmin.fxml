@@ -177,17 +177,14 @@
                            </rowConstraints>
                            <children>
                               <RadioButton fx:id="createAdminRadioButton" focusTraversable="false" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Administrator" GridPane.columnSpan="2" GridPane.rowIndex="1">
-                                 <toggleGroup>
-                                    <ToggleGroup fx:id="createUserToggleGroup" />
-                                 </toggleGroup>
                                  <GridPane.margin>
                                     <Insets bottom="10.0" right="10.0" top="10.0" />
                                  </GridPane.margin>
-                              </RadioButton>
-                              <RadioButton fx:id="createSocialWorkerRadioButton" focusTraversable="false" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="17.0" prefWidth="116.0" selected="true" text="Sagsbehandler" GridPane.columnSpan="2">
                                  <toggleGroup>
                                     <ToggleGroup fx:id="createUserToggleGroup" />
                                  </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="createSocialWorkerRadioButton" focusTraversable="false" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="17.0" prefWidth="116.0" selected="true" text="Sagsbehandler" toggleGroup="$createUserToggleGroup" GridPane.columnSpan="2">
                                  <GridPane.margin>
                                     <Insets bottom="10.0" right="10.0" top="10.0" />
                                  </GridPane.margin>
