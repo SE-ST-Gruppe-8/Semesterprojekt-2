@@ -146,7 +146,6 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     public void openUI() {
         loginInfoLabelSW.setText("Logged ind som: " + ib.getActiveUser().getName());
         ib.processStuff();
-        updateCaseList();
         updateCitizenList();
         updateCaseList();
         updateInquiryList();
@@ -155,6 +154,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     @FXML
     private void logoutButtonAction(ActionEvent event) throws IOException {
         ib.logOutActiveUser();
+        ib.clearLists();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("FXMLlogin.fxml"));
 
@@ -238,6 +238,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
                 ab.displayInquiryCreation("Opret henvendelse", ib, citizenListView.getSelectionModel().getSelectedItem());
             } else {
                 inquiryLabel.setText("denne borger har allerede en henvendelse");
+                ab.displayInquiryCreation("Opret henvendelse", ib, citizenListView.getSelectionModel().getSelectedItem());
             }
             updateInquiryList();
         } else {

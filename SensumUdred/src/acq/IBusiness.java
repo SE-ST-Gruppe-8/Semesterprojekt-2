@@ -79,4 +79,6 @@ public interface IBusiness {
     public int getAdminRoleInt();
     
     void processStuff();
+    
+    void clearLists();
 }
