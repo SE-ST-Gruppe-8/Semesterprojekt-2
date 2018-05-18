@@ -113,7 +113,7 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
     @Override
     public void openUI() {
-        loginInfoLabelAdmin.setText("Logged in as: " + ib.getActiveUser().getName());
+        loginInfoLabelAdmin.setText("Logged ind som: " + ib.getActiveUser().getName());
         updateUserList();
     }
 

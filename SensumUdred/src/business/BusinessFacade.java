@@ -93,7 +93,7 @@ public class BusinessFacade implements IBusiness {
     public void injectData(IData dataLayer) {
         data = dataLayer;
         security = new SecurityHandler(data, this);
-        //tester(); //creates citizens with inquires
+        //tester(); //creates citizenList with inquires
     }
 
     /**
@@ -122,7 +122,7 @@ public class BusinessFacade implements IBusiness {
             security.logData("Created user: " + user.toString());
 //            }
         } else {
-            System.out.println("error, could not create user");
+            System.out.println("Error: Could not create user");
         }
     }
 
@@ -135,10 +135,10 @@ public class BusinessFacade implements IBusiness {
     public void deleteUser(IUser user) {
         if (security.getActiveUser() instanceof SystemAdmin) {
             if (((SystemAdmin) security.getActiveUser()).deleteUser(user, users)) {
-                security.logData("Deleted user " + user.toString());
+                security.logData("Deleted user: " + user.toString());
                 data.saveData((ArrayList<IUser>) users.stream().collect(Collectors.toList()), "users");
             } else {
-                System.out.println("User did not exist");
+                System.out.println("User does not exist");
             }
         }
     }
@@ -163,12 +163,11 @@ public class BusinessFacade implements IBusiness {
             return false;
         }*/
         String[] array = data.loadUser(username);
-        System.out.println(array[0] + array[1] + array[2]);
         array[3] = array[3].trim();
         password = password.trim();
         if (array != null) {
             if (security.validateUserlogin(array, password)) {
-                security.logData(username + " logged in.");
+                security.logData("Logged in.");
                 return true;
             }
         }
@@ -177,26 +176,27 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public void saveInquiry(IInquiry inquiry) {
-        ArrayList<ICitizen> citizens = new ArrayList<>();
-        data.loadData(citizens, "citizens");
+        ArrayList<ICitizen> citizenList = new ArrayList<>();
+        data.loadData(citizenList, "citizens");
         Citizen c = inquiry.getCitizen();
-        citizens.remove(c);
+        citizenList.remove(c);
         c.setInquiry((Inquiry) inquiry);
-        citizens.add(c);
+        citizenList.add(c);
         security.logData("Saved inquiry: " + c.toString());
-        data.saveData(citizens, "citizens");
+        data.saveData(citizenList, "citizens");
     }
 
 //    public void tester() {
-//        ArrayList<ICitizen> citizens = new ArrayList<>();
+//        ArrayList<ICitizen> citizenList = new ArrayList<>();
 //        for (int i = 1; i <= 10; i++) {
-//            citizens.add(new Citizen("Citizen" + (i), String.valueOf(i), "needs" + i));
+//            citizenList.add(new Citizen("Citizen" + (i), String.valueOf(i), "needs" + i));
 //        }
-//        for (ICitizen c : citizens) {
+//        for (ICitizen c : citizenList) {
 //            c.createInquiry(String.valueOf(c.getId()), "origin" + c.getId(), true, "description");
 //        }
-//        data.saveCitizens(citizens);
+//        data.saveCitizens(citizenList);
 //    }
+    @Override
     public int getRole() {
         return security.getActiveUser().getRole();
     }
@@ -219,7 +219,7 @@ public class BusinessFacade implements IBusiness {
 ////                    cases.add(newCase);
 //                }
 //
-//                data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
+//                data.saveData((ArrayList<ICitizen>) citizenList.stream().collect(Collectors.toList()), "citizenList");
 //                security.logData("Created case with id: " + id);
 //            } else {
 //                System.out.println(s);
@@ -229,7 +229,7 @@ public class BusinessFacade implements IBusiness {
 //        System.out.println(c.getName() + id);
 //    }
 
-        String s = "error, could not create case";
+        String s = "Error, could not create case";
         ICase newCase;
         if (security.getActiveUser() instanceof SocialWorker) {
             newCase = ((ISocialWorker) security.getActiveUser()).createCase(id, des, process, sw, c);
@@ -253,7 +253,7 @@ public class BusinessFacade implements IBusiness {
             if (((SocialWorker) security.getActiveUser()).deleteCase(newCase)) {
                 security.logData("Deleted case " + newCase.toString());
                 cases.remove(newCase);
-                data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
+
             } else {
                 System.out.println("Case did not exist");
             }
@@ -273,8 +273,8 @@ public class BusinessFacade implements IBusiness {
 //        if (security.getActiveUser() instanceof SocialWorker) {
 //            citizen = ((ISocialWorker) security.getActiveUser()).createCitizen(name, id, needs);
 //            if (citizen != null) {
-//                citizens.add(citizen);
-//                data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
+//                citizenList.add(citizen);
+//                data.saveData((ArrayList<ICitizen>) citizenList.stream().collect(Collectors.toList()), "citizenList");
 //                security.logData("Created Citizen: " + citizen.toString());
 //            } else {
 //                System.out.println(s);
@@ -317,7 +317,7 @@ public class BusinessFacade implements IBusiness {
 //            inquiry = ((ISocialWorker) security.getActiveUser()).createInquiry(id, origin, informed, citizen, description);
 //            if (citizen != null) {
 //                citizen.setInquiry((Inquiry) inquiry);
-//                data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "Citizens");
+//                data.saveData((ArrayList<ICitizen>) citizenList.stream().collect(Collectors.toList()), "Citizens");
 //                security.logData("Created Inquiry: " + citizen.getInquiry().toString());
 //            } else {
 //                System.out.println(s);

@@ -22,7 +22,6 @@ import javafx.scene.layout.HBox;
 public class AlertBox {
 
     public AlertBox() {
-
     }
 
     /**
@@ -42,7 +41,7 @@ public class AlertBox {
         TextArea desTextArea = new TextArea();
         desTextArea.setPromptText("Indtast en beskrivelse af sagen");
         TextArea processTextArea = new TextArea();
-        processTextArea.setPromptText("Indtast forløbet for borgeren.");
+        processTextArea.setPromptText("Indtast forløbet for borgeren");
         Label idLabel = new Label();
         idLabel.setText("ID: " + c.getId() + "-1");
         Label desLabel = new Label();
@@ -214,7 +213,7 @@ public class AlertBox {
         descLabel.setText("Beskrivelse");
 
         Label isInformedLabel = new Label();
-        isInformedLabel.setText("Er borgeren blevet informeret om henvendelse: ");
+        isInformedLabel.setText("Er borgeren blevet informeret om henvendelsen?  ");
 
         HBox radioKeepers = new HBox();
         RadioButton radiob1 = new RadioButton();
