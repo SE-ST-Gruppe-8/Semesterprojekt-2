@@ -134,7 +134,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
     @Override
     public void openUI() {
-        loginInfoLabelSW.setText("Logged ind som: " + ib.getActiveUser().getName());
+        loginInfoLabelSW.setText("Logget ind som: " + ib.getActiveUser().getName());
         ib.processStuff();
         updateCitizenList();
         updateCaseList();

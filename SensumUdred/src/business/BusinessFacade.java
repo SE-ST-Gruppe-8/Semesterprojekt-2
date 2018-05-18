@@ -520,4 +520,9 @@ public class BusinessFacade implements IBusiness {
         cases.clear();
     }
 
+    @Override
+    public List<String> getLog() {
+        return data.getLog();
+    }
+
 }

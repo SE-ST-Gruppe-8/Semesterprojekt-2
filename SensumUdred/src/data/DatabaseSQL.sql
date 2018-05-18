@@ -30,7 +30,7 @@ CREATE TABLE Inquiries (
 CREATE TABLE LogData (
     dateLogged VARCHAR(50),
     username CHAR(16),
-    dataline VARCHAR(200),
+    dataLine VARCHAR(200),
     PRIMARY KEY(dateLogged, username)
 );
 

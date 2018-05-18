@@ -6,6 +6,7 @@
 package acq;
 
 import business.User;
+import java.util.List;
 import javafx.collections.ObservableList;
 
 /**
@@ -21,9 +22,9 @@ public interface IBusiness {
     public void createCase(String id, String des, String process, ISocialWorker sw, ICitizen c);
 
     public void deleteUser(IUser user);
-    
+
     public boolean hasUniqueUserID(String id);
-    
+
     public boolean hasUnqiueCitizenID(String id);
 
     public boolean hasUniqueUsername(String username);
@@ -61,9 +62,9 @@ public interface IBusiness {
     public ObservableList<ICitizen> getCitizen();
 
     public void deleteCitizen(ICitizen citizen);
-    
+
     public void createInquiry(String id, String origin, boolean informed, ICitizen citizen, String description);
-    
+
     public void deleteInquiry(IInquiry i);
 
     public void editCase(String description, String process, ICase c);
@@ -75,10 +76,13 @@ public interface IBusiness {
     public int[] getFinalInts();
 
     public int getSocialWorkerRoleInt();
-    
+
     public int getAdminRoleInt();
-    
+
     void processStuff();
-    
+
     void clearLists();
+
+    public List<String> getLog();
+
 }

@@ -22,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
@@ -38,57 +39,44 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
     @FXML
     private Tab adminTab;
-
     @FXML
     private ListView<IUser> adminUserListView;
-
     @FXML
     private ToggleGroup createUserToggleGroup;
-
     @FXML
     private RadioButton createSocialWorkerRadioButton;
-
     @FXML
     private RadioButton createAdminRadioButton;
-
     @FXML
     private TextField adminUsernameTextField;
-
     @FXML
     private TextField adminFirstNameTextField;
-
     @FXML
     private TextField adminPasswordTextField;
-
     @FXML
     private TextField adminLastNameTextField;
-
     @FXML
     private TextField adminRepeatPasswordTextField;
-
     @FXML
     private TextField adminEmailTextField;
-
     @FXML
     private Button createUserButton;
-
     @FXML
     private Label adminInfoLabel;
-
     @FXML
     private Label loginInfoLabelAdmin;
-
     @FXML
     private Button deleteUserButton;
-
     @FXML
     private Button UpdateList;
-
     @FXML
     private TextField adminIdTextField;
-
     @FXML
     private Button logoutButtonSW;
+    @FXML
+    private Button UpdateLogButton;
+    @FXML
+    private TextArea logTextArea;
 
     /**
      * Initializes the controller class.
@@ -113,7 +101,7 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
     @Override
     public void openUI() {
-        loginInfoLabelAdmin.setText("Logged ind som: " + ib.getActiveUser().getName());
+        loginInfoLabelAdmin.setText("Logget ind som: " + ib.getActiveUser().getName());
         updateUserList();
     }
 
