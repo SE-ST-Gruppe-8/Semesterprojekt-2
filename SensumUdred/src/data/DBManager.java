@@ -100,8 +100,7 @@ public class DBManager {
         
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("UPDATE citizens set id = '" + id + "', name = '" 
-                + name + "', needs = '" + needs + "' where id = '" + id + "';\n");
+            ResultSet rs1 = st1.executeQuery("UPDATE citizens set needs = '" + needs + "' where id = '" + id + "';\n");
             rs1.close();
             st1.close();
         } catch (Exception ex) {

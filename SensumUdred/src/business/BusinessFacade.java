@@ -111,6 +111,7 @@ public class BusinessFacade implements IBusiness {
         IUser user;
         if (security.getActiveUser() instanceof SystemAdmin) {
             user = ((SystemAdmin) security.getActiveUser()).createUser(name, id, userName, password, email, type);
+            users.add(user);
             data.saveUsers(user);
 //            if (user != null) {
 //                ArrayList<IUser> users = data.readUsers();
@@ -233,25 +234,12 @@ public class BusinessFacade implements IBusiness {
         if (security.getActiveUser() instanceof SocialWorker) {
             newCase = ((ISocialWorker) security.getActiveUser()).createCase(id, des, process, sw, c);
             c.setCase((Case) newCase);
-            if (newCase != null) {
-                if (c.getCase() == null) {
-                    cases.add(newCase);
-                    c.setCase((Case) newCase);
-                } else {
-
-//                    cases.remove(c.getCase());
-//                    c.setCase((Case)newCase);
-//                    cases.add(newCase);
-                }
-
-                data.saveCase(newCase);
-                security.logData("Created case with id: " + id);
-            } else {
-                System.out.println(s);
-            }
+            cases.add(newCase);
+            c.setCase((Case) newCase);
+            data.saveCase(newCase);
+            security.logData("Created case with id: " + id);
 
         }
-        System.out.println(c.getName() + id);
     }
 
     @Override
@@ -264,6 +252,7 @@ public class BusinessFacade implements IBusiness {
         if (security.getActiveUser() instanceof SocialWorker) {
             if (((SocialWorker) security.getActiveUser()).deleteCase(newCase)) {
                 security.logData("Deleted case " + newCase.toString());
+                cases.remove(newCase);
                 data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
             } else {
                 System.out.println("Case did not exist");
@@ -299,7 +288,6 @@ public class BusinessFacade implements IBusiness {
             citizen = ((ISocialWorker) security.getActiveUser()).createCitizen(name, id, needs);
             if (citizen != null) {
                 citizens.add(citizen);
-                inquiries.add(citizen.getInquiry());
                 data.saveCitizen(citizen);
                 security.logData("Created Citizen: " + citizen.toString());
             } else {
@@ -315,7 +303,6 @@ public class BusinessFacade implements IBusiness {
         if (security.getActiveUser() instanceof SocialWorker) {
             if (((SocialWorker) security.getActiveUser()).deleteCitizen(citizen, citizens)) {
                 security.logData("Deleted citizens: " + citizen.toString());
-                data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
             } else {
                 System.out.println(s);
             }
@@ -365,7 +352,6 @@ public class BusinessFacade implements IBusiness {
                 inquiries.remove(i);
                 data.deleteInquiry(i);
                 security.logData("Deleted inquiry: " + i.toString());
-                data.saveData((ArrayList<ICitizen>) citizens.stream().collect(Collectors.toList()), "citizens");
             } else {
                 System.out.println(s);
             }
@@ -373,7 +359,7 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void editCase(String description, String process,ICase c) {
+    public void editCase(String description, String process, ICase c) {
         c.setDescription(description);
         c.setProcess(process);
         security.logData("Edited case: " + c.toString());
