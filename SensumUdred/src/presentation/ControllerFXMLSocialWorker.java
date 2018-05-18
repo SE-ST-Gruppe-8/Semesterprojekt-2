@@ -114,14 +114,12 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         } else {
             caseLabel.setText("Vælg en borger fra listen over borgerer");
         }
-        updateCaseList();
     }
 
     @FXML
     private void DeleteCaseAction(ActionEvent event) {
         if (caseListView.getSelectionModel().getSelectedItem() != null) {
             ib.deleteCase(caseListView.getSelectionModel().getSelectedItem());
-            updateCaseList();
         } else {
             caseLabel.setText("Vælg en sag fra listen over sager");
         }
@@ -167,7 +165,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     @FXML
     private void createCitizenAction(ActionEvent event) {
         ab.displayCitizenCreation("Opret borger", ib);
-        updateCitizenList();
+
     }
 
     @FXML
@@ -189,15 +187,14 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
     @FXML
     private void updateCaseListAction(ActionEvent event) {
-        updateCaseList();
+
     }
 
     public void updateCitizenList() {
-        if (ib.getCitizen() != null) {
-            ObservableList<ICitizen> list = ib.getCitizen();
-            citizenListView.setItems(list);
-            updateInquiryList();
-        }
+        ib.processStuff();
+        citizenListView.setItems(ib.getCitizen());
+        updateInquiryList();
+        updateCaseList();
     }
 
     public void updateInquiryList() {
@@ -209,7 +206,6 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     private void deleteInquiryAction(ActionEvent event) {
         if (inquiriesListView.getSelectionModel().getSelectedItem() != null) {
             ib.deleteInquiry(inquiriesListView.getSelectionModel().getSelectedItem());
-            updateInquiryList();
         } else {
             inquiryLabel.setText("Vælg en henvendelse fra listen over henvendelser");
         }
@@ -228,7 +224,6 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
             } else {
                 inquiryLabel.setText("Denne borger har allerede en henvendelse");
             }
-            updateInquiryList();
         } else {
             inquiryLabel.setText("Vælg en borger fra listen over borgere");
         }
@@ -241,7 +236,6 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         } else {
             inquiryLabel.setText("Vælg en henvendelse fra listen over henvendelser");
         }
-        updateCitizenList();
     }
 
     @FXML
@@ -251,8 +245,6 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         } else {
             inquiryLabel.setText("Vælg en borger fra listen over borgerer");
         }
-        updateCaseList();
-        updateCitizenList();
     }
 
     @FXML
@@ -262,7 +254,6 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         } else {
             caseLabel.setText("Vælg en sag fra listen over sager");
         }
-        updateCaseList();
     }
 
 }

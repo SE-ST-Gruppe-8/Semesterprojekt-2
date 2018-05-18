@@ -133,7 +133,8 @@ public class DBManager {
             ResultSet rs1 = st1.executeQuery("SELECT citizens.*, inquiries.*, cases.*\n"
                     + "FROM citizens\n"
                     + "LEFT JOIN inquiries ON inquiries.inquiryid = (SELECT inquiryid FROM hasinquiry WHERE citizenid = citizens.id)\n"
-                    + "LEFT JOIN cases ON cases.caseid = (SELECT caseid FROM hascase WHERE citizenid = citizens.id)");
+                    + "LEFT JOIN cases ON cases.caseid = (SELECT caseid FROM hascase WHERE citizenid = citizens.id)"
+                    + "");
             while (rs1.next()) {
                 String[] s = new String[10];
                 for (int i = 0; i < s.length; i++) {
@@ -337,7 +338,8 @@ public class DBManager {
             while (rs1.next()) {
 
                 String s = "";
-                s = rs1.getString("datelogged") + " " + rs1.getString("username") + " " + rs1.getString("dataline");
+                s = String.format("%-32s %-20s %-220s",rs1.getString("datelogged"), rs1.getString("username"), rs1.getString("dataline"));
+//                s = rs1.getString("datelogged") + " " + rs1.getString("username") + " " + rs1.getString("dataline");
                 list.add(s);
             }
             rs1.close();
