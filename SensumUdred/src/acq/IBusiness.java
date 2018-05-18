@@ -11,13 +11,28 @@ import javafx.collections.ObservableList;
 
 /**
  *
- * @author Bruger
+ * @author Nikolaj Filipsen
  */
 public interface IBusiness {
 
+    /**
+     * Injects the data layer into the business layer.
+     *
+     * @param dataLayer the data layer.
+     */
     void injectData(IData dataLayer);
 
-    public void createUser(String name, String id, String userName, String password, String email, int type);
+    /**
+     * A method to create a user and save it in the system.
+     *
+     * @param name The name of the user.
+     * @param id The ID of the user.
+     * @param userName The username of the user.
+     * @param password The password for the user.
+     * @param email The email for the user.
+     * @param role The role of user.
+     */
+    public void createUser(String name, String id, String userName, String password, String email, int role);
 
     public void createCase(String id, String des, String process, ISocialWorker sw, ICitizen c);
 
@@ -39,6 +54,14 @@ public interface IBusiness {
 
     public boolean hasAcceptableName(String name);
 
+    /**
+     * A method to validate the username and password of a user.
+     *
+     * @param username the username.
+     * @param password the password.
+     * @return true if the username and password matches the information of an
+     * existing user.
+     */
     public boolean validateUser(String username, String password);
 
     public ObservableList<IUser> getUsers();
@@ -73,15 +96,30 @@ public interface IBusiness {
 
     public void editInquiry(String description, IInquiry i, boolean isInformed);
 
+    /**
+     * Returns an array of static final integers.
+     *
+     * @return an array of static final integers.
+     */
     public int[] getFinalInts();
 
+    /**
+     * Returns the integer representing the role of SocialWorker.
+     *
+     * @return the role of a SocialWorker.
+     */
     public int getSocialWorkerRoleInt();
 
+    /**
+     * Returns the integer representing the role of SystemAdmin.
+     *
+     * @return the role of a SystemAdmin.
+     */
     public int getAdminRoleInt();
 
-    void processStuff();
+    public void processStuff();
 
-    void clearLists();
+    public void clearLists();
 
     public List<String> getLog();
 

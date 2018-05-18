@@ -10,7 +10,7 @@ import javafx.collections.ObservableList;
 
 /**
  *
- * @author Søren Bendtsen
+ * @author Nikolaj Filipsen
  */
 public class SocialWorker extends User implements ISocialWorker {
 
@@ -23,10 +23,27 @@ public class SocialWorker extends User implements ISocialWorker {
      */
     private Set<Inquiry> inquiries;
 
-    private Set<Citizen> citizens;
+    /**
+     * A static final integer for SocialWorker. The integer is unique from other
+     * subclasses of User.
+     */
     private static final int ROLE = 1;
+
+    /**
+     * An ID which makes sure that problems won't occure with binary fles when
+     * using Serilization.
+     */
     private static final long serialVersionUID = 1L;
 
+    /**
+     * A Constructor used for creating a SocialWorker.
+     *
+     * @param name the social worker's name.
+     * @param id the social worker's ID.
+     * @param username the social worker's username.
+     * @param password the social worker's password.
+     * @param email the social worker's email.
+     */
     public SocialWorker(String name, String id, String username, String password, String email) {
         super(name, id, username, password, email);
         this.cases = new HashSet<>();
@@ -86,33 +103,17 @@ public class SocialWorker extends User implements ISocialWorker {
         }
     }
 
-//    public boolean removeCase(Case c) {
-//        try {
-//            if (this.cases.contains(c)) {
-//                this.cases.remove(c);
-//                return true;
-//            }
-//        } catch (NullPointerException ex) {
-//        }
-//        return false;
-//    }
-//
-//    public boolean removeInquiry(Inquiry inq) {
-//        try {
-//            if (this.inquiries.contains(inq)) {
-//                this.inquiries.remove(inq);
-//                return true;
-//            } else {
-//            }
-//        } catch (NullPointerException ex) {
-//        }
-//        return false;
-//    }
     @Override
     public int getRole() {
         return 1;
     }
 
+    /**
+     * A static method that returns the integer representing the role of
+     * SocialWorker.
+     *
+     * @return the role of a SocialWorker.
+     */
     public static int getSWRole() {
         return ROLE;
     }

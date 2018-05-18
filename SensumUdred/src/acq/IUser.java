@@ -47,7 +47,7 @@ public interface IUser {
     public String getEmail();
 
     /**
-     * Returns an integer representing the User's role.
+     * Returns an integer representing the user's role.
      *
      * @return the user's role.
      */
