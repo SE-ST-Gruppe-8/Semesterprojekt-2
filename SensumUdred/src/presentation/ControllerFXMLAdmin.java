@@ -10,6 +10,7 @@ import acq.IPresentation;
 import acq.IUser;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -103,6 +104,7 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
     public void openUI() {
         loginInfoLabelAdmin.setText("Logget ind som: " + ib.getActiveUser().getName());
         updateUserList();
+        updateLogTextArea();
     }
 
     @FXML
@@ -205,6 +207,18 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
     @FXML
     private void UpdateListAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void updateLogButtonAction(ActionEvent event) {
+        updateLogTextArea();
+    }
+
+    private void updateLogTextArea() {
+        List<String> logList = ib.getLog();
+        for (String s : logList) {
+            logTextArea.appendText(s + "\n");
+        }
     }
 
 }

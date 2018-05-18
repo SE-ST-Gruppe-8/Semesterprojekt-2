@@ -158,7 +158,7 @@ public class DataFacade implements IData {
 
     @Override
     public List<String> getLog() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dbm.getLog();
     }
 
 }
