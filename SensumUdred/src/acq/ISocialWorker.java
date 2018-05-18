@@ -2,7 +2,6 @@ package acq;
 
 import business.Case;
 import business.Inquiry;
-import business.Reference;
 import java.util.Set;
 import javafx.collections.ObservableList;
 
@@ -26,21 +25,15 @@ public interface ISocialWorker extends IUser {
 
     public boolean deleteCase(ICase newCase);
 
-    public boolean createReference(String id, String socialInstance, String description);
-
     public boolean informCitizen(Case c);
 
     public Set<Case> getCases();
 
     public Set<Inquiry> getInquiries();
 
-    public Set<Reference> getReferences();
-
     public boolean addCase(Case c);
 
     public boolean addInquiry(Inquiry inq);
-
-    public boolean addReference(Reference ref);
 
 //    public boolean removeCase(Case c);
 //

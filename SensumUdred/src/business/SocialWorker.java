@@ -22,11 +22,8 @@ public class SocialWorker extends User implements ISocialWorker {
      * A Set of inquiries which the social worker is responsible for.
      */
     private Set<Inquiry> inquiries;
-    /**
-     * A Set of references which the social worker is responsible for.
-     */
-    private Set<Reference> references;
 
+    private Set<Citizen> citizens;
     private static final int ROLE = 1;
     private static final long serialVersionUID = 1L;
 
@@ -34,7 +31,6 @@ public class SocialWorker extends User implements ISocialWorker {
         super(name, id, username, password, email);
         this.cases = new HashSet<>();
         this.inquiries = new HashSet<>();
-        this.references = new HashSet<>();
     }
 
     @Override
@@ -55,12 +51,6 @@ public class SocialWorker extends User implements ISocialWorker {
     }
 
     @Override
-    public boolean createReference(String id, String socialInstance, String description) {
-        // TODO
-        return false;
-    }
-
-    @Override
     public boolean informCitizen(Case c) {
         // TODO
         return false;
@@ -77,11 +67,6 @@ public class SocialWorker extends User implements ISocialWorker {
     }
 
     @Override
-    public Set<Reference> getReferences() {
-        return this.references;
-    }
-
-    @Override
     public boolean addCase(Case c) {
         try {
             this.cases.add(c);
@@ -95,16 +80,6 @@ public class SocialWorker extends User implements ISocialWorker {
     public boolean addInquiry(Inquiry inq) {
         try {
             this.inquiries.add(inq);
-            return true;
-        } catch (NullPointerException ex) {
-            return false;
-        }
-    }
-
-    @Override
-    public boolean addReference(Reference ref) {
-        try {
-            this.references.add(ref);
             return true;
         } catch (NullPointerException ex) {
             return false;
@@ -128,17 +103,6 @@ public class SocialWorker extends User implements ISocialWorker {
 //                this.inquiries.remove(inq);
 //                return true;
 //            } else {
-//            }
-//        } catch (NullPointerException ex) {
-//        }
-//        return false;
-//    }
-//
-//    public boolean removeReference(Reference ref) {
-//        try {
-//            if (this.references.contains(ref)) {
-//                this.references.remove(ref);
-//                return true;
 //            }
 //        } catch (NullPointerException ex) {
 //        }

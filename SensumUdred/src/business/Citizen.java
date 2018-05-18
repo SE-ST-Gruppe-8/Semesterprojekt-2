@@ -18,7 +18,6 @@ public class Citizen implements ICitizen, Serializable{
     private String id;
     private String needs;
     private Case citizenCase;
-    private Reference reference;
     private Inquiry inquiry;
     private static final long serialVersionUID = 1L;
 
@@ -27,7 +26,6 @@ public class Citizen implements ICitizen, Serializable{
         this.id = id;
         this.needs = needs;
         this.citizenCase = null;
-        this.reference = null;
         this.inquiry = null;
     }
 
@@ -46,7 +44,6 @@ public class Citizen implements ICitizen, Serializable{
         return needs;
     }
     
-    
     @Override
     public void setNeeds(String needs){
         this.needs=needs;
@@ -62,15 +59,6 @@ public class Citizen implements ICitizen, Serializable{
         this.citizenCase = citizenCase;
     }
 
-    @Override
-    public Reference getReference() {
-        return reference;
-    }
-
-    @Override
-    public void setReference(Reference reference) {
-        this.reference = reference;
-    }
     @Override
     public IInquiry getInquiry() {
         return (IInquiry) inquiry;

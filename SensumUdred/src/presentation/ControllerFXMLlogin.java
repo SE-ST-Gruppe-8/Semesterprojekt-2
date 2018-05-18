@@ -54,9 +54,14 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-//        ib = PresentationFacade.getIData().getIBusiness();
     }
 
+    /**
+     * Handlemethod for login 
+     * 
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void loginButtonAction(ActionEvent event) throws IOException {
         try {
@@ -64,11 +69,9 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
             if (iscorrect) {
 //                loginInfoLabel.setText("Succesfully logged in as: " + ib.getActiveUser().getName());
                 if (ib.getRole() == ib.getSocialWorkerRoleInt()) {
-//                fxmlString = "FXMLAdmin.fxml";
                     fxmlString = "FXMLSocialWorker.fxml";
 
                 } else if (ib.getRole() == ib.getAdminRoleInt()) {
-//                fxmlString = "FXMLSocialWorker.fxml";
                     fxmlString = "FXMLAdmin.fxml";
                 }
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlString));
