@@ -31,6 +31,9 @@ import javafx.stage.Stage;
  */
 public class ControllerFXMLlogin implements Initializable, IPresentation {
 
+    /**
+     * 
+     */
     private IBusiness ib;
     private String fxmlString;
 
@@ -57,21 +60,25 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
     }
 
     /**
-     * Handlemethod for login 
-     * 
+     * Handlemethod for login if you login as SocialWorker, you will be directed
+     * to SocialWorker page if you login as Admin, you will be directed to Admin
+     * page
+     *
+     * Message is shown if you enter wrong input
+     *
      * @param event
-     * @throws IOException 
+     * @throws IOException
      */
     @FXML
     private void loginButtonAction(ActionEvent event) throws IOException {
         try {
             boolean iscorrect = ib.validateUser(loginUsernameTextField.getText(), loginPasswordTextField.getText());
             if (iscorrect) {
-//                loginInfoLabel.setText("Succesfully logged in as: " + ib.getActiveUser().getName());
                 if (ib.getRole() == ib.getSocialWorkerRoleInt()) {
                     fxmlString = "FXMLSocialWorker.fxml";
 
-                } else if (ib.getRole() == ib.getAdminRoleInt()) {
+                }
+                else if (ib.getRole() == ib.getAdminRoleInt()) {
                     fxmlString = "FXMLAdmin.fxml";
                 }
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlString));
@@ -91,7 +98,8 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
                 window.setHeight(430);
                 window.setScene(scene2);
                 window.show();
-            } else {
+            }
+            else {
                 loginInfoLabel.setText("Forkert input");
             }
         } catch (NullPointerException ex) {
@@ -101,17 +109,30 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
         }
     }
 
+    /**
+     * Method for injecting businesslogic into this controller
+     *
+     * @param businessFacade
+     */
     @Override
     public void injectBusiness(IBusiness businessFacade) {
         ib = businessFacade;
     }
 
+    /**
+     * Method to launch User Interface (is executed after initialize)
+     */
     @Override
     public void openUI() {
     }
 
+    /**
+     * Closing application when exit button is clicked
+     * @param event 
+     */
     @FXML
     private void exitButtonAction(ActionEvent event) {
         Platform.exit();
     }
+
 }

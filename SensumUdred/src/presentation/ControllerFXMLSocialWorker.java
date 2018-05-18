@@ -81,6 +81,12 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     @FXML
     private Label inquiryLabel;
 
+    /**
+     * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -94,50 +100,13 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 //        updateInquiryList();
     }
 
-    public void updateCaseList() {
-        if (ib.getCases() != null) {
-            caseListView.setItems(ib.getCases());
-        }
-    }
-
-    @FXML
-    private void createCaseAction(ActionEvent event) {
-
-        updateCaseList();
-        if (inquiryListView1.getSelectionModel().getSelectedItem() != null) {
-            if (inquiryListView1.getSelectionModel().getSelectedItem().getCitizen().getCase() == null) {
-                ab.displayCaseCreation("Opret sag", ib, (ICitizen) inquiryListView1.getSelectionModel().getSelectedItem().getCitizen());
-            } else {
-                caseLabel.setText("Denne henvendelse har allerede en sag");
-            }
-        } else {
-            caseLabel.setText("Vælg en borger fra listen over borgerer");
-        }
-    }
-
-    @FXML
-    private void DeleteCaseAction(ActionEvent event) {
-        if (caseListView.getSelectionModel().getSelectedItem() != null) {
-            ib.deleteCase(caseListView.getSelectionModel().getSelectedItem());
-        } else {
-            caseLabel.setText("Vælg en sag fra listen over sager");
-        }
-    }
-
-    @Override
-    public void injectBusiness(IBusiness businessFacade) {
-        ib = businessFacade;
-    }
-
-    @Override
-    public void openUI() {
-        loginInfoLabelSW.setText("Logget ind som: " + ib.getActiveUser().getName());
-        ib.processStuff();
-        updateCitizenList();
-        updateCaseList();
-        updateInquiryList();
-    }
-
+    /**
+     * Handle method for button 'Log ud' When clicked closing current window and
+     * shows log in screen
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void logoutButtonAction(ActionEvent event) throws IOException {
         ib.logOutActiveUser();
@@ -161,12 +130,80 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         window.show();
     }
 
+    /**
+     * Handle method for button 'Opret sag'.Opens an alertbox, where case can be
+     * created for selected inquiry
+     *
+     * @param event
+     */
+    @FXML
+    private void createCaseAction(ActionEvent event) {
+
+        updateCaseList();
+        if (inquiryListView1.getSelectionModel().getSelectedItem() != null) {
+            if (inquiryListView1.getSelectionModel().getSelectedItem().getCitizen().getCase() == null) {
+                ab.displayCaseCreation("Opret sag", ib, (ICitizen) inquiryListView1.getSelectionModel().getSelectedItem().getCitizen());
+            }
+            else {
+                caseLabel.setText("Denne henvendelse har allerede en sag");
+            }
+        }
+        else {
+            caseLabel.setText("Vælg en borger fra listen over borgerer");
+        }
+    }
+
+    /**
+     * Handle method for button 'Slet sag'. Deletes selected case
+     *
+     * @param event
+     */
+    @FXML
+    private void DeleteCaseAction(ActionEvent event) {
+        if (caseListView.getSelectionModel().getSelectedItem() != null) {
+            ib.deleteCase(caseListView.getSelectionModel().getSelectedItem());
+        }
+        else {
+            caseLabel.setText("Vælg en sag fra listen over sager");
+        }
+    }
+
+    /**
+     * Handle method for button 'Opdatér liste' Calls method:
+     * updateCitizenList()
+     *
+     * @param event
+     */
+    @FXML
+    private void updateListAction(ActionEvent event) {
+        updateCitizenList();
+    }
+
+    /**
+     * Updates listview of cases in GUI
+     */
+    public void updateCaseList() {
+        if (ib.getCases() != null) {
+            caseListView.setItems(ib.getCases());
+        }
+    }
+
+    /**
+     * Handle method for button 'Opret borger' Creates citizen Opens an
+     * alertbox, where a citizen can be created
+     *
+     * @param event
+     */
     @FXML
     private void createCitizenAction(ActionEvent event) {
         ab.displayCitizenCreation("Opret borger", ib);
-
     }
 
+    /**
+     * Handle method for button 'Slet borger'. Deletes selected citizen
+     *
+     * @param event
+     */
     @FXML
     private void deleteCitizenAction(ActionEvent event) {
         if (citizenListView.getSelectionModel().getSelectedItem() != null) {
@@ -174,21 +211,39 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
             updateCitizenList();
             updateCaseList();
             updateInquiryList();
-        } else {
+        }
+        else {
             inquiryLabel.setText("Vælg en borger fra listen over borgerer");
         }
     }
 
+    /**
+     * Handle method for button 'Redigér borger'. Opens an alertbox, where
+     * selected citizen can be edited
+     *
+     * @param event
+     */
     @FXML
-    private void updateListAction(ActionEvent event) {
-        updateCitizenList();
+    private void editCitizenAction(ActionEvent event) {
+        if (citizenListView.getSelectionModel().getSelectedItem() != null) {
+            ab.displayCitizenEdit("Rediger Borger", ib, citizenListView.getSelectionModel().getSelectedItem());
+        }
+        else {
+            inquiryLabel.setText("Vælg en borger fra listen over borgerer");
+        }
     }
 
+    /**
+     * @deprecated @param event
+     */
     @FXML
     private void updateCaseListAction(ActionEvent event) {
 
     }
 
+    /**
+     * Method for updating list of citizens. Updates list of citizens
+     */
     public void updateCitizenList() {
         ib.processStuff();
         citizenListView.setItems(ib.getCitizen());
@@ -196,63 +251,112 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         updateCaseList();
     }
 
-    public void updateInquiryList() {
-        inquiriesListView.setItems(ib.getInquiries());
-        inquiryListView1.setItems(ib.getInquiries());
-    }
-
-    @FXML
-    private void deleteInquiryAction(ActionEvent event) {
-        if (inquiriesListView.getSelectionModel().getSelectedItem() != null) {
-            ib.deleteInquiry(inquiriesListView.getSelectionModel().getSelectedItem());
-        } else {
-            inquiryLabel.setText("Vælg en henvendelse fra listen over henvendelser");
-        }
-    }
-
-    @FXML
-    private void updateInquiryListAction(ActionEvent event) {
-        updateInquiryList();
-    }
-
+    /**
+     * Handle method for button 'Opret henvendelse'. Opens an alertbox, where
+     * inquiry can be created for selected citizen
+     *
+     * @param event
+     */
     @FXML
     private void createInquiryAction(ActionEvent event) {
         if (citizenListView.getSelectionModel().getSelectedItem() != null) {
             if (citizenListView.getSelectionModel().getSelectedItem().getInquiry() == null) {
                 ab.displayInquiryCreation("Opret henvendelse", ib, citizenListView.getSelectionModel().getSelectedItem());
-            } else {
+            }
+            else {
                 inquiryLabel.setText("Denne borger har allerede en henvendelse");
             }
-        } else {
+        }
+        else {
             inquiryLabel.setText("Vælg en borger fra listen over borgere");
         }
     }
 
+    /**
+     * Handle method for button 'Slet henvendelse'. Deletes selected inquiry
+     *
+     * @param event
+     */
     @FXML
-    private void editInquiryAction(ActionEvent event) {
+    private void deleteInquiryAction(ActionEvent event) {
         if (inquiriesListView.getSelectionModel().getSelectedItem() != null) {
-            ab.displayInquiryEdit("Rediger henvendelse", ib, inquiriesListView.getSelectionModel().getSelectedItem());
-        } else {
+            ib.deleteInquiry(inquiriesListView.getSelectionModel().getSelectedItem());
+        }
+        else {
             inquiryLabel.setText("Vælg en henvendelse fra listen over henvendelser");
         }
     }
 
+    /**
+     * Handle method for button 'Redigér henvendelse'. Opens an alertbox, where
+     * selected inquiry can be edited
+     *
+     * @param event
+     */
     @FXML
-    private void editCitizenAction(ActionEvent event) {
-        if (citizenListView.getSelectionModel().getSelectedItem() != null) {
-            ab.displayCitizenEdit("Rediger Borger", ib, citizenListView.getSelectionModel().getSelectedItem());
-        } else {
-            inquiryLabel.setText("Vælg en borger fra listen over borgerer");
+    private void editInquiryAction(ActionEvent event) {
+        if (inquiriesListView.getSelectionModel().getSelectedItem() != null) {
+            ab.displayInquiryEdit("Rediger henvendelse", ib, inquiriesListView.getSelectionModel().getSelectedItem());
+        }
+        else {
+            inquiryLabel.setText("Vælg en henvendelse fra listen over henvendelser");
         }
     }
 
+    /**
+     * Handle method for button 'Opdatér liste'. Calls: updateInquiryList()
+     *
+     * @param event
+     */
+    @FXML
+    private void updateInquiryListAction(ActionEvent event) {
+        updateInquiryList();
+    }
+
+    /**
+     * Method for updating list of inquiries. Updates list of inquiries
+     */
+    public void updateInquiryList() {
+        inquiriesListView.setItems(ib.getInquiries());
+        inquiryListView1.setItems(ib.getInquiries());
+    }
+
+    /**
+     * Handle method for button 'Redigér sag'.Opens an alertbox, where selected
+     * case can be edited
+     *
+     * @param event
+     */
     @FXML
     private void editCaseAction(ActionEvent event) {
         if (caseListView.getSelectionModel().getSelectedItem() != null) {
             ab.displayCaseEdit("Rediger borger", ib, caseListView.getSelectionModel().getSelectedItem());
-        } else {
+        }
+        else {
             caseLabel.setText("Vælg en sag fra listen over sager");
         }
+    }
+
+    /**
+     * Method for injecting businesslogic into this controller
+     *
+     * @param businessFacade
+     */
+    @Override
+    public void injectBusiness(IBusiness businessFacade) {
+        ib = businessFacade;
+    }
+
+    /**
+     * Method to launch User Interface (is executed after initialize)
+     */
+    @Override
+    public void openUI() {
+        loginInfoLabelSW.setText("Logget ind som: " + ib.getActiveUser().getName());
+        ib.processStuff();
+        updateCitizenList();
+        updateCaseList();
+        updateInquiryList();
     }
 
 }
