@@ -92,7 +92,7 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void injectData(IData dataLayer) {
         data = dataLayer;
-        security = new SecurityHandler(data, this);
+        security = new SecurityHandler(data);
         //tester(); //creates citizenList with inquires
     }
 

@@ -11,15 +11,21 @@ import java.util.Date;
  * @author Robin
  */
 public class SecurityHandler {
-
+    /**
+     * The active user in the system
+     */
     private User activeUser;
+    /**
+     * a reference to the dataFacade
+     */
     private IData data;
-    private BusinessFacade business;
-
-    public SecurityHandler(IData data, BusinessFacade businessFacade) {
+    
+    /**
+     * A constructor to create the securityHandler
+     * @param data the interface for the dataFacade
+     */
+    public SecurityHandler(IData data) {
         this.data = data;
-        this.business = businessFacade;
-//        activeUser = new SystemAdmin("brrt","brrt","brrt","brrt","brrt");
     }
 
     public void logDataToFile(String dataToBeLogged) {
