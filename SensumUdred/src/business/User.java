@@ -21,7 +21,7 @@ public abstract class User implements IUser, Serializable {
 
     /**
      *
-     * Constructor used for creating a User.
+     * A Constructor used for creating a User.
      *
      * @param name the name of the user.
      * @param id the user's ID.

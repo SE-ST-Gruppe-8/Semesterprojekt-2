@@ -9,34 +9,84 @@ import javafx.collections.ObservableList;
 
 /**
  *
- * @author Bruger
+ * @author Nikolaj Filipsen
  */
 public class BusinessFacade implements IBusiness {
 
+    /**
+     * The only allowed length of ID's for users and citizens.
+     */
     private static final int ID_LENGTH = 10;
 
+    /**
+     * The shortest allowed length of passwords for users.
+     */
     private static final int PASSWORD_MIN_LENGTH = 4;
+    /**
+     * The longest allowed length of passwords for users.
+     */
     private static final int PASSWORD_MAX_LENGTH = 16;
 
+    /**
+     * The shortest allowed length of usernames for users.
+     */
     private static final int USERNAME_MIN_LENGTH = 4;
+
+    /**
+     * The longest allowed length of usernames for users.
+     */
     private static final int USERNAME_MAX_LENGTH = 16;
 
+    /**
+     * The shortest allowed length of names for users and citizens.
+     */
     private static final int NAME_MIN_LENGTH = 3;
+
+    /**
+     * The longest allowed length of names for users and citizens.
+     */
     private static final int NAME_MAX_LENGTH = 100;
 
+    /**
+     * The longest allowed length of mails for users and citizens.
+     */
     private static final int MAIL_MAX_LENGTH = 50;
 
+    /**
+     * The data layer.
+     */
     private IData data;
 
+    /**
+     * A SecurityHandler.
+     */
     private SecurityHandler security;
 
+    /**
+     * A list of all IUser objects.
+     */
     private ObservableList<IUser> users;
 
+    /**
+     * A list of all IInquiry objects.
+     */
     private ObservableList<IInquiry> inquiries = FXCollections.observableArrayList();
 
+    /**
+     * A list of alle ICitizen objects.
+     */
     private ObservableList<ICitizen> citizens = FXCollections.observableArrayList();
 
+    /**
+     * A list of all ICase objects.
+     */
     private ObservableList<ICase> cases = FXCollections.observableArrayList();
+
+    @Override
+    public void injectData(IData dataLayer) {
+        data = dataLayer;
+        security = new SecurityHandler(data);
+    }
 
     @Override
     public ObservableList<ICase> getCases() {
@@ -46,10 +96,10 @@ public class BusinessFacade implements IBusiness {
     @Override
     public ObservableList<IUser> getUsers() {
         ArrayList<IUser> users = new ArrayList<>();
-        ////FileManager
+//          FileManager
 //          data.loadData(users, "users");
 //          return this.users = FXCollections.observableArrayList(users);
-        ////SQL
+//          SQL
         List<String[]> list = data.readUsers();
         for (String[] array : list) {
             User user = null;
@@ -75,37 +125,12 @@ public class BusinessFacade implements IBusiness {
         return this.inquiries;
     }
 
-    public BusinessFacade() {
-    }
-
     @Override
     public void logOutActiveUser() {
         security.logData("Logged out.");
         security.logOutActiveUser();
     }
 
-    /**
-     * A method to inject the data layer into the business layer
-     *
-     * @param dataLayer
-     */
-    @Override
-    public void injectData(IData dataLayer) {
-        data = dataLayer;
-        security = new SecurityHandler(data);
-        //tester(); //creates citizenList with inquires
-    }
-
-    /**
-     * a method to create a user in the system
-     *
-     * @param name name of the user
-     * @param id id of the user
-     * @param userName the username of the user
-     * @param password the password for the user
-     * @param email the email for the user
-     * @param type the type of user: 0 for SystemAdmin, 1 for SocialWorker
-     */
     @Override
     public void createUser(String name, String id, String userName, String password, String email, int type) {
         IUser user;
@@ -126,11 +151,6 @@ public class BusinessFacade implements IBusiness {
         }
     }
 
-    /**
-     * a method to delete a user from the system
-     *
-     * @param user
-     */
     @Override
     public void deleteUser(IUser user) {
         if (security.getActiveUser() instanceof SystemAdmin) {
@@ -143,13 +163,6 @@ public class BusinessFacade implements IBusiness {
         }
     }
 
-    /**
-     * a method to validate the username and password of a user
-     *
-     * @param username
-     * @param password
-     * @return
-     */
     @Override
     public boolean validateUser(String username, String password) {
         /*ArrayList<IUser> users = new ArrayList<>();
@@ -162,6 +175,7 @@ public class BusinessFacade implements IBusiness {
 
             return false;
         }*/
+
         String[] array = data.loadUser(username);
         array[3] = array[3].trim();
         password = password.trim();
@@ -186,16 +200,6 @@ public class BusinessFacade implements IBusiness {
         data.saveData(citizenList, "citizens");
     }
 
-//    public void tester() {
-//        ArrayList<ICitizen> citizenList = new ArrayList<>();
-//        for (int i = 1; i <= 10; i++) {
-//            citizenList.add(new Citizen("Citizen" + (i), String.valueOf(i), "needs" + i));
-//        }
-//        for (ICitizen c : citizenList) {
-//            c.createInquiry(String.valueOf(c.getId()), "origin" + c.getId(), true, "description");
-//        }
-//        data.saveCitizens(citizenList);
-//    }
     @Override
     public int getRole() {
         return security.getActiveUser().getRole();
@@ -214,9 +218,9 @@ public class BusinessFacade implements IBusiness {
 //                    c.setCase((Case) newCase);
 //                } else {
 //
-////                    cases.remove(c.getCase());
-////                    c.setCase((Case)newCase);
-////                    cases.add(newCase);
+//                    cases.remove(c.getCase());
+//                    c.setCase((Case)newCase);
+//                    cases.add(newCase);
 //                }
 //
 //                data.saveData((ArrayList<ICitizen>) citizenList.stream().collect(Collectors.toList()), "citizenList");
@@ -238,7 +242,6 @@ public class BusinessFacade implements IBusiness {
             c.setCase((Case) newCase);
             data.saveCase(newCase);
             security.logData("Created case with id: " + id);
-
         }
     }
 
@@ -253,12 +256,10 @@ public class BusinessFacade implements IBusiness {
             if (((SocialWorker) security.getActiveUser()).deleteCase(newCase)) {
                 security.logData("Deleted case " + newCase.toString());
                 cases.remove(newCase);
-
             } else {
                 System.out.println("Case did not exist");
             }
         }
-
     }
 
     /**
@@ -293,7 +294,6 @@ public class BusinessFacade implements IBusiness {
             } else {
                 System.out.println(s);
             }
-
         }
     }
 
@@ -304,7 +304,6 @@ public class BusinessFacade implements IBusiness {
             if (((SocialWorker) security.getActiveUser()).deleteCitizen(citizen, citizens)) {
                 security.logData("Deleted citizens: " + citizen.toString());
                 data.deleteCitizen(citizen);
-
             } else {
                 System.out.println(s);
             }
@@ -326,9 +325,9 @@ public class BusinessFacade implements IBusiness {
 //            }
 //
 //        }
+
         IInquiry inquiry;
         String s = "Error";
-
         int index = inquiries.indexOf(citizen.getInquiry());
 
         if (security.getActiveUser() instanceof SocialWorker) {
@@ -341,9 +340,7 @@ public class BusinessFacade implements IBusiness {
             } else {
                 System.out.println(s);
             }
-
         }
-
     }
 
     @Override
@@ -459,6 +456,13 @@ public class BusinessFacade implements IBusiness {
         return false;
     }
 
+    /**
+     * Returns an array of static final integers. The array contains: ID_LENGTH,
+     * PASSWORD_MIN_LENGTH, PASSWORD_MAX_LENGTH, USERNAME_MIN_LENGTH,
+     * USERNAME_MAX_LENGTH, NAME_MIN_LENGTH, NAME_MAX_LENGTH, MAIL_MAX_LENGTH.
+     *
+     * @return an array of static final integers.
+     */
     @Override
     public int[] getFinalInts() {
         return new int[]{ID_LENGTH, PASSWORD_MIN_LENGTH, PASSWORD_MAX_LENGTH, USERNAME_MIN_LENGTH,
