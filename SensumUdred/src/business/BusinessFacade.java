@@ -304,7 +304,7 @@ public class BusinessFacade implements IBusiness {
             if (((SocialWorker) security.getActiveUser()).deleteCitizen(citizen, citizens)) {
                 security.logData("Deleted citizens: " + citizen.toString());
                 data.deleteCitizen(citizen);
-                
+
             } else {
                 System.out.println(s);
             }
@@ -477,6 +477,7 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public void processStuff() {
+        clearLists();
         List<String[]> rawData = data.getCitizenData();
         for (String[] s : rawData) {
             Citizen c = new Citizen(s[1], s[0], s[2]);
