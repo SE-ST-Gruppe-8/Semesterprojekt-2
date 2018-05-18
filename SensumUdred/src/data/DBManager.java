@@ -266,7 +266,7 @@ public class DBManager {
     public void deleteCitizen(ICitizen citizen) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"citizen\" where id ='" + citizen.getId() + "'");
+            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"citizens\" where id ='" + citizen.getId() + "'");
         } catch (Exception ex) {
             System.out.println(ex);
         }
