@@ -36,6 +36,11 @@ public interface IBusiness {
 
     public void createCase(String id, String des, String process, ISocialWorker sw, ICitizen c);
 
+    /**
+     * A method to delete a user from the system.
+     *
+     * @param user the user who is to be deleted.
+     */
     public void deleteUser(IUser user);
 
     public boolean hasUniqueUserID(String id);

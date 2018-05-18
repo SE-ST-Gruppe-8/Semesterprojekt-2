@@ -16,7 +16,7 @@ public class SystemAdmin extends User {
     private static final int ROLE = 0;
 
     /**
-     * An ID which makes sure that problems won't occure with binary fles when
+     * An ID which makes sure that problems won't occure with binary files when
      * using Serilization.
      */
     private static final long serialVersionUID = 1L;
