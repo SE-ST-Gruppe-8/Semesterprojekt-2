@@ -14,13 +14,42 @@ import java.io.Serializable;
  * @author Bruger
  */
 public class Citizen implements ICitizen, Serializable{
+    /**
+     * the name of the citizen
+     */
     private String name;
+    
+    /**
+     * the id of the citizen
+     */
     private String id;
+    
+    /**
+     * the needs of the citizen
+     */
     private String needs;
+    
+    /**
+     * the case that belongs to the citizen
+     */
     private Case citizenCase;
+    
+    /**
+     * the inquiry that belongs to the citizen
+     */
     private Inquiry inquiry;
+    
+    /**
+     * An ID which makes sure that problems won't occure with binary files when using Serilization.
+     */
     private static final long serialVersionUID = 1L;
 
+    /**
+     * constructor for a citizen
+     * @param name the name of the citizen
+     * @param id the id of the citizen
+     * @param needs the needs of the citizen
+     */
     public Citizen(String name, String id, String needs) {
         this.name = name;
         this.id = id;
@@ -73,6 +102,10 @@ public class Citizen implements ICitizen, Serializable{
     public void setInquiry(Inquiry inquiry){
         this.inquiry = inquiry;
     }
+    /**
+     * the toString method that prints the name and the id for the citizen
+     * @return formatted text with the name and id of the citizen
+     */
     @Override
      public String toString(){
          return String.format("%-35s %-25s","Borgernavn: "+this.getName() , "BorgerID: " + this.id);
