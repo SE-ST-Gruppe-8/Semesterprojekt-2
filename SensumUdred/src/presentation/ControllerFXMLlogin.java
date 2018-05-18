@@ -20,7 +20,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -33,21 +32,16 @@ import javafx.stage.Stage;
 public class ControllerFXMLlogin implements Initializable, IPresentation {
 
     private IBusiness ib;
-
     private String fxmlString;
 
     @FXML
     private TextField loginUsernameTextField;
-
     @FXML
     private PasswordField loginPasswordTextField;
-
     @FXML
     private Label loginInfoLabel;
-
     @FXML
     private Button loginButton;
-
     @FXML
     private Button exitButton;
 
@@ -68,7 +62,7 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
         try {
             boolean iscorrect = ib.validateUser(loginUsernameTextField.getText(), loginPasswordTextField.getText());
             if (iscorrect) {
-                loginInfoLabel.setText("Succesfully logged in as: " + ib.getActiveUser().getName());
+//                loginInfoLabel.setText("Succesfully logged in as: " + ib.getActiveUser().getName());
                 if (ib.getRole() == ib.getSocialWorkerRoleInt()) {
 //                fxmlString = "FXMLAdmin.fxml";
                     fxmlString = "FXMLSocialWorker.fxml";
@@ -98,13 +92,14 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
                 loginInfoLabel.setText("Forkert input");
             }
         } catch (NullPointerException ex) {
+            ex.printStackTrace();
+            System.out.println(ex.getMessage());
             loginInfoLabel.setText("Forkert input");
         }
     }
 
     @Override
     public void injectBusiness(IBusiness businessFacade) {
-
         ib = businessFacade;
     }
 

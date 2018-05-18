@@ -10,8 +10,10 @@ import acq.IPresentation;
 import acq.IUser;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,6 +24,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
@@ -35,60 +38,48 @@ import javafx.stage.Stage;
 public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
     private IBusiness ib;
+    private boolean logUpdatedOnce;
 
     @FXML
     private Tab adminTab;
-
     @FXML
     private ListView<IUser> adminUserListView;
-
     @FXML
     private ToggleGroup createUserToggleGroup;
-
     @FXML
     private RadioButton createSocialWorkerRadioButton;
-
     @FXML
     private RadioButton createAdminRadioButton;
-
     @FXML
     private TextField adminUsernameTextField;
-
     @FXML
     private TextField adminFirstNameTextField;
-
     @FXML
     private TextField adminPasswordTextField;
-
     @FXML
     private TextField adminLastNameTextField;
-
     @FXML
     private TextField adminRepeatPasswordTextField;
-
     @FXML
     private TextField adminEmailTextField;
-
     @FXML
     private Button createUserButton;
-
     @FXML
     private Label adminInfoLabel;
-
     @FXML
     private Label loginInfoLabelAdmin;
-
     @FXML
     private Button deleteUserButton;
-
     @FXML
     private Button UpdateList;
-
     @FXML
     private TextField adminIdTextField;
-
     @FXML
     private Button logoutButtonSW;
+    @FXML
+    private Button UpdateLogButton;
+    @FXML
+    private TextArea logTextArea;
 
     /**
      * Initializes the controller class.
@@ -113,8 +104,9 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
     @Override
     public void openUI() {
-        loginInfoLabelAdmin.setText("Logged in as: " + ib.getActiveUser().getName());
+        loginInfoLabelAdmin.setText("Logget ind som: " + ib.getActiveUser().getName());
         updateUserList();
+        logUpdatedOnce = false;
     }
 
     @FXML
@@ -203,8 +195,8 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
         controller.injectBusiness(ib);
 
         Scene scene2 = new Scene(gridPane);
-        //Get Stage information
 
+        //Get Stage information
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setMinWidth(300);
         window.setMinHeight(200);
@@ -212,11 +204,30 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
         window.setHeight(300);
         window.setScene(scene2);
         window.show();
-
     }
 
     @FXML
     private void UpdateListAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void updateLogButtonAction(ActionEvent event) {
+        updateLogTextArea();
+    }
+
+    private void updateLogTextArea() {
+        List<String> logList = ib.getLog();
+        for (String s : logList) {
+            logTextArea.appendText(s + "\n");
+        }
+        logUpdatedOnce = true;
+    }
+
+    @FXML
+    private void logTabChosenEvent(Event event) {
+        if (!logUpdatedOnce) {
+            updateLogTextArea();
+        }
     }
 
 }

@@ -9,6 +9,8 @@ import acq.ICase;
 import acq.ICitizen;
 import acq.IInquiry;
 import acq.IUser;
+import business.Citizen;
+import business.Inquiry;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -16,8 +18,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -68,16 +68,73 @@ public class DBManager {
         }
     }
 
+    public void updateInquiry(IInquiry inquiry) {
+        String id = inquiry.getId();
+        String description = inquiry.getDescription();
+        String informed = Boolean.toString(inquiry.isCitizenInformed());
+        String origin = inquiry.getOrigin();
+        String citizenid = inquiry.getCitizen().getId();
+
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("UPDATE inquiries set inquiryid = '" + id + "', inquirydescription = '"
+                    + description + "', iscitizeninformed = '"
+                    + informed + "', origin = '" + origin + "' where inquiryid = '" + id + "';\n"
+                    + " Update hasinquiry set citizenid = '" + citizenid + "',  inquiryid = '" + id
+                    + "' where inquiryid = '" + id + "';");
+            rs1.close();
+            st1.close();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
+
+    public void updateCitizen(ICitizen citizen) {
+        String id = citizen.getId();
+        String name = citizen.getName();
+        String needs = citizen.getNeeds();
+
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("UPDATE citizens set needs = '" + needs + "' where id = '" + id + "';\n");
+            rs1.close();
+            st1.close();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
+
+    public void updateCase(ICase casen) {
+        String id = casen.getId();
+        String description = casen.getDescription();
+        String process = casen.getProcess();
+        String citizenid = casen.getCitizen().getId();
+
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("UPDATE cases set caseid = '" + id + "', casedescription = '"
+                    + description + "', process = '" + process + "' where caseid = '" + id + "';\n"
+                    + " Update hascase set citizenid = '" + citizenid + "',  caseid = '" + id
+                    + "' where caseid = '" + id + "';");
+            rs1.close();
+            st1.close();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
+
     public List<String[]> getEverything() {
         String[] columns = {"id", "name", "needs", "inquiryid", "inquirydescription", "iscitizeninformed", "origin",
             "caseid", "casedescription", "process"};
         ArrayList<String[]> data = new ArrayList<>();
+
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("SELECT citizens.*, inquiries.*, cases.*\n"
                     + "FROM citizens\n"
                     + "LEFT JOIN inquiries ON inquiries.inquiryid = (SELECT inquiryid FROM hasinquiry WHERE citizenid = citizens.id)\n"
-                    + "LEFT JOIN cases ON cases.caseid = (SELECT caseid FROM hascase WHERE citizenid = citizens.id)");
+                    + "LEFT JOIN cases ON cases.caseid = (SELECT caseid FROM hascase WHERE citizenid = citizens.id)"
+                    + "");
             while (rs1.next()) {
                 String[] s = new String[10];
                 for (int i = 0; i < s.length; i++) {
@@ -98,7 +155,7 @@ public class DBManager {
         String id = casen.getId();
         String description = casen.getDescription();
         String process = casen.getProcess();
-        String citizenid = casen.getCitizen().toString();
+        String citizenid = casen.getCitizen().getId();
         String data = "('" + id + "','" + description + "','" + process + "');";
 
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
@@ -121,7 +178,6 @@ public class DBManager {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("insert into citizens values" + data);
-
             rs1.close();
             st1.close();
         } catch (Exception ex) {
@@ -131,7 +187,6 @@ public class DBManager {
 
     public List<String[]> loadUsers() {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
-
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("select * from \"public\".\"users\"");
             List<String[]> list = new ArrayList<>();
@@ -176,30 +231,41 @@ public class DBManager {
         }
     }
 
-    public boolean deleteUser(IUser user) {
+    public void deleteUser(IUser user) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
-
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("delete from \"public\".\"users\" where username ='" + user.getUsername() + "'");
-
-            return true;
         } catch (Exception ex) {
             System.out.println(ex);
-            return false;
         }
     }
-    
-        public boolean deleteInquiry(IInquiry inquiry) {
+
+    public void deleteInquiry(IInquiry inquiry) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
-
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"inquiries\" where inquiryid ='" + inquiry.getId()+ "'");
-            System.out.println("****" + inquiry.getId());
-
-            return true;
+            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"inquiries\" where inquiryid ='" + inquiry.getId() + "'");
         } catch (Exception ex) {
             System.out.println(ex);
-            return false;
+        }
+    }
+
+    public void deleteCase(ICase theCase) {
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"cases\" where caseid ='" + theCase.getId() + "'");
+
+        } catch (Exception ex) {
+            System.out.println(ex);
+
+        }
+    }
+
+    public void deleteCitizen(ICitizen citizen) {
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"citizens\" where id ='" + citizen.getId() + "'");
+        } catch (Exception ex) {
+            System.out.println(ex);
         }
     }
 
@@ -213,7 +279,6 @@ public class DBManager {
             } else {
                 return true;
             }
-
         } catch (Exception ex) {
             System.out.println(ex);
             return false;
@@ -230,7 +295,6 @@ public class DBManager {
             } else {
                 return true;
             }
-
         } catch (Exception ex) {
             System.out.println(ex);
             return false;
@@ -246,7 +310,6 @@ public class DBManager {
                 return false;
             }
             return true;
-
         } catch (Exception ex) {
             System.out.println(ex);
             return false;
@@ -266,15 +329,34 @@ public class DBManager {
         }
     }
 
+    public List<String> getLog() {
+        ArrayList<String> list = new ArrayList();
+
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("select * from logdata");
+            while (rs1.next()) {
+
+                String s = "";
+                s = String.format("%-32s %-20s %-220s",rs1.getString("datelogged"), rs1.getString("username"), rs1.getString("dataline"));
+//                s = rs1.getString("datelogged") + " " + rs1.getString("username") + " " + rs1.getString("dataline");
+                list.add(s);
+            }
+            rs1.close();
+            st1.close();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return list;
+    }
+
     public static void main(String[] args) {
-//        DBManager dbm = new DBManager();
+        DBManager dbm = new DBManager();
 //        IUser u = new SocialWorker("Frederik Fredriksen", "0011223344", "frede", "frede", "frede@gmail.com");
 //        dbm.saveUser(u);
 //        dbm.loadUsers();
 //        String id = "0";
 //        dbm.hasUniqueUserID(id);
-//          ICitizen c = new Citizen("bob", "bygger", "noget");
-//          dbm.saveCitizen(c);
     }
 
 }

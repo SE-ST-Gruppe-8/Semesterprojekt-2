@@ -13,7 +13,6 @@ import acq.IInquiry;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,28 +32,18 @@ import javafx.stage.Stage;
  */
 public class ControllerFXMLSocialWorker implements Initializable, IPresentation {
 
+    private PresentationFacade pf;
     private IBusiness ib;
-
     private AlertBox ab;
 
     @FXML
     private ListView<ICase> caseListView;
-
-    private Tab socialTab;
-
-    private Tab adminTab;
-
     @FXML
     private Label loginInfoLabelSW;
-
-    private PresentationFacade pf;
-
     @FXML
     private Tab casesTab;
-
     @FXML
     private Tab inquiriesTab;
-
     @FXML
     private Button logoutButtonSW;
     @FXML
@@ -119,21 +108,19 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
             if (inquiryListView1.getSelectionModel().getSelectedItem().getCitizen().getCase() == null) {
                 ab.displayCaseCreation("Opret sag", ib, (ICitizen) inquiryListView1.getSelectionModel().getSelectedItem().getCitizen());
             } else {
-                caseLabel.setText("denne henvendelse har allerede en sag");
+                caseLabel.setText("Denne henvendelse har allerede en sag");
             }
         } else {
-            caseLabel.setText("vælg en borger fra listen over borgerer");
+            caseLabel.setText("Vælg en borger fra listen over borgerer");
         }
-        updateCaseList();
     }
 
     @FXML
     private void DeleteCaseAction(ActionEvent event) {
         if (caseListView.getSelectionModel().getSelectedItem() != null) {
             ib.deleteCase(caseListView.getSelectionModel().getSelectedItem());
-            updateCaseList();
         } else {
-            caseLabel.setText("vælg en sag fra listen over sager");
+            caseLabel.setText("Vælg en sag fra listen over sager");
         }
     }
 
@@ -144,8 +131,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
     @Override
     public void openUI() {
-        loginInfoLabelSW.setText("Logged in as: " + ib.getActiveUser().getName());
-        System.out.println("Logged in as: " + ib.getActiveUser().getName());
+        loginInfoLabelSW.setText("Logget ind som: " + ib.getActiveUser().getName());
         ib.processStuff();
         updateCitizenList();
         updateCaseList();
@@ -178,7 +164,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     @FXML
     private void createCitizenAction(ActionEvent event) {
         ab.displayCitizenCreation("Opret borger", ib);
-        updateCitizenList();
+
     }
 
     @FXML
@@ -189,26 +175,25 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
             updateCaseList();
             updateInquiryList();
         } else {
-            inquiryLabel.setText("Vælg en borger over listen over borgerer");
+            inquiryLabel.setText("Vælg en borger fra listen over borgerer");
         }
     }
 
     @FXML
-    private void updateCitizenListAction(ActionEvent event) {
+    private void updateListAction(ActionEvent event) {
         updateCitizenList();
     }
 
     @FXML
     private void updateCaseListAction(ActionEvent event) {
-        updateCaseList();
+
     }
 
     public void updateCitizenList() {
-        if (ib.getCitizen() != null) {
-            ObservableList<ICitizen> list = ib.getCitizen();
-            citizenListView.setItems(list);
-            updateInquiryList();
-        }
+        ib.processStuff();
+        citizenListView.setItems(ib.getCitizen());
+        updateInquiryList();
+        updateCaseList();
     }
 
     public void updateInquiryList() {
@@ -220,7 +205,6 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     private void deleteInquiryAction(ActionEvent event) {
         if (inquiriesListView.getSelectionModel().getSelectedItem() != null) {
             ib.deleteInquiry(inquiriesListView.getSelectionModel().getSelectedItem());
-            updateInquiryList();
         } else {
             inquiryLabel.setText("Vælg en henvendelse fra listen over henvendelser");
         }
@@ -229,7 +213,6 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     @FXML
     private void updateInquiryListAction(ActionEvent event) {
         updateInquiryList();
-
     }
 
     @FXML
@@ -238,12 +221,10 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
             if (citizenListView.getSelectionModel().getSelectedItem().getInquiry() == null) {
                 ab.displayInquiryCreation("Opret henvendelse", ib, citizenListView.getSelectionModel().getSelectedItem());
             } else {
-                inquiryLabel.setText("denne borger har allerede en henvendelse");
-                ab.displayInquiryCreation("Opret henvendelse", ib, citizenListView.getSelectionModel().getSelectedItem());
+                inquiryLabel.setText("Denne borger har allerede en henvendelse");
             }
-            updateInquiryList();
         } else {
-            inquiryLabel.setText("Vælg en henvendelse fra listen over henvendelser");
+            inquiryLabel.setText("Vælg en borger fra listen over borgere");
         }
     }
 
@@ -254,8 +235,6 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         } else {
             inquiryLabel.setText("Vælg en henvendelse fra listen over henvendelser");
         }
-        updateCitizenList();
-
     }
 
     @FXML
@@ -263,10 +242,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         if (citizenListView.getSelectionModel().getSelectedItem() != null) {
             ab.displayCitizenEdit("Rediger Borger", ib, citizenListView.getSelectionModel().getSelectedItem());
         } else {
-            inquiryLabel.setText("vælg en borger fra listen over borgerer");
+            inquiryLabel.setText("Vælg en borger fra listen over borgerer");
         }
-        updateCaseList();
-        updateCitizenList();
     }
 
     @FXML
@@ -274,9 +251,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         if (caseListView.getSelectionModel().getSelectedItem() != null) {
             ab.displayCaseEdit("Rediger borger", ib, caseListView.getSelectionModel().getSelectedItem());
         } else {
-            caseLabel.setText("vælg en sag fra listen over sager");
+            caseLabel.setText("Vælg en sag fra listen over sager");
         }
-        updateCaseList();
     }
 
 }

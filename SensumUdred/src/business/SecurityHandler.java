@@ -1,6 +1,5 @@
 package business;
 
-import acq.IBusiness;
 import acq.IData;
 import acq.IUser;
 import java.util.ArrayList;
@@ -47,10 +46,9 @@ public class SecurityHandler {
                 this.activeUser = (SystemAdmin) user;
                 break;
             default:
-                System.out.println("error in user role");
+                System.out.println("Error in user role");
                 break;
         }
-
     }
 
     public void logOutActiveUser() {
@@ -60,7 +58,6 @@ public class SecurityHandler {
     public boolean validateUserLogin(ArrayList<IUser> users, String username, String password) {
         //if the login is true - find the user that matches the login info and set that user to activeUser
         for (IUser u : users) {
-            
             if (u.getUsername().equals(username)) {
                 if (u.getPassword().equals(password)) {
                     setActiveUser(u);

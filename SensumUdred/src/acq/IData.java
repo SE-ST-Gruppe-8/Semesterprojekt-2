@@ -36,6 +36,10 @@ public interface IData {
     public void deleteUser(IUser user);
     
     public void deleteInquiry(IInquiry inquiry);
+    
+    public void deleteCase(ICase theCase);
+    
+    public void deleteCitizen(ICitizen citizen);
 
     public void logData(String logData);
 
@@ -51,6 +55,14 @@ public interface IData {
     
     void saveCitizen(ICitizen citizen);
 
+    void updateInquiry(IInquiry inquiry);
+    
+    void updateCase(ICase casen);
+    
+    void updateCitizen(ICitizen citizen);
+    
+    public List<String> getLog();
+    
 //    ArrayList<ICitizen> getCitizens();
 //    
 //    public void saveCitizens(ArrayList<ICitizen> list);

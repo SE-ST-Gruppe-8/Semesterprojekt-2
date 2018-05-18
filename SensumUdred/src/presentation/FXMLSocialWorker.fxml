@@ -62,7 +62,7 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                     </Button>
-                                    <Button fx:id="updateCitizenListButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateCitizenListAction" prefWidth="100.0" text="Opdater liste" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Button fx:id="updateCitizenListButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateListAction" prefWidth="100.0" text="Opdatér liste" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
@@ -109,7 +109,7 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                     </Button>
-                                    <Button fx:id="updateInquiryListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateInquiryListAction" prefWidth="100.0" text="Opdater liste" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Button fx:id="updateInquiryListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateListAction" prefWidth="100.0" text="Opdatér liste" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
@@ -209,7 +209,7 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                     </Button>
-                                    <Button fx:id="updateCaseListButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateCaseListAction" prefWidth="100.0" text="Opdater liste" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Button fx:id="updateCaseListButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateListAction" prefWidth="100.0" text="Opdater liste" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
