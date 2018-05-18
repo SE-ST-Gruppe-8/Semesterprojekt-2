@@ -98,8 +98,7 @@ public class DBManager {
         
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("UPDATE citizens set id = '" + id + "', name = '" 
-                + name + "', needs = '" + needs + "' where id = '" + id + "';\n");
+            ResultSet rs1 = st1.executeQuery("UPDATE citizens set needs = '" + needs + "' where id = '" + id + "';\n");
             rs1.close();
             st1.close();
         } catch (Exception ex) {
@@ -333,6 +332,27 @@ public class DBManager {
             System.out.println(ex);
         }
     }
+    
+        public List<String> getLog() {
+        ArrayList<String> list = new ArrayList();
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("select * from logdata");
+
+            while (rs1.next()) {
+
+                String s = "";
+                s = rs1.getString("datalogged") + " " + rs1.getString("username") + " " + rs1.getString("dataline");
+                list.add(s);
+            }
+            rs1.close();
+            st1.close();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return list;
+    }
+
 
     public static void main(String[] args) {
         DBManager dbm = new DBManager();
