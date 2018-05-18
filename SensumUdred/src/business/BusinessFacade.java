@@ -489,7 +489,7 @@ public class BusinessFacade implements IBusiness {
                 i = new Inquiry(s[3], s[6], Boolean.getBoolean(s[5]), c, s[4]);
                 inquiries.add(i);
             }
-            if (s[7] == null || s[3].equals("null")) {
+            if (s[7] == null || s[7].equals("null")) {
                 ca = null;
             } else {
                 ca = new Case(s[7], s[8], s[9], (SocialWorker) security.getActiveUser(), c);
