@@ -59,11 +59,14 @@ public class Inquiry implements IInquiry, Serializable {
         this.description = description;
     }
 
+    @Override
     public String toString() {
         if (isCitizenInformed) {
-            return "HendvendelsesID: " + this.id + "\tBorger: " + citizen.getName() + "\tBorgeren er informeret om henvendelsen";
+            return String.format("%-30s %-35s %-40s", "HendvendelsesID: " + this.id , "Borger: " + citizen.getName() , "Borgeren er informeret om henvendelsen");
+//            return "HendvendelsesID: " + this.id + "\tBorger: " + citizen.getName() + "\tBorgeren er informeret om henvendelsen";
         } else {
-            return "HendvendelsesID: " + this.id + "\tBorger: " + citizen.getName() + "\tBorgeren er ikke informeret om henvendelsen";
+            return String.format("%-30s %-30s %-45s", "HendvendelsesID: " + this.id , "Borger: " + citizen.getName() , "Borgeren er ikke informeret om henvendelsen");
+//            return "HendvendelsesID: " + this.id + "\tBorger: " + citizen.getName() + "\tBorgeren er ikke informeret om henvendelsen";
         }
     }
 

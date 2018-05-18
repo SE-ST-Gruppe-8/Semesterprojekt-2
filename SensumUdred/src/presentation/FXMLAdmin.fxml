@@ -135,7 +135,7 @@
                               </GridPane>
                            </children>
                         </VBox>
-                        <ListView fx:id="adminUserListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="77.0" prefWidth="262.0" styleClass="user-list" stylesheets="@Style.css" GridPane.columnIndex="3" GridPane.columnSpan="4" GridPane.rowSpan="2">
+                        <ListView fx:id="adminUserListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="77.0" prefWidth="262.0" styleClass="pretty-list" stylesheets="@Style.css" GridPane.columnIndex="3" GridPane.columnSpan="4" GridPane.rowSpan="2">
                            <GridPane.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </GridPane.margin>
