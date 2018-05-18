@@ -337,7 +337,8 @@ public class DBManager {
             while (rs1.next()) {
 
                 String s = "";
-                s = rs1.getString("datelogged") + " " + rs1.getString("username") + " " + rs1.getString("dataline");
+                s = String.format("%-32s %-20s %-220s",rs1.getString("datelogged"), rs1.getString("username"), rs1.getString("dataline"));
+//                s = rs1.getString("datelogged") + " " + rs1.getString("username") + " " + rs1.getString("dataline");
                 list.add(s);
             }
             rs1.close();
