@@ -16,7 +16,6 @@ public class SocialWorker extends User implements ISocialWorker {
 
     private Set<Case> cases;
     private Set<Inquiry> inquiries;
-    private Set<Reference> references;
     private Set<Citizen> citizens;
     private static final int ROLE = 1;
     private static final long serialVersionUID = 1L;
@@ -25,7 +24,6 @@ public class SocialWorker extends User implements ISocialWorker {
         super(name, id, username, password, email);
         this.cases = new HashSet<>();
         this.inquiries = new HashSet<>();
-        this.references = new HashSet<>();
     }
 
     @Override
@@ -46,12 +44,6 @@ public class SocialWorker extends User implements ISocialWorker {
     }
 
     @Override
-    public boolean createReference(String id, String socialInstance, String description) {
-        // TODO
-        return false;
-    }
-
-    @Override
     public boolean informCitizen(Case c) {
         // TODO
         return false;
@@ -65,11 +57,6 @@ public class SocialWorker extends User implements ISocialWorker {
     @Override
     public Set<Inquiry> getInquiries() {
         return this.inquiries;
-    }
-
-    @Override
-    public Set<Reference> getReferences() {
-        return this.references;
     }
 
     @Override
@@ -92,15 +79,6 @@ public class SocialWorker extends User implements ISocialWorker {
         }
     }
 
-    @Override
-    public boolean addReference(Reference ref) {
-        try {
-            this.references.add(ref);
-            return true;
-        } catch (NullPointerException ex) {
-            return false;
-        }
-    }
 
 //    public boolean removeCase(Case c) {
 //        try {
@@ -124,17 +102,7 @@ public class SocialWorker extends User implements ISocialWorker {
 //        }
 //        return false;
 //    }
-//
-//    public boolean removeReference(Reference ref) {
-//        try {
-//            if (this.references.contains(ref)) {
-//                this.references.remove(ref);
-//                return true;
-//            }
-//        } catch (NullPointerException ex) {
-//        }
-//        return false;
-//    }
+
 
     @Override
     public int getRole() {
