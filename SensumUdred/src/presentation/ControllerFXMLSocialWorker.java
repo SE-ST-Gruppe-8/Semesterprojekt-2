@@ -13,7 +13,6 @@ import acq.IInquiry;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -181,7 +180,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     }
 
     @FXML
-    private void updateCitizenListAction(ActionEvent event) {
+    private void updateListAction(ActionEvent event) {
         updateCitizenList();
     }
 
