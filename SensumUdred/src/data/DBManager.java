@@ -232,39 +232,47 @@ public class DBManager {
         }
     }
 
-    public boolean deleteUser(IUser user) {
+    public void deleteUser(IUser user) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("delete from \"public\".\"users\" where username ='" + user.getUsername() + "'");
-            return true;
         } catch (Exception ex) {
             System.out.println(ex);
-            return false;
         }
     }
 
-    public boolean deleteInquiry(IInquiry inquiry) {
+    public void deleteInquiry(IInquiry inquiry) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("delete from \"public\".\"inquiries\" where inquiryid ='" + inquiry.getId() + "'");
-            return true;
         } catch (Exception ex) {
             System.out.println(ex);
-            return false;
         }
     }
+    
+    
 
-    public boolean deleteCase(ICase theCase) {
+    public void deleteCase(ICase theCase) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("delete from \"public\".\"cases\" where caseid ='" + theCase.getId() + "'");
-            return true;
+
         } catch (Exception ex) {
             System.out.println(ex);
-            return false;
+
         }
     }
 
+    public void deleteCitizen(ICitizen citizen) {
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"citizens\" where id ='" + citizen.getId() + "'");
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
+
+    
     public boolean hasUniqueUserID(String id) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
@@ -324,6 +332,27 @@ public class DBManager {
             System.out.println(ex);
         }
     }
+    
+        public List<String> getLog() {
+        ArrayList<String> list = new ArrayList();
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("select * from logdata");
+
+            while (rs1.next()) {
+
+                String s = "";
+                s = rs1.getString("datalogged") + " " + rs1.getString("username") + " " + rs1.getString("dataline");
+                list.add(s);
+            }
+            rs1.close();
+            st1.close();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return list;
+    }
+
 
     public static void main(String[] args) {
         DBManager dbm = new DBManager();

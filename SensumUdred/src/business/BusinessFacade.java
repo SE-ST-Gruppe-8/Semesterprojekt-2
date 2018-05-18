@@ -303,6 +303,8 @@ public class BusinessFacade implements IBusiness {
         if (security.getActiveUser() instanceof SocialWorker) {
             if (((SocialWorker) security.getActiveUser()).deleteCitizen(citizen, citizens)) {
                 security.logData("Deleted citizens: " + citizen.toString());
+                data.deleteCitizen(citizen);
+                
             } else {
                 System.out.println(s);
             }
