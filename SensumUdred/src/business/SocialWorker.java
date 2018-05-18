@@ -14,10 +14,19 @@ import javafx.collections.ObservableList;
  */
 public class SocialWorker extends User implements ISocialWorker {
 
+    /**
+     * A Set of cases which the social worker is responsible for.
+     */
     private Set<Case> cases;
+    /**
+     * A Set of inquiries which the social worker is responsible for.
+     */
     private Set<Inquiry> inquiries;
+    /**
+     * A Set of references which the social worker is responsible for.
+     */
     private Set<Reference> references;
-    private Set<Citizen> citizens;
+
     private static final int ROLE = 1;
     private static final long serialVersionUID = 1L;
 
@@ -135,13 +144,12 @@ public class SocialWorker extends User implements ISocialWorker {
 //        }
 //        return false;
 //    }
-
     @Override
     public int getRole() {
         return 1;
     }
-    
-    public static int getSWRole(){
+
+    public static int getSWRole() {
         return ROLE;
     }
 
