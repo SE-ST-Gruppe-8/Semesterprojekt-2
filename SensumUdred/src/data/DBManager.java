@@ -233,39 +233,47 @@ public class DBManager {
         }
     }
 
-    public boolean deleteUser(IUser user) {
+    public void deleteUser(IUser user) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("delete from \"public\".\"users\" where username ='" + user.getUsername() + "'");
-            return true;
         } catch (Exception ex) {
             System.out.println(ex);
-            return false;
         }
     }
 
-    public boolean deleteInquiry(IInquiry inquiry) {
+    public void deleteInquiry(IInquiry inquiry) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("delete from \"public\".\"inquiries\" where inquiryid ='" + inquiry.getId() + "'");
-            return true;
         } catch (Exception ex) {
             System.out.println(ex);
-            return false;
         }
     }
+    
+    
 
-    public boolean deleteCase(ICase theCase) {
+    public void deleteCase(ICase theCase) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("delete from \"public\".\"cases\" where caseid ='" + theCase.getId() + "'");
-            return true;
+
         } catch (Exception ex) {
             System.out.println(ex);
-            return false;
+
         }
     }
 
+    public void deleteCitizen(ICitizen citizen) {
+        try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            Statement st1 = db.createStatement();
+            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"citizen\" where id ='" + citizen.getId() + "'");
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
+
+    
     public boolean hasUniqueUserID(String id) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
