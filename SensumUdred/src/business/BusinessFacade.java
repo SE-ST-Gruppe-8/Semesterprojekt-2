@@ -85,7 +85,7 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void injectData(IData dataLayer) {
         data = dataLayer;
-        security = new SecurityHandler(data, this);
+        security = new SecurityHandler(data);
     }
 
     @Override
@@ -151,11 +151,6 @@ public class BusinessFacade implements IBusiness {
         }
     }
 
-    /**
-     * a method to delete a user from the system
-     *
-     * @param user
-     */
     @Override
     public void deleteUser(IUser user) {
         if (security.getActiveUser() instanceof SystemAdmin) {
