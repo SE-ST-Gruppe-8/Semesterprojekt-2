@@ -39,7 +39,7 @@
                            </rowConstraints>
                            <children>
                               <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="450.0" text="Borgere" />
-                              <ListView fx:id="citizenListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="250.0" prefWidth="450.0" GridPane.rowIndex="1">
+                              <ListView fx:id="citizenListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="250.0" prefWidth="450.0" styleClass="pretty-list" stylesheets="@Style.css" GridPane.rowIndex="1">
                                  <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>
@@ -129,7 +129,7 @@
                                     </Button>
                                  </children>
                               </GridPane>
-                              <ListView fx:id="inquiriesListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="250.0" prefWidth="450.0" GridPane.rowIndex="1">
+                              <ListView fx:id="inquiriesListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="250.0" prefWidth="450.0" styleClass="pretty-list" stylesheets="@Style.css" GridPane.rowIndex="1">
                                  <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>
@@ -164,7 +164,7 @@
                             <RowConstraints maxHeight="1.7976931348623157E308" minHeight="250.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <ListView fx:id="inquiryListView1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="300.0" prefWidth="450.0" GridPane.rowIndex="1">
+                              <ListView fx:id="inquiryListView1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="300.0" prefWidth="450.0" styleClass="pretty-list" stylesheets="@Style.css" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </GridPane.margin>
@@ -187,7 +187,7 @@
                            </rowConstraints>
                            <children>
                               <Label alignment="CENTER" maxHeight="20.0" maxWidth="1.7976931348623157E308" minHeight="20.0" prefHeight="20.0" prefWidth="450.0" text="Sager" GridPane.columnIndex="1" />
-                              <ListView fx:id="caseListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="250.0" prefWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <ListView fx:id="caseListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="250.0" prefWidth="450.0" styleClass="pretty-list" stylesheets="@Style.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </GridPane.margin>

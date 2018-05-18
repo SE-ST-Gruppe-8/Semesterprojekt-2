@@ -34,8 +34,10 @@ public class Case implements ICase, Serializable {
         this.citizen = c;
     }
 
+    @Override
     public String toString() {
-        return "SagsID: " + ID + " \t" + citizen + "\tSagsbehandler: " + this.socialWorker.getName();
+        return String.format("%-22s %-30s %-30s", "SagsID: " + ID , citizen , "Sagsbehandler: " + this.socialWorker.getName());
+//        return "SagsID: " + ID + " \t" + citizen + "\tSagsbehandler: " + this.socialWorker.getName();
     }
 
     @Override
