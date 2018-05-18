@@ -201,7 +201,7 @@
                   </GridPane>
                </content>
             </Tab>
-            <Tab text="Log">
+            <Tab onSelectionChanged="#logTabChosenEvent" text="Log">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>

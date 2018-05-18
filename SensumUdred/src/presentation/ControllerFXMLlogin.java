@@ -32,21 +32,16 @@ import javafx.stage.Stage;
 public class ControllerFXMLlogin implements Initializable, IPresentation {
 
     private IBusiness ib;
-
     private String fxmlString;
 
     @FXML
     private TextField loginUsernameTextField;
-
     @FXML
     private PasswordField loginPasswordTextField;
-
     @FXML
     private Label loginInfoLabel;
-
     @FXML
     private Button loginButton;
-
     @FXML
     private Button exitButton;
 
