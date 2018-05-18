@@ -153,7 +153,12 @@ public class DataFacade implements IData {
 
     @Override
     public void deleteCitizen(ICitizen citizen) {
-       dbm.deleteCitizen(citizen);
+        dbm.deleteCitizen(citizen);
+    }
+
+    @Override
+    public List<String> getLog() {
+        return dbm.getLog();
     }
 
 }

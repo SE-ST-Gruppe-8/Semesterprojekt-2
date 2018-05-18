@@ -60,6 +60,9 @@ public interface IData {
     void updateCase(ICase casen);
     
     void updateCitizen(ICitizen citizen);
+    
+    public List<String> getLog();
+    
 //    ArrayList<ICitizen> getCitizens();
 //    
 //    public void saveCitizens(ArrayList<ICitizen> list);
