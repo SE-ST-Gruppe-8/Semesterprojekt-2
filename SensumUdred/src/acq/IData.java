@@ -38,6 +38,8 @@ public interface IData {
     public void deleteInquiry(IInquiry inquiry);
     
     public void deleteCase(ICase theCase);
+    
+    public void deleteCitizen(ICitizen citizen);
 
     public void logData(String logData);
 

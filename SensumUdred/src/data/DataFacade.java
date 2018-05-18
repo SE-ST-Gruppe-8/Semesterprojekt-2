@@ -152,6 +152,11 @@ public class DataFacade implements IData {
     }
 
     @Override
+    public void deleteCitizen(ICitizen citizen) {
+        dbm.deleteCitizen(citizen);
+    }
+
+    @Override
     public List<String> getLog() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

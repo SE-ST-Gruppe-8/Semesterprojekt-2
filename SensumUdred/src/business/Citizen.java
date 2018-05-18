@@ -47,6 +47,7 @@ public class Citizen implements ICitizen, Serializable{
     }
     
     
+    @Override
     public void setNeeds(String needs){
         this.needs=needs;
     }
@@ -86,7 +87,8 @@ public class Citizen implements ICitizen, Serializable{
     }
     @Override
      public String toString(){
-         return "Borgernavn: "+this.getName() + "\tBorgerID: " + this.id;
+         return String.format("%-35s %-25s","Borgernavn: "+this.getName() , "BorgerID: " + this.id);
+//         return "Borgernavn: "+this.getName() + "\tBorgerID: " + this.id;
      }
 
     
