@@ -13,6 +13,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -37,6 +38,7 @@ import javafx.stage.Stage;
 public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
     private IBusiness ib;
+    private boolean logUpdatedOnce;
 
     @FXML
     private Tab adminTab;
@@ -104,7 +106,7 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
     public void openUI() {
         loginInfoLabelAdmin.setText("Logget ind som: " + ib.getActiveUser().getName());
         updateUserList();
-        updateLogTextArea();
+        logUpdatedOnce = false;
     }
 
     @FXML
@@ -193,8 +195,8 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
         controller.injectBusiness(ib);
 
         Scene scene2 = new Scene(gridPane);
-        //Get Stage information
 
+        //Get Stage information
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setMinWidth(300);
         window.setMinHeight(200);
@@ -202,7 +204,6 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
         window.setHeight(300);
         window.setScene(scene2);
         window.show();
-
     }
 
     @FXML
@@ -218,6 +219,14 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
         List<String> logList = ib.getLog();
         for (String s : logList) {
             logTextArea.appendText(s + "\n");
+        }
+        logUpdatedOnce = true;
+    }
+
+    @FXML
+    private void logTabChosenEvent(Event event) {
+        if (!logUpdatedOnce) {
+            updateLogTextArea();
         }
     }
 
