@@ -111,7 +111,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
                 caseLabel.setText("Denne henvendelse har allerede en sag");
             }
         } else {
-            caseLabel.setText("Vælg en borger fra listen over borgerer");
+            caseLabel.setText("Vælg en henvendelse fra listen over henvendelser");
         }
     }
 
