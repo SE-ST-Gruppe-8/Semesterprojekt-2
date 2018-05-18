@@ -59,8 +59,8 @@ public class DBManager {
 
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("insert into inquires values" + data + "\n"
-                    + " AND insert into hasinquiry values " + citizenid + "" + id);
+            ResultSet rs1 = st1.executeQuery("insert into inquiries values" + data + "\n"
+                    + " insert into hasinquiry values('" + citizenid + "','" + id + "')");
             rs1.close();
             st1.close();
         } catch (Exception ex) {
@@ -104,8 +104,7 @@ public class DBManager {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("insert into cases values" + data + "\n"
-                    + "insert into hascase values " + citizenid + "" + id);
-
+                    + "insert into hascase values('" + citizenid + "','" + id + "')");
             rs1.close();
             st1.close();
         } catch (Exception ex) {
