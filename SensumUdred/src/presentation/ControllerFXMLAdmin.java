@@ -127,7 +127,8 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
     }
 
     /**
-     * Handle method for button 'Opret bruger' in admin tab. Creates a citizen.
+     * Handle method for button 'Opret bruger' in admin tab when logged in as
+     * admin . Creates a citizen.
      * ID must be on 10 characters Password must be between 4 and 16 characters
      * Name must be between 3 and 100 characters Email must contain a '@' max 50
      * characters
@@ -201,7 +202,8 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
     }
 
     /**
-     * Handle method for button 'Slet bruger' in admin tab. Deletes selected
+     * Handle method for button 'Slet bruger' in admin tab when logged in as
+     * admin. Deletes selected
      * citizen
      *
      * @param event
@@ -213,7 +215,8 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
     }
 
     /**
-     * Handle method for button 'Opdatér Liste' in Admin tab. Updates Userlist
+     * Handle method for button 'Opdatér Liste' in Admin tab when logged in as
+     * admin. Updates Userlist
      *
      * @param event
      */
@@ -238,7 +241,8 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
     }
 
     /**
-     * Handle method for button 'Opdatér' in log tab.
+     * Handle method for button 'Opdatér' in log tab when logged in as
+     * admin.
      * Updates log
      *
      * @param event
@@ -249,7 +253,8 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
     }
 
     /**
-     * Method for show updated log in textarea in log tab.
+     * Method for show updated log in textarea in log tab when logged in as
+     * admin.
      */
     private void updateLogTextArea() {
         List<String> logList = ib.getLog();
@@ -260,7 +265,8 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
     }
 
     /**
-     * Handle method to be executed when selecting log tab.
+     * Handle method to be executed when selecting log tab when logged in as
+     * admin.
      * Updates log when clicked
      * @param event 
      */
