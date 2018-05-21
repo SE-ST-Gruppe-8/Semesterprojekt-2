@@ -97,93 +97,13 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
 //        createSocialWorkerRadioButton.setSelected(true);
     }
 
-    @Override
-    public void injectBusiness(IBusiness businessFacade) {
-        ib = businessFacade;
-    }
-
-    @Override
-    public void openUI() {
-        loginInfoLabelAdmin.setText("Logget ind som: " + ib.getActiveUser().getName());
-        updateUserList();
-        logUpdatedOnce = false;
-    }
-
-    @FXML
-    private void createUserButtonAction(ActionEvent event) {
-        int value; // user type
-        if (createAdminRadioButton.isSelected()) {
-            value = 0; // admin value
-        } else if (createSocialWorkerRadioButton.isSelected()) {
-            value = 1; // social worker value
-        } else {
-            value = -1;
-        }
-        if (value != -1) {
-            String id = adminIdTextField.getText();
-            String password = adminPasswordTextField.getText();
-            String repeatedPassword = adminRepeatPasswordTextField.getText();
-            String username = adminUsernameTextField.getText();
-            String firstName = adminFirstNameTextField.getText();
-            String lastName = adminLastNameTextField.getText();
-            String email = adminEmailTextField.getText();
-            if (ib.hasAcceptableID(id)) {
-                if (ib.hasUniqueUserID(id)) {
-                    if (ib.hasAcceptablePassword(password, repeatedPassword)) {
-                        if (ib.hasAcceptableUsername(username)) {
-                            if (ib.hasUniqueUsername(username)) {
-                                if (ib.hasAcceptableName(firstName + " " + lastName)) {
-                                    if (ib.hasAcceptableMail(email)) {
-                                        ib.createUser(firstName + " " + lastName, id, username, password, email, value);
-                                        System.out.println("Role: " + ib.getRole());
-                                        updateUserList();
-                                        adminInfoLabel.setText("Success");
-                                    } else {
-                                        adminInfoLabel.setText("Emailen skal indeholde et @, og må maks indeholde "
-                                                + ib.getFinalInts()[7] + " tegn");
-                                    }
-                                } else {
-                                    adminInfoLabel.setText("Navnet skal indeholde mellem " + ib.getFinalInts()[5] + " og "
-                                            + ib.getFinalInts()[6] + " tegn");
-                                }
-                            } else {
-                                adminInfoLabel.setText("Brugernavnet eksisterer allerede");
-                            }
-                        } else {
-                            adminInfoLabel.setText("Brugernavnet skal indeholde mellem " + ib.getFinalInts()[3] + " og "
-                                    + ib.getFinalInts()[4] + " tegn");
-                        }
-                    } else {
-                        adminInfoLabel.setText("Kodeordet skal indeholde mellem " + ib.getFinalInts()[1] + " og "
-                                + ib.getFinalInts()[2] + " tegn, og de to kodeord skal matche");
-                    }
-                } else {
-                    adminInfoLabel.setText("ID'et eksisterer allerede");
-                }
-            } else {
-                adminInfoLabel.setText("ID'et skal indeholde " + ib.getFinalInts()[0] + " tegn");
-            }
-        }
-    }
-
-    @FXML
-    private void deleteUserButtonAction(ActionEvent event) {
-        ib.deleteUser(adminUserListView.getSelectionModel().getSelectedItem());
-        updateUserList();
-    }
-
-    private void updateListAction(ActionEvent event) {
-        updateUserList();
-    }
-
-    public void updateUserList() {
-        if (ib.getUsers() == null) {
-            adminInfoLabel.setText("no Users installed");
-        } else {
-            adminUserListView.setItems(ib.getUsers());
-        }
-    }
-
+    /**
+     * Handle method for button 'Log ud' When clicked closing current window and
+     * shows log in screen
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void logoutButtonAction(ActionEvent event) throws IOException {
         ib.logOutActiveUser();
@@ -206,15 +126,131 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
         window.show();
     }
 
+    /**
+     * Handle method for button 'Opret bruger' in admin tab. Creates a citizen.
+     * ID must be on 10 characters Password must be between 4 and 16 characters
+     * Name must be between 3 and 100 characters Email must contain a '@' max 50
+     * characters
+     *
+     * @param event
+     */
+    @FXML
+    private void createUserButtonAction(ActionEvent event) {
+        int value; // user type
+        if (createAdminRadioButton.isSelected()) {
+            value = 0; // admin value
+        }
+        else if (createSocialWorkerRadioButton.isSelected()) {
+            value = 1; // social worker value
+        }
+        else {
+            value = -1;
+        }
+        if (value != -1) {
+            String id = adminIdTextField.getText();
+            String password = adminPasswordTextField.getText();
+            String repeatedPassword = adminRepeatPasswordTextField.getText();
+            String username = adminUsernameTextField.getText();
+            String firstName = adminFirstNameTextField.getText();
+            String lastName = adminLastNameTextField.getText();
+            String email = adminEmailTextField.getText();
+            if (ib.hasAcceptableID(id)) {
+                if (ib.hasUniqueUserID(id)) {
+                    if (ib.hasAcceptablePassword(password, repeatedPassword)) {
+                        if (ib.hasAcceptableUsername(username)) {
+                            if (ib.hasUniqueUsername(username)) {
+                                if (ib.hasAcceptableName(firstName + " " + lastName)) {
+                                    if (ib.hasAcceptableMail(email)) {
+                                        ib.createUser(firstName + " " + lastName, id, username, password, email, value);
+                                        System.out.println("Role: " + ib.getRole());
+                                        updateUserList();
+                                        adminInfoLabel.setText("Success");
+                                    }
+                                    else {
+                                        adminInfoLabel.setText("Emailen skal indeholde et @, og må maks indeholde "
+                                                + ib.getFinalInts()[7] + " tegn");
+                                    }
+                                }
+                                else {
+                                    adminInfoLabel.setText("Navnet skal indeholde mellem " + ib.getFinalInts()[5] + " og "
+                                            + ib.getFinalInts()[6] + " tegn");
+                                }
+                            }
+                            else {
+                                adminInfoLabel.setText("Brugernavnet eksisterer allerede");
+                            }
+                        }
+                        else {
+                            adminInfoLabel.setText("Brugernavnet skal indeholde mellem " + ib.getFinalInts()[3] + " og "
+                                    + ib.getFinalInts()[4] + " tegn");
+                        }
+                    }
+                    else {
+                        adminInfoLabel.setText("Kodeordet skal indeholde mellem " + ib.getFinalInts()[1] + " og "
+                                + ib.getFinalInts()[2] + " tegn, og de to kodeord skal matche");
+                    }
+                }
+                else {
+                    adminInfoLabel.setText("ID'et eksisterer allerede");
+                }
+            }
+            else {
+                adminInfoLabel.setText("ID'et skal indeholde " + ib.getFinalInts()[0] + " tegn");
+            }
+        }
+    }
+
+    /**
+     * Handle method for button 'Slet bruger' in admin tab. Deletes selected
+     * citizen
+     *
+     * @param event
+     */
+    @FXML
+    private void deleteUserButtonAction(ActionEvent event) {
+        ib.deleteUser(adminUserListView.getSelectionModel().getSelectedItem());
+        updateUserList();
+    }
+
+    /**
+     * Handle method for button 'Opdatér Liste' in Admin tab. Updates Userlist
+     *
+     * @param event
+     */
+    private void updateListAction(ActionEvent event) {
+        updateUserList();
+    }
+
+    public void updateUserList() {
+        if (ib.getUsers() == null) {
+            adminInfoLabel.setText("no Users installed");
+        }
+        else {
+            adminUserListView.setItems(ib.getUsers());
+        }
+    }
+
+    /**
+     * @deprecated @param event
+     */
     @FXML
     private void UpdateListAction(ActionEvent event) {
     }
 
+    /**
+     * Handle method for button 'Opdatér' in log tab.
+     * Updates log
+     *
+     * @param event
+     */
     @FXML
     private void updateLogButtonAction(ActionEvent event) {
         updateLogTextArea();
     }
 
+    /**
+     * Method for show updated log in textarea in log tab.
+     */
     private void updateLogTextArea() {
         List<String> logList = ib.getLog();
         for (String s : logList) {
@@ -223,11 +259,36 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
         logUpdatedOnce = true;
     }
 
+    /**
+     * Handle method to be executed when selecting log tab.
+     * Updates log when clicked
+     * @param event 
+     */
     @FXML
     private void logTabChosenEvent(Event event) {
         if (!logUpdatedOnce) {
             updateLogTextArea();
         }
+    }
+
+    /**
+     * Method for injecting businesslogic into this controller
+     *
+     * @param businessFacade
+     */
+    @Override
+    public void injectBusiness(IBusiness businessFacade) {
+        ib = businessFacade;
+    }
+
+    /**
+     * Method to launch User Interface (is executed after initialize)
+     */
+    @Override
+    public void openUI() {
+        loginInfoLabelAdmin.setText("Logget ind som: " + ib.getActiveUser().getName());
+        updateUserList();
+        logUpdatedOnce = false;
     }
 
 }

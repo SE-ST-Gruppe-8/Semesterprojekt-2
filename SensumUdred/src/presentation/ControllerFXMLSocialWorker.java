@@ -82,7 +82,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     private Label inquiryLabel;
 
     /**
-     * Initializes the controller class.
+     * Initializes the controller class. Instantiates Alertbox
      *
      * @param url
      * @param rb
@@ -101,8 +101,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     }
 
     /**
-     * Handle method for button 'Log ud' When clicked closing current window and
-     * shows log in screen
+     * Handle method for button 'Log ud'. When clicked closing current window
+     * and shows log in screen
      *
      * @param event
      * @throws IOException
@@ -131,8 +131,9 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     }
 
     /**
-     * Handle method for button 'Opret sag'.Opens an alertbox, where case can be
-     * created for selected inquiry
+     * Handle method for button 'Opret sag' in tab 'Sager' when logged in as
+     * socialworker.Opens an alertbox, where case can be created for selected
+     * inquiry
      *
      * @param event
      */
@@ -154,7 +155,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     }
 
     /**
-     * Handle method for button 'Slet sag'. Deletes selected case
+     * Handle method for button 'Slet sag' in tab 'Sager' when logged in as
+     * socialworker. Deletes selected case
      *
      * @param event
      */
@@ -169,8 +171,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     }
 
     /**
-     * Handle method for button 'Opdatér liste' Calls method:
-     * updateCitizenList()
+     * Handle method for button 'Opdatér liste' in tab 'Sager' when logged in as
+     * socialworker. Calls method: updateCitizenList()
      *
      * @param event
      */
@@ -189,8 +191,9 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     }
 
     /**
-     * Handle method for button 'Opret borger' Creates citizen Opens an
-     * alertbox, where a citizen can be created
+     * Handle method for button 'Opret borger' in tab 'Henvendelser' when logged
+     * in as socialworker. Creates citizen Opens an alertbox, where a citizen
+     * can be created
      *
      * @param event
      */
@@ -200,7 +203,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     }
 
     /**
-     * Handle method for button 'Slet borger'. Deletes selected citizen
+     * Handle method for button 'Slet borger' in tab 'Henvendelser' when logged
+     * in as socialworker. Deletes selected citizen
      *
      * @param event
      */
@@ -218,7 +222,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     }
 
     /**
-     * Handle method for button 'Redigér borger'. Opens an alertbox, where
+     * Handle method for button 'Redigér borger' in tab 'Henvendelser' when logged
+     * in as socialworker. Opens an alertbox, where
      * selected citizen can be edited
      *
      * @param event
@@ -252,7 +257,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     }
 
     /**
-     * Handle method for button 'Opret henvendelse'. Opens an alertbox, where
+     * Handle method for button 'Opret henvendelse' in tab 'Henvendelser' when logged
+     * in as socialworker. Opens an alertbox, where
      * inquiry can be created for selected citizen
      *
      * @param event
@@ -273,7 +279,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     }
 
     /**
-     * Handle method for button 'Slet henvendelse'. Deletes selected inquiry
+     * Handle method for button 'Slet henvendelse' in tab 'Henvendelser' when logged
+     * in as socialworker. Deletes selected inquiry
      *
      * @param event
      */
@@ -288,7 +295,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     }
 
     /**
-     * Handle method for button 'Redigér henvendelse'. Opens an alertbox, where
+     * Handle method for button 'Redigér henvendelse' in tab 'Henvendelser' when logged
+     * in as socialworker. Opens an alertbox, where
      * selected inquiry can be edited
      *
      * @param event
@@ -314,7 +322,9 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     }
 
     /**
-     * Method for updating list of inquiries. Updates list of inquiries
+     * Method for updating list of inquiries in tab 'Henvendelser' when logged
+     * in as socialworker. Updates lists of inquiries in
+     * Tabs: 'Henvendelser' + 'Sager'
      */
     public void updateInquiryList() {
         inquiriesListView.setItems(ib.getInquiries());
@@ -322,7 +332,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     }
 
     /**
-     * Handle method for button 'Redigér sag'.Opens an alertbox, where selected
+     * Handle method for button 'Redigér sag' in tab 'Sager' when logged in as
+     * socialworker. Opens an alertbox, where selected
      * case can be edited
      *
      * @param event

@@ -19,7 +19,11 @@ import javafx.stage.Stage;
  */
 public class PresentationFacade extends Application implements IPresentation {
 
+    /**
+     *
+     */
     private static IBusiness ib;
+
     /**
      * Override; inject business interface to presentation.
      *
@@ -29,6 +33,7 @@ public class PresentationFacade extends Application implements IPresentation {
     public void injectBusiness(IBusiness businessFacade) {
         this.ib = businessFacade;
     }
+
     /**
      * Override; launch GUI.
      */
@@ -38,9 +43,9 @@ public class PresentationFacade extends Application implements IPresentation {
     }
 
     /**
-     * 
+     *
      * @param stage
-     * @throws Exception 
+     * @throws Exception
      */
     @Override
     public void start(Stage stage) throws Exception {
