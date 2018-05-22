@@ -258,6 +258,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         }
     }
 
+<<<<<<< HEAD
     /**
      * @deprecated @param event The event
      */
@@ -265,6 +266,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     private void updateCaseListAction(ActionEvent event) {
 
     }
+=======
+>>>>>>> c8a190451e6d6b8285cb61c78a15c57a9a6aa9ed
 
     /**
      * Method for updating list of citizens. Updates list of citizens
@@ -336,7 +339,6 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
      *
      * @param event The event
      */
-    @FXML
     private void updateInquiryListAction(ActionEvent event) {
         updateInquiryList();
     }
