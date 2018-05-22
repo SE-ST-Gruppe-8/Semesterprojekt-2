@@ -33,7 +33,7 @@ import javafx.stage.Stage;
 public class ControllerFXMLSocialWorker implements Initializable, IPresentation {
 
     /**
-     * Presentationfacade is used for accesing presentation layer
+     * Presentationfacade is used for accessing presentation layer
      */
     private PresentationFacade pf;
     /**
@@ -41,14 +41,10 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
      */
     private IBusiness ib;
     /**
-     *Alertbox is popping up when clicked on:
-     * 'Opret borger'
-     * 'Redigér borger'
-     * 'Opret henvendelse'
-     * 'Redigér henvendelse'
+     * Alertbox is popping up when clicked on: 'Opret borger' 'Redigér borger'
+     * 'Opret henvendelse' 'Redigér henvendelse'
      */
     private AlertBox ab;
-    
 
     @FXML
     private ListView<ICase> caseListView;
@@ -58,46 +54,105 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     @FXML
     private Label loginInfoLabelSW;
     /**
-     * 
+     * Tab 'Sager'
      */
     @FXML
     private Tab casesTab;
+    /**
+     * Tab 'Henvendelser'
+     */
     @FXML
     private Tab inquiriesTab;
+    /**
+     * Button for logout. When clicked current user logs out. (button is for all
+     * users, not only Socialworker)
+     */
     @FXML
     private Button logoutButtonSW;
+    /**
+     * Button for create case. When clicked create a case for selected inquiry.
+     */
     @FXML
     private Button createCaseButton;
+    /**
+     * Button for edit case. When clicked edit selected case.
+     */
     @FXML
     private Button editCaseButton;
+    /**
+     * Button for creating citizen. When clicked create citizen
+     */
     @FXML
     private Button createCitizenButton;
+    /**
+     * Button for editing citizen. When clicked edit selected citizen
+     */
     @FXML
     private Button editCitizenButton;
+    /**
+     * Button for delete citizen. When clicked deletes selected citizen
+     */
     @FXML
     private Button deleteCitizenButton;
+    /**
+     * Button for updating citizenlist. When clicked updates citizen list
+     */
     @FXML
     private Button updateCitizenListButton;
+    /**
+     * Button for delete case. When clicked deletes selected case
+     */
     @FXML
     private Button deleteCaseButton;
+    /**
+     * Button for updating caselist. When clicked updates case list
+     */
     @FXML
     private Button updateCaseListButton;
+    /**
+     * Listview to show citizens
+     */
     @FXML
     private ListView<ICitizen> citizenListView;
+    /**
+     * Label 'Sager'
+     */
     @FXML
     private Label caseLabel;
+    /**
+     * Button for editing inquiry. When clicked edit selected inquiry
+     */
     @FXML
     private Button editInquiryButton;
+    /**
+     * Listview to show inquiries in tab 'Henvendelser'
+     */
     @FXML
     private ListView<IInquiry> inquiriesListView;
+    /**
+     * Button for deleting inquiry. When clicked deletes selected inquiry
+     */
     @FXML
     private Button deleteInquiryButton;
+    /**
+     * Button for updating inquiry list. When clicked updates inquiry list
+     */
     @FXML
     private Button updateInquiryListView;
+    /**
+     * Button for create inquiry. When clicked create inquiry for selected
+     * citizen
+     */
     @FXML
     private Button createInquiryButton;
+    /**
+     * Listview to show inquiries in tab 'Sager'
+     */
     @FXML
     private ListView<IInquiry> inquiryListView1;
+    /**
+     * Label 'Henvendelser'
+     */
     @FXML
     private Label inquiryLabel;
 
@@ -258,7 +313,6 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         }
     }
 
-<<<<<<< HEAD
     /**
      * @deprecated @param event The event
      */
@@ -266,8 +320,6 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     private void updateCaseListAction(ActionEvent event) {
 
     }
-=======
->>>>>>> c8a190451e6d6b8285cb61c78a15c57a9a6aa9ed
 
     /**
      * Method for updating list of citizens. Updates list of citizens

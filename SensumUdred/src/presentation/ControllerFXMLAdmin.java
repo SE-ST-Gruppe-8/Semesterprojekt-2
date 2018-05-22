@@ -132,14 +132,14 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
      * Button for updating userlist
      */
     @FXML
-<<<<<<< HEAD
+
     private Button UpdateList;
     /**
      * Textfield for entering ID of user to be created
      */
-=======
+
     private Button updateList;
->>>>>>> c8a190451e6d6b8285cb61c78a15c57a9a6aa9ed
+
     @FXML
     private TextField adminIdTextField;
     /**
@@ -309,15 +309,14 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
         }
     }
 
-<<<<<<< HEAD
+
     /**
      * @deprecated @param event The event
      */
     @FXML
     private void UpdateListAction(ActionEvent event) {
     }
-=======
->>>>>>> c8a190451e6d6b8285cb61c78a15c57a9a6aa9ed
+
 
     /**
      * Handle method for button 'Opdatér' in log tab when logged in as admin.
