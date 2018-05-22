@@ -71,7 +71,7 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
     @FXML
     private Button deleteUserButton;
     @FXML
-    private Button UpdateList;
+    private Button updateList;
     @FXML
     private TextField adminIdTextField;
     @FXML
