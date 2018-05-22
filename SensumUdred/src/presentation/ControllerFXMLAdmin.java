@@ -220,6 +220,7 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
      *
      * @param event
      */
+    @FXML
     private void updateListAction(ActionEvent event) {
         updateUserList();
     }
@@ -233,12 +234,6 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
         }
     }
 
-    /**
-     * @deprecated @param event
-     */
-    @FXML
-    private void UpdateListAction(ActionEvent event) {
-    }
 
     /**
      * Handle method for button 'Opdatér' in log tab when logged in as
