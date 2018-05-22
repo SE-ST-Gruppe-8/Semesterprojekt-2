@@ -156,7 +156,7 @@ public class BusinessFacade implements IBusiness {
         if (security.getActiveUser() instanceof SystemAdmin) {
             if (((SystemAdmin) security.getActiveUser()).deleteUser(user, users)) {
                 security.logData("Deleted user: " + user.toString());
-                data.saveData((ArrayList<IUser>) users.stream().collect(Collectors.toList()), "users");
+                data.deleteUser(user);
             } else {
                 System.out.println("User does not exist");
             }

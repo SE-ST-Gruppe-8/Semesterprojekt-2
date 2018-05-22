@@ -298,7 +298,7 @@ public class DBManager {
     public void deleteUser(IUser user) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"users\" where username ='" + user.getUsername() + "'");
+            ResultSet rs1 = st1.executeQuery("delete from users where username ='" + user.getUsername() + "'");
         } catch (Exception ex) {
             System.out.println(ex);
         }

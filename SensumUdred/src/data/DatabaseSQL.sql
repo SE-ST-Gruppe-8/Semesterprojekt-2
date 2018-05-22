@@ -1,6 +1,6 @@
 
 CREATE TABLE Users (
-    id CHAR(10) UNIQUE,
+    id CHAR(10) PRIMARY KEY,
     name VARCHAR(100),
     mail VARCHAR(50),
     username CHAR(16) UNIQUE,
