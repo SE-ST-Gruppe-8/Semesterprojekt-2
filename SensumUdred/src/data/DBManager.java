@@ -37,7 +37,7 @@ public class DBManager {
 
     /**
      * saveUser is saving an User
-     * @param user 
+     * @param user The user that is going to be saved
      * Opens an connection to the database and sends a quary with a resultsset
      * The quary inserts the users values into the users entity set
      * 
@@ -62,7 +62,7 @@ public class DBManager {
     }
     /**
      * saves an inquiry
-     * @param inquiry 
+     * @param inquiry The nquiry that is going to be saved
      * Opens an connection to the database and sends a quary with a resultsset
      * The quary inserts the inquiry values into the entityset inquiries and also
      * inserts the inquiryid into the relation hasinqury
@@ -88,7 +88,7 @@ public class DBManager {
     }
     /**
      * Updates an inquiry
-     * @param inquiry 
+     * @param inquiry The nquiry that is going to be updated
      * Opens an connection to the database and sends a quary with a resultsset
      * The quary updates the inquiry values set on the entityset inquiries where the
      * inquiryid is equals to the inquiryid in inquiries
@@ -115,7 +115,7 @@ public class DBManager {
      * Opens an connection to the database and sends a quary with a resultsset
      * The quary updates the citizen values set on the entityset citizens where 
      * the citizenid is equals to the id in citizens
-     * @param citizen 
+     * @param citizen The citizen that is going to be updated
      */
     public void updateCitizen(ICitizen citizen) {
         String id = citizen.getId();
@@ -135,7 +135,7 @@ public class DBManager {
      * Opens an connection to the database and sends a quary with a resultsset
      * The quary updates the case values set on the entityset cases where 
      * the casesid is equals to the casesid in cases
-     * @param citizen 
+     * @param casen The case that is going to be updated 
      */
     public void updateCase(ICase casen) {
         String id = casen.getId();
@@ -189,7 +189,7 @@ public class DBManager {
     }
     /**
      * saves a case
-    * @param casen
+    * @param casen The save that is going to be ssaved
     * Opens an connection to the database and sends a quary with a resultsset
     * The quary updates inserts the case data into the entity set cases and also
     * inserts the caseid into the relation hascase where with its citizenid.
@@ -214,7 +214,7 @@ public class DBManager {
     /**
      * Opens an connection to the database and sends a quary with a resultsset
      * The quary inserts the citizen values into the entityset citizens 
-     * @param citizen 
+     * @param citizen The citizen that is going to be saved
      */
     public void saveCitizen(ICitizen citizen) {
         String id = citizen.getId();
@@ -295,7 +295,7 @@ public class DBManager {
      * Opens an connection to the database and sends a quary with a resultsset
      * The quary deletes an tuple from the entityset users where the user 
      * username is equals to users.username
-     * @param user 
+     * @param user The user that is going to be deleted
      */
     public void deleteUser(IUser user) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
@@ -307,7 +307,7 @@ public class DBManager {
     }
     /**
      * deletes an inquiry
-     * @param inquiry 
+     * @param inquiry The nquiry that is going to be deleted
      * Opens an connection to the database and sends a quary with a resultsset
      * The quary deletes an tuple from the entityset inquries where the inquirys 
      * id is equals to inquiries.inquiryid
@@ -322,7 +322,7 @@ public class DBManager {
     }
     /**
     * Deletes a case
-    * @param theCase
+    * @param theCase The case that is going to be deleted
     * Opens an connection to the database and sends a quary with a resultsset
     * The quary deletes an tuple from the entityset cases where the caseid 
     * is equal to cases.id
@@ -339,7 +339,7 @@ public class DBManager {
     }
     /**
     * Deletes a case
-    * @param citizen
+    * @param citizen The citizen that is going to be deleted
     * Opens an connection to the database and sends a quary with a resultsset
     * The quary deletes an tuple from the entityset citizens where the citizenid 
     * is equal to citizens.id
@@ -354,7 +354,7 @@ public class DBManager {
     }
     /**
      * Returns a boolean depending on the user id
-     * @param id
+     * @param id That is to be checked if unique
      * Opens an connection to the database and sends a quary with a resultsset
      * The quary counts how many ids in the entityset users which are equal to
      * id. If any of these are equal to it, it returns false.
@@ -377,7 +377,7 @@ public class DBManager {
     }
     /**
      * Returns a boolean depending on the user id
-     * @param id
+     * @param id That is to be checked if unique
      * Opens an connection to the database and sends a quary with a resultsset
      * The quary counts how many ids in the entityset cittizens which are equal
      * to id. If any of these are equal to it, it returns false.
@@ -400,7 +400,7 @@ public class DBManager {
     }
     /**
     * Returns a boolean depending on the user id
-    * @param id
+    * @param id That is to be checked if unique
     * Opens an connection to the database and sends a quary with a resultsset
     * The quary counts how many usernames in the entityset users which are equal
     * to username. If any of these are equal to it, it returns false.
@@ -422,9 +422,9 @@ public class DBManager {
     }
     /**
      * Saves the log data into the database
-     * @param date
-     * @param username
-     * @param logData 
+     * @param date The date of the log
+     * @param username The username of the log
+     * @param logData The data of the log
      * Opens an connection to the database and sends a quary with a resultsset
      * The quary inserts the string data into the entityset logdata
      */

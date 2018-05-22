@@ -30,14 +30,14 @@ public interface IData {
 
     /**
      * Returns a boolean depending on the Citizen id
-     * @param id
+     * @param id The id of the user
      * @returns a boolean
      */
     public boolean hasUniqueCitizenID(String id);
 
     /**
      * Returns a boolean depending on the username
-     * @param username
+     * @param username The username of the user
      * @returns a boolean
      */
     public boolean hasUniqueUsername(String username);
@@ -61,98 +61,96 @@ public interface IData {
 
     /**
      * Returns a string array of userdata
-     * @param username
+     * @param username The username of the user
      * @returns a string array
      */
     public String[] loadUser(String username);
 
     /**
      * Deletes an User
-     * @param user 
+     * @param user  The user
      */
     public void deleteUser(IUser user);
     
     /**
      * Deletes an inquiry
-     * @param inquiry 
+     * @param inquiry The inquiry
      */
     public void deleteInquiry(IInquiry inquiry);
     
     /**
      * deletes a case
-     * @param theCase 
+     * @param theCase The case
      */
     public void deleteCase(ICase theCase);
     
     /**
      * deletes a citizen
-     * @param citizen 
+     * @param citizen The citizen
      */
     public void deleteCitizen(ICitizen citizen);
 
     /** 
      * Logs a string of data
-     * @param logData 
+     * @param logData The data of the log
      */
     public void logData(String logData);
 
     /**
      * Logs three strings
-     * @param date
-     * @param username
-     * @param logData 
+     * @param date The date of the log
+     * @param username The Username of the log
+     * @param logData The data to be logged
      */
     public void logData(String date, String username, String logData);
 
     /**
      * saves an arraylist of data to the filepath
-     * @param <T>
-     * @param data
-     * @param filepath 
+     * @param data The data to be saved
+     * @param filepath The filepath to save to
      */
     <T> void saveData(ArrayList<T> data, String filepath);
 
     /**
      * loads data
-     * @param <T>
-     * @param data
-     * @param filepath 
+     * @param data The data to be loaded
+     * @param filepath The filepath to save to
      */
     <T> void loadData(ArrayList<T> data, String filepath);
     
     /**
      * saves a case
-     * @param casen 
+     * @param casen The case
      */
     void saveCase(ICase casen);
     
     /**
      * saves an Inquiry
-     * @param inquiry 
+     * @param inquiry The inquiry
      */
     void saveInquiry(IInquiry inquiry);
     
     /**
      * saves a citizen
-     * @param citizen 
+     * @param citizen The Citizen
      */
     void saveCitizen(ICitizen citizen);
     
     /**
      * updates an Inquiry
-     * @param inquiry 
+     * @param inquiry The inquiry
      */
     void updateInquiry(IInquiry inquiry);
     
     /**
      * Updates a case
-     * @param casen 
+     * @param casen The case
      */
     void updateCase(ICase casen);
     
     /** 
      * Updates a citizen
-     * @param citizen 
+     * @param citizen The Citizen
      */
     void updateCitizen(ICitizen citizen);
     
