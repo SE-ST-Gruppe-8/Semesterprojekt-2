@@ -385,7 +385,7 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public boolean hasUniqueUserID(String id) {
-        return data.hasUniqueUserUD(id);
+        return data.hasUniqueUserID(id);
     }
 
     @Override

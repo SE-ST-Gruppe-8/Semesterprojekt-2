@@ -15,10 +15,23 @@ import java.util.List;
  */
 public class DataFacade implements IData {
 
+    /**
+     * Filemanager used for mangeging files
+     */
     private FileManager fm;
+    /**
+     * Datalogger used for manegin logs
+     */
     private DataLogger dl;
+    /**
+     * DBManager used for managing data to the databaser
+     */
     private DBManager dbm;
 
+    /**
+     * Constructer for datafacade, instantiates an Filemanager, DBManager and 
+     * a DataLogger
+     */
     public DataFacade() {
         fm = new FileManager();
         dbm = new DBManager();
@@ -102,7 +115,7 @@ public class DataFacade implements IData {
     }
 
     @Override
-    public boolean hasUniqueUserUD(String id) {
+    public boolean hasUniqueUserID(String id) {
         return dbm.hasUniqueUserID(id);
     }
 

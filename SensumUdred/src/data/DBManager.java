@@ -25,11 +25,23 @@ import java.util.List;
  */
 public class DBManager {
 
-    //Login to elephant-sql
+    /**
+     * Loging strings for elephant-sql
+     * dbUrl is the Url for the database
+     * dbUsername is the username for the database
+     * dbPassword is the password for the database
+     */
     private String dbUrl = "jdbc:postgresql://horton.elephantsql.com:5432/flugkwex";
     private String dbUsername = "flugkwex";
     private String dbPassword = "361Fvzl2AmnhDLVqPtBhomyr0-ojDBBC";
 
+    /**
+     * saveUser is saving an User
+     * @param user 
+     * Opens an connection to the database and sends a quary with a resultsset
+     * The quary inserts the users values into the users entity set
+     * 
+     */
     public void saveUser(IUser user) {
         String id = user.getID();
         String name = user.getName();
@@ -48,7 +60,14 @@ public class DBManager {
             System.out.println(ex);
         }
     }
-
+    /**
+     * saves an inquiry
+     * @param inquiry 
+     * Opens an connection to the database and sends a quary with a resultsset
+     * The quary inserts the inquiry values into the entityset inquiries and also
+     * inserts the inquiryid into the relation hasinqury
+     */
+    
     public void saveInquiry(IInquiry inquiry) {
         String id = inquiry.getId();
         String description = inquiry.getDescription();
@@ -67,7 +86,13 @@ public class DBManager {
             System.out.println(ex);
         }
     }
-
+    /**
+     * Updates an inquiry
+     * @param inquiry 
+     * Opens an connection to the database and sends a quary with a resultsset
+     * The quary updates the inquiry values set on the entityset inquiries where the
+     * inquiryid is equals to the inquiryid in inquiries
+     */
     public void updateInquiry(IInquiry inquiry) {
         String id = inquiry.getId();
         String description = inquiry.getDescription();
@@ -79,16 +104,19 @@ public class DBManager {
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("UPDATE inquiries set inquiryid = '" + id + "', inquirydescription = '"
                     + description + "', iscitizeninformed = '"
-                    + informed + "', origin = '" + origin + "' where inquiryid = '" + id + "';\n"
-                    + " Update hasinquiry set citizenid = '" + citizenid + "',  inquiryid = '" + id
-                    + "' where inquiryid = '" + id + "';");
+                    + informed + "', origin = '" + origin + "' where inquiryid = '" + id + "';");
             rs1.close();
             st1.close();
         } catch (Exception ex) {
             System.out.println(ex);
         }
     }
-
+    /**
+     * Opens an connection to the database and sends a quary with a resultsset
+     * The quary updates the citizen values set on the entityset citizens where 
+     * the citizenid is equals to the id in citizens
+     * @param citizen 
+     */
     public void updateCitizen(ICitizen citizen) {
         String id = citizen.getId();
         String name = citizen.getName();
@@ -103,7 +131,12 @@ public class DBManager {
             System.out.println(ex);
         }
     }
-
+    /**
+     * Opens an connection to the database and sends a quary with a resultsset
+     * The quary updates the case values set on the entityset cases where 
+     * the casesid is equals to the casesid in cases
+     * @param citizen 
+     */
     public void updateCase(ICase casen) {
         String id = casen.getId();
         String description = casen.getDescription();
@@ -154,7 +187,13 @@ public class DBManager {
             return null;
         }
     }
-
+    /**
+     * saves a case
+    * @param casen
+    * Opens an connection to the database and sends a quary with a resultsset
+    * The quary updates inserts the case data into the entity set cases and also
+    * inserts the caseid into the relation hascase where with its citizenid.
+    */
     public void saveCase(ICase casen) {
         String id = casen.getId();
         String description = casen.getDescription();
@@ -172,7 +211,11 @@ public class DBManager {
             System.out.println(ex);
         }
     }
-
+    /**
+     * Opens an connection to the database and sends a quary with a resultsset
+     * The quary inserts the citizen values into the entityset citizens 
+     * @param citizen 
+     */
     public void saveCitizen(ICitizen citizen) {
         String id = citizen.getId();
         String name = citizen.getName();
@@ -189,6 +232,14 @@ public class DBManager {
         }
     }
 
+/**
+    * Returns a list of users
+    * Opens an connection to the database and sends a quary with a resultsset
+    * The quary selects all tuples from the entityset users 
+    * The values from each column is put into an array of string which is added to
+    * an arraylist
+    * @return a list of strings
+    */
     public List<String[]> loadUsers() {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
@@ -212,7 +263,12 @@ public class DBManager {
             return null;
         }
     }
-
+/*
+     * Opens an connection to the database and sends a quary with a resultsset
+    * The quary selects all tuples from the entityset users 
+    * The values from each column is put into an array of string which is added to
+    * an arraylist
+    */
     public String[] loadUser(String username) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
@@ -234,7 +290,13 @@ public class DBManager {
             return null;
         }
     }
-
+    /**
+     * deletes an user
+     * Opens an connection to the database and sends a quary with a resultsset
+     * The quary deletes an tuple from the entityset users where the user 
+     * username is equals to users.username
+     * @param user 
+     */
     public void deleteUser(IUser user) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
@@ -243,7 +305,13 @@ public class DBManager {
             System.out.println(ex);
         }
     }
-
+    /**
+     * deletes an inquiry
+     * @param inquiry 
+     * Opens an connection to the database and sends a quary with a resultsset
+     * The quary deletes an tuple from the entityset inquries where the inquirys 
+     * id is equals to inquiries.inquiryid
+     */
     public void deleteInquiry(IInquiry inquiry) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
@@ -252,7 +320,13 @@ public class DBManager {
             System.out.println(ex);
         }
     }
-
+    /**
+    * Deletes a case
+    * @param theCase
+    * Opens an connection to the database and sends a quary with a resultsset
+    * The quary deletes an tuple from the entityset cases where the caseid 
+    * is equal to cases.id
+    */
     public void deleteCase(ICase theCase) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
@@ -263,7 +337,13 @@ public class DBManager {
 
         }
     }
-
+    /**
+    * Deletes a case
+    * @param citizen
+    * Opens an connection to the database and sends a quary with a resultsset
+    * The quary deletes an tuple from the entityset citizens where the citizenid 
+    * is equal to citizens.id
+    */
     public void deleteCitizen(ICitizen citizen) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
@@ -272,7 +352,14 @@ public class DBManager {
             System.out.println(ex);
         }
     }
-
+    /**
+     * Returns a boolean depending on the user id
+     * @param id
+     * Opens an connection to the database and sends a quary with a resultsset
+     * The quary counts how many ids in the entityset users which are equal to
+     * id. If any of these are equal to it, it returns false.
+     * @returns a boolean
+     */
     public boolean hasUniqueUserID(String id) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
@@ -288,7 +375,14 @@ public class DBManager {
             return false;
         }
     }
-
+    /**
+     * Returns a boolean depending on the user id
+     * @param id
+     * Opens an connection to the database and sends a quary with a resultsset
+     * The quary counts how many ids in the entityset cittizens which are equal
+     * to id. If any of these are equal to it, it returns false.
+     * @returns a boolean
+     */
     public boolean hasUniqueCitizenID(String id) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
@@ -304,7 +398,14 @@ public class DBManager {
             return false;
         }
     }
-
+    /**
+    * Returns a boolean depending on the user id
+    * @param id
+    * Opens an connection to the database and sends a quary with a resultsset
+    * The quary counts how many usernames in the entityset users which are equal
+    * to username. If any of these are equal to it, it returns false.
+    * @returns a boolean
+    */
     public boolean hasUniqueUsername(String username) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
@@ -319,7 +420,14 @@ public class DBManager {
             return false;
         }
     }
-
+    /**
+     * Saves the log data into the database
+     * @param date
+     * @param username
+     * @param logData 
+     * Opens an connection to the database and sends a quary with a resultsset
+     * The quary inserts the string data into the entityset logdata
+     */
     public void saveLog(String date, String username, String logData) {
         String data = "('" + date + "','" + username + "','" + logData + "');";
 
@@ -332,7 +440,13 @@ public class DBManager {
             System.out.println(ex);
         }
     }
-
+    /**
+     * Returns a list of logdata
+     * Opens an connection to the database and sends a quary with a resultsset
+     * Selects all tuples from the entityset logdata
+     * Formats the string and adds it a list
+     * @returns a list of Strings
+     */
     public List<String> getLog() {
         ArrayList<String> list = new ArrayList();
 
@@ -353,14 +467,4 @@ public class DBManager {
         }
         return list;
     }
-
-    public static void main(String[] args) {
-        DBManager dbm = new DBManager();
-//        IUser u = new SocialWorker("Frederik Fredriksen", "0011223344", "frede", "frede", "frede@gmail.com");
-//        dbm.saveUser(u);
-//        dbm.loadUsers();
-//        String id = "0";
-//        dbm.hasUniqueUserID(id);
-    }
-
 }
