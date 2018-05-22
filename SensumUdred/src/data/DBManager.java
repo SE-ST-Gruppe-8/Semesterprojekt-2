@@ -9,8 +9,6 @@ import acq.ICase;
 import acq.ICitizen;
 import acq.IInquiry;
 import acq.IUser;
-import business.Citizen;
-import business.Inquiry;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
