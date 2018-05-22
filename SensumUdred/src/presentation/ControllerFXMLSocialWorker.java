@@ -41,8 +41,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
      */
     private IBusiness ib;
     /**
-     * Alertbox is popping up when clicked on: 'Opret borger' 'Redigér borger'
-     * 'Opret henvendelse' 'Redigér henvendelse'
+     * Alertbox is popping up when clicked on: 'Opret borger' or 'Redigér borger'
+     * 'Opret henvendelse' or 'Redigér henvendelse'
      */
     private AlertBox ab;
 
