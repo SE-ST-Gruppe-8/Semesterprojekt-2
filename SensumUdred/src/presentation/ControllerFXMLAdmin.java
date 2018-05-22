@@ -37,55 +37,128 @@ import javafx.stage.Stage;
  */
 public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
+    /**
+     * IBusiness is used for accessing business logic
+     */
     private IBusiness ib;
+
+    /**
+     * Booelan is used for updating log once, when clicking log tab, when logged
+     * in as admin
+     */
     private boolean logUpdatedOnce;
 
+    /**
+     * Tab admin
+     */
     @FXML
     private Tab adminTab;
+    /**
+     * Listview to show list of users
+     */
     @FXML
     private ListView<IUser> adminUserListView;
+    /**
+     * Togglegroup to ensure that only one radiobutton can enabled at the same
+     * time
+     */
     @FXML
     private ToggleGroup createUserToggleGroup;
+    /**
+     * Button for choosing which user to be created. When selected socialworker
+     * is chosen
+     */
     @FXML
     private RadioButton createSocialWorkerRadioButton;
+    /**
+     * Button for choosing which user to be created. When selected admin is
+     * chosen
+     */
     @FXML
     private RadioButton createAdminRadioButton;
+    /**
+     * Textfield for entering username to be created
+     */
     @FXML
     private TextField adminUsernameTextField;
+    /**
+     * Textfield for entering firstname of user to be created
+     */
     @FXML
     private TextField adminFirstNameTextField;
+    /**
+     * Textfield for entering password of user to be created
+     */
     @FXML
     private TextField adminPasswordTextField;
+    /**
+     * Textfield for entering lastname of user to be created
+     */
     @FXML
     private TextField adminLastNameTextField;
+    /**
+     * Textfield for repeat password for user to be created
+     */
     @FXML
     private TextField adminRepeatPasswordTextField;
+    /**
+     * Textfield for entering email of user to be created
+     */
     @FXML
     private TextField adminEmailTextField;
+    /**
+     * Button for creating user
+     */
     @FXML
     private Button createUserButton;
+    /**
+     * Label to show info when creating user. Shows whether the user is created
+     * succesfully or if the entered user data does not meet the requiements
+     *
+     */
     @FXML
     private Label adminInfoLabel;
+    /**
+     * Label to show name of the user logged in
+     */
     @FXML
     private Label loginInfoLabelAdmin;
+    /**
+     * Button for deleting selected user
+     */
     @FXML
     private Button deleteUserButton;
+    /**
+     * Button for updating userlist
+     */
     @FXML
     private Button UpdateList;
+    /**
+     * Textfield for entering ID of user to be created
+     */
     @FXML
     private TextField adminIdTextField;
+    /**
+     * Button logout. Press to logut current user
+     */
     @FXML
     private Button logoutButtonSW;
+    /**
+     * Button for updating log in log tab
+     */
     @FXML
     private Button UpdateLogButton;
+    /**
+     * Textarea shows log data
+     */
     @FXML
     private TextArea logTextArea;
 
     /**
      * Initializes the controller class.
      *
-     * @param url
-     * @param rb
+     * @param url The url
+     * @param rb The ResourceBundle
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -101,8 +174,8 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
      * Handle method for button 'Log ud' When clicked closing current window and
      * shows log in screen
      *
-     * @param event
-     * @throws IOException
+     * @param event The event
+     * @throws IOException The IOException
      */
     @FXML
     private void logoutButtonAction(ActionEvent event) throws IOException {
@@ -128,12 +201,11 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
     /**
      * Handle method for button 'Opret bruger' in admin tab when logged in as
-     * admin . Creates a citizen.
-     * ID must be on 10 characters Password must be between 4 and 16 characters
-     * Name must be between 3 and 100 characters Email must contain a '@' max 50
-     * characters
+     * admin . Creates a citizen. ID must be on 10 characters Password must be
+     * between 4 and 16 characters Name must be between 3 and 100 characters
+     * Email must contain a '@' max 50 characters
      *
-     * @param event
+     * @param event The Event
      */
     @FXML
     private void createUserButtonAction(ActionEvent event) {
@@ -203,10 +275,9 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
     /**
      * Handle method for button 'Slet bruger' in admin tab when logged in as
-     * admin. Deletes selected
-     * citizen
+     * admin. Deletes selected citizen
      *
-     * @param event
+     * @param event The event
      */
     @FXML
     private void deleteUserButtonAction(ActionEvent event) {
@@ -218,7 +289,7 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
      * Handle method for button 'Opdatér Liste' in Admin tab when logged in as
      * admin. Updates Userlist
      *
-     * @param event
+     * @param event The event
      */
     private void updateListAction(ActionEvent event) {
         updateUserList();
@@ -234,18 +305,17 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
     }
 
     /**
-     * @deprecated @param event
+     * @deprecated @param event The event
      */
     @FXML
     private void UpdateListAction(ActionEvent event) {
     }
 
     /**
-     * Handle method for button 'Opdatér' in log tab when logged in as
-     * admin.
+     * Handle method for button 'Opdatér' in log tab when logged in as admin.
      * Updates log
      *
-     * @param event
+     * @param event The event
      */
     @FXML
     private void updateLogButtonAction(ActionEvent event) {
@@ -266,9 +336,9 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
     /**
      * Handle method to be executed when selecting log tab when logged in as
-     * admin.
-     * Updates log when clicked
-     * @param event 
+     * admin. Updates log when clicked
+     *
+     * @param event The event
      */
     @FXML
     private void logTabChosenEvent(Event event) {
@@ -280,7 +350,7 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
     /**
      * Method for injecting businesslogic into this controller
      *
-     * @param businessFacade
+     * @param businessFacade The Businessfacade
      */
     @Override
     public void injectBusiness(IBusiness businessFacade) {

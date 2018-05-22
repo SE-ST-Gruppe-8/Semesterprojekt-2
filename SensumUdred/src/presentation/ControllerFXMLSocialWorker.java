@@ -32,14 +32,34 @@ import javafx.stage.Stage;
  */
 public class ControllerFXMLSocialWorker implements Initializable, IPresentation {
 
+    /**
+     * Presentationfacade is used for accesing presentation layer
+     */
     private PresentationFacade pf;
+    /**
+     * IBusiness is used for accessing business logic
+     */
     private IBusiness ib;
+    /**
+     *Alertbox is popping up when clicked on:
+     * 'Opret borger'
+     * 'Redigér borger'
+     * 'Opret henvendelse'
+     * 'Redigér henvendelse'
+     */
     private AlertBox ab;
+    
 
     @FXML
     private ListView<ICase> caseListView;
+    /**
+     * Label to show name of the user logged in
+     */
     @FXML
     private Label loginInfoLabelSW;
+    /**
+     * 
+     */
     @FXML
     private Tab casesTab;
     @FXML
@@ -84,8 +104,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     /**
      * Initializes the controller class. Instantiates Alertbox
      *
-     * @param url
-     * @param rb
+     * @param url The url
+     * @param rb The ResourceBundle
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -104,8 +124,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
      * Handle method for button 'Log ud'. When clicked closing current window
      * and shows log in screen
      *
-     * @param event
-     * @throws IOException
+     * @param event The event
+     * @throws IOException The IOException
      */
     @FXML
     private void logoutButtonAction(ActionEvent event) throws IOException {
@@ -135,7 +155,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
      * socialworker.Opens an alertbox, where case can be created for selected
      * inquiry
      *
-     * @param event
+     * @param event The event
      */
     @FXML
     private void createCaseAction(ActionEvent event) {
@@ -148,7 +168,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
             else {
                 caseLabel.setText("Denne henvendelse har allerede en sag");
             }
-        } else {
+        }
+        else {
             caseLabel.setText("Vælg en henvendelse fra listen over henvendelser");
         }
     }
@@ -157,7 +178,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
      * Handle method for button 'Slet sag' in tab 'Sager' when logged in as
      * socialworker. Deletes selected case
      *
-     * @param event
+     * @param event The event
      */
     @FXML
     private void DeleteCaseAction(ActionEvent event) {
@@ -173,7 +194,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
      * Handle method for button 'Opdatér liste' in tab 'Sager' when logged in as
      * socialworker. Calls method: updateCitizenList()
      *
-     * @param event
+     * @param event The event
      */
     @FXML
     private void updateListAction(ActionEvent event) {
@@ -194,7 +215,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
      * in as socialworker. Creates citizen Opens an alertbox, where a citizen
      * can be created
      *
-     * @param event
+     * @param event The event
      */
     @FXML
     private void createCitizenAction(ActionEvent event) {
@@ -205,7 +226,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
      * Handle method for button 'Slet borger' in tab 'Henvendelser' when logged
      * in as socialworker. Deletes selected citizen
      *
-     * @param event
+     * @param event The event
      */
     @FXML
     private void deleteCitizenAction(ActionEvent event) {
@@ -221,11 +242,11 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     }
 
     /**
-     * Handle method for button 'Redigér borger' in tab 'Henvendelser' when logged
-     * in as socialworker. Opens an alertbox, where
-     * selected citizen can be edited
+     * Handle method for button 'Redigér borger' in tab 'Henvendelser' when
+     * logged in as socialworker. Opens an alertbox, where selected citizen can
+     * be edited
      *
-     * @param event
+     * @param event The event
      */
     @FXML
     private void editCitizenAction(ActionEvent event) {
@@ -238,7 +259,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     }
 
     /**
-     * @deprecated @param event
+     * @deprecated @param event The event
      */
     @FXML
     private void updateCaseListAction(ActionEvent event) {
@@ -256,11 +277,11 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     }
 
     /**
-     * Handle method for button 'Opret henvendelse' in tab 'Henvendelser' when logged
-     * in as socialworker. Opens an alertbox, where
-     * inquiry can be created for selected citizen
+     * Handle method for button 'Opret henvendelse' in tab 'Henvendelser' when
+     * logged in as socialworker. Opens an alertbox, where inquiry can be
+     * created for selected citizen
      *
-     * @param event
+     * @param event The event
      */
     @FXML
     private void createInquiryAction(ActionEvent event) {
@@ -278,10 +299,10 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     }
 
     /**
-     * Handle method for button 'Slet henvendelse' in tab 'Henvendelser' when logged
-     * in as socialworker. Deletes selected inquiry
+     * Handle method for button 'Slet henvendelse' in tab 'Henvendelser' when
+     * logged in as socialworker. Deletes selected inquiry
      *
-     * @param event
+     * @param event The event
      */
     @FXML
     private void deleteInquiryAction(ActionEvent event) {
@@ -294,11 +315,11 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     }
 
     /**
-     * Handle method for button 'Redigér henvendelse' in tab 'Henvendelser' when logged
-     * in as socialworker. Opens an alertbox, where
-     * selected inquiry can be edited
+     * Handle method for button 'Redigér henvendelse' in tab 'Henvendelser' when
+     * logged in as socialworker. Opens an alertbox, where selected inquiry can
+     * be edited
      *
-     * @param event
+     * @param event The event
      */
     @FXML
     private void editInquiryAction(ActionEvent event) {
@@ -313,7 +334,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     /**
      * Handle method for button 'Opdatér liste'. Calls: updateInquiryList()
      *
-     * @param event
+     * @param event The event
      */
     @FXML
     private void updateInquiryListAction(ActionEvent event) {
@@ -322,8 +343,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
     /**
      * Method for updating list of inquiries in tab 'Henvendelser' when logged
-     * in as socialworker. Updates lists of inquiries in
-     * Tabs: 'Henvendelser' + 'Sager'
+     * in as socialworker. Updates lists of inquiries in Tabs: 'Henvendelser' +
+     * 'Sager'
      */
     public void updateInquiryList() {
         inquiriesListView.setItems(ib.getInquiries());
@@ -332,10 +353,9 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
 
     /**
      * Handle method for button 'Redigér sag' in tab 'Sager' when logged in as
-     * socialworker. Opens an alertbox, where selected
-     * case can be edited
+     * socialworker. Opens an alertbox, where selected case can be edited
      *
-     * @param event
+     * @param event The event
      */
     @FXML
     private void editCaseAction(ActionEvent event) {
@@ -350,7 +370,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     /**
      * Method for injecting businesslogic into this controller
      *
-     * @param businessFacade
+     * @param businessFacade The Businessfacade
      */
     @Override
     public void injectBusiness(IBusiness businessFacade) {
