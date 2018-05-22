@@ -122,7 +122,11 @@ public class DBManager {
             System.out.println(ex);
         }
     }
-
+    /**
+     * Returns A list of String[] containing citizens & their inquiries + cases.
+     * 
+     * @return A list of String[], where every String[] contains data about a citizen & their inquiry + case
+     */
     public List<String[]> getEverything() {
         String[] columns = {"id", "name", "needs", "inquiryid", "inquirydescription", "iscitizeninformed", "origin",
             "caseid", "casedescription", "process"};
