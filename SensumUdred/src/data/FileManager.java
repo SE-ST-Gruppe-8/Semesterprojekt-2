@@ -22,11 +22,28 @@ import java.util.ArrayList;
  * @author J
  */
 public class FileManager {
-
+    /**
+     * An inputstream which is used for reading the content of files.
+     */
     ObjectInputStream fileReader;
+    /**
+     * An outputstream which is used for writing content to a file.
+     */
     ObjectOutputStream fileWriter;
+    /**
+     * A file object used to specify which file to read/write to.
+     */
     File file;
-
+    /**
+     * Reads data from a specified file and then fills a given ArrayList with objects.
+     * The contents of the file at the filepath is read and casted to the same
+     * datatype that the ArrayList contains. 
+     * 
+     * @param <T> 
+     * @param data The ArrayList in which the data will be stored
+     * @param filepath The path to a file
+     * @return 
+     */
     public <T> ArrayList<T> readFile(ArrayList<T> data, String filepath) {
         file = new File(filepath + ".dat");
 
@@ -95,6 +112,13 @@ public class FileManager {
 //        }
 //        return data;
 //    }
+    /**
+     * Writes the content of an ArrayList to a specified file.
+     * 
+     * @param <T>
+     * @param data The ArrayList which contents will be written to a file.
+     * @param filepath  The file path.
+     */
     public <T> void writeToFile(ArrayList<T> data, String filepath) {
         System.out.println(data);
         file = new File(filepath + ".dat");
