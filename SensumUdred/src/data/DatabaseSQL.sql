@@ -62,3 +62,7 @@ CREATE TABLE CreatedBy (
     FOREIGN KEY (caseId) REFERENCES Cases(caseId) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+INSERT INTO Users VALUES('0000000000', 'Admin', 'admin@sensum.dk', 'admin', 'super', 0);
+INSERT INTO Users VALUES('1111111111', 'Social Worker', 'sw@sensum.dk', 'social', 'worker', 1);
+INSERT INTO citizens VALUES('010250xxxx', 'Grethe Hansen', 'Terapi');
+
