@@ -175,10 +175,10 @@ public class BusinessFacade implements IBusiness {
             return false;
         }*/
 
-        String[] array = data.loadUser(username);
-        array[3] = array[3].trim();
-        password = password.trim();
-        if (array != null) {
+        String[] array = data.loadUser(username);;
+        if (array[0] != null) {
+            array[3] = array[3].trim();
+            password = password.trim();
             if (security.validateUserlogin(array, password)) {
                 security.logData("Logged in.");
                 return true;
