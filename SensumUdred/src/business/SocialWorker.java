@@ -126,11 +126,10 @@ public class SocialWorker extends User implements ISocialWorker {
 
     @Override
     public boolean deleteCitizen(ICitizen citizen, ObservableList<ICitizen> citizens) {
-        boolean citizenRemoved = false;
         if (citizens.contains(citizen)) {
-            citizenRemoved = citizens.remove(citizen);
+            return citizens.remove(citizen);
         }
-        return citizenRemoved;
+        return false;
     }
 
     @Override

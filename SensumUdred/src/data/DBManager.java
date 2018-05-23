@@ -141,7 +141,7 @@ public class DBManager {
      * @param casen The case that is going to be updated
      */
     public void updateCase(ICase casen) {
-        String id = casen.getId();
+        String id = casen.getID();
         String description = casen.getDescription();
         String process = casen.getProcess();
         String citizenid = casen.getCitizen().getId();
@@ -203,7 +203,7 @@ public class DBManager {
      *
      */
     public void saveCase(ICase casen) {
-        String id = casen.getId();
+        String id = casen.getID();
         String description = casen.getDescription();
         String process = casen.getProcess();
         String citizenid = casen.getCitizen().getId();
@@ -349,7 +349,7 @@ public class DBManager {
     public void deleteCase(ICase theCase) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"cases\" where caseid ='" + theCase.getId() + "'");
+            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"cases\" where caseid ='" + theCase.getID() + "'");
 
         } catch (Exception ex) {
             System.out.println(ex);

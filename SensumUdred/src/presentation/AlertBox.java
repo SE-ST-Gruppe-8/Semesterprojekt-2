@@ -97,7 +97,7 @@ public class AlertBox {
         TextArea swCaseProcessTextArea = new TextArea();
         swCaseProcessTextArea.setText(c.getProcess());
         Label swCaseIdLabel = new Label();
-        swCaseIdLabel.setText("ID: " + c.getId());
+        swCaseIdLabel.setText("ID: " + c.getID());
         Label swCaseDesLabel = new Label();
         swCaseDesLabel.setText("Beskrivelse");
         Label swCaseProcessLabel = new Label();

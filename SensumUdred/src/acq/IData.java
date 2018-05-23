@@ -17,28 +17,28 @@ public interface IData {
     /**
      * Returns a string array of CitizenData
      * 
-     * @returns Citizendata
+     * @return Citizendata
      */
     List<String[]> getCitizenData();
 
     /**
      * Returns a boolean depending on the Users id
      * @param id
-     * @returns a boolean
+     * @return a boolean
      */
     public boolean hasUniqueUserID(String id);
 
     /**
      * Returns a boolean depending on the Citizen id
      * @param id The id of the user
-     * @returns a boolean
+     * @return a boolean
      */
     public boolean hasUniqueCitizenID(String id);
 
     /**
      * Returns a boolean depending on the username
      * @param username The username of the user
-     * @returns a boolean
+     * @return a boolean
      */
     public boolean hasUniqueUsername(String username);
 //    public void saveUsers(ArrayList<IUser> data);
@@ -49,7 +49,7 @@ public interface IData {
     /**
      * Returns a string array
      * 
-     * @returns a String array 
+     * @return a String array 
      */
     public List<String[]> readUsers();
     
@@ -62,7 +62,7 @@ public interface IData {
     /**
      * Returns a string array of userdata
      * @param username The username of the user
-     * @returns a string array
+     * @return a string array
      */
     public String[] loadUser(String username);
 
@@ -97,7 +97,7 @@ public interface IData {
     public void logData(String logData);
 
     /**
-     * Logs three strings
+     * Logs three strings.
      * @param date The date of the log
      * @param username The Username of the log
      * @param logData The data to be logged
@@ -105,14 +105,16 @@ public interface IData {
     public void logData(String date, String username, String logData);
 
     /**
-     * saves an arraylist of data to the filepath
+     * Saves an arraylist of data to the filepath.
+     * @param <T>
      * @param data The data to be saved
      * @param filepath The filepath to save to
      */
     <T> void saveData(ArrayList<T> data, String filepath);
 
     /**
-     * loads data
+     * Loads data.
+     * @param <T>
      * @param data The data to be loaded
      * @param filepath The filepath to save to
      */
@@ -156,7 +158,7 @@ public interface IData {
     
     /**
      * returns a list of string with log data
-     * @returns a list of string
+     * @return a list of string
      */
     public List<String> getLog();
     

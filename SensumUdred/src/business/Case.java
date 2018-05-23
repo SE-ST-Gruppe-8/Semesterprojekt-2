@@ -102,7 +102,7 @@ public class Case implements ICase, Serializable {
     }
 
     @Override
-    public String getId() {
+    public String getID() {
         return ID;
 
     }
