@@ -166,19 +166,19 @@ public class DBManager {
      * citizen & their inquiry + case
      */
     public List<String[]> getEverything() {
-        String[] columns = {"id", "name", "needs", "inquiryid", "inquirydescription", "iscitizeninformed", "origin",
-            "caseid", "casedescription", "process"};
+        String[] columns = {"citizenid", "citizenname", "needs", "inquiryid", "inquirydescription", "iscitizeninformed", "origin",
+            "caseid", "casedescription", "process", "userid","name","mail","username","password","role"};
         ArrayList<String[]> data = new ArrayList<>();
 
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("SELECT citizens.*, inquiries.*, cases.*\n"
+            ResultSet rs1 = st1.executeQuery("SELECT citizens.*, inquiries.*, cases.*,users.*\n"
                     + "FROM citizens\n"
-                    + "LEFT JOIN inquiries ON inquiries.inquiryid = (SELECT inquiryid FROM hasinquiry WHERE citizenid = citizens.id)\n"
-                    + "LEFT JOIN cases ON cases.caseid = (SELECT caseid FROM hascase WHERE citizenid = citizens.id)"
+                    + "LEFT JOIN inquiries ON inquiries.inquiryid = (SELECT inquiryid FROM hasinquiry WHERE citizenid = citizens.citizenid)\n"
+                    + "LEFT JOIN cases ON cases.caseid = (SELECT caseid FROM hascase WHERE citizenid = citizens.citizenid)"
                     + "LEFT JOIN users ON users.userid = (SELECT userid FROM createdby WHERE caseid = cases.caseid)");
             while (rs1.next()) {
-                String[] s = new String[10];
+                String[] s = new String[16];
                 for (int i = 0; i < s.length; i++) {
                     s[i] = rs1.getString(columns[i]);
                 }
