@@ -60,12 +60,11 @@ public class DBManager {
     }
 
     /**
-     * saves an inquiry
+     * Saves an inquiry. Opens a connection to the database and sends a quary
+     * with a ResultSet The quary inserts the inquiry values into the entityset
+     * inquiries and also inserts the inquiryid into the relation hasinqury
      *
-     * @param inquiry The nquiry that is going to be saved Opens an connection
-     * to the database and sends a quary with a resultsset The quary inserts the
-     * inquiry values into the entityset inquiries and also inserts the
-     * inquiryid into the relation hasinqury
+     * @param inquiry The inquiry that is going to be saved.
      */
     public void saveInquiry(IInquiry inquiry) {
         String id = inquiry.getId();
@@ -196,12 +195,12 @@ public class DBManager {
     }
 
     /**
-     * saves a case
+     * saves a case. Opens an connection to the database and sends a quary with
+     * a resultsset The quary updates inserts the case data into the entity set
+     * cases and also inserts the caseid into the relation hascase where with
+     * its citizenid.
      *
-     * @param casen The save that is going to be ssaved Opens an connection to
-     * the database and sends a quary with a resultsset The quary updates
-     * inserts the case data into the entity set cases and also inserts the
-     * caseid into the relation hascase where with its citizenid.
+     * @param casen The save that is going to be saved
      */
     public void saveCase(ICase casen) {
         String id = casen.getId();
@@ -427,13 +426,14 @@ public class DBManager {
     }
 
     /**
-     * Returns a boolean depending on the user id
+     * Returns a boolean depending on the user id. Opens an connection to the
+     * database and sends a quary with a resultsset The quary counts how many
+     * usernames in the entityset users which are equal to username. If any of
+     * these are equal to it, it returns false.
      *
-     * @param username That is to be checked if unique Opens an connection to
-     * the database and sends a quary with a resultsset The quary counts how
-     * many usernames in the entityset users which are equal to username. If any
-     * of these are equal to it, it returns false.
      * @return a boolean
+     *
+     * @param username That is to be checked if unique.
      */
     public boolean hasUniqueUsername(String username) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
@@ -451,13 +451,13 @@ public class DBManager {
     }
 
     /**
-     * Saves the log data into the database
+     * Saves the log data into the database. Opens an connection to the database
+     * and sends a quary with a resultsset The quary inserts the string data
+     * into the entityset logdata
      *
      * @param date The date of the log
      * @param username The username of the log
-     * @param logData The data of the log Opens an connection to the database
-     * and sends a quary with a resultsset The quary inserts the string data
-     * into the entityset logdata
+     * @param logData The data of the log
      */
     public void saveLog(String date, String username, String logData) {
         String data = "('" + date + "','" + username + "','" + logData + "');";
@@ -473,8 +473,8 @@ public class DBManager {
     }
 
     /**
-     * Returns a list of logdata Opens an connection to the database and sends a
-     * quary with a resultsset Selects all tuples from the entityset logdata
+     * Returns a list of logdata. Opens an connection to the database and sends
+     * a quary with a resultsset Selects all tuples from the entityset logdata
      * Formats the string and adds it a list
      *
      * @return a list of Strings
