@@ -125,7 +125,7 @@ public class DBManager {
 
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("UPDATE citizens set needs = '" + needs + "' where id = '" + id + "';\n");
+            ResultSet rs1 = st1.executeQuery("UPDATE citizens set needs = '" + needs + "' where citizenId = '" + id + "';\n");
             rs1.close();
             st1.close();
         } catch (Exception ex) {
@@ -258,7 +258,7 @@ public class DBManager {
             while (rs1.next()) {
                 String[] array = new String[6];
                 array[0] = rs1.getString("name");
-                array[1] = rs1.getString("id");
+                array[1] = rs1.getString("userId");
                 array[2] = rs1.getString("username");
                 array[3] = rs1.getString("password");
                 array[4] = rs1.getString("mail");
@@ -292,7 +292,7 @@ public class DBManager {
             String[] array = new String[6];
             while (rs1.next()) {
                 array[0] = rs1.getString("name");
-                array[1] = rs1.getString("id");
+                array[1] = rs1.getString("userId");
                 array[2] = rs1.getString("username");
                 array[3] = rs1.getString("password");
                 array[4] = rs1.getString("mail");
@@ -333,7 +333,7 @@ public class DBManager {
     public void deleteInquiry(IInquiry inquiry) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"inquiries\" where inquiryid ='" + inquiry.getId() + "'");
+            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"inquiries\" where inquiryId ='" + inquiry.getId() + "'");
         } catch (Exception ex) {
             System.out.println(ex);
         }
@@ -349,7 +349,7 @@ public class DBManager {
     public void deleteCase(ICase theCase) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"cases\" where caseid ='" + theCase.getID() + "'");
+            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"cases\" where caseId ='" + theCase.getID() + "'");
 
         } catch (Exception ex) {
             System.out.println(ex);
@@ -367,7 +367,7 @@ public class DBManager {
     public void deleteCitizen(ICitizen citizen) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"citizens\" where id ='" + citizen.getId() + "'");
+            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"citizens\" where citizenId ='" + citizen.getId() + "'");
         } catch (Exception ex) {
             System.out.println(ex);
         }
@@ -385,7 +385,7 @@ public class DBManager {
     public boolean hasUniqueUserID(String id) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("select COUNT(id) FROM \"public\".\"users\" where id = '" + id + "'");
+            ResultSet rs1 = st1.executeQuery("select COUNT(userId) FROM \"public\".\"users\" where userId = '" + id + "'");
             rs1.next();
             if (rs1.getInt("count") == 1) {
                 return false;
@@ -410,7 +410,7 @@ public class DBManager {
     public boolean hasUniqueCitizenID(String id) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("select COUNT(id) FROM \"public\".\"citizens\" where id = '" + id + "'");
+            ResultSet rs1 = st1.executeQuery("select COUNT(citizenId) FROM \"public\".\"citizens\" where citizenId = '" + id + "'");
             rs1.next();
             if (rs1.getInt("count") == 1) {
                 return false;
