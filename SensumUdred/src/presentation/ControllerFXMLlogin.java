@@ -40,7 +40,7 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
      */
     private String fxmlString;
     /**
-     *Textfield for entering username
+     * Textfield for entering username
      */
     @FXML
     private TextField loginUsernameTextField;
@@ -79,9 +79,9 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
     /**
      * Handlemethod for login if you login as SocialWorker, you will be directed
      * to SocialWorker page if you login as Admin, you will be directed to Admin
-     * page
+     * page.
      *
-     * Message is shown if you enter wrong input
+     * Message is shown if you enter wrong input.
      *
      * @param event The event
      * @throws IOException The IOException
@@ -94,8 +94,7 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
                 if (ib.getRole() == ib.getSocialWorkerRoleInt()) {
                     fxmlString = "FXMLSocialWorker.fxml";
 
-                }
-                else if (ib.getRole() == ib.getAdminRoleInt()) {
+                } else if (ib.getRole() == ib.getAdminRoleInt()) {
                     fxmlString = "FXMLAdmin.fxml";
                 }
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlString));
@@ -115,12 +114,10 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
                 window.setHeight(430);
                 window.setScene(scene2);
                 window.show();
-            }
-            else {
+            } else {
                 loginInfoLabel.setText("Forkert input");
             }
         } catch (NullPointerException ex) {
-            ex.printStackTrace();
             System.out.println(ex.getMessage());
             loginInfoLabel.setText("Forkert input");
         }
