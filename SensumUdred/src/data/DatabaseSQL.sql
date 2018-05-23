@@ -10,7 +10,7 @@ CREATE TABLE Users (
 
 CREATE TABLE Citizens (
     citizenId CHAR(10) PRIMARY KEY,
-    name VARCHAR(100),
+    CitizeName VARCHAR(100),
     needs VARCHAR(200)
 );
 
