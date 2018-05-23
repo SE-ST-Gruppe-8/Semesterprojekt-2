@@ -383,7 +383,7 @@ public class DBManager {
      * database and sends a quary with a resultsset The quary counts how many
      * ids in the entityset users which are equal to id. If any of these are
      * equal to it, it returns false.
-     * @returns a boolean
+     * @return a boolean
      */
     public boolean hasUniqueUserID(String id) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
@@ -408,7 +408,7 @@ public class DBManager {
      * database and sends a quary with a resultsset The quary counts how many
      * ids in the entityset cittizens which are equal to id. If any of these are
      * equal to it, it returns false.
-     * @returns a boolean
+     * @return a boolean
      */
     public boolean hasUniqueCitizenID(String id) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
@@ -429,11 +429,11 @@ public class DBManager {
     /**
      * Returns a boolean depending on the user id
      *
-     * @param id That is to be checked if unique Opens an connection to the
-     * database and sends a quary with a resultsset The quary counts how many
-     * usernames in the entityset users which are equal to username. If any of
-     * these are equal to it, it returns false.
-     * @returns a boolean
+     * @param username That is to be checked if unique Opens an connection to
+     * the database and sends a quary with a resultsset The quary counts how
+     * many usernames in the entityset users which are equal to username. If any
+     * of these are equal to it, it returns false.
+     * @return a boolean
      */
     public boolean hasUniqueUsername(String username) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
@@ -477,7 +477,7 @@ public class DBManager {
      * quary with a resultsset Selects all tuples from the entityset logdata
      * Formats the string and adds it a list
      *
-     * @returns a list of Strings
+     * @return a list of Strings
      */
     public List<String> getLog() {
         ArrayList<String> list = new ArrayList();

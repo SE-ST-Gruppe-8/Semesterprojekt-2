@@ -22,6 +22,7 @@ import java.util.ArrayList;
  * @author J
  */
 public class FileManager {
+
     /**
      * An inputstream which is used for reading the content of files.
      */
@@ -34,20 +35,21 @@ public class FileManager {
      * A file object used to specify which file to read/write to.
      */
     File file;
+
     /**
-     * Reads data from a specified file and then fills a given ArrayList with objects.
-     * The contents of the file at the filepath is read and casted to the same
-     * datatype that the ArrayList contains. 
-     * 
-     * @param <T> 
+     * Reads data from a specified file and then fills a given ArrayList with
+     * objects. The contents of the file at the filepath is read and casted to
+     * the same datatype that the ArrayList contains.
+     *
+     * @param <T>
      * @param data The ArrayList in which the data will be stored
      * @param filepath The path to a file
-     * @return 
+     * @return
      */
     public <T> ArrayList<T> readFile(ArrayList<T> data, String filepath) {
         file = new File(filepath + ".dat");
-
         boolean read = true;
+
         try {
             fileReader = new ObjectInputStream(new FileInputStream(file));
             while (read) {
@@ -59,7 +61,6 @@ public class FileManager {
                     break; // stop reading
                 }
             }
-
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         } catch (ClassNotFoundException ex) {
@@ -114,10 +115,10 @@ public class FileManager {
 //    }
     /**
      * Writes the content of an ArrayList to a specified file.
-     * 
+     *
      * @param <T>
      * @param data The ArrayList which contents will be written to a file.
-     * @param filepath  The file path.
+     * @param filepath The file path.
      */
     public <T> void writeToFile(ArrayList<T> data, String filepath) {
         System.out.println(data);
@@ -197,7 +198,6 @@ public class FileManager {
         fm.writeToFile(test, "users");
 //        fm.writeToFile(test2, "cases");
         fm.writeToFile(test3, "citizens");
-
     }
 
 }

@@ -29,8 +29,8 @@ public class DataFacade implements IData {
     private DBManager dbm;
 
     /**
-     * Constructer for datafacade, instantiates an Filemanager, DBManager and 
-     * a DataLogger
+     * Constructer for datafacade, instantiates an Filemanager, DBManager and a
+     * DataLogger
      */
     public DataFacade() {
         fm = new FileManager();
