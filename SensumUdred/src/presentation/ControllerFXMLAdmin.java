@@ -107,10 +107,20 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
     @FXML
     private TextField adminEmailTextField;
     /**
+     * Textfield for entering ID of user to be created
+     */
+    @FXML
+    private TextField adminIdTextField;
+    /**
      * Button for creating user
      */
     @FXML
     private Button createUserButton;
+    /**
+     * Button for deleting selected user
+     */
+    @FXML
+    private Button deleteUserButton;
     /**
      * Label to show info when creating user. Shows whether the user is created
      * succesfully or if the entered user data does not meet the requiements
@@ -124,24 +134,10 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
     @FXML
     private Label loginInfoLabelAdmin;
     /**
-     * Button for deleting selected user
-     */
-    @FXML
-    private Button deleteUserButton;
-    /**
      * Button for updating userlist
      */
     @FXML
-
-    private Button UpdateList;
-    /**
-     * Textfield for entering ID of user to be created
-     */
-
     private Button updateList;
-
-    @FXML
-    private TextField adminIdTextField;
     /**
      * Button logout. Press to logut current user
      */
@@ -205,9 +201,9 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
     /**
      * Handle method for button 'Opret bruger' in admin tab when logged in as
-     * admin . Creates a citizen. ID must be on 10 characters Password must be
-     * between 4 and 16 characters Name must be between 3 and 100 characters
-     * Email must contain a '@' max 50 characters
+     * admin. Creates a user. ID must be on 10 characters. Password must be
+     * between 4 and 16 characters. Name must be between 3 and 100 characters.
+     * Email must contain a '@', and max 50 characters
      *
      * @param event The Event
      */
@@ -216,11 +212,9 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
         int value; // user type
         if (createAdminRadioButton.isSelected()) {
             value = 0; // admin value
-        }
-        else if (createSocialWorkerRadioButton.isSelected()) {
+        } else if (createSocialWorkerRadioButton.isSelected()) {
             value = 1; // social worker value
-        }
-        else {
+        } else {
             value = -1;
         }
         if (value != -1) {
@@ -242,36 +236,29 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
                                         System.out.println("Role: " + ib.getRole());
                                         updateUserList();
                                         adminInfoLabel.setText("Success");
-                                    }
-                                    else {
+                                    } else {
                                         adminInfoLabel.setText("Emailen skal indeholde et @, og må maks indeholde "
                                                 + ib.getFinalInts()[7] + " tegn");
                                     }
-                                }
-                                else {
+                                } else {
                                     adminInfoLabel.setText("Navnet skal indeholde mellem " + ib.getFinalInts()[5] + " og "
                                             + ib.getFinalInts()[6] + " tegn");
                                 }
-                            }
-                            else {
+                            } else {
                                 adminInfoLabel.setText("Brugernavnet eksisterer allerede");
                             }
-                        }
-                        else {
+                        } else {
                             adminInfoLabel.setText("Brugernavnet skal indeholde mellem " + ib.getFinalInts()[3] + " og "
                                     + ib.getFinalInts()[4] + " tegn");
                         }
-                    }
-                    else {
+                    } else {
                         adminInfoLabel.setText("Kodeordet skal indeholde mellem " + ib.getFinalInts()[1] + " og "
                                 + ib.getFinalInts()[2] + " tegn, og de to kodeord skal matche");
                     }
-                }
-                else {
+                } else {
                     adminInfoLabel.setText("ID'et eksisterer allerede");
                 }
-            }
-            else {
+            } else {
                 adminInfoLabel.setText("ID'et skal indeholde " + ib.getFinalInts()[0] + " tegn");
             }
         }
@@ -300,27 +287,20 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
         updateUserList();
     }
 
+    /**
+     * Updates the list of users.
+     */
     public void updateUserList() {
         if (ib.getUsers() == null) {
-            adminInfoLabel.setText("no Users installed");
-        }
-        else {
+            adminInfoLabel.setText("no users installed");
+        } else {
             adminUserListView.setItems(ib.getUsers());
         }
     }
 
-
-    /**
-     * @deprecated @param event The event
-     */
-    @FXML
-    private void UpdateListAction(ActionEvent event) {
-    }
-
-
     /**
      * Handle method for button 'Opdatér' in log tab when logged in as admin.
-     * Updates log
+     * Updates log.
      *
      * @param event The event
      */
