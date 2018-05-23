@@ -34,7 +34,7 @@ public class DBManager {
 
     /**
      * saveUser saves a user and opens a connection to the database and sends a
-     * query with a resultsset. The query inserts the users values into the users
+     * query with a resultset. The query inserts the users values into the users
      * entity set
      *
      * @param user The user that is going to be saved.
@@ -341,7 +341,7 @@ public class DBManager {
 
     /**
      * Deletes a case. Opens a connection to the database and sends a query with
-     * a resultsset. The query deletes an tuple from the entityset cases where
+     * a resultset. The query deletes an tuple from the entityset cases where
      * the caseid is equal to cases.id
      *
      * @param theCase The case that is going to be deleted.
