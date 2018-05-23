@@ -62,7 +62,7 @@ public class DBManager {
     /**
      * saves an inquiry
      *
-     * @param inquiry The nquiry that is going to be saved Opens an connection
+     * @param inquiry The inquiry that is going to be saved Opens an connection
      * to the database and sends a quary with a resultsset The quary inserts the
      * inquiry values into the entityset inquiries and also inserts the
      * inquiryid into the relation hasinqury
