@@ -34,7 +34,7 @@ public class DBManager {
 
     /**
      * saveUser saves a user and opens a connection to the database and sends a
-     * quary with a resultsset The quary inserts the users values into the users
+     * quary with a resultsset. The query inserts the users values into the users
      * entity set
      *
      * @param user The user that is going to be saved.
@@ -60,7 +60,7 @@ public class DBManager {
 
     /**
      * saves an inquiry and opens a connection to the database and sends a quary
-     * with a resultset. The quary inserts the inquiry values into the entityset
+     * with a resultset. The query inserts the inquiry values into the entityset
      * inquiries and also inserts the inquiryid into the relation hasinqury
      *
      * @param inquiry The inquiry that is going to be saved.
@@ -86,7 +86,7 @@ public class DBManager {
 
     /**
      * Updates an inquiry and opens a connection to the database and sends a
-     * quary with a resultset The quary updates the inquiry values set on the
+     * quary with a resultset. The query updates the inquiry values set on the
      * entityset inquiries where the inquiryid is equals to the inquiryid in
      * inquiries.
      *
@@ -112,8 +112,8 @@ public class DBManager {
     }
 
     /**
-     * Opens a connection to the database and sends a quary with a resultset The
-     * quary updates the citizen values set on the entityset citizens where the
+     * Opens a connection to the database and sends a quary with a resultset. The
+     * query updates the citizen values set on the entityset citizens where the
      * citizenid is equals to the id in citizens
      *
      * @param citizen The citizen that is going to be updated
@@ -134,8 +134,8 @@ public class DBManager {
     }
 
     /**
-     * Opens a connection to the database and sends a quary with a resultset The
-     * quary updates the case values set on the entityset cases where the
+     * Opens a connection to the database and sends a quary with a resultset. The
+     * query updates the case values set on the entityset cases where the
      * casesid is equals to the casesid in cases
      *
      * @param casen The case that is going to be updated
@@ -195,7 +195,7 @@ public class DBManager {
 
     /**
      * Saves a case and opens a connection to the database and sends a quary
-     * with a resultset. The quary inserts the case data into the entity set
+     * with a resultset. The query inserts the case data into the entity set
      * cases and also inserts the caseid into the relation hascase where
      * citizenid is the same.
      *
@@ -221,8 +221,8 @@ public class DBManager {
     }
 
     /**
-     * Opens a connection to the database and sends a quary with a resultset The
-     * quary inserts the citizen values into the entityset citizens
+     * Opens a connection to the database and sends a quary with a resultset. The
+     * query inserts the citizen values into the entityset citizens
      *
      * @param citizen The citizen that is going to be saved
      */
@@ -244,7 +244,7 @@ public class DBManager {
 
     /**
      * Returns a list of users and opens a connection to the database and sends
-     * a quary with a resultset. The quary selects all tuples from the entityset
+     * a quary with a resultset. The query selects all tuples from the entityset
      * users. The values from each column is put into an array of string which
      * is added to an arraylist
      *
@@ -276,7 +276,7 @@ public class DBManager {
 
     /**
      * Opens a connection to the database and sends a quary with a resultset.
-     * The quary searches for a tuple from the entityset. Users where the
+     * The quary searches for a tuple from the entityset Users where the
      * username is a match. The values from each column of the found tuple is
      * put into a String[]. name is saved on index 0. id is saved on index 1.
      * username is saved on index 2. password is saved on index 3. mail is saved
@@ -309,7 +309,7 @@ public class DBManager {
 
     /**
      * Deletes a user. Opens a connection to the database and sends a quary with
-     * a resultset The quary deletes an tuple from the entityset users where the
+     * a resultset. The query deletes an tuple from the entityset users where the
      * user username is equals to users.username
      *
      * @param user The user that is going to be deleted
@@ -325,7 +325,7 @@ public class DBManager {
 
     /**
      * Deletes an inquiry. Opens an connection to the database and sends a quary
-     * with a resultset. The quary deletes a tuple from the entityset inquries
+     * with a resultset. The query deletes a tuple from the entityset inquries
      * where the inquirys id is equals to inquiries.inquiryid
      *
      * @param inquiry The inquiry that is going to be deleted.
@@ -341,7 +341,7 @@ public class DBManager {
 
     /**
      * Deletes a case. Opens a connection to the database and sends a quary with
-     * a resultsset The quary deletes an tuple from the entityset cases where
+     * a resultsset. The query deletes an tuple from the entityset cases where
      * the caseid is equal to cases.id
      *
      * @param theCase The case that is going to be deleted.
@@ -359,7 +359,7 @@ public class DBManager {
 
     /**
      * Deletes a citizen. Opens a connection to the database and sends a quary
-     * with a resultset The quary deletes an tuple from the entityset citizens
+     * with a resultset. The query deletes an tuple from the entityset citizens
      * where the citizenid is equal to citizens.id
      *
      * @param citizen The citizen that is going to be deleted.
@@ -375,7 +375,7 @@ public class DBManager {
 
     /**
      * Returns a boolean depending on the user id. Opens a connection to the
-     * database and sends a quary with a resultset The quary counts how many ids
+     * database and sends a query with a resultset. The query counts how many ids
      * in the entityset users which are equal to id. If any of these are equal
      * to it, it returns false.
      *
@@ -400,7 +400,7 @@ public class DBManager {
 
     /**
      * Returns a boolean depending on the user id. Opens a connection to the
-     * database and sends a quary with a resultset The quary counts how many ids
+     * database and sends a query with a resultset. The query counts how many ids
      * in the entityset citizens which are equal to id. If any of these are
      * equal to it, it returns false.
      *
@@ -425,7 +425,7 @@ public class DBManager {
 
     /**
      * Returns a boolean depending on the user id. Opens a connection to the
-     * database and sends a quary with a resultset The quary counts how many
+     * database and sends a query with a resultset. The query counts how many
      * usernames in the entityset users which are equal to username. If any of
      * these are equal to it, it returns false.
      *
@@ -450,7 +450,7 @@ public class DBManager {
 
     /**
      * Saves the log data into the database. Opens a connection to the database
-     * and sends a quary with a resultset The quary inserts the string data
+     * and sends a query with a resultset. The query inserts the string data
      * into the entityset logdata
      *
      * @param date The date of the log.
@@ -472,7 +472,7 @@ public class DBManager {
 
     /**
      * Returns a list of logdata. Opens a connection to the
-     * database and sends a quary with a resultset Selects all tuples from the
+     * database and sends a query with a resultset that Selects all tuples from the
      * entityset logdata Formats the string and adds it a list
      *
      * @return a list of Strings
