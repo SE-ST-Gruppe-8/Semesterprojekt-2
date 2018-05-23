@@ -176,7 +176,7 @@ public class DBManager {
                     + "FROM citizens\n"
                     + "LEFT JOIN inquiries ON inquiries.inquiryid = (SELECT inquiryid FROM hasinquiry WHERE citizenid = citizens.id)\n"
                     + "LEFT JOIN cases ON cases.caseid = (SELECT caseid FROM hascase WHERE citizenid = citizens.id)"
-                    + "");
+                    + "LEFT JOIN users ON users.userid = (SELECT userid FROM createdby WHERE caseid = cases.caseid)");
             while (rs1.next()) {
                 String[] s = new String[10];
                 for (int i = 0; i < s.length; i++) {
