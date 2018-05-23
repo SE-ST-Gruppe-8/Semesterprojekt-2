@@ -188,25 +188,26 @@ public class BusinessFacade implements IBusiness {
         return false;
     }
 
-    @Override
-    public void saveInquiry(IInquiry inquiry) {
-        ArrayList<ICitizen> citizenList = new ArrayList<>();
-        data.loadData(citizenList, "citizens");
-        Citizen c = inquiry.getCitizen();
-        citizenList.remove(c);
-        c.setInquiry((Inquiry) inquiry);
-        citizenList.add(c);
-        security.logData("Saved inquiry: " + c.toString());
-        data.saveData(citizenList, "citizens");
-    }
+//    @Override
+//    public void saveInquiry(IInquiry inquiry) {
+//        ArrayList<ICitizen> citizenList = new ArrayList<>();
+//        data.loadData(citizenList, "citizens");
+//        Citizen c = inquiry.getCitizen();
+//        citizenList.remove(c);
+//        c.setInquiry((Inquiry) inquiry);
+//        citizenList.add(c);
+//        security.logData("Saved inquiry: " + c.toString());
+//        data.saveData(citizenList, "citizens");
+//    }
 
     @Override
     public int getRole() {
         return security.getActiveUser().getRole();
     }
 
-    @Override
-    public void createCase(String id, String des, String process, ISocialWorker sw, ICitizen c) {
+//                  Outdated createCase method.
+//    @Override
+//    public void createCase(String id, String des, String process, ISocialWorker sw, ICitizen c) {
 //        String s = "error, could not create case";
 //        ICase newCase;
 //        if (security.getActiveUser() instanceof SocialWorker) {
@@ -232,7 +233,8 @@ public class BusinessFacade implements IBusiness {
 //        }
 //        System.out.println(c.getName() + id);
 //    }
-
+    @Override
+    public void createCase(String id, String des, String process, ISocialWorker sw, ICitizen c) {
         String s = "Error, could not create case";
         ICase newCase;
         if (security.getActiveUser() instanceof SocialWorker) {
@@ -251,7 +253,8 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void deleteCase(ICase newCase) {
+    public void deleteCase(ICase newCase
+    ) {
         if (security.getActiveUser() instanceof SocialWorker) {
             if (((SocialWorker) security.getActiveUser()).deleteCase(newCase)) {
                 security.logData("Deleted case " + newCase.toString());
@@ -262,13 +265,10 @@ public class BusinessFacade implements IBusiness {
         }
     }
 
-    /**
-     * @param name
-     * @param id
-     * @param needs
-     */
     @Override
-    public void createCitizen(String name, String id, String needs) {
+    public void createCitizen(String name, String id,
+            String needs
+    ) {
 //        ICitizen citizen;
 //        String s = "Error with Citizen";
 //        if (security.getActiveUser() instanceof SocialWorker) {
@@ -298,7 +298,8 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void deleteCitizen(ICitizen citizen) {
+    public void deleteCitizen(ICitizen citizen
+    ) {
         String s = "Error with Citizen";
         if (security.getActiveUser() instanceof SocialWorker) {
             if (((SocialWorker) security.getActiveUser()).deleteCitizen(citizen, citizens)) {
@@ -311,7 +312,10 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void createInquiry(String id, String origin, boolean informed, ICitizen citizen, String description) {
+    public void createInquiry(String id, String origin,
+            boolean informed, ICitizen citizen,
+            String description
+    ) {
 //        IInquiry inquiry;
 //        String s = "Error with Citizen";
 //        if (security.getActiveUser() instanceof SocialWorker) {
@@ -344,7 +348,8 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void deleteInquiry(IInquiry i) {
+    public void deleteInquiry(IInquiry i
+    ) {
         String s = "Error with Citizen";
         if (security.getActiveUser() instanceof SocialWorker) {
             if (((SocialWorker) security.getActiveUser()).deleteInquiry(i)) {
@@ -358,7 +363,9 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void editCase(String description, String process, ICase c) {
+    public void editCase(String description, String process,
+            ICase c
+    ) {
         c.setDescription(description);
         c.setProcess(process);
         security.logData("Edited case: " + c.toString());
@@ -366,14 +373,17 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void editCitizen(String needs, ICitizen c) {
+    public void editCitizen(String needs, ICitizen c
+    ) {
         c.setNeeds(needs);
         security.logData("Edited citizen: " + c.toString());
         data.updateCitizen(c);
     }
 
     @Override
-    public void editInquiry(String description, IInquiry i, boolean isInformed) {
+    public void editInquiry(String description, IInquiry i,
+            boolean isInformed
+    ) {
         i.setDescription(description);
         i.setIsCitizenInformed(isInformed);
         security.logData("Edited inquiry: " + i.toString());
@@ -381,22 +391,26 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public boolean hasUniqueUserID(String id) {
+    public boolean hasUniqueUserID(String id
+    ) {
         return data.hasUniqueUserID(id);
     }
 
     @Override
-    public boolean hasUnqiueCitizenID(String id) {
+    public boolean hasUnqiueCitizenID(String id
+    ) {
         return data.hasUniqueCitizenID(id);
     }
 
     @Override
-    public boolean hasUniqueUsername(String username) {
+    public boolean hasUniqueUsername(String username
+    ) {
         return data.hasUniqueUsername(username);
     }
 
     @Override
-    public boolean hasAcceptableID(String id) {
+    public boolean hasAcceptableID(String id
+    ) {
         try {
             if (id.length() == ID_LENGTH) {
                 return true;
