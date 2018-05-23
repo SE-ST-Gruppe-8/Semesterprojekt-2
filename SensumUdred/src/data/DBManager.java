@@ -34,7 +34,7 @@ public class DBManager {
 
     /**
      * saveUser saves a user and opens a connection to the database and sends a
-     * quary with a resultsset. The query inserts the users values into the users
+     * query with a resultsset. The query inserts the users values into the users
      * entity set
      *
      * @param user The user that is going to be saved.
