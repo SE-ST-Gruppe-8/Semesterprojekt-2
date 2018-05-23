@@ -382,6 +382,7 @@ public class DBManager {
      * database and sends a quary with a resultsset The quary counts how many
      * ids in the entityset users which are equal to id. If any of these are
      * equal to it, it returns false.
+     * 
      * @return a boolean
      */
     public boolean hasUniqueUserID(String id) {
@@ -407,6 +408,7 @@ public class DBManager {
      * database and sends a quary with a resultsset The quary counts how many
      * ids in the entityset cittizens which are equal to id. If any of these are
      * equal to it, it returns false.
+     *
      * @return a boolean
      */
     public boolean hasUniqueCitizenID(String id) {
