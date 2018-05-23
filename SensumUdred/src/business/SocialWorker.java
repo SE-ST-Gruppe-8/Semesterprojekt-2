@@ -10,22 +10,44 @@ import javafx.collections.ObservableList;
 
 /**
  *
- * @author Søren Bendtsen
+ * @author Nikolaj Filipsen
  */
 public class SocialWorker extends User implements ISocialWorker {
 
+    /**
+     * A Set of cases which the social worker is responsible for.
+     */
     private Set<Case> cases;
+    /**
+     * A Set of inquiries which the social worker is responsible for.
+     */
     private Set<Inquiry> inquiries;
-    private Set<Reference> references;
-    private Set<Citizen> citizens;
+
+    /**
+     * A static final integer for SocialWorker. The integer is unique from other
+     * subclasses of User.
+     */
     private static final int ROLE = 1;
+
+    /**
+     * An ID which makes sure that problems won't occure with binary files when
+     * using Serilization.
+     */
     private static final long serialVersionUID = 1L;
 
+    /**
+     * A Constructor used for creating a SocialWorker.
+     *
+     * @param name the social worker's name.
+     * @param id the social worker's ID.
+     * @param username the social worker's username.
+     * @param password the social worker's password.
+     * @param email the social worker's email.
+     */
     public SocialWorker(String name, String id, String username, String password, String email) {
         super(name, id, username, password, email);
         this.cases = new HashSet<>();
         this.inquiries = new HashSet<>();
-        this.references = new HashSet<>();
     }
 
     @Override
@@ -46,12 +68,6 @@ public class SocialWorker extends User implements ISocialWorker {
     }
 
     @Override
-    public boolean createReference(String id, String socialInstance, String description) {
-        // TODO
-        return false;
-    }
-
-    @Override
     public boolean informCitizen(Case c) {
         // TODO
         return false;
@@ -65,11 +81,6 @@ public class SocialWorker extends User implements ISocialWorker {
     @Override
     public Set<Inquiry> getInquiries() {
         return this.inquiries;
-    }
-
-    @Override
-    public Set<Reference> getReferences() {
-        return this.references;
     }
 
     @Override
@@ -93,55 +104,17 @@ public class SocialWorker extends User implements ISocialWorker {
     }
 
     @Override
-    public boolean addReference(Reference ref) {
-        try {
-            this.references.add(ref);
-            return true;
-        } catch (NullPointerException ex) {
-            return false;
-        }
-    }
-
-//    public boolean removeCase(Case c) {
-//        try {
-//            if (this.cases.contains(c)) {
-//                this.cases.remove(c);
-//                return true;
-//            }
-//        } catch (NullPointerException ex) {
-//        }
-//        return false;
-//    }
-//
-//    public boolean removeInquiry(Inquiry inq) {
-//        try {
-//            if (this.inquiries.contains(inq)) {
-//                this.inquiries.remove(inq);
-//                return true;
-//            } else {
-//            }
-//        } catch (NullPointerException ex) {
-//        }
-//        return false;
-//    }
-//
-//    public boolean removeReference(Reference ref) {
-//        try {
-//            if (this.references.contains(ref)) {
-//                this.references.remove(ref);
-//                return true;
-//            }
-//        } catch (NullPointerException ex) {
-//        }
-//        return false;
-//    }
-
-    @Override
     public int getRole() {
         return 1;
     }
-    
-    public static int getSWRole(){
+
+    /**
+     * A static method that returns the integer representing the role of
+     * SocialWorker.
+     *
+     * @return the role of a SocialWorker.
+     */
+    public static int getSWRole() {
         return ROLE;
     }
 
@@ -153,11 +126,10 @@ public class SocialWorker extends User implements ISocialWorker {
 
     @Override
     public boolean deleteCitizen(ICitizen citizen, ObservableList<ICitizen> citizens) {
-        boolean citizenRemoved = false;
         if (citizens.contains(citizen)) {
-            citizenRemoved = citizens.remove(citizen);
+            return citizens.remove(citizen);
         }
-        return citizenRemoved;
+        return false;
     }
 
     @Override

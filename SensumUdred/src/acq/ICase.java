@@ -28,7 +28,7 @@ public interface ICase {
      * 
      * @return the case's id
      */
-    public String getId();
+    public String getID();
     /**
      * Sets the description of the case.
      * 

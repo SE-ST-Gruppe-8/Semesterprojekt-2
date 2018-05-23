@@ -5,16 +5,23 @@ import java.io.Serializable;
 
 /**
  *
- * @author Søren Bendtsen
+ * @author Nikolaj Filipsen
  */
 public abstract class User implements IUser, Serializable {
 
+    /**
+     * The user's ID
+     */
     private final String ID;
+
+    /**
+     * The user's information
+     */
     private String name, username, password, email;
 
     /**
      *
-     * Constructor used for creating a User.
+     * A Constructor used for creating a User.
      *
      * @param name the name of the user.
      * @param id the user's ID.
@@ -36,11 +43,6 @@ public abstract class User implements IUser, Serializable {
     }
 
     @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
     public String getID() {
         return ID;
     }
@@ -51,18 +53,8 @@ public abstract class User implements IUser, Serializable {
     }
 
     @Override
-    public void setUsername(String userName) {
-        this.username = userName;
-    }
-
-    @Override
     public String getPassword() {
         return password;
-    }
-
-    @Override
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     @Override
@@ -71,15 +63,10 @@ public abstract class User implements IUser, Serializable {
     }
 
     @Override
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Override
     public abstract int getRole();
 
     /**
-     * Returns a User as a nice looking.
+     * Returns a User as a nice looking String.
      *
      * @return a String.
      */

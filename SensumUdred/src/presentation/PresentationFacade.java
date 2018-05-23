@@ -19,19 +19,10 @@ import javafx.stage.Stage;
  */
 public class PresentationFacade extends Application implements IPresentation {
 
+    /**
+     *  IBusiness is used for accessing business logic
+     */
     private static IBusiness ib;
-
-//    private static PresentationFacade ui;
-//    public static PresentationFacade getUi() {
-//        return ui;
-//    }
-    public IBusiness getIBusiness() {
-        return ib;
-    }
-
-    public PresentationFacade() {
-
-    }
 
     /**
      * Override; inject business interface to presentation.
@@ -48,13 +39,14 @@ public class PresentationFacade extends Application implements IPresentation {
      */
     @Override
     public void openUI() {
-//        ui = this;
         launch();
     }
 
-//    public static PresentationFacade getIData() {
-//        return ui;
-//    }
+    /**
+     *
+     * @param stage The stage
+     * @throws Exception The Exception
+     */
     @Override
     public void start(Stage stage) throws Exception {
 

@@ -19,6 +19,8 @@ import presentation.PresentationFacade;
 public class Starter extends Application {
 
     /**
+     * Glue code for 3-layer architecture
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
@@ -35,6 +37,12 @@ public class Starter extends Application {
         // Start GUI.
         ui.openUI();
     }
+    
+    /**
+     * Start GUI
+     * @param stage
+     * @throws Exception 
+     */
 
     @Override
     public void start(Stage stage) throws Exception {
