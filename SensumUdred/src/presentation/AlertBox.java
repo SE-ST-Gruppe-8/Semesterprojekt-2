@@ -148,7 +148,7 @@ public class AlertBox {
         TextArea needsTextField = new TextArea();
         needsTextField.setPromptText("Indtast behov");
         Label nameLabel = new Label();
-        nameLabel.setText("ID\t*ID'et skal indeholde " + ib.getFinalInts()[1] + " tegn");
+        nameLabel.setText("ID\t*ID'et skal indeholde " + ib.getFinalInts()[0] + " tegn");
         Label idLabel = new Label();
         idLabel.setText("Navn");
         Label needsLabel = new Label();
