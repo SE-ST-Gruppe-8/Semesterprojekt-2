@@ -37,55 +37,128 @@ import javafx.stage.Stage;
  */
 public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
+    /**
+     * IBusiness is used for accessing business logic
+     */
     private IBusiness ib;
+
+    /**
+     * Booelan is used for updating log once, when clicking log tab, when logged
+     * in as admin
+     */
     private boolean logUpdatedOnce;
 
+    /**
+     * Tab admin
+     */
     @FXML
     private Tab adminTab;
+    /**
+     * Listview to show list of users
+     */
     @FXML
     private ListView<IUser> adminUserListView;
+    /**
+     * Togglegroup to ensure that only one radiobutton can enabled at the same
+     * time
+     */
     @FXML
     private ToggleGroup createUserToggleGroup;
+    /**
+     * Button for choosing which user to be created. When selected socialworker
+     * is chosen
+     */
     @FXML
     private RadioButton createSocialWorkerRadioButton;
+    /**
+     * Button for choosing which user to be created. When selected admin is
+     * chosen
+     */
     @FXML
     private RadioButton createAdminRadioButton;
+    /**
+     * Textfield for entering username to be created
+     */
     @FXML
     private TextField adminUsernameTextField;
+    /**
+     * Textfield for entering firstname of user to be created
+     */
     @FXML
     private TextField adminFirstNameTextField;
+    /**
+     * Textfield for entering password of user to be created
+     */
     @FXML
     private TextField adminPasswordTextField;
+    /**
+     * Textfield for entering lastname of user to be created
+     */
     @FXML
     private TextField adminLastNameTextField;
+    /**
+     * Textfield for repeat password for user to be created
+     */
     @FXML
     private TextField adminRepeatPasswordTextField;
+    /**
+     * Textfield for entering email of user to be created
+     */
     @FXML
     private TextField adminEmailTextField;
-    @FXML
-    private Button createUserButton;
-    @FXML
-    private Label adminInfoLabel;
-    @FXML
-    private Label loginInfoLabelAdmin;
-    @FXML
-    private Button deleteUserButton;
-    @FXML
-    private Button UpdateList;
+    /**
+     * Textfield for entering ID of user to be created
+     */
     @FXML
     private TextField adminIdTextField;
+    /**
+     * Button for creating user
+     */
+    @FXML
+    private Button createUserButton;
+    /**
+     * Button for deleting selected user
+     */
+    @FXML
+    private Button deleteUserButton;
+    /**
+     * Label to show info when creating user. Shows whether the user is created
+     * succesfully or if the entered user data does not meet the requiements
+     *
+     */
+    @FXML
+    private Label adminInfoLabel;
+    /**
+     * Label to show name of the user logged in
+     */
+    @FXML
+    private Label loginInfoLabelAdmin;
+    /**
+     * Button for updating userlist
+     */
+    @FXML
+    private Button updateList;
+    /**
+     * Button logout. Press to logut current user
+     */
     @FXML
     private Button logoutButtonSW;
+    /**
+     * Button for updating log in log tab
+     */
     @FXML
     private Button UpdateLogButton;
+    /**
+     * Textarea shows log data
+     */
     @FXML
     private TextArea logTextArea;
 
     /**
      * Initializes the controller class.
      *
-     * @param url
-     * @param rb
+     * @param url The url
+     * @param rb The ResourceBundle
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -101,8 +174,8 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
      * Handle method for button 'Log ud' When clicked closing current window and
      * shows log in screen
      *
-     * @param event
-     * @throws IOException
+     * @param event The event
+     * @throws IOException The IOException
      */
     @FXML
     private void logoutButtonAction(ActionEvent event) throws IOException {
@@ -128,23 +201,20 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
     /**
      * Handle method for button 'Opret bruger' in admin tab when logged in as
-     * admin . Creates a citizen.
-     * ID must be on 10 characters Password must be between 4 and 16 characters
-     * Name must be between 3 and 100 characters Email must contain a '@' max 50
-     * characters
+     * admin. Creates a user. ID must be on 10 characters. Password must be
+     * between 4 and 16 characters. Name must be between 3 and 100 characters.
+     * Email must contain a '@', and max 50 characters
      *
-     * @param event
+     * @param event The Event
      */
     @FXML
     private void createUserButtonAction(ActionEvent event) {
         int value; // user type
         if (createAdminRadioButton.isSelected()) {
             value = 0; // admin value
-        }
-        else if (createSocialWorkerRadioButton.isSelected()) {
+        } else if (createSocialWorkerRadioButton.isSelected()) {
             value = 1; // social worker value
-        }
-        else {
+        } else {
             value = -1;
         }
         if (value != -1) {
@@ -166,36 +236,29 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
                                         System.out.println("Role: " + ib.getRole());
                                         updateUserList();
                                         adminInfoLabel.setText("Success");
-                                    }
-                                    else {
+                                    } else {
                                         adminInfoLabel.setText("Emailen skal indeholde et @, og må maks indeholde "
                                                 + ib.getFinalInts()[7] + " tegn");
                                     }
-                                }
-                                else {
+                                } else {
                                     adminInfoLabel.setText("Navnet skal indeholde mellem " + ib.getFinalInts()[5] + " og "
                                             + ib.getFinalInts()[6] + " tegn");
                                 }
-                            }
-                            else {
+                            } else {
                                 adminInfoLabel.setText("Brugernavnet eksisterer allerede");
                             }
-                        }
-                        else {
+                        } else {
                             adminInfoLabel.setText("Brugernavnet skal indeholde mellem " + ib.getFinalInts()[3] + " og "
                                     + ib.getFinalInts()[4] + " tegn");
                         }
-                    }
-                    else {
+                    } else {
                         adminInfoLabel.setText("Kodeordet skal indeholde mellem " + ib.getFinalInts()[1] + " og "
                                 + ib.getFinalInts()[2] + " tegn, og de to kodeord skal matche");
                     }
-                }
-                else {
+                } else {
                     adminInfoLabel.setText("ID'et eksisterer allerede");
                 }
-            }
-            else {
+            } else {
                 adminInfoLabel.setText("ID'et skal indeholde " + ib.getFinalInts()[0] + " tegn");
             }
         }
@@ -203,10 +266,9 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
     /**
      * Handle method for button 'Slet bruger' in admin tab when logged in as
-     * admin. Deletes selected
-     * citizen
+     * admin. Deletes selected citizen
      *
-     * @param event
+     * @param event The event
      */
     @FXML
     private void deleteUserButtonAction(ActionEvent event) {
@@ -218,34 +280,29 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
      * Handle method for button 'Opdatér Liste' in Admin tab when logged in as
      * admin. Updates Userlist
      *
-     * @param event
+     * @param event The event
      */
+    @FXML
     private void updateListAction(ActionEvent event) {
         updateUserList();
     }
 
+    /**
+     * Updates the list of users.
+     */
     public void updateUserList() {
         if (ib.getUsers() == null) {
-            adminInfoLabel.setText("no Users installed");
-        }
-        else {
+            adminInfoLabel.setText("no users installed");
+        } else {
             adminUserListView.setItems(ib.getUsers());
         }
     }
 
     /**
-     * @deprecated @param event
-     */
-    @FXML
-    private void UpdateListAction(ActionEvent event) {
-    }
-
-    /**
-     * Handle method for button 'Opdatér' in log tab when logged in as
-     * admin.
-     * Updates log
+     * Handle method for button 'Opdatér' in log tab when logged in as admin.
+     * Updates log.
      *
-     * @param event
+     * @param event The event
      */
     @FXML
     private void updateLogButtonAction(ActionEvent event) {
@@ -266,9 +323,9 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
 
     /**
      * Handle method to be executed when selecting log tab when logged in as
-     * admin.
-     * Updates log when clicked
-     * @param event 
+     * admin. Updates log when clicked
+     *
+     * @param event The event
      */
     @FXML
     private void logTabChosenEvent(Event event) {
@@ -280,7 +337,7 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
     /**
      * Method for injecting businesslogic into this controller
      *
-     * @param businessFacade
+     * @param businessFacade The Businessfacade
      */
     @Override
     public void injectBusiness(IBusiness businessFacade) {

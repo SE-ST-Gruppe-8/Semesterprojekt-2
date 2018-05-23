@@ -3,7 +3,6 @@ package business;
 import acq.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -156,7 +155,7 @@ public class BusinessFacade implements IBusiness {
         if (security.getActiveUser() instanceof SystemAdmin) {
             if (((SystemAdmin) security.getActiveUser()).deleteUser(user, users)) {
                 security.logData("Deleted user: " + user.toString());
-                data.saveData((ArrayList<IUser>) users.stream().collect(Collectors.toList()), "users");
+                data.deleteUser(user);
             } else {
                 System.out.println("User does not exist");
             }
@@ -176,10 +175,10 @@ public class BusinessFacade implements IBusiness {
             return false;
         }*/
 
-        String[] array = data.loadUser(username);
-        array[3] = array[3].trim();
-        password = password.trim();
-        if (array != null) {
+        String[] array = data.loadUser(username);;
+        if (array[0] != null) {
+            array[3] = array[3].trim();
+            password = password.trim();
             if (security.validateUserlogin(array, password)) {
                 security.logData("Logged in.");
                 return true;

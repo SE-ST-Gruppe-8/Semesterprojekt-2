@@ -32,27 +32,44 @@ import javafx.stage.Stage;
 public class ControllerFXMLlogin implements Initializable, IPresentation {
 
     /**
-     * 
+     * IBusiness is used for accessing business logic
      */
     private IBusiness ib;
+    /**
+     * String is used to set the string of the FXMLLoader
+     */
     private String fxmlString;
-
+    /**
+     * Textfield for entering username
+     */
     @FXML
     private TextField loginUsernameTextField;
+    /**
+     * Textfield for entering password
+     */
     @FXML
     private PasswordField loginPasswordTextField;
+    /**
+     * If username or password is invalid a 'Forkert input' is shown
+     */
     @FXML
     private Label loginInfoLabel;
+    /**
+     * Button for login
+     */
     @FXML
     private Button loginButton;
+    /**
+     * Button for exit
+     */
     @FXML
     private Button exitButton;
 
     /**
      * Initializes the controller class.
      *
-     * @param url
-     * @param rb
+     * @param url The url
+     * @param rb The ResourceBundle
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -62,12 +79,12 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
     /**
      * Handlemethod for login if you login as SocialWorker, you will be directed
      * to SocialWorker page if you login as Admin, you will be directed to Admin
-     * page
+     * page.
      *
-     * Message is shown if you enter wrong input
+     * Message is shown if you enter wrong input.
      *
-     * @param event
-     * @throws IOException
+     * @param event The event
+     * @throws IOException The IOException
      */
     @FXML
     private void loginButtonAction(ActionEvent event) throws IOException {
@@ -77,8 +94,7 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
                 if (ib.getRole() == ib.getSocialWorkerRoleInt()) {
                     fxmlString = "FXMLSocialWorker.fxml";
 
-                }
-                else if (ib.getRole() == ib.getAdminRoleInt()) {
+                } else if (ib.getRole() == ib.getAdminRoleInt()) {
                     fxmlString = "FXMLAdmin.fxml";
                 }
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlString));
@@ -98,12 +114,10 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
                 window.setHeight(430);
                 window.setScene(scene2);
                 window.show();
-            }
-            else {
+            } else {
                 loginInfoLabel.setText("Forkert input");
             }
         } catch (NullPointerException ex) {
-            ex.printStackTrace();
             System.out.println(ex.getMessage());
             loginInfoLabel.setText("Forkert input");
         }
@@ -112,7 +126,7 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
     /**
      * Method for injecting businesslogic into this controller
      *
-     * @param businessFacade
+     * @param businessFacade The Businessfacade
      */
     @Override
     public void injectBusiness(IBusiness businessFacade) {
@@ -128,7 +142,8 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
 
     /**
      * Closing application when exit button is clicked
-     * @param event 
+     *
+     * @param event The event
      */
     @FXML
     private void exitButtonAction(ActionEvent event) {

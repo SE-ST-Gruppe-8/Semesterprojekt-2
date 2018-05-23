@@ -5,7 +5,6 @@
  */
 package acq;
 
-
 /**
  *
  * @author Bruger
@@ -14,17 +13,14 @@ public interface IPresentation {
 
     /**
      * Method for injecting businesslogic into presentation
-     * 
-     * @param businessFacade 
+     *
+     * @param businessFacade
      */
-    
     public void injectBusiness(IBusiness businessFacade);
 
     /**
      * Method to launch User Interface
      */
-
     public void openUI();
-    
-    
+
 }

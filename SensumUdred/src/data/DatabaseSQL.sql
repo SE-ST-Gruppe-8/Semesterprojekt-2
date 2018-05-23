@@ -1,6 +1,6 @@
 
 CREATE TABLE Users (
-    id CHAR(10) UNIQUE,
+    id CHAR(10) PRIMARY KEY,
     name VARCHAR(100),
     mail VARCHAR(50),
     username CHAR(16) UNIQUE,
@@ -61,4 +61,8 @@ CREATE TABLE CreatedBy (
     FOREIGN KEY (userId) REFERENCES Users(id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (caseId) REFERENCES Cases(caseId) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+INSERT INTO Users VALUES('0000000000', 'Admin', 'admin@sensum.dk', 'admin', 'super', 0);
+INSERT INTO Users VALUES('1111111111', 'Social Worker', 'sw@sensum.dk', 'social', 'worker', 1);
+INSERT INTO citizens VALUES('010250xxxx', 'Grethe Hansen', 'Terapi');
 

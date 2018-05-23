@@ -9,16 +9,18 @@ import java.io.PrintWriter;
  * @author Robin
  */
 public class DataLogger {
+
     /**
-     * Output is a printwiter which sends the output
-     * logPath is a string which is used as a filepath
+     * Output is a printwiter which sends the output. LogPath is a string which
+     * is used as a filepath
      */
     private PrintWriter output;
     private String logPath = "Data.log";
+
     /**
      * Saves a log
-     * @param log 
-     * Uses a printwriter with a filewriter to write to a file
+     *
+     * @param log Uses a printwriter with a filewriter to write to a file
      */
     public void saveLog(String log) {
         try {

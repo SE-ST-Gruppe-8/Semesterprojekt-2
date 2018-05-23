@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 public class PresentationFacade extends Application implements IPresentation {
 
     /**
-     *
+     *  IBusiness is used for accessing business logic
      */
     private static IBusiness ib;
 
@@ -44,8 +44,8 @@ public class PresentationFacade extends Application implements IPresentation {
 
     /**
      *
-     * @param stage
-     * @throws Exception
+     * @param stage The stage
+     * @throws Exception The Exception
      */
     @Override
     public void start(Stage stage) throws Exception {
