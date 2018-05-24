@@ -30,7 +30,7 @@ import javafx.stage.Stage;
  *
  * @author Robin
  */
-public class ControllerFXMLSocialWorker implements Initializable, IPresentation {
+public class ControllerFXMLSocialWorker implements Initializable {
 
     /**
      * Presentationfacade is used for accessing presentation layer
@@ -166,6 +166,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         ab = new AlertBox();
+        ib = PresentationFacade.getBusiness();
+        initLists();
 //        ib = PresentationFacade.getIData().getIBusiness();
 //        loginInfoLabelSW.setText("Logged in as: " + ib.getActiveUser().getName());
 //        System.out.println("Logged in as: " + ib.getActiveUser().getName());
@@ -190,8 +192,8 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         loader.setLocation(getClass().getResource("FXMLlogin.fxml"));
 
         GridPane gridPane = loader.load();
-        IPresentation controller = loader.getController();
-        controller.injectBusiness(ib);
+        ControllerFXMLlogin controller = loader.getController();
+
 
         Scene scene2 = new Scene(gridPane);
         //Get Stage information
@@ -411,21 +413,7 @@ public class ControllerFXMLSocialWorker implements Initializable, IPresentation 
         }
     }
 
-    /**
-     * Method for injecting businesslogic into this controller
-     *
-     * @param businessFacade The Businessfacade
-     */
-    @Override
-    public void injectBusiness(IBusiness businessFacade) {
-        ib = businessFacade;
-    }
-
-    /**
-     * Method to launch User Interface (is executed after initialize)
-     */
-    @Override
-    public void openUI() {
+    public void initLists() {
         loginInfoLabelSW.setText("Logget ind som: " + ib.getActiveUser().getName());
         ib.processStuff();
         updateCitizenList();
