@@ -354,7 +354,6 @@ public class DBManager {
     public void deleteCase(ICase theCase) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            System.out.println(theCase.getID() + "meow");
             ResultSet rs1 = st1.executeQuery("delete from \"public\".\"cases\" where caseId ='" + theCase.getID() + "'");
 
         } catch (Exception ex) {
