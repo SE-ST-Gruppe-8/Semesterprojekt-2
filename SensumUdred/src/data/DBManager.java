@@ -113,9 +113,9 @@ public class DBManager {
     }
 
     /**
-     * Opens a connection to the database and sends a query with a resultset. The
-     * query updates the citizen values set on the entityset citizens where the
-     * citizenid is equals to the id in citizens
+     * Opens a connection to the database and sends a query with a resultset.
+     * The query updates the citizen values set on the entityset citizens where
+     * the citizenid is equals to the id in citizens
      *
      * @param citizen The citizen that is going to be updated
      */
@@ -135,8 +135,8 @@ public class DBManager {
     }
 
     /**
-     * Opens a connection to the database and sends a query with a resultset. The
-     * query updates the case values set on the entityset cases where the
+     * Opens a connection to the database and sends a query with a resultset.
+     * The query updates the case values set on the entityset cases where the
      * casesid is equals to the casesid in cases
      *
      * @param casen The case that is going to be updated
@@ -161,15 +161,15 @@ public class DBManager {
     }
 
     /**
-     * Returns A list of String[] containing citizens & their inquiries, cases and the
-     * social worker assigned to the case.
+     * Returns A list of String[] containing citizens & their inquiries, cases
+     * and the social worker assigned to the case.
      *
      * @return A list of String[], where every String[] contains data about a
      * citizen & their inquiry + case
      */
     public List<String[]> getEverything() {
         String[] columns = {"citizenid", "citizenname", "needs", "inquiryid", "inquirydescription", "iscitizeninformed", "origin",
-            "caseid", "casedescription", "process", "userid","name","mail","username","password","role"};
+            "caseid", "casedescription", "process", "userid", "name", "mail", "username", "password", "role"};
         ArrayList<String[]> data = new ArrayList<>();
 
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
@@ -216,8 +216,8 @@ public class DBManager {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("insert into cases values" + data + "\n"
-                    + "insert into hascase values('" + citizenid + "','" + id + "')\n"
-                    + "insert into createdby values" + data2 );
+                    + "insert into hascase values('" + citizenid + "','" + id + "');\n"
+                    + "insert into createdby values('" + sw.getID() + "','" + id + "');");
             rs1.close();
             st1.close();
         } catch (Exception ex) {
@@ -226,8 +226,8 @@ public class DBManager {
     }
 
     /**
-     * Opens a connection to the database and sends a query with a resultset. The
-     * query inserts the citizen values into the entityset citizens
+     * Opens a connection to the database and sends a query with a resultset.
+     * The query inserts the citizen values into the entityset citizens
      *
      * @param citizen The citizen that is going to be saved
      */
@@ -314,8 +314,8 @@ public class DBManager {
 
     /**
      * Deletes a user. Opens a connection to the database and sends a query with
-     * a resultset. The query deletes an tuple from the entityset users where the
-     * user username is equals to users.username
+     * a resultset. The query deletes an tuple from the entityset users where
+     * the user username is equals to users.username
      *
      * @param user The user that is going to be deleted
      */
@@ -370,6 +370,7 @@ public class DBManager {
      * @param citizen The citizen that is going to be deleted.
      */
     public void deleteCitizen(ICitizen citizen) {
+        System.out.println(citizen.getId());
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("delete from \"public\".\"citizens\" where citizenId ='" + citizen.getId() + "'");
@@ -380,9 +381,9 @@ public class DBManager {
 
     /**
      * Returns a boolean depending on the user id. Opens a connection to the
-     * database and sends a query with a resultset. The query counts how many ids
-     * in the entityset users which are equal to id. If any of these are equal
-     * to it, it returns false.
+     * database and sends a query with a resultset. The query counts how many
+     * ids in the entityset users which are equal to id. If any of these are
+     * equal to it, it returns false.
      *
      * @param id That is to be checked if unique.
      * @return a boolean
@@ -405,8 +406,8 @@ public class DBManager {
 
     /**
      * Returns a boolean depending on the user id. Opens a connection to the
-     * database and sends a query with a resultset. The query counts how many ids
-     * in the entityset citizens which are equal to id. If any of these are
+     * database and sends a query with a resultset. The query counts how many
+     * ids in the entityset citizens which are equal to id. If any of these are
      * equal to it, it returns false.
      *
      * @param id That is to be checked if unique
@@ -476,9 +477,9 @@ public class DBManager {
     }
 
     /**
-     * Returns a list of logdata. Opens a connection to the
-     * database and sends a query with a resultset. The query Selects all tuples from the
-     * entityset logdata Formats the string and adds it a list
+     * Returns a list of logdata. Opens a connection to the database and sends a
+     * query with a resultset. The query Selects all tuples from the entityset
+     * logdata Formats the string and adds it a list
      *
      * @return a list of Strings
      */

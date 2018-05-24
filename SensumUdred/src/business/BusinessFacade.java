@@ -239,7 +239,6 @@ public class BusinessFacade implements IBusiness {
             newCase = ((ISocialWorker) security.getActiveUser()).createCase(id, des, process, sw, c);
             c.setCase((Case) newCase);
             cases.add(newCase);
-            c.setCase((Case) newCase);
             data.saveCase(newCase);
             security.logData("Created case with id: " + id);
         }
@@ -284,6 +283,7 @@ public class BusinessFacade implements IBusiness {
         ICitizen citizen;
         String s = "Error with Citizen";
         if (security.getActiveUser() instanceof SocialWorker) {
+            System.out.println(id);
             citizen = ((ISocialWorker) security.getActiveUser()).createCitizen(name, id, needs);
             if (citizen != null) {
                 citizens.add(citizen);
@@ -352,7 +352,10 @@ public class BusinessFacade implements IBusiness {
         if (security.getActiveUser() instanceof SocialWorker) {
             if (((SocialWorker) security.getActiveUser()).deleteInquiry(i)) {
                 // delete the case connected to the inquiry
-                deleteCase(i.getCitizen().getCase());
+                if (i.getCitizen().getCase() != null) {
+                    deleteCase(i.getCitizen().getCase());
+                }
+
                 inquiries.remove(i);
                 data.deleteInquiry(i);
                 security.logData("Deleted inquiry: " + i.toString());
@@ -507,7 +510,7 @@ public class BusinessFacade implements IBusiness {
             Inquiry i;
             Case ca;
             // create citizen
-            c = new Citizen(s[0], s[1], s[3]);
+            c = new Citizen(s[1], s[0], s[2]);
             // create socialworker
             if (s[3] == null || s[3].equals("null")) { // if citizen does not have an inquiry
                 i = null; // set citizen's inquiry to null
@@ -518,6 +521,7 @@ public class BusinessFacade implements IBusiness {
                 inquiries.add(i); //add to list of inquiries
                 // check if the citizen/inquiry has a case
                 if (s[7] == null || s[7].equals("null")) {
+                    System.out.println("meow " + s[7]);
                     ca = null;
                 } else {
                     // a socialworker will be connected to he case if it exists
