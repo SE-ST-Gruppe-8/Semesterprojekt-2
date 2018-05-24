@@ -497,6 +497,13 @@ public class BusinessFacade implements IBusiness {
         return SystemAdmin.getAdminRole();
     }
 
+    /**
+     * Gets a list of String arrays from the data facade. Each string array contains
+     * information about citizens, the inquiries & cases connected to the citizens,
+     * along with users assigned to the cases. The data is used for instantiating
+     * classes and adding them to lists.
+     * 
+     */
     @Override
     public void processStuff() {
         // clear lists to avoid duplicates
