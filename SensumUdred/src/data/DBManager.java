@@ -8,6 +8,7 @@ package data;
 import acq.ICase;
 import acq.ICitizen;
 import acq.IInquiry;
+import acq.ISocialWorker;
 import acq.IUser;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -160,7 +161,8 @@ public class DBManager {
     }
 
     /**
-     * Returns A list of String[] containing citizens & their inquiries + cases.
+     * Returns A list of String[] containing citizens & their inquiries, cases and the
+     * social worker assigned to the case.
      *
      * @return A list of String[], where every String[] contains data about a
      * citizen & their inquiry + case
@@ -203,16 +205,19 @@ public class DBManager {
      *
      */
     public void saveCase(ICase casen) {
+        ISocialWorker sw = casen.getSocialWorker();
         String id = casen.getID();
         String description = casen.getDescription();
         String process = casen.getProcess();
         String citizenid = casen.getCitizen().getId();
         String data = "('" + id + "','" + description + "','" + process + "');";
+        String data2 = "('" + sw.getID() + "','" + id + "');";
 
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
             ResultSet rs1 = st1.executeQuery("insert into cases values" + data + "\n"
-                    + "insert into hascase values('" + citizenid + "','" + id + "')");
+                    + "insert into hascase values('" + citizenid + "','" + id + "')\n"
+                    + "insert into createdby values" + data2 );
             rs1.close();
             st1.close();
         } catch (Exception ex) {

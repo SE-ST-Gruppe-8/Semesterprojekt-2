@@ -351,6 +351,8 @@ public class BusinessFacade implements IBusiness {
         String s = "Error with Citizen";
         if (security.getActiveUser() instanceof SocialWorker) {
             if (((SocialWorker) security.getActiveUser()).deleteInquiry(i)) {
+                // delete the case connected to the inquiry
+                deleteCase(i.getCitizen().getCase());
                 inquiries.remove(i);
                 data.deleteInquiry(i);
                 security.logData("Deleted inquiry: " + i.toString());
