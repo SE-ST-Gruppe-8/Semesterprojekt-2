@@ -22,7 +22,7 @@ public class Citizen implements ICitizen, Serializable{
     /**
      * the id of the citizen
      */
-    private String id;
+    private final String ID;
     
     /**
      * the needs of the citizen
@@ -52,7 +52,7 @@ public class Citizen implements ICitizen, Serializable{
      */
     public Citizen(String name, String id, String needs) {
         this.name = name;
-        this.id = id;
+        this.ID = id;
         this.needs = needs;
         this.citizenCase = null;
         this.inquiry = null;
@@ -65,7 +65,7 @@ public class Citizen implements ICitizen, Serializable{
 
     @Override
     public String getId() {
-        return id;
+        return ID;
     }
 
     @Override
@@ -94,11 +94,6 @@ public class Citizen implements ICitizen, Serializable{
     }
     
     @Override
-    public void createInquiry(String id, String origin, boolean informed, String description){
-        this.inquiry = new Inquiry(id, origin, informed, this, description);
-    }
-    
-    @Override
     public void setInquiry(Inquiry inquiry){
         this.inquiry = inquiry;
     }
@@ -108,7 +103,7 @@ public class Citizen implements ICitizen, Serializable{
      */
     @Override
      public String toString(){
-         return String.format("%-35s %-25s","Borgernavn: "+this.getName() , "BorgerID: " + this.id);
+         return String.format("%-35s %-25s","Borgernavn: "+this.getName() , "BorgerID: " + this.ID);
 //         return "Borgernavn: "+this.getName() + "\tBorgerID: " + this.id;
      }
 

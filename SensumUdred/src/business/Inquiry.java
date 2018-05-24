@@ -25,7 +25,7 @@ public class Inquiry implements IInquiry, Serializable {
     /**
      * The inquiry's id.
      */
-    private String id;
+    private final String ID;
     /**
      * The citizen whom the inquiry is about
      */
@@ -53,7 +53,7 @@ public class Inquiry implements IInquiry, Serializable {
         this.origin = origin;
         this.isCitizenInformed = informed;
         this.citizen = citizen;
-        this.id = id;
+        this.ID = id;
         this.description = description;
     }
 
@@ -69,7 +69,7 @@ public class Inquiry implements IInquiry, Serializable {
 
     @Override
     public String getId() {
-        return id;
+        return ID;
     }
 
     @Override
@@ -90,10 +90,10 @@ public class Inquiry implements IInquiry, Serializable {
     @Override
     public String toString() {
         if (isCitizenInformed) {
-            return String.format("%-30s %-35s %-40s", "HendvendelsesID: " + this.id, "Borger: " + citizen.getName(), "Borgeren er informeret om henvendelsen");
+            return String.format("%-30s %-35s %-40s", "HendvendelsesID: " + this.ID, "Borger: " + citizen.getName(), "Borgeren er informeret om henvendelsen");
 //            return "HendvendelsesID: " + this.id + "\tBorger: " + citizen.getName() + "\tBorgeren er informeret om henvendelsen";
         } else {
-            return String.format("%-30s %-30s %-45s", "HendvendelsesID: " + this.id, "Borger: " + citizen.getName(), "Borgeren er ikke informeret om henvendelsen");
+            return String.format("%-30s %-30s %-45s", "HendvendelsesID: " + this.ID, "Borger: " + citizen.getName(), "Borgeren er ikke informeret om henvendelsen");
 //            return "HendvendelsesID: " + this.id + "\tBorger: " + citizen.getName() + "\tBorgeren er ikke informeret om henvendelsen";
         }
     }

@@ -45,14 +45,6 @@ public interface ICitizen {
      */
     public void setCase(Case citizenCase);
 
-    /**
-     * a method to create an inquiry
-     * @param id the id of the inquiry
-     * @param origin who made the inquiry for the citizen
-     * @param informed a boolean to check if the citizen is informed about the inquiry
-     * @param description the description of the inquiry
-     */
-    public void createInquiry(String id, String origin, boolean informed, String description);
 
     /**
      * set the inquiry of the citizen

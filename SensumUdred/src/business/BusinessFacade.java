@@ -198,7 +198,6 @@ public class BusinessFacade implements IBusiness {
 //        security.logData("Saved inquiry: " + c.toString());
 //        data.saveData(citizenList, "citizens");
 //    }
-
     @Override
     public int getRole() {
         return security.getActiveUser().getRole();
@@ -240,7 +239,6 @@ public class BusinessFacade implements IBusiness {
             newCase = ((ISocialWorker) security.getActiveUser()).createCase(id, des, process, sw, c);
             c.setCase((Case) newCase);
             cases.add(newCase);
-            c.setCase((Case) newCase);
             data.saveCase(newCase);
             security.logData("Created case with id: " + id);
         }
@@ -258,6 +256,7 @@ public class BusinessFacade implements IBusiness {
             if (((SocialWorker) security.getActiveUser()).deleteCase(newCase)) {
                 security.logData("Deleted case " + newCase.toString());
                 cases.remove(newCase);
+                data.deleteCase(newCase);
             } else {
                 System.out.println("Case did not exist");
             }
@@ -285,6 +284,7 @@ public class BusinessFacade implements IBusiness {
         ICitizen citizen;
         String s = "Error with Citizen";
         if (security.getActiveUser() instanceof SocialWorker) {
+            System.out.println(id);
             citizen = ((ISocialWorker) security.getActiveUser()).createCitizen(name, id, needs);
             if (citizen != null) {
                 citizens.add(citizen);
@@ -352,6 +352,11 @@ public class BusinessFacade implements IBusiness {
         String s = "Error with Citizen";
         if (security.getActiveUser() instanceof SocialWorker) {
             if (((SocialWorker) security.getActiveUser()).deleteInquiry(i)) {
+                // delete the case connected to the inquiry
+                if (i.getCitizen().getCase() != null) {
+                    deleteCase(i.getCitizen().getCase());
+                }
+
                 inquiries.remove(i);
                 data.deleteInquiry(i);
                 security.logData("Deleted inquiry: " + i.toString());
@@ -494,27 +499,40 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public void processStuff() {
+        // clear lists to avoid duplicates
         clearLists();
+        // pull data from database
         List<String[]> rawData = data.getCitizenData();
+        // for every row of data obtained
         for (String[] s : rawData) {
-            Citizen c = new Citizen(s[1], s[0], s[2]);
+            // classes to be instantiated with data from db
+            SocialWorker sw;
+            Citizen c;
             Inquiry i;
             Case ca;
-            if (s[3] == null || s[3].equals("null")) {
-                i = null;
+            // create citizen
+            c = new Citizen(s[1], s[0], s[2]);
+            // create socialworker
+            if (s[3] == null || s[3].equals("null")) { // if citizen does not have an inquiry
+                i = null; // set citizen's inquiry to null
             } else {
+                // instantiate inquiry
                 i = new Inquiry(s[3], s[6], Boolean.getBoolean(s[5]), c, s[4]);
-                inquiries.add(i);
+                c.setInquiry(i);
+                inquiries.add(i); //add to list of inquiries
+                // check if the citizen/inquiry has a case
+                if (s[7] == null || s[7].equals("null")) {
+                    System.out.println("meow " + s[7]);
+                    ca = null;
+                } else {
+                    // a socialworker will be connected to he case if it exists
+                    sw = new SocialWorker(s[11], s[10], s[13], s[14], s[12]);
+                    ca = new Case(s[7], s[8], s[9], sw, c);
+                    c.setCase(ca);
+                    cases.add(ca);
+                }
             }
-            if (s[7] == null || s[7].equals("null")) {
-                ca = null;
-            } else {
-                ca = new Case(s[7], s[8], s[9], (SocialWorker) security.getActiveUser(), c);
-                cases.add(ca);
-            }
-
-            c.setInquiry(i);
-            c.setCase(ca);
+            // finally - add citizen to list of citizens
             citizens.add(c);
         }
     }
