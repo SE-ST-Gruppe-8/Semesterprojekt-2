@@ -29,10 +29,16 @@ public class DBManager {
      * dbUsername is the username for the database dbPassword is the password
      * for the database.
      */
-    private String dbUrl = "jdbc:postgresql://horton.elephantsql.com:5432/flugkwex";
-    private String dbUsername = "flugkwex";
-    private String dbPassword = "361Fvzl2AmnhDLVqPtBhomyr0-ojDBBC";
+    //Strings for censor database
+    private String dbUrl = "jdbc:postgresql://horton.elephantsql.com:5432/lulcqfhf";
+    private String dbUsername = "lulcqfhf";
+    private String dbPassword = "aXz0WFAYB4Aw0d5UtTN7WMdc80y_5mZZ";
 
+    //strings for our database
+//    private String dbUrl = "jdbc:postgresql://horton.elephantsql.com:5432/flugkwex";
+//    private String dbUsername = "flugkwex";
+//    private String dbPassword = "361Fvzl2AmnhDLVqPtBhomyr0-ojDBBC";
+        
     /**
      * saveUser saves a user and opens a connection to the database and sends a
      * query with a resultset. The query inserts the users values into the users
