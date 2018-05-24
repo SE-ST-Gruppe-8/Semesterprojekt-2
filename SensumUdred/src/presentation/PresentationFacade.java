@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 public class PresentationFacade extends Application implements IPresentation {
 
     /**
-     *  IBusiness is used for accessing business logic
+     * IBusiness is used for accessing business logic
      */
     private static IBusiness ib;
 
@@ -53,8 +53,7 @@ public class PresentationFacade extends Application implements IPresentation {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLlogin.fxml"));
         Parent root = loader.load();
 
-        IPresentation controller = loader.getController();
-        controller.injectBusiness(ib);
+        ControllerFXMLlogin controller = loader.getController();
 
         stage.setTitle("Sensum Udred");
         stage.setMinWidth(300);
@@ -73,6 +72,10 @@ public class PresentationFacade extends Application implements IPresentation {
 
         }
 
+    }
+
+    public static IBusiness getBusiness() {
+        return ib;
     }
 
 }

@@ -35,7 +35,7 @@ import javafx.stage.Stage;
  *
  * @author Frederik
  */
-public class ControllerFXMLAdmin implements Initializable, IPresentation {
+public class ControllerFXMLAdmin implements Initializable {
 
     /**
      * IBusiness is used for accessing business logic
@@ -168,6 +168,8 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
 //        createSocialWorkerRadioButton.setToggleGroup(createUserToggleGroup);
 //        createAdminRadioButton.setToggleGroup(createUserToggleGroup);
 //        createSocialWorkerRadioButton.setSelected(true);
+          ib = PresentationFacade.getBusiness();
+          initList();
     }
 
     /**
@@ -184,8 +186,7 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
         loader.setLocation(getClass().getResource("FXMLlogin.fxml"));
 
         GridPane gridPane = loader.load();
-        IPresentation controller = loader.getController();
-        controller.injectBusiness(ib);
+        ControllerFXMLlogin controller = loader.getController();
 
         Scene scene2 = new Scene(gridPane);
 
@@ -334,21 +335,7 @@ public class ControllerFXMLAdmin implements Initializable, IPresentation {
         }
     }
 
-    /**
-     * Method for injecting businesslogic into this controller
-     *
-     * @param businessFacade The Businessfacade
-     */
-    @Override
-    public void injectBusiness(IBusiness businessFacade) {
-        ib = businessFacade;
-    }
-
-    /**
-     * Method to launch User Interface (is executed after initialize)
-     */
-    @Override
-    public void openUI() {
+    public void initList() {
         loginInfoLabelAdmin.setText("Logget ind som: " + ib.getActiveUser().getName());
         updateUserList();
         logUpdatedOnce = false;
