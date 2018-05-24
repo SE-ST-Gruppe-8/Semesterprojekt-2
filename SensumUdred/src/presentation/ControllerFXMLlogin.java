@@ -29,7 +29,7 @@ import javafx.stage.Stage;
  *
  * @author Frederik
  */
-public class ControllerFXMLlogin implements Initializable, IPresentation {
+public class ControllerFXMLlogin implements Initializable{
 
     /**
      * IBusiness is used for accessing business logic
@@ -74,6 +74,7 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        ib = PresentationFacade.getBusiness();
     }
 
     /**
@@ -100,9 +101,7 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlString));
 
                 AnchorPane anchorPane = loader.load();
-                IPresentation controller = loader.getController();
-                controller.injectBusiness(ib);
-                controller.openUI();
+                Initializable controller = loader.getController();
 
                 Scene scene2 = new Scene(anchorPane);
                 //Get Stage information
@@ -121,23 +120,6 @@ public class ControllerFXMLlogin implements Initializable, IPresentation {
             System.out.println(ex.getMessage());
             loginInfoLabel.setText("Forkert input");
         }
-    }
-
-    /**
-     * Method for injecting businesslogic into this controller
-     *
-     * @param businessFacade The Businessfacade
-     */
-    @Override
-    public void injectBusiness(IBusiness businessFacade) {
-        ib = businessFacade;
-    }
-
-    /**
-     * Method to launch User Interface (is executed after initialize)
-     */
-    @Override
-    public void openUI() {
     }
 
     /**
