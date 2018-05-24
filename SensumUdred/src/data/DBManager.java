@@ -34,7 +34,7 @@ public class DBManager {
     private String dbUsername = "lulcqfhf";
     private String dbPassword = "aXz0WFAYB4Aw0d5UtTN7WMdc80y_5mZZ";
 
-    //strings for our database
+    //Strings for our database
 //    private String dbUrl = "jdbc:postgresql://horton.elephantsql.com:5432/flugkwex";
 //    private String dbUsername = "flugkwex";
 //    private String dbPassword = "361Fvzl2AmnhDLVqPtBhomyr0-ojDBBC";
