@@ -26,15 +26,15 @@ public class FileManager {
     /**
      * An inputstream which is used for reading the content of files.
      */
-    ObjectInputStream fileReader;
+    private ObjectInputStream fileReader;
     /**
      * An outputstream which is used for writing content to a file.
      */
-    ObjectOutputStream fileWriter;
+    private ObjectOutputStream fileWriter;
     /**
      * A file object used to specify which file to read/write to.
      */
-    File file;
+    private File file;
 
     /**
      * Reads data from a specified file and then fills a given ArrayList with
