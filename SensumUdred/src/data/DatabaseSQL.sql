@@ -23,7 +23,7 @@ CREATE TABLE Cases (
 CREATE TABLE Inquiries (
     inquiryId CHAR(13) PRIMARY KEY,
     inquiryDescription VARCHAR(200),
-    isCitizenInformed Boolean,
+    isCitizenInformed BOOLEAN,
     origin VARCHAR(200)
 );
 
