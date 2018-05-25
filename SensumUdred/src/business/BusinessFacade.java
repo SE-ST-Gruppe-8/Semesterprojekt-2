@@ -519,7 +519,6 @@ public class BusinessFacade implements IBusiness {
                 inquiries.add(i); //add to list of inquiries
                 // check if the citizen/inquiry has a case
                 if (s[7] == null || s[7].equals("null")) {
-                    System.out.println("meow " + s[7]);
                     ca = null;
                 } else {
                     // a socialworker will be connected to he case if it exists
