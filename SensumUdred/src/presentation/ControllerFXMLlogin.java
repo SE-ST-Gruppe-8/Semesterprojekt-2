@@ -109,7 +109,6 @@ public class ControllerFXMLlogin implements Initializable {
                 window.setWidth(900);
                 window.setHeight(430);
                 window.setScene(scene2);
-                window.show();
             } else {
                 loginInfoLabel.setText("Forkert input");
             }
