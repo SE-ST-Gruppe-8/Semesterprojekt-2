@@ -264,9 +264,7 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void createCitizen(String name, String id,
-            String needs
-    ) {
+    public void createCitizen(String name, String id, String needs) {
 //        ICitizen citizen;
 //        String s = "Error with Citizen";
 //        if (security.getActiveUser() instanceof SocialWorker) {
