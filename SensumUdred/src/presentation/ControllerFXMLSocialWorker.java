@@ -201,7 +201,6 @@ public class ControllerFXMLSocialWorker implements Initializable {
         window.setWidth(400);
         window.setHeight(300);
         window.setScene(scene2);
-        window.show();
     }
 
     /**
