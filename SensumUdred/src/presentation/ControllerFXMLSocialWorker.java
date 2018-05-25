@@ -6,7 +6,6 @@
 package presentation;
 
 import acq.IBusiness;
-import acq.IPresentation;
 import acq.ICase;
 import acq.ICitizen;
 import acq.IInquiry;
@@ -189,21 +188,18 @@ public class ControllerFXMLSocialWorker implements Initializable {
         ib.logOutActiveUser();
         ib.clearLists();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("FXMLlogin.fxml"));
+        loader.setLocation(getClass().getResource("FXMLLogin.fxml"));
 
         GridPane gridPane = loader.load();
-        ControllerFXMLlogin controller = loader.getController();
-
         Scene scene2 = new Scene(gridPane);
-        //Get Stage information
 
+        //Get Stage information
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setMinWidth(300);
         window.setMinHeight(200);
         window.setWidth(400);
         window.setHeight(300);
         window.setScene(scene2);
-        window.show();
     }
 
     /**
@@ -305,14 +301,6 @@ public class ControllerFXMLSocialWorker implements Initializable {
         } else {
             inquiryLabel.setText("Vælg en borger fra listen over borgerer");
         }
-    }
-
-    /**
-     * @deprecated @param event The event
-     */
-    @FXML
-    private void updateCaseListAction(ActionEvent event) {
-
     }
 
     /**
