@@ -191,12 +191,10 @@ public class ControllerFXMLSocialWorker implements Initializable {
         loader.setLocation(getClass().getResource("FXMLlogin.fxml"));
 
         GridPane gridPane = loader.load();
-        ControllerFXMLlogin controller = loader.getController();
-
 
         Scene scene2 = new Scene(gridPane);
-        //Get Stage information
 
+        //Get Stage information
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setMinWidth(300);
         window.setMinHeight(200);
