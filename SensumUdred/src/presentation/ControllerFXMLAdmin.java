@@ -182,7 +182,7 @@ public class ControllerFXMLAdmin implements Initializable {
     private void logoutButtonAction(ActionEvent event) throws IOException {
         ib.logOutActiveUser();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("FXMLlogin.fxml"));
+        loader.setLocation(getClass().getResource("FXMLLogin.fxml"));
 
         GridPane gridPane = loader.load();
 

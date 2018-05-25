@@ -188,7 +188,7 @@ public class ControllerFXMLSocialWorker implements Initializable {
         ib.logOutActiveUser();
         ib.clearLists();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("FXMLlogin.fxml"));
+        loader.setLocation(getClass().getResource("FXMLLogin.fxml"));
 
         GridPane gridPane = loader.load();
 
@@ -304,14 +304,6 @@ public class ControllerFXMLSocialWorker implements Initializable {
         } else {
             inquiryLabel.setText("Vælg en borger fra listen over borgerer");
         }
-    }
-
-    /**
-     * @deprecated @param event The event
-     */
-    @FXML
-    private void updateCaseListAction(ActionEvent event) {
-
     }
 
     /**

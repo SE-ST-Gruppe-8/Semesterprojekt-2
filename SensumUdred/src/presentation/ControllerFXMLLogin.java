@@ -28,7 +28,7 @@ import javafx.stage.Stage;
  *
  * @author Frederik
  */
-public class ControllerFXMLlogin implements Initializable {
+public class ControllerFXMLLogin implements Initializable {
 
     /**
      * IBusiness is used for accessing business logic

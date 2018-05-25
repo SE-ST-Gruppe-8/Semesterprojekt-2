@@ -50,10 +50,8 @@ public class PresentationFacade extends Application implements IPresentation {
     @Override
     public void start(Stage stage) throws Exception {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLlogin.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLLogin.fxml"));
         Parent root = loader.load();
-
-        ControllerFXMLlogin controller = loader.getController();
 
         stage.setTitle("Sensum Udred");
         stage.setMinWidth(300);
@@ -71,7 +69,6 @@ public class PresentationFacade extends Application implements IPresentation {
             ib.logOutActiveUser();
 
         }
-
     }
 
     public static IBusiness getBusiness() {
