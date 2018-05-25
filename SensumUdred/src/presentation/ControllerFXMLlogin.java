@@ -6,7 +6,6 @@
 package presentation;
 
 import acq.IBusiness;
-import acq.IPresentation;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,7 +28,7 @@ import javafx.stage.Stage;
  *
  * @author Frederik
  */
-public class ControllerFXMLlogin implements Initializable{
+public class ControllerFXMLlogin implements Initializable {
 
     /**
      * IBusiness is used for accessing business logic
@@ -101,7 +100,6 @@ public class ControllerFXMLlogin implements Initializable{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlString));
 
                 AnchorPane anchorPane = loader.load();
-                Initializable controller = loader.getController();
 
                 Scene scene2 = new Scene(anchorPane);
                 //Get Stage information

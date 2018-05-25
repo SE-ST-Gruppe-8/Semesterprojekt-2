@@ -6,7 +6,6 @@
 package presentation;
 
 import acq.IBusiness;
-import acq.IPresentation;
 import acq.IUser;
 import java.io.IOException;
 import java.net.URL;
@@ -168,8 +167,8 @@ public class ControllerFXMLAdmin implements Initializable {
 //        createSocialWorkerRadioButton.setToggleGroup(createUserToggleGroup);
 //        createAdminRadioButton.setToggleGroup(createUserToggleGroup);
 //        createSocialWorkerRadioButton.setSelected(true);
-          ib = PresentationFacade.getBusiness();
-          initList();
+        ib = PresentationFacade.getBusiness();
+        initList();
     }
 
     /**
@@ -186,7 +185,6 @@ public class ControllerFXMLAdmin implements Initializable {
         loader.setLocation(getClass().getResource("FXMLlogin.fxml"));
 
         GridPane gridPane = loader.load();
-        ControllerFXMLlogin controller = loader.getController();
 
         Scene scene2 = new Scene(gridPane);
 
