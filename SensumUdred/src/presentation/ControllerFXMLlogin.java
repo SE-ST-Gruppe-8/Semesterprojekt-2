@@ -100,10 +100,9 @@ public class ControllerFXMLlogin implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlString));
 
                 AnchorPane anchorPane = loader.load();
-
                 Scene scene2 = new Scene(anchorPane);
-                //Get Stage information
 
+                //Get Stage information
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setMinWidth(500);
                 window.setMinHeight(430);
