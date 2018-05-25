@@ -181,34 +181,6 @@ public class BusinessFacade implements IBusiness {
         return security.getActiveUser().getRole();
     }
 
-//                  Outdated createCase method.
-//    @Override
-//    public void createCase(String id, String des, String process, ISocialWorker sw, ICitizen c) {
-//        String s = "error, could not create case";
-//        ICase newCase;
-//        if (security.getActiveUser() instanceof SocialWorker) {
-//            newCase = ((ISocialWorker) security.getActiveUser()).createCase(id, des, process, sw, c);
-//            c.setCase((Case) newCase);
-//            if (newCase != null) {
-//                if (c.getCase() == null) {
-//                    cases.add(newCase);
-//                    c.setCase((Case) newCase);
-//                } else {
-//
-//                    cases.remove(c.getCase());
-//                    c.setCase((Case)newCase);
-//                    cases.add(newCase);
-//                }
-//
-//                data.saveData((ArrayList<ICitizen>) citizenList.stream().collect(Collectors.toList()), "citizenList");
-//                security.logData("Created case with id: " + id);
-//            } else {
-//                System.out.println(s);
-//            }
-//
-//        }
-//        System.out.println(c.getName() + id);
-//    }
     @Override
     public void createCase(String id, String des, String process, ISocialWorker sw, ICitizen c) {
         String s = "Error, could not create case";
