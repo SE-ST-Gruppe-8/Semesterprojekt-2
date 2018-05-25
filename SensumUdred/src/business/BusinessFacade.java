@@ -250,8 +250,7 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void deleteCase(ICase newCase
-    ) {
+    public void deleteCase(ICase newCase) {
         if (security.getActiveUser() instanceof SocialWorker) {
             if (((SocialWorker) security.getActiveUser()).deleteCase(newCase)) {
                 security.logData("Deleted case " + newCase.toString());
