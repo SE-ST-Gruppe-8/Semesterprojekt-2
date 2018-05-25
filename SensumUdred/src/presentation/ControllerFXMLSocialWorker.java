@@ -6,7 +6,6 @@
 package presentation;
 
 import acq.IBusiness;
-import acq.IPresentation;
 import acq.ICase;
 import acq.ICitizen;
 import acq.IInquiry;
