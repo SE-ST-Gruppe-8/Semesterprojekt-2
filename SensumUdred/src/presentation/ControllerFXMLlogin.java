@@ -89,8 +89,8 @@ public class ControllerFXMLlogin implements Initializable {
     @FXML
     private void loginButtonAction(ActionEvent event) throws IOException {
         try {
-            boolean iscorrect = ib.validateUser(loginUsernameTextField.getText(), loginPasswordTextField.getText());
-            if (iscorrect) {
+            boolean isCorrect = ib.validateUser(loginUsernameTextField.getText(), loginPasswordTextField.getText());
+            if (isCorrect) {
                 if (ib.getRole() == ib.getSocialWorkerRoleInt()) {
                     fxmlString = "FXMLSocialWorker.fxml";
 
