@@ -191,7 +191,6 @@ public class ControllerFXMLSocialWorker implements Initializable {
         loader.setLocation(getClass().getResource("FXMLLogin.fxml"));
 
         GridPane gridPane = loader.load();
-
         Scene scene2 = new Scene(gridPane);
 
         //Get Stage information
@@ -212,8 +211,6 @@ public class ControllerFXMLSocialWorker implements Initializable {
      */
     @FXML
     private void createCaseAction(ActionEvent event) {
-
-        updateCaseList();
         if (inquiryListView1.getSelectionModel().getSelectedItem() != null) {
             if (inquiryListView1.getSelectionModel().getSelectedItem().getCitizen().getCase() == null) {
                 ab.displayCaseCreation("Opret sag", ib, (ICitizen) inquiryListView1.getSelectionModel().getSelectedItem().getCitizen());
