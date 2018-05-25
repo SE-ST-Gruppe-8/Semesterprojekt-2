@@ -164,17 +164,6 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public boolean validateUser(String username, String password) {
-        /*ArrayList<IUser> users = new ArrayList<>();
-        data.loadData(users, "users");
-        if (security.validateUserLogin(users, username, password)) {
-            security.logData("Logged in.");
-            return true;
-
-        } else {
-
-            return false;
-        }*/
-
         String[] array = data.loadUser(username);;
         if (array[0] != null) {
             array[3] = array[3].trim();
@@ -187,17 +176,6 @@ public class BusinessFacade implements IBusiness {
         return false;
     }
 
-//    @Override
-//    public void saveInquiry(IInquiry inquiry) {
-//        ArrayList<ICitizen> citizenList = new ArrayList<>();
-//        data.loadData(citizenList, "citizens");
-//        Citizen c = inquiry.getCitizen();
-//        citizenList.remove(c);
-//        c.setInquiry((Inquiry) inquiry);
-//        citizenList.add(c);
-//        security.logData("Saved inquiry: " + c.toString());
-//        data.saveData(citizenList, "citizens");
-//    }
     @Override
     public int getRole() {
         return security.getActiveUser().getRole();
