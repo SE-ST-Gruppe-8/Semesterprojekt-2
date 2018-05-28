@@ -164,17 +164,6 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public boolean validateUser(String username, String password) {
-        /*ArrayList<IUser> users = new ArrayList<>();
-        data.loadData(users, "users");
-        if (security.validateUserLogin(users, username, password)) {
-            security.logData("Logged in.");
-            return true;
-
-        } else {
-
-            return false;
-        }*/
-
         String[] array = data.loadUser(username);;
         if (array[0] != null) {
             array[3] = array[3].trim();
@@ -187,50 +176,11 @@ public class BusinessFacade implements IBusiness {
         return false;
     }
 
-//    @Override
-//    public void saveInquiry(IInquiry inquiry) {
-//        ArrayList<ICitizen> citizenList = new ArrayList<>();
-//        data.loadData(citizenList, "citizens");
-//        Citizen c = inquiry.getCitizen();
-//        citizenList.remove(c);
-//        c.setInquiry((Inquiry) inquiry);
-//        citizenList.add(c);
-//        security.logData("Saved inquiry: " + c.toString());
-//        data.saveData(citizenList, "citizens");
-//    }
     @Override
     public int getRole() {
         return security.getActiveUser().getRole();
     }
 
-//                  Outdated createCase method.
-//    @Override
-//    public void createCase(String id, String des, String process, ISocialWorker sw, ICitizen c) {
-//        String s = "error, could not create case";
-//        ICase newCase;
-//        if (security.getActiveUser() instanceof SocialWorker) {
-//            newCase = ((ISocialWorker) security.getActiveUser()).createCase(id, des, process, sw, c);
-//            c.setCase((Case) newCase);
-//            if (newCase != null) {
-//                if (c.getCase() == null) {
-//                    cases.add(newCase);
-//                    c.setCase((Case) newCase);
-//                } else {
-//
-//                    cases.remove(c.getCase());
-//                    c.setCase((Case)newCase);
-//                    cases.add(newCase);
-//                }
-//
-//                data.saveData((ArrayList<ICitizen>) citizenList.stream().collect(Collectors.toList()), "citizenList");
-//                security.logData("Created case with id: " + id);
-//            } else {
-//                System.out.println(s);
-//            }
-//
-//        }
-//        System.out.println(c.getName() + id);
-//    }
     @Override
     public void createCase(String id, String des, String process, ISocialWorker sw, ICitizen c) {
         String s = "Error, could not create case";
@@ -250,8 +200,7 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void deleteCase(ICase newCase
-    ) {
+    public void deleteCase(ICase newCase) {
         if (security.getActiveUser() instanceof SocialWorker) {
             if (((SocialWorker) security.getActiveUser()).deleteCase(newCase)) {
                 security.logData("Deleted case " + newCase.toString());
@@ -264,9 +213,7 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public void createCitizen(String name, String id,
-            String needs
-    ) {
+    public void createCitizen(String name, String id, String needs) {
 //        ICitizen citizen;
 //        String s = "Error with Citizen";
 //        if (security.getActiveUser() instanceof SocialWorker) {
@@ -522,7 +469,6 @@ public class BusinessFacade implements IBusiness {
                 inquiries.add(i); //add to list of inquiries
                 // check if the citizen/inquiry has a case
                 if (s[7] == null || s[7].equals("null")) {
-                    System.out.println("meow " + s[7]);
                     ca = null;
                 } else {
                     // a socialworker will be connected to he case if it exists
