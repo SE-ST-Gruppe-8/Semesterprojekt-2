@@ -1,3 +1,29 @@
+/*
+Databasen, der bruges til vores program, er allerede oprettet,
+og der er tilføjet en Citizen og to Users (en System Admin og en Social Worker).
+
+Loginoplysninger til bruger på ElephantSQL:
+E-mail: sdu.sest.g8.f18.eksamen@gmail.com
+Password: frugtsalat
+
+Link til side: https://customer.elephantsql.com/login
+
+Databasens oplysninger (kan også ses inde på siden):
+Navn på database: Sensum Udred Database
+User & Default database: lulcqfhf
+Password: aXz0WFAYB4Aw0d5UtTN7WMdc80y_5mZZ
+URL: postgres://lulcqfhf:aXz0WFAYB4Aw0d5UtTN7WMdc80y_5mZZ@horton.elephantsql.com:5432/lulcqfhf
+
+Angående brug af program:
+Brugernes login oplysninger er følgende:
+System Admin:
+	Username: admin
+	Password: super
+
+Social Worker:
+	Username: social
+	Password: worker
+*/
 
 CREATE TABLE Users (
     userId CHAR(10) PRIMARY KEY,
