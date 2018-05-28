@@ -25,24 +25,22 @@ import java.util.List;
 public class DBManager {
 
     /**
-     * Loging strings for elephant-sql dbUrl is the Url for the database
+     * Login strings for elephant-sql dbUrl is the Url for the database
      * dbUsername is the username for the database dbPassword is the password
      * for the database.
      */
     //Strings for censor database
-    private String dbUrl = "jdbc:postgresql://horton.elephantsql.com:5432/lulcqfhf";
-    private String dbUsername = "lulcqfhf";
-    private String dbPassword = "aXz0WFAYB4Aw0d5UtTN7WMdc80y_5mZZ";
+    private final String dbUrl = "jdbc:postgresql://horton.elephantsql.com:5432/lulcqfhf";
+    private final String dbUsername = "lulcqfhf";
+    private final String dbPassword = "aXz0WFAYB4Aw0d5UtTN7WMdc80y_5mZZ";
 
     //Strings for our database
-//    private String dbUrl = "jdbc:postgresql://horton.elephantsql.com:5432/flugkwex";
-//    private String dbUsername = "flugkwex";
-//    private String dbPassword = "361Fvzl2AmnhDLVqPtBhomyr0-ojDBBC";
+//    private final String dbUrl = "jdbc:postgresql://horton.elephantsql.com:5432/flugkwex";
+//    private final String dbUsername = "flugkwex";
+//    private final String dbPassword = "361Fvzl2AmnhDLVqPtBhomyr0-ojDBBC";
         
     /**
-     * saveUser saves a user and opens a connection to the database and sends a
-     * query with a resultset. The query inserts the users values into the users
-     * entity set
+     * Saves a user to the database.
      *
      * @param user The user that is going to be saved.
      */
@@ -57,18 +55,15 @@ public class DBManager {
 
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("insert into users values" + data);
-            rs1.close();
+            st1.execute("insert into users values" + data);
             st1.close();
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }
 
     /**
-     * saves an inquiry and opens a connection to the database and sends a query
-     * with a resultset. The query inserts the inquiry values into the entityset
-     * inquiries and also inserts the inquiryid into the relation hasinqury
+     * Saves an inquiry to the database.
      *
      * @param inquiry The inquiry that is going to be saved.
      */
@@ -82,20 +77,16 @@ public class DBManager {
 
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("insert into inquiries values" + data + "\n"
+            st1.execute("insert into inquiries values" + data + "\n"
                     + " insert into hasinquiry values('" + citizenid + "','" + id + "')");
-            rs1.close();
             st1.close();
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }
 
     /**
-     * Updates an inquiry and opens a connection to the database and sends a
-     * query with a resultset. The query updates the inquiry values set on the
-     * entityset inquiries where the inquiryid is equals to the inquiryid in
-     * inquiries.
+     * Updates an inquiry in the database,
      *
      * @param inquiry The inquiry that is going to be updated.
      */
@@ -108,20 +99,17 @@ public class DBManager {
 
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("UPDATE inquiries set inquiryid = '" + id + "', inquirydescription = '"
+            st1.execute("UPDATE inquiries set inquiryid = '" + id + "', inquirydescription = '"
                     + description + "', iscitizeninformed = '"
                     + informed + "', origin = '" + origin + "' where inquiryid = '" + id + "';");
-            rs1.close();
             st1.close();
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }
 
     /**
-     * Opens a connection to the database and sends a query with a resultset.
-     * The query updates the citizen values set on the entityset citizens where
-     * the citizenid is equals to the id in citizens
+     * Updates a citizen in the database.
      *
      * @param citizen The citizen that is going to be updated
      */
@@ -132,18 +120,15 @@ public class DBManager {
 
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("UPDATE citizens set needs = '" + needs + "' where citizenId = '" + id + "';\n");
-            rs1.close();
+            st1.execute("UPDATE citizens set needs = '" + needs + "' where citizenId = '" + id + "';\n");
             st1.close();
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }
 
     /**
-     * Opens a connection to the database and sends a query with a resultset.
-     * The query updates the case values set on the entityset cases where the
-     * casesid is equals to the casesid in cases
+     * Updates a case in the database.
      *
      * @param casen The case that is going to be updated
      */
@@ -155,19 +140,16 @@ public class DBManager {
 
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("UPDATE cases set caseid = '" + id + "', casedescription = '"
-                    + description + "', process = '" + process + "' where caseid = '" + id + "';\n"
-                    + " Update hascase set citizenid = '" + citizenid + "',  caseid = '" + id
-                    + "' where caseid = '" + id + "';");
-            rs1.close();
+            st1.execute("UPDATE cases set caseid = '" + id + "', casedescription = '"
+                    + description + "', process = '" + process + "' where caseid = '" + id + "';");
             st1.close();
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }
 
     /**
-     * Returns A list of String[] containing citizens & their inquiries, cases
+     * Returns a list of String[] containing citizens & their inquiries, cases
      * and the social worker assigned to the case.
      *
      * @return A list of String[], where every String[] contains data about a
@@ -196,16 +178,13 @@ public class DBManager {
             st1.close();
             return data;
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
             return null;
         }
     }
 
     /**
-     * Saves a case and opens a connection to the database and sends a query
-     * with a resultset. The query inserts the case data into the entity set
-     * cases and also inserts the caseid into the relation hascase where
-     * citizenid is the same.
+     * Saves a case to the database.
      *
      * @param casen The case that is going to be saved.
      *
@@ -221,19 +200,17 @@ public class DBManager {
 
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("insert into cases values" + data + "\n"
+            st1.execute("insert into cases values" + data + "\n"
                     + "insert into hascase values('" + citizenid + "','" + id + "');\n"
                     + "insert into createdby values('" + sw.getID() + "','" + id + "');");
-            rs1.close();
             st1.close();
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }
 
     /**
-     * Opens a connection to the database and sends a query with a resultset.
-     * The query inserts the citizen values into the entityset citizens
+     * Saves a citizen to the database.
      *
      * @param citizen The citizen that is going to be saved
      */
@@ -245,21 +222,17 @@ public class DBManager {
 
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("insert into citizens values" + data);
-            rs1.close();
+            st1.execute("insert into citizens values" + data);
             st1.close();
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }
 
     /**
-     * Returns a list of users and opens a connection to the database and sends
-     * a query with a resultset. The query selects all tuples from the entityset
-     * users. The values from each column is put into an array of string which
-     * is added to an arraylist
+     * Loads a List of String[] of users from the database.
      *
-     * @return a list of strings
+     * @return A List of String[]. Each String[] contains the data for one user
      */
     public List<String[]> loadUsers() {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
@@ -279,19 +252,14 @@ public class DBManager {
             rs1.close();
             st1.close();
             return list;
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
             return null;
         }
     }
 
     /**
-     * Opens a connection to the database and sends a quary with a resultset.
-     * The query searches for a tuple from the entityset Users where the
-     * username is a match. The values from each column of the found tuple is
-     * put into a String[]. name is saved on index 0. id is saved on index 1.
-     * username is saved on index 2. password is saved on index 3. mail is saved
-     * on index 4. role is saved on index 5.
+     * Loads a single user from the database
      *
      * @param username The username used to search for a user in the database
      * @return a String[] containing the information of a single user
@@ -312,66 +280,58 @@ public class DBManager {
             rs1.close();
             st1.close();
             return array;
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
             return null;
         }
     }
 
     /**
-     * Deletes a user. Opens a connection to the database and sends a query with
-     * a resultset. The query deletes an tuple from the entityset users where
-     * the user username is equals to users.username
+     * Deletes a user from the database.
      *
      * @param user The user that is going to be deleted
      */
     public void deleteUser(IUser user) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("delete from users where username ='" + user.getUsername() + "'");
-        } catch (Exception ex) {
-            System.out.println(ex);
+            st1.execute("delete from users where username ='" + user.getUsername() + "'");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }
 
     /**
-     * Deletes an inquiry. Opens an connection to the database and sends a query
-     * with a resultset. The query deletes a tuple from the entityset inquries
-     * where the inquirys id is equals to inquiries.inquiryid
+     * Deletes an inquiry from the database.
      *
      * @param inquiry The inquiry that is going to be deleted.
      */
     public void deleteInquiry(IInquiry inquiry) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"inquiries\" where inquiryId ='" + inquiry.getId() + "'");
-        } catch (Exception ex) {
-            System.out.println(ex);
+            st1.execute("delete from \"public\".\"inquiries\" where inquiryId ='" + inquiry.getId() + "'");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }
 
     /**
-     * Deletes a case. Opens a connection to the database and sends a query with
-     * a resultset. The query deletes an tuple from the entityset cases where
-     * the caseid is equal to cases.id
+     * Deletes a case from the database.
      *
      * @param theCase The case that is going to be deleted.
      */
     public void deleteCase(ICase theCase) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"cases\" where caseId ='" + theCase.getID() + "'");
+            st1.execute("delete from \"public\".\"cases\" where caseId ='" + theCase.getID() + "'");
 
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
 
         }
     }
 
     /**
-     * Deletes a citizen. Opens a connection to the database and sends a query
-     * with a resultset. The query deletes an tuple from the entityset citizens
-     * where the citizenid is equal to citizens.id
+     * Deletes a citizen from the database.
      *
      * @param citizen The citizen that is going to be deleted.
      */
@@ -379,20 +339,17 @@ public class DBManager {
         System.out.println(citizen.getId());
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("delete from \"public\".\"citizens\" where citizenId ='" + citizen.getId() + "'");
-        } catch (Exception ex) {
-            System.out.println(ex);
+            st1.execute("delete from \"public\".\"citizens\" where citizenId ='" + citizen.getId() + "'");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }
 
     /**
-     * Returns a boolean depending on the user id. Opens a connection to the
-     * database and sends a query with a resultset. The query counts how many
-     * ids in the entityset users which are equal to id. If any of these are
-     * equal to it, it returns false.
+     * Checks whether or not a given id already exists in the database.
      *
      * @param id That is to be checked if unique.
-     * @return a boolean
+     * @return a boolean indicating whether or not the given id is unique
      */
     public boolean hasUniqueUserID(String id) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
@@ -404,20 +361,17 @@ public class DBManager {
             } else {
                 return true;
             }
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
             return false;
         }
     }
 
     /**
-     * Returns a boolean depending on the user id. Opens a connection to the
-     * database and sends a query with a resultset. The query counts how many
-     * ids in the entityset citizens which are equal to id. If any of these are
-     * equal to it, it returns false.
+     * Checks whether or not a given citizen id already exists in the database.
      *
      * @param id That is to be checked if unique
-     * @return a boolean.
+     * @return a boolean indicating whether or not the given id is unique
      */
     public boolean hasUniqueCitizenID(String id) {
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
@@ -429,20 +383,17 @@ public class DBManager {
             } else {
                 return true;
             }
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
             return false;
         }
     }
 
     /**
-     * Returns a boolean depending on the user id. Opens a connection to the
-     * database and sends a query with a resultset. The query counts how many
-     * usernames in the entityset users which are equal to username. If any of
-     * these are equal to it, it returns false.
+     * Checks whether or not a given username is unique.
      *
      * @param username That is to be checked if unique.
-     * @return a boolean.
+     * @return a boolean that indicates whether or not the given username is unique.
      *
      */
     public boolean hasUniqueUsername(String username) {
@@ -454,19 +405,17 @@ public class DBManager {
                 return false;
             }
             return true;
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
             return false;
         }
     }
 
     /**
-     * Saves the log data into the database. Opens a connection to the database
-     * and sends a query with a resultset. The query inserts the string data
-     * into the entityset logdata
-     *
+     * Saves logged data, along with date & user, to the database.
+     * 
      * @param date The date of the log.
-     * @param username The username of the log.
+     * @param username The name of the log.
      * @param logData The data of the log.
      */
     public void saveLog(String date, String username, String logData) {
@@ -474,20 +423,17 @@ public class DBManager {
 
         try (Connection db = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             Statement st1 = db.createStatement();
-            ResultSet rs1 = st1.executeQuery("insert into logdata values" + data);
-            rs1.close();
+            st1.execute("insert into logdata values" + data);
             st1.close();
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }
 
     /**
-     * Returns a list of logdata. Opens a connection to the database and sends a
-     * query with a resultset. The query Selects all tuples from the entityset
-     * logdata Formats the string and adds it a list
-     *
-     * @return a list of Strings
+     * Retrieves all logged data from the database.
+     * 
+     * @return a list of String[]. Each String[] contains information about one log
      */
     public List<String> getLog() {
         ArrayList<String> list = new ArrayList();
@@ -504,8 +450,8 @@ public class DBManager {
             }
             rs1.close();
             st1.close();
-        } catch (Exception ex) {
-            System.out.println(ex);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
         return list;
     }

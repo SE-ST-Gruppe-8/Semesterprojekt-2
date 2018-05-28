@@ -6,7 +6,6 @@
 package presentation;
 
 import acq.IBusiness;
-import acq.IPresentation;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,7 +28,7 @@ import javafx.stage.Stage;
  *
  * @author Frederik
  */
-public class ControllerFXMLlogin implements Initializable{
+public class ControllerFXMLLogin implements Initializable {
 
     /**
      * IBusiness is used for accessing business logic
@@ -90,8 +89,8 @@ public class ControllerFXMLlogin implements Initializable{
     @FXML
     private void loginButtonAction(ActionEvent event) throws IOException {
         try {
-            boolean iscorrect = ib.validateUser(loginUsernameTextField.getText(), loginPasswordTextField.getText());
-            if (iscorrect) {
+            boolean isCorrect = ib.validateUser(loginUsernameTextField.getText(), loginPasswordTextField.getText());
+            if (isCorrect) {
                 if (ib.getRole() == ib.getSocialWorkerRoleInt()) {
                     fxmlString = "FXMLSocialWorker.fxml";
 
@@ -101,18 +100,15 @@ public class ControllerFXMLlogin implements Initializable{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlString));
 
                 AnchorPane anchorPane = loader.load();
-                Initializable controller = loader.getController();
-
                 Scene scene2 = new Scene(anchorPane);
-                //Get Stage information
 
+                //Get Stage information
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setMinWidth(500);
                 window.setMinHeight(430);
                 window.setWidth(900);
                 window.setHeight(430);
                 window.setScene(scene2);
-                window.show();
             } else {
                 loginInfoLabel.setText("Forkert input");
             }
